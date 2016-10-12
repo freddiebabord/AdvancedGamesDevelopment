@@ -2,15 +2,11 @@
 using UnityEngine.Networking;
 using System.Collections.Generic;
 using System.Collections;
-using System.Xml.Xsl;
-using UnityEngine.Networking.NetworkSystem;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
 public class GhostBehaviour : NetworkBehaviour
 {
-    NetworkClient client;
-
     public float maxHealth = 100f;
     public float score = 500f;
     public float movementSpeed = 5f;
@@ -27,8 +23,6 @@ public class GhostBehaviour : NetworkBehaviour
     {
         //agent = GetComponent<NavMeshAgent>();
         //agent.destination = ghostTarget.position;
-        client = NetManager.singleton.client;
-        client.RegisterHandler(MyMsgType.Dmg, OnDamage);
     }
 
     // Update is called once per frame
@@ -48,7 +42,7 @@ public class GhostBehaviour : NetworkBehaviour
         //SendDamage(id, 5);
     }
 
-    [ClientRPC]
+    [ClientRpc]
     public void Rpc_TakeDamage(int id)
     {
         damageFromPlayers[id] += 5;
