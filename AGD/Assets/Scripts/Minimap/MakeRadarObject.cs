@@ -8,48 +8,83 @@ public class MakeRadarObject : MonoBehaviour {
 
     public Image image;
     public Image image_up;
+	public Image image_down;
 
     EnemyBase[] enemies;
 
 
-	// Use this for initialization
-	void Start ()
-    {
-        enemies = FindObjectsOfType<EnemyBase>();
-
-        Debug.Log(enemies.Length);
-
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            if (this.gameObject.transform.position.y < enemies[i].gameObject.transform.position.y)
-            {
-                Radar.RegisterRadarObject(enemies[i].gameObject, image_up);
-            }
-            else
-                Radar.RegisterRadarObject(enemies[i].gameObject, image);
-        }
-	
-	}
-	
+		
 	// Update is called once per frame
 	void Update ()
     {
-        enemies = FindObjectsOfType<EnemyBase>();
+		enemies = FindObjectsOfType<EnemyBase> ();
 
         for (int i = 0; i < enemies.Length; i++)
-        {
-            if (gameObject.transform.position.y > enemies[i].gameObject.transform.position.y)
-            {
-                Radar.RemoveRadarObject(enemies[i].gameObject);
-                Radar.RegisterRadarObject(enemies[i].gameObject, image);
-            }
-            else if (gameObject.transform.position.y < enemies[i].gameObject.transform.position.y)
-            {
-                Radar.RemoveRadarObject(enemies[i].gameObject);
-                Radar.RegisterRadarObject(enemies[i].gameObject, image_up);
-            }
-            else
-                continue;
+		{
+
+			if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y > 1) 
+			{
+				if (!enemies [i].isLower) 
+				{
+					Radar.RemoveRadarObject (enemies [i].gameObject);
+					Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
+					enemies [i].isHigher = false;
+					enemies [i].isLower = true;
+					enemies [i].isSame = false;
+				}
+
+				if (!enemies [i].firstPass) 
+				{
+					Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
+					enemies [i].isHigher = false;
+					enemies [i].isLower = true;
+					enemies [i].isSame = false;
+					enemies [i].firstPass = true;
+				}
+
+			}
+			else if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y < 0) 
+			{
+				if (!enemies [i].isHigher) 
+				{
+					Radar.RemoveRadarObject (enemies [i].gameObject);
+					Radar.RegisterRadarObject (enemies [i].gameObject, image_up);
+					enemies [i].isHigher = true;
+					enemies [i].isLower = false;
+					enemies [i].isSame = false;
+				}
+
+				if (!enemies [i].firstPass) 
+				{
+					Radar.RegisterRadarObject (enemies [i].gameObject, image_up);
+					enemies [i].isHigher = true;
+					enemies [i].isLower = false;
+					enemies [i].isSame = false;
+					enemies [i].firstPass = true;
+				}
+			}
+			else
+			{
+				if (!enemies[i].isSame) 
+				{
+					Radar.RemoveRadarObject (enemies [i].gameObject);
+					Radar.RegisterRadarObject (enemies [i].gameObject, image);
+					enemies [i].isHigher = false;
+					enemies [i].isSame = true;
+					enemies [i].isLower = false;
+				}
+
+				if (!enemies [i].firstPass) 
+				{
+					Radar.RegisterRadarObject (enemies [i].gameObject, image);
+					enemies [i].isHigher = false;
+					enemies [i].isLower = false;
+					enemies [i].isSame = true;
+					enemies [i].firstPass = true;
+				}
+                
+			} 
+            
         }
     }
 }

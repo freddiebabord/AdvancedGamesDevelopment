@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Minimap\Radar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Minimap\MakeRadarObject.cs">
     <Files>
-      <File FileName="Assets\Scripts\Minimap\MakeRadarObject.cs" Line="46" Column="22" />
-      <File FileName="Assets\Scripts\Minimap\Radar.cs" Line="51" Column="6" />
+      <File FileName="Assets\Scripts\Minimap\MakeRadarObject.cs" Line="87" Column="13" />
+      <File FileName="Assets\Scripts\Minimap\Radar.cs" Line="43" Column="45" />
+      <File FileName="Assets\Scripts\EnemyBase.cs" Line="9" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

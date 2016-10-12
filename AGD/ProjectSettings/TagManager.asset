@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemySpawn
   - playerSpawn
+  - Radar
   layers:
   - Default
   - TransparentFX
