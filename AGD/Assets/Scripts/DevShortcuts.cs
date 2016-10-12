@@ -17,6 +17,8 @@ public class DevShortcuts : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+        
+        
 	    if (!isLocalPlayer)
 	        return;
 
@@ -26,8 +28,20 @@ public class DevShortcuts : NetworkBehaviour {
             print("Hello");
             foreach (GhostBehaviour ghost in ghosts)
             {
-                ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
+                if (isServer)
+                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
+                else
+                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId);
             }
         }
+	    //if (Input.GetKeyDown(KeyCode.F1))
+	    //{
+     //       ghosts = FindObjectsOfType<GhostBehaviour>().ToList();
+	    //    foreach (GhostBehaviour ghost in ghosts)
+	    //    {
+	    //        ghost.DEBUG();
+	    //    }
+	    //}
 	}
+    
 }
