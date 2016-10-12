@@ -29,7 +29,7 @@ public class DevShortcuts : NetworkBehaviour {
             foreach (GhostBehaviour ghost in ghosts)
             {
                 if (isServer)
-                    ghost.Cmd_TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
+                    ghost.Rpc_TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
                 else
                     ghost.Cmd_TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId);
             }

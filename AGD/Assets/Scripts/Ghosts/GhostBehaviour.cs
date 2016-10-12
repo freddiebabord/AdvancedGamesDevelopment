@@ -37,14 +37,17 @@ public class GhostBehaviour : NetworkBehaviour
 
         while (damageFromPlayers.Count-1 <= id)
             damageFromPlayers.Add(0.0f);
-        damageFromPlayers[id] += 5;
-        print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
+        //damageFromPlayers[id] += 5;
+        //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
+        Rpc_TakeDamage(id);
         //SendDamage(id, 5);
     }
 
     [ClientRpc]
     public void Rpc_TakeDamage(int id)
     {
+        while (damageFromPlayers.Count - 1 <= id)
+            damageFromPlayers.Add(0.0f);
         damageFromPlayers[id] += 5;
         print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
     }
