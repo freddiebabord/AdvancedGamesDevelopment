@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine.Networking;
 using System.Collections;
 
-public class DevShortcuts : MonoBehaviour {
+public class DevShortcuts : NetworkBehaviour {
 
     [SerializeField]List<GhostBehaviour> ghosts = new List<GhostBehaviour>();
 
@@ -16,8 +16,11 @@ public class DevShortcuts : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update ()
-    {
-	    if(Input.GetKeyDown(KeyCode.F1))
+	{
+	    if (!isLocalPlayer)
+	        return;
+
+	    if(Input.GetKeyDown(KeyCode.F2))
         {
             ghosts = FindObjectsOfType<GhostBehaviour>().ToList();
             print("Hello");
