@@ -20,7 +20,7 @@ public class GhostBehaviour : NetworkBehaviour
     float currentHealth;
     //Dictionary<int, float> damageFromPlayers = new Dictionary<int, float>();
     NavMeshAgent agent;
-    [SerializeField]SyncListFloat damageFromPlayers = new SyncListFloat();
+    SyncListFloat damageFromPlayers = new SyncListFloat();
 
     // Use this for initialization
     void Start()
@@ -37,16 +37,22 @@ public class GhostBehaviour : NetworkBehaviour
 
     }
 
-    public void TakeDamage(int id)
+    [Command]
+    public void Cmd_TakeDamage(int id)
     {
-        if (!isServer)
-            return;
 
         while (damageFromPlayers.Count-1 < id)
             damageFromPlayers.Add(0.0f);
-        //damageFromPlayers[id] += 5;
-        //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
-        SendDamage(id, 5);
+        damageFromPlayers[id] += 5;
+        print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
+        //SendDamage(id, 5);
+    }
+
+    [ClientRPC]
+    public void Rpc_TakeDamage(int id)
+    {
+        damageFromPlayers[id] += 5;
+        print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
     }
 
     //public void DEBUG()
@@ -57,7 +63,7 @@ public class GhostBehaviour : NetworkBehaviour
     //    }
     //}
 
-
+/*
     public void SendDamage(int id, float damage)
     {
         DamageMessage message = new DamageMessage();
@@ -71,6 +77,6 @@ public class GhostBehaviour : NetworkBehaviour
         DamageMessage msg = netMsg.ReadMessage<DamageMessage>();
         damageFromPlayers[msg.id] += msg.damage;
         Debug.Log("Player ID: " + msg.id + "\nDamage Dealt: " + damageFromPlayers[msg.id]);
-    }
+    }*/
 
 }

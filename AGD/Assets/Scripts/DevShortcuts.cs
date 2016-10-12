@@ -29,9 +29,9 @@ public class DevShortcuts : NetworkBehaviour {
             foreach (GhostBehaviour ghost in ghosts)
             {
                 if (isServer)
-                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
+                    ghost.Cmd_TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
                 else
-                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId);
+                    ghost.Cmd_TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId);
             }
         }
 	    //if (Input.GetKeyDown(KeyCode.F1))
