@@ -24,15 +24,7 @@ public class DevShortcuts : NetworkBehaviour {
 
 	    if(Input.GetKeyDown(KeyCode.F2))
         {
-            ghosts = FindObjectsOfType<GhostBehaviour>().ToList();
-            print("Hello");
-            foreach (GhostBehaviour ghost in ghosts)
-            {
-                if (isServer)
-                    ghost.Rpc_TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
-                else
-                    ghost.Cmd_TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId);
-            }
+            Cmd_SendTakeTamage();
         }
 	    //if (Input.GetKeyDown(KeyCode.F1))
 	    //{
@@ -44,4 +36,18 @@ public class DevShortcuts : NetworkBehaviour {
 	    //}
 	}
     
+
+	[Command]
+	public void Cmd_SendTakeTamage()
+	{
+		ghosts = FindObjectsOfType<GhostBehaviour>().ToList();
+            print("Hello");
+            foreach (GhostBehaviour ghost in ghosts)
+            {
+                if (isServer)
+                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
+                else
+                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId);
+            }
+	}
 }

@@ -16,7 +16,7 @@ public class GhostBehaviour : NetworkBehaviour
     float currentHealth;
     //Dictionary<int, float> damageFromPlayers = new Dictionary<int, float>();
     NavMeshAgent agent;
-    SyncListFloat damageFromPlayers = new SyncListFloat();
+    List<float> damageFromPlayers = new List<float>();
 
     // Use this for initialization
     void Start()
@@ -29,6 +29,11 @@ public class GhostBehaviour : NetworkBehaviour
     void Update()
     {
 
+    }
+
+    public void TakeDamage(int id)
+    {
+        Cmd_TakeDamage(id);
     }
 
     [Command]
