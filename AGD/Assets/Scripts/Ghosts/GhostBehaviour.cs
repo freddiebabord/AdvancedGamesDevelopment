@@ -20,7 +20,7 @@ public class GhostBehaviour : NetworkBehaviour
     float currentHealth;
     //Dictionary<int, float> damageFromPlayers = new Dictionary<int, float>();
     NavMeshAgent agent;
-    SyncListFloat damageFromPlayers = new SyncListFloat();
+    [SerializeField]SyncListFloat damageFromPlayers = new SyncListFloat();
 
     // Use this for initialization
     void Start()
@@ -44,8 +44,8 @@ public class GhostBehaviour : NetworkBehaviour
 
         while (damageFromPlayers.Count-1 < id)
             damageFromPlayers.Add(0.0f);
-        damageFromPlayers[id] += 5;
-        print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
+        //damageFromPlayers[id] += 5;
+        //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
         SendDamage(id, 5);
     }
 
@@ -70,6 +70,7 @@ public class GhostBehaviour : NetworkBehaviour
     {
         DamageMessage msg = netMsg.ReadMessage<DamageMessage>();
         damageFromPlayers[msg.id] += msg.damage;
+        Debug.Log("Player ID: " + msg.id + "\nDamage Dealt: " + damageFromPlayers[msg.id]);
     }
 
 }
