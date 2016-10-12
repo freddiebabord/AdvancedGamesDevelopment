@@ -12,11 +12,10 @@ public class RadarObject
 
 public class Radar : MonoBehaviour {
 
-    Transform player;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
     //Play with this map_scale to bring the objects either closer together or further away in the radar.
@@ -56,14 +55,14 @@ public class Radar : MonoBehaviour {
     {
         foreach(RadarObject rad_obj in radar_objects)
         {
-            Vector3 radar_position = rad_obj.owner.transform.position - player.position;
-            float distance_object = Vector3.Distance(player.position, rad_obj.owner.transform.position) * map_scale;
-            float delta_y = Mathf.Atan2(radar_position.x, radar_position.z) * Mathf.Rad2Deg - 270 - player.eulerAngles.y;
+            Vector3 radar_position = gameObject.transform.position - rad_obj.owner.transform.position;
+            float distance_object = Vector3.Distance(gameObject.transform.position, rad_obj.owner.transform.position) * map_scale;
+            float delta_y = Mathf.Atan2(radar_position.x, radar_position.z) * Mathf.Rad2Deg - 270 - gameObject.transform.eulerAngles.y;
             radar_position.x = distance_object * Mathf.Cos(delta_y * Mathf.Deg2Rad) * -1;
             radar_position.z = distance_object * Mathf.Sin(delta_y * Mathf.Deg2Rad);
 
-            rad_obj.icon.transform.SetParent(this.transform);
-            rad_obj.icon.transform.position = new Vector3(radar_position.x, radar_position.z, 0) + this.transform.position;
+            rad_obj.icon.transform.SetParent(rad_obj.owner.transform);
+            rad_obj.icon.transform.position = new Vector3(radar_position.x, radar_position.z, 0) + gameObject.transform.position;
         }
     }
 	

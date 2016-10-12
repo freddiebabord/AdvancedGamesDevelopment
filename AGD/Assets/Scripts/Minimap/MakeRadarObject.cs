@@ -1,47 +1,55 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class MakeRadarObject : MonoBehaviour {
 
     public Image image;
     public Image image_up;
 
-    bool is_higher = false;
+    EnemyBase[] enemies;
+
 
 	// Use this for initialization
 	void Start ()
     {
-        if (this.gameObject.transform.position.y > GameObject.FindGameObjectWithTag("Player").transform.position.y)
+        enemies = FindObjectsOfType<EnemyBase>();
+
+        Debug.Log(enemies.Length);
+
+        for (int i = 0; i < enemies.Length; i++)
         {
-            Radar.RegisterRadarObject(this.gameObject, image_up);
-            is_higher = true;
+            if (this.gameObject.transform.position.y < enemies[i].gameObject.transform.position.y)
+            {
+                Radar.RegisterRadarObject(enemies[i].gameObject, image_up);
+            }
+            else
+                Radar.RegisterRadarObject(enemies[i].gameObject, image);
         }
-        else
-            Radar.RegisterRadarObject(this.gameObject, image);
 	
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if(!is_higher && this.gameObject.transform.position.y > GameObject.FindGameObjectWithTag("Player").transform.position.y)
-        {
-            Radar.RemoveRadarObject(this.gameObject);
-            Radar.RegisterRadarObject(this.gameObject, image_up);
-            is_higher = true;
-        }
-        else if(is_higher && this.gameObject.transform.position.y < GameObject.FindGameObjectWithTag("Player").transform.position.y)
-        {
-            Radar.RemoveRadarObject(this.gameObject);
-            Radar.RegisterRadarObject(this.gameObject, image);
-            is_higher = false;
-        }
-    }
+        enemies = FindObjectsOfType<EnemyBase>();
 
-    void OnDestroy()
-    {
-        Radar.RemoveRadarObject(this.gameObject);
-        is_higher = false;
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (gameObject.transform.position.y > enemies[i].gameObject.transform.position.y)
+            {
+                Radar.RemoveRadarObject(enemies[i].gameObject);
+                Radar.RegisterRadarObject(enemies[i].gameObject, image);
+            }
+            else if (gameObject.transform.position.y < enemies[i].gameObject.transform.position.y)
+            {
+                Radar.RemoveRadarObject(enemies[i].gameObject);
+                Radar.RegisterRadarObject(enemies[i].gameObject, image_up);
+            }
+            else
+                continue;
+        }
     }
 }
