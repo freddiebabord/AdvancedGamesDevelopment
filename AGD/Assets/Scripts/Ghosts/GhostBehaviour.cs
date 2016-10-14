@@ -14,15 +14,15 @@ public class GhostBehaviour : NetworkBehaviour
     public Transform ghostTarget;
 
     float currentHealth;
+    //Dictionary<int, float> damageFromPlayers = new Dictionary<int, float>();
     NavMeshAgent agent;
     List<float> damageFromPlayers = new List<float>();
 
     // Use this for initialization
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
         //agent.destination = ghostTarget.position;
-        agent.speed = movementSpeed;
     }
 
     // Update is called once per frame
@@ -31,26 +31,54 @@ public class GhostBehaviour : NetworkBehaviour
 
     }
 
-    public void TakeDamage(int id, float dmg)
+    public void TakeDamage(int id)
     {
-        Cmd_TakeDamage(id, dmg);
+        Cmd_TakeDamage(id);
     }
 
     [Command]
-    public void Cmd_TakeDamage(int id, float dmg)
+    public void Cmd_TakeDamage(int id)
     {
-        while (damageFromPlayers.Count - 1 <= id)
+
+        while (damageFromPlayers.Count-1 <= id)
             damageFromPlayers.Add(0.0f);
-        Rpc_TakeDamage(id, dmg);
+        //damageFromPlayers[id] += 5;
+        //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
+        Rpc_TakeDamage(id);
+        //SendDamage(id, 5);
     }
 
     [ClientRpc]
-    public void Rpc_TakeDamage(int id, float dmg)
+    public void Rpc_TakeDamage(int id)
     {
         while (damageFromPlayers.Count - 1 <= id)
             damageFromPlayers.Add(0.0f);
-        damageFromPlayers[id] += dmg;
+        damageFromPlayers[id] += 5;
         print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
     }
+
+    //public void DEBUG()
+    //{
+    //    foreach (KeyValuePair<int, float> kvp in damageFromPlayers)
+    //    {
+    //        Debug.Log("Player ID: " + kvp.Key + "\nDamage Dealt: " + kvp.Value);
+    //    }
+    //}
+
+/*
+    public void SendDamage(int id, float damage)
+    {
+        DamageMessage message = new DamageMessage();
+        message.damage = damage;
+        message.id = id;
+        NetworkServer.SendToAll(MyMsgType.Dmg, message);
+    }
+
+    public void OnDamage(NetworkMessage netMsg)
+    {
+        DamageMessage msg = netMsg.ReadMessage<DamageMessage>();
+        damageFromPlayers[msg.id] += msg.damage;
+        Debug.Log("Player ID: " + msg.id + "\nDamage Dealt: " + damageFromPlayers[msg.id]);
+    }*/
 
 }

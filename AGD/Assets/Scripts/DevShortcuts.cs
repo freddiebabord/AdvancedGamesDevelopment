@@ -26,6 +26,14 @@ public class DevShortcuts : NetworkBehaviour {
         {
             Cmd_SendTakeTamage();
         }
+	    //if (Input.GetKeyDown(KeyCode.F1))
+	    //{
+     //       ghosts = FindObjectsOfType<GhostBehaviour>().ToList();
+	    //    foreach (GhostBehaviour ghost in ghosts)
+	    //    {
+	    //        ghost.DEBUG();
+	    //    }
+	    //}
 	}
     
 
@@ -37,9 +45,9 @@ public class DevShortcuts : NetworkBehaviour {
             foreach (GhostBehaviour ghost in ghosts)
             {
                 if (isServer)
-                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId, 5f);
+                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId);
                 else
-                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId, 5f);
+                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId);
             }
 	}
 }
