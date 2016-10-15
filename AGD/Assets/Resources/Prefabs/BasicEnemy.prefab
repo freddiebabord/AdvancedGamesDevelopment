@@ -26,6 +26,7 @@ GameObject:
   - 114: {fileID: 114000013289124748}
   - 114: {fileID: 114000014020987988}
   - 195: {fileID: 195000012484303010}
+  - 114: {fileID: 114000011397786960}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -82,6 +83,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011133342020}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114000011397786960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011133342020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b9c9fd2194a13498788b1d23f62cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  score: 500
+  movementSpeed: 5
+  fearPresence: 10
+  ghostTarget: {fileID: 0}
 --- !u!114 &114000013289124748
 MonoBehaviour:
   m_ObjectHideFlags: 1
