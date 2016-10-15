@@ -14,9 +14,11 @@ public class NetManager :  LobbyManager{
 	[Header("UI Settings")]
 	public GameObject settingsPanel;
 	public Dropdown qualityDropdown;
-	public Slider volumeSlider; 
+	public Slider volumeSlider;
+    
+    
 
-	public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
+    public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
 	{
 		var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
 		var playerSpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("playerSpawn")).ToList();
