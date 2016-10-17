@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 //General struct for the objects that will be shown in the radar.
 public class RadarObject
@@ -10,7 +11,7 @@ public class RadarObject
     public GameObject owner { get; set; }
 }
 
-public class Radar : MonoBehaviour {
+public class Radar : NetworkBehaviour {
 
 	GameObject radar;
 
@@ -71,7 +72,8 @@ public class Radar : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        DrawRadar();
+        if(isLocalPlayer)
+            DrawRadar();
 	
 	}
 }

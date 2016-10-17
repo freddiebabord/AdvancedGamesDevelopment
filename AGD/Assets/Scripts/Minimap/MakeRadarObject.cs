@@ -2,9 +2,10 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 
-public class MakeRadarObject : MonoBehaviour {
+public class MakeRadarObject : NetworkBehaviour {
 
     public Image image;
     public Image image_up;
@@ -16,7 +17,10 @@ public class MakeRadarObject : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update ()
-    {
+	{
+	    if (!isLocalPlayer)
+	        return;
+
 		enemies = FindObjectsOfType<EnemyBase> ();
 
         for (int i = 0; i < enemies.Length; i++)
