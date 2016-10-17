@@ -16,7 +16,7 @@ public class Radar : NetworkBehaviour {
 	GameObject radar;
 
 	//Play with this map_scale to bring the objects either closer together or further away in the radar.
-	float map_scale = 1.5f;
+	float map_scale = 4.0f;
 
 	public static List<RadarObject> radar_objects = new List<RadarObject>();
 
@@ -59,7 +59,7 @@ public class Radar : NetworkBehaviour {
         {
 			
 			Vector3 radar_position = rad_obj.owner.transform.position - gameObject.transform.position;
-			float distance_object = Vector3.Distance (gameObject.transform.position, rad_obj.owner.transform.position);
+			float distance_object = Vector3.Distance (gameObject.transform.position, rad_obj.owner.transform.position) * map_scale;
             float delta_y = Mathf.Atan2(radar_position.x, radar_position.z) * Mathf.Rad2Deg - 270 - gameObject.transform.eulerAngles.y;
 			radar_position.x = distance_object * Mathf.Cos(delta_y * Mathf.Deg2Rad) * -1 + (radar.GetComponent<RectTransform>().rect.width/2);
 			radar_position.z = distance_object * Mathf.Sin(delta_y * Mathf.Deg2Rad) + (radar.GetComponent<RectTransform>().rect.height/2);
