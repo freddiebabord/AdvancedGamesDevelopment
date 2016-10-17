@@ -13,10 +13,15 @@ public class MakeRadarObject : NetworkBehaviour {
 
     EnemyBase[] enemies;
 
+    public Image item;
+    public Image item_up;
+    public Image item_down;
 
-		
-	// Update is called once per frame
-	void Update ()
+    GameObject[] collectables;
+
+
+    // Update is called once per frame
+    void Update ()
 	{
 	    if (!isLocalPlayer)
 	        return;
