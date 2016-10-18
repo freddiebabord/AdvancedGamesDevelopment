@@ -57,6 +57,9 @@ public class Radar : NetworkBehaviour {
     {
         foreach(RadarObject rad_obj in radar_objects)
         {
+
+            if (rad_obj.owner.gameObject == null)
+                continue;
 			
 			Vector3 radar_position = rad_obj.owner.transform.position - gameObject.transform.position;
 			float distance_object = Vector3.Distance (gameObject.transform.position, rad_obj.owner.transform.position) * map_scale;

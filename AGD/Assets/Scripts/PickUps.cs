@@ -7,12 +7,21 @@ using System.Collections;
 public class PickUps : MonoBehaviour {
     Color[] colours = { Color.red, Color.green, Color.blue };
 
+    enum ActivePower { Speed, Power, Weapon, None};
+    ActivePower active = ActivePower.None;
+
     bool power = false;
 
     string power_name = "";
 
-    public Text power_obtained;
-    public Slider timer;
+    Text power_obtained;
+    Slider timer;
+
+    void Start()
+    {
+        power_obtained = FindObjectOfType<Text>();
+        timer = FindObjectOfType<Slider>();
+    }
 
     void Update()
     {
@@ -30,27 +39,31 @@ public class PickUps : MonoBehaviour {
             if (timer.value <= 0)
             {
                 power = false;
-                gameObject.GetComponent<FirstPersonController>().m_Multiplier = 1.0f;
+                gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 1.0f;
                 return;
             }
             timer.value -= 1;
 
-            if (power_name == "Speed Boost")
+            if (power_name == "Speed Boost" && active != ActivePower.Speed)
             {
-                gameObject.GetComponent<FirstPersonController>().m_Multiplier = 2.0f;
+                gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 2.0f;
+                active = ActivePower.Speed;
             }
-            else if(power_name == "Power Boost")
+            else if(power_name == "Power Boost" && active != ActivePower.Power)
             {
                 Debug.Log("I know you hate this Freddie");
+                active = ActivePower.Power;
             }
-            else if (power_name == "Weapon Recharge")
+            else if (power_name == "Weapon Recharge" && active != ActivePower.Weapon)
             {
                 Debug.Log("That's why I'm doing it haha!");
+                active = ActivePower.Weapon;
             }
         }
         else
         {
             power_obtained.text = "";
+            active = ActivePower.None; 
         }
 
     }

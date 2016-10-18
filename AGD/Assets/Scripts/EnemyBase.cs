@@ -4,9 +4,9 @@ using UnityEngine.Networking;
 
 public class EnemyBase : NetworkBehaviour {
 
-	public bool isHigher = false;
-	public bool isLower = false;
-	public bool isSame = false;
+    public enum EnemyMap { Higher, Lower, Same, Nullus};
+    public EnemyMap enemyMap = EnemyMap.Nullus;
+
 	public bool firstPass = false;
 
 	private NavMeshAgent agent;

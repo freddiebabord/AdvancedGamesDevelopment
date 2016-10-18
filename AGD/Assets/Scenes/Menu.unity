@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ Prefab:
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.64016867
       objectReference: {fileID: 0}
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
@@ -273,22 +273,22 @@ Prefab:
     - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1383
+      value: 1391.05
       objectReference: {fileID: 0}
     - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -74.17679
+      value: -82.67679
       objectReference: {fileID: 0}
     - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 2766
+      value: 2782.1
       objectReference: {fileID: 0}
     - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 148.35358
+      value: 165.35358
       objectReference: {fileID: 0}
     - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
@@ -309,6 +309,11 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 2782.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_PlayScene
+      value: JamesyScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
