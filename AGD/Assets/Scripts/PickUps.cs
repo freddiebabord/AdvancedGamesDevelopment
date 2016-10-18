@@ -98,6 +98,7 @@ public class PickUps : MonoBehaviour {
                 power_obtained.text = other.gameObject.name + " Obtained";
                 power = true;
                 Destroy(other.gameObject);
+                Radar.RemoveRadarObject(other.gameObject);
             }
         }
     }
