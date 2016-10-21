@@ -2,25 +2,36 @@
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using System.Collections;
-
+using System;
 
 public class PickUps : MonoBehaviour {
     Color[] colours = { Color.red, Color.green, Color.blue };
 
+    Color temp;
+
     enum ActivePower { Speed, Power, Weapon, None};
     ActivePower active = ActivePower.None;
 
-    bool power = false;
+    public bool power = false;
 
     string power_name = "";
 
     Text power_obtained;
     Slider timer;
 
+    Radar radar;
+
     void Start()
     {
-        power_obtained = FindObjectOfType<Text>();
+        power_obtained = GameObject.FindGameObjectWithTag("Text").gameObject.GetComponent<Text>();
         timer = FindObjectOfType<Slider>();
+
+        radar = gameObject.GetComponent<Radar>();
+    }
+
+    internal void Triggered(Component collider)
+    {
+        throw new NotImplementedException();
     }
 
     void Update()
@@ -59,16 +70,20 @@ public class PickUps : MonoBehaviour {
                 Debug.Log("That's why I'm doing it haha!");
                 active = ActivePower.Weapon;
             }
+
+            power_obtained.text = power_name + " Obtained";
+            power_obtained.color = temp;
+
         }
         else
         {
-            power_obtained.text = "";
+            power_obtained.text = "No power";
             active = ActivePower.None; 
         }
 
     }
 
-	void OnTriggerEnter(Collider other)
+	public void Triggered(Collider other)
     {
         if (power)
         {
@@ -76,29 +91,27 @@ public class PickUps : MonoBehaviour {
         }
         else
         {
-            if (other.gameObject.CompareTag("PickUp"))
+            if (other.gameObject.GetComponent<PickUpBase>() != null)
             {
                 if (other.gameObject.name == "Speed Boost")
                 {
-                    power_obtained.color = colours[0];
+                    temp = colours[0];
                     power_name = other.gameObject.name;
                 }
                 else if (other.gameObject.name == "Power Boost")
                 {
-                    power_obtained.color = colours[1];
+                    temp = colours[1];
                     power_name = other.gameObject.name;
 
                 }
                 else if (other.gameObject.name == "Weapon Recharge")
                 {
-                    power_obtained.color = colours[2];
+                    temp = colours[2];
                     power_name = other.gameObject.name;
                 }
 
-                power_obtained.text = other.gameObject.name + " Obtained";
                 power = true;
-                Destroy(other.gameObject);
-                Radar.RemoveRadarObject(other.gameObject);
+
             }
         }
     }

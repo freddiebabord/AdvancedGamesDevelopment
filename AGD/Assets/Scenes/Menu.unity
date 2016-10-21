@@ -315,6 +315,21 @@ Prefab:
       propertyPath: m_PlayScene
       value: JamesyScene
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: prematchCountdown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_OfflineScene
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_LobbyScene
+      value: Menu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
   m_IsPrefabParent: 0

@@ -19,6 +19,13 @@ public class MakeRadarObject : NetworkBehaviour {
 
     PickUpBase[] collectables;
 
+    Radar radar;
+
+    void Start()
+    {
+        radar = gameObject.GetComponent<Radar>();
+    }
+
     // Update is called once per frame
     void Update ()
 	{
@@ -28,12 +35,13 @@ public class MakeRadarObject : NetworkBehaviour {
 		enemies = FindObjectsOfType<EnemyBase> ();
         collectables = FindObjectsOfType<PickUpBase>();
 
+        #region EnemiesOnRadar
         for (int i = 0; i < enemies.Length; i++)
 		{
 
             if (enemies[i].gameObject == null)
             {
-                Radar.RemoveRadarObject(enemies[i].gameObject);
+                radar.RemoveRadarObject(enemies[i].gameObject);
                 continue;
             }
 
@@ -41,8 +49,8 @@ public class MakeRadarObject : NetworkBehaviour {
 			{
 				if (enemies [i].enemyMap != EnemyBase.EnemyMap.Lower) 
 				{
-					Radar.RemoveRadarObject (enemies [i].gameObject);
-					Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
+                    radar.RemoveRadarObject (enemies [i].gameObject);
+                    Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
 					enemies [i].enemyMap = EnemyBase.EnemyMap.Lower;
 				}
 
@@ -58,7 +66,7 @@ public class MakeRadarObject : NetworkBehaviour {
 			{
 				if (enemies[i].enemyMap != EnemyBase.EnemyMap.Higher) 
 				{
-					Radar.RemoveRadarObject (enemies [i].gameObject);
+                    radar.RemoveRadarObject (enemies [i].gameObject);
 					Radar.RegisterRadarObject (enemies [i].gameObject, image_up);
                     enemies[i].enemyMap = EnemyBase.EnemyMap.Higher;
                 }
@@ -74,7 +82,7 @@ public class MakeRadarObject : NetworkBehaviour {
 			{
 				if (enemies[i].enemyMap != EnemyBase.EnemyMap.Same) 
 				{
-					Radar.RemoveRadarObject (enemies [i].gameObject);
+                    radar.RemoveRadarObject (enemies [i].gameObject);
 					Radar.RegisterRadarObject (enemies [i].gameObject, image);
                     enemies[i].enemyMap = EnemyBase.EnemyMap.Same;
                 }
@@ -89,12 +97,14 @@ public class MakeRadarObject : NetworkBehaviour {
 			} 
             
         }
+        #endregion
 
+        #region PowerUpsOnRadar
         for (int i = 0; i < collectables.Length; i++)
         {
             if (collectables[i].gameObject == null)
             {
-                Radar.RemoveRadarObject(collectables[i].gameObject);
+                radar.RemoveRadarObject(collectables[i].gameObject);
                 continue;
 
             }
@@ -103,7 +113,7 @@ public class MakeRadarObject : NetworkBehaviour {
             {
                 if (collectables[i].itemMap != PickUpBase.ItemMap.Lower)
                 {
-                    Radar.RemoveRadarObject(collectables[i].gameObject);
+                    radar.RemoveRadarObject(collectables[i].gameObject);
                     Radar.RegisterRadarObject(collectables[i].gameObject, item_down);
                     collectables[i].itemMap = PickUpBase.ItemMap.Lower;
                 }
@@ -120,7 +130,7 @@ public class MakeRadarObject : NetworkBehaviour {
             {
                 if (collectables[i].itemMap != PickUpBase.ItemMap.Higher)
                 {
-                    Radar.RemoveRadarObject(collectables[i].gameObject);
+                    radar.RemoveRadarObject(collectables[i].gameObject);
                     Radar.RegisterRadarObject(collectables[i].gameObject, item_up);
                     collectables[i].itemMap = PickUpBase.ItemMap.Higher;
                 }
@@ -136,7 +146,7 @@ public class MakeRadarObject : NetworkBehaviour {
             {
                 if (collectables[i].itemMap != PickUpBase.ItemMap.Same)
                 {
-                    Radar.RemoveRadarObject(collectables[i].gameObject);
+                    radar.RemoveRadarObject(collectables[i].gameObject);
                     Radar.RegisterRadarObject(collectables[i].gameObject, item);
                     collectables[i].itemMap = PickUpBase.ItemMap.Same;
                 }
@@ -150,5 +160,6 @@ public class MakeRadarObject : NetworkBehaviour {
 
             }
         }
+        #endregion
     }
 }
