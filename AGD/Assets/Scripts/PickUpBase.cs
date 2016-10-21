@@ -18,8 +18,9 @@ public class PickUpBase : MonoBehaviour {
             for (int j = 0; j < players.Length; j++)
             {
                 players[j].RemoveRadarObject(gameObject);
-                Destroy(other.gameObject);
             }
+            Destroy(gameObject);
+
         }
     }
 

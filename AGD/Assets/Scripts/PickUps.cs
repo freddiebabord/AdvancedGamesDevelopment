@@ -29,11 +29,6 @@ public class PickUps : MonoBehaviour {
         radar = gameObject.GetComponent<Radar>();
     }
 
-    internal void Triggered(Component collider)
-    {
-        throw new NotImplementedException();
-    }
-
     void Update()
     {
 
@@ -51,7 +46,6 @@ public class PickUps : MonoBehaviour {
             {
                 power = false;
                 gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 1.0f;
-                return;
             }
             timer.value -= 1;
 
@@ -96,19 +90,18 @@ public class PickUps : MonoBehaviour {
                 if (other.gameObject.name == "Speed Boost")
                 {
                     temp = colours[0];
-                    power_name = other.gameObject.name;
                 }
                 else if (other.gameObject.name == "Power Boost")
                 {
                     temp = colours[1];
-                    power_name = other.gameObject.name;
 
                 }
                 else if (other.gameObject.name == "Weapon Recharge")
                 {
                     temp = colours[2];
-                    power_name = other.gameObject.name;
                 }
+
+                power_name = other.gameObject.name;
 
                 power = true;
 
