@@ -1312,7 +1312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &960062004
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3138,6 +3138,7 @@ GameObject:
   - 223: {fileID: 2046207259}
   - 114: {fileID: 2046207258}
   - 114: {fileID: 2046207257}
+  - 225: {fileID: 2046207261}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3222,6 +3223,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &2046207261
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2046207256}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2079262171
 GameObject:
   m_ObjectHideFlags: 0

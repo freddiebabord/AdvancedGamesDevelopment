@@ -17,6 +17,7 @@ public class PickUps : MonoBehaviour {
 
     string power_name = "";
 
+    GameObject the_text;
     Text power_obtained;
     Slider timer;
 
@@ -24,7 +25,22 @@ public class PickUps : MonoBehaviour {
 
     void Start()
     {
-        power_obtained = GameObject.FindGameObjectWithTag("Text").gameObject.GetComponent<Text>();
+        the_text = new GameObject("MyText");
+        the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
+
+        power_obtained = the_text.AddComponent<Text>();
+
+        power_obtained.transform.position = new Vector3(400, 250, 0);
+
+        power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+
+        the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
+        the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+
+        power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
+
+
+        //power_obtained = GameObject.FindGameObjectWithTag("Text").gameObject.GetComponent<Text>();
         timer = FindObjectOfType<Slider>();
 
         radar = gameObject.GetComponent<Radar>();
