@@ -10,12 +10,14 @@ using Rotorz.ReorderableList.Internal;
 public class SomeBehaviourEditor : Editor {
 
     private SerializedProperty _itemsProperty;
-
+    GameManager gm;
     private void OnEnable() {
         _itemsProperty = serializedObject.FindProperty("waves");
+        gm = (GameManager)target;
     }
 
     public override void OnInspectorGUI() {
+        DrawDefaultInspector();
         serializedObject.Update();
 		GUILayout.Space(10);
 		GUILayout.BeginHorizontal();
@@ -23,6 +25,8 @@ public class SomeBehaviourEditor : Editor {
 		GUILayout.EndHorizontal();
 		ReorderableListGUI.ListField(_itemsProperty);
         serializedObject.ApplyModifiedProperties();
+        
+        
     }
 
 }

@@ -37,6 +37,12 @@ public class EnemyBase : NetworkBehaviour {
 		}
 	}
 
+	void OnDestroy()
+	{
+		if(isServer)
+			GameManager.instance.DestroyEnemy();
+	}
+
 	//Set the target of the ai agent across the network
 	[ClientRpc]
 	public void RpcSetPosition(Vector3 position)
