@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
 using System.Collections;
 using System;
@@ -77,13 +78,13 @@ public class PickUps : MonoBehaviour {
 
     }
 
-	public void Triggered(Collider other)
+	void OnTriggerEnter(Collider other)
     {
-        if (power)
+        if (power || other.gameObject.GetComponent<PickUpBase>() == null)
         {
             return;
         }
-        else
+        else 
         {
             if (other.gameObject.GetComponent<PickUpBase>() != null)
             {
@@ -100,6 +101,8 @@ public class PickUps : MonoBehaviour {
                 {
                     temp = colours[2];
                 }
+
+                other.gameObject.GetComponent<PickUpBase>().Triggered(gameObject.GetComponent<Collider>());
 
                 power_name = other.gameObject.name;
 

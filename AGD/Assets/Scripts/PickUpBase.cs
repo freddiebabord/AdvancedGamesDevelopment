@@ -7,22 +7,16 @@ public class PickUpBase : MonoBehaviour {
     public ItemMap itemMap = ItemMap.Nullus;
     public bool firstPass = false;
 
-    void OnTriggerEnter(Collider other)
+    public void Triggered(Collider other)
     {
-        if (!other.gameObject.GetComponent<PickUps>().power)
+        Radar[] players = FindObjectsOfType<Radar>();
+
+        for (int i = 0; i < players.Length; i++)
         {
-            other.gameObject.GetComponent<PickUps>().Triggered(gameObject.GetComponent<Collider>());
-
-            Radar[] players = FindObjectsOfType<Radar>();
-
-            for (int j = 0; j < players.Length; j++)
-            {
-                players[j].RemoveRadarObject(gameObject);
-            }
-            Destroy(gameObject);
-
+            players[i].RemoveRadarObject(gameObject);
         }
+
     }
 
- 
+
 }
