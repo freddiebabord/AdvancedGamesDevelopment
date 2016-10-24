@@ -100,6 +100,8 @@
     <Compile Include="Assets\Scripts\NetManager.cs" />
     <Compile Include="Assets\Scripts\NetworkBroadcastList.cs" />
     <Compile Include="Assets\Scripts\NetworkedFirstPersonController.cs" />
+    <Compile Include="Assets\Scripts\PickUpBase.cs" />
+    <Compile Include="Assets\Scripts\PickUps.cs" />
     <Compile Include="Assets\Scripts\Room.cs" />
     <Compile Include="Assets\Scripts\RoomCollider.cs" />
   </ItemGroup>

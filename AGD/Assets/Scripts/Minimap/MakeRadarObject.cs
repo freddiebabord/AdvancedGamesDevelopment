@@ -13,82 +13,153 @@ public class MakeRadarObject : NetworkBehaviour {
 
     EnemyBase[] enemies;
 
+    public Image item;
+    public Image item_up;
+    public Image item_down;
 
-		
-	// Update is called once per frame
-	void Update ()
+    PickUpBase[] collectables;
+
+    Radar radar;
+
+    void Start()
+    {
+        radar = gameObject.GetComponent<Radar>();
+    }
+
+    // Update is called once per frame
+    void Update ()
 	{
 	    if (!isLocalPlayer)
 	        return;
 
 		enemies = FindObjectsOfType<EnemyBase> ();
+        collectables = FindObjectsOfType<PickUpBase>();
 
+        #region EnemiesOnRadar
         for (int i = 0; i < enemies.Length; i++)
 		{
 
-			if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y > 1) 
+            if (enemies[i].gameObject == null)
+            {
+                radar.RemoveRadarObject(enemies[i].gameObject);
+                continue;
+            }
+
+			if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y > 3.6) 
 			{
-				if (!enemies [i].isLower) 
+				if (enemies [i].enemyMap != EnemyBase.EnemyMap.Lower) 
 				{
-					Radar.RemoveRadarObject (enemies [i].gameObject);
-					Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
-					enemies [i].isHigher = false;
-					enemies [i].isLower = true;
-					enemies [i].isSame = false;
+                    radar.RemoveRadarObject (enemies [i].gameObject);
+                    Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
+					enemies [i].enemyMap = EnemyBase.EnemyMap.Lower;
 				}
 
 				if (!enemies [i].firstPass) 
 				{
 					Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
-					enemies [i].isHigher = false;
-					enemies [i].isLower = true;
-					enemies [i].isSame = false;
-					enemies [i].firstPass = true;
+                    enemies[i].enemyMap = EnemyBase.EnemyMap.Lower;
+                    enemies [i].firstPass = true;
 				}
 
 			}
-			else if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y < 0) 
+			else if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y < -3.6) 
 			{
-				if (!enemies [i].isHigher) 
+				if (enemies[i].enemyMap != EnemyBase.EnemyMap.Higher) 
 				{
-					Radar.RemoveRadarObject (enemies [i].gameObject);
+                    radar.RemoveRadarObject (enemies [i].gameObject);
 					Radar.RegisterRadarObject (enemies [i].gameObject, image_up);
-					enemies [i].isHigher = true;
-					enemies [i].isLower = false;
-					enemies [i].isSame = false;
-				}
+                    enemies[i].enemyMap = EnemyBase.EnemyMap.Higher;
+                }
 
 				if (!enemies [i].firstPass) 
 				{
 					Radar.RegisterRadarObject (enemies [i].gameObject, image_up);
-					enemies [i].isHigher = true;
-					enemies [i].isLower = false;
-					enemies [i].isSame = false;
-					enemies [i].firstPass = true;
+                    enemies[i].enemyMap = EnemyBase.EnemyMap.Higher;
+                    enemies [i].firstPass = true;
 				}
 			}
 			else
 			{
-				if (!enemies[i].isSame) 
+				if (enemies[i].enemyMap != EnemyBase.EnemyMap.Same) 
 				{
-					Radar.RemoveRadarObject (enemies [i].gameObject);
+                    radar.RemoveRadarObject (enemies [i].gameObject);
 					Radar.RegisterRadarObject (enemies [i].gameObject, image);
-					enemies [i].isHigher = false;
-					enemies [i].isSame = true;
-					enemies [i].isLower = false;
-				}
+                    enemies[i].enemyMap = EnemyBase.EnemyMap.Same;
+                }
 
 				if (!enemies [i].firstPass) 
 				{
 					Radar.RegisterRadarObject (enemies [i].gameObject, image);
-					enemies [i].isHigher = false;
-					enemies [i].isLower = false;
-					enemies [i].isSame = true;
-					enemies [i].firstPass = true;
+                    enemies[i].enemyMap = EnemyBase.EnemyMap.Same;
+                    enemies [i].firstPass = true;
 				}
                 
 			} 
             
         }
+        #endregion
+
+        #region PowerUpsOnRadar
+        for (int i = 0; i < collectables.Length; i++)
+        {
+            if (collectables[i].gameObject == null)
+            {
+                radar.RemoveRadarObject(collectables[i].gameObject);
+                continue;
+
+            }
+
+            if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y > 3.6)
+            {
+                if (collectables[i].itemMap != PickUpBase.ItemMap.Lower)
+                {
+                    radar.RemoveRadarObject(collectables[i].gameObject);
+                    Radar.RegisterRadarObject(collectables[i].gameObject, item_down);
+                    collectables[i].itemMap = PickUpBase.ItemMap.Lower;
+                }
+
+                if (!collectables[i].firstPass)
+                {
+                    Radar.RegisterRadarObject(collectables[i].gameObject, item_down);
+                    collectables[i].itemMap = PickUpBase.ItemMap.Lower;
+                    collectables[i].firstPass = true;
+                }
+
+            }
+            else if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y < -3.6)
+            {
+                if (collectables[i].itemMap != PickUpBase.ItemMap.Higher)
+                {
+                    radar.RemoveRadarObject(collectables[i].gameObject);
+                    Radar.RegisterRadarObject(collectables[i].gameObject, item_up);
+                    collectables[i].itemMap = PickUpBase.ItemMap.Higher;
+                }
+
+                if (!collectables[i].firstPass)
+                {
+                    Radar.RegisterRadarObject(collectables[i].gameObject, item_up);
+                    collectables[i].itemMap = PickUpBase.ItemMap.Higher;
+                    collectables[i].firstPass = true;
+                }
+            }
+            else
+            {
+                if (collectables[i].itemMap != PickUpBase.ItemMap.Same)
+                {
+                    radar.RemoveRadarObject(collectables[i].gameObject);
+                    Radar.RegisterRadarObject(collectables[i].gameObject, item);
+                    collectables[i].itemMap = PickUpBase.ItemMap.Same;
+                }
+
+                if (!collectables[i].firstPass)
+                {
+                    Radar.RegisterRadarObject(collectables[i].gameObject, item);
+                    collectables[i].itemMap = PickUpBase.ItemMap.Same;
+                    collectables[i].firstPass = true;
+                }
+
+            }
+        }
+        #endregion
     }
 }

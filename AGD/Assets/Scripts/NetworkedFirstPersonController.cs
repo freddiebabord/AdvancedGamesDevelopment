@@ -11,7 +11,7 @@ using System.Linq;
 [RequireComponent(typeof (AudioSource))]
 public class NetworkedFirstPersonController : NetworkBehaviour 
 {
-
+    public float m_Multiplier = 1.0f;
 	[SerializeField] private bool m_IsWalking;
 	[SerializeField] private float m_WalkSpeed;
 	[SerializeField] private float m_RunSpeed;
@@ -236,7 +236,7 @@ public class NetworkedFirstPersonController : NetworkBehaviour
 		m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
 		// set the desired speed to be walking or running
-		speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+		speed = m_IsWalking ? m_WalkSpeed * m_Multiplier : m_RunSpeed;
 		m_Input = new Vector2(horizontal, vertical);
 
 		// normalize input if it exceeds 1 in combined length:
