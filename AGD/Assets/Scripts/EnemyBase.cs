@@ -4,9 +4,9 @@ using UnityEngine.Networking;
 
 public class EnemyBase : NetworkBehaviour {
 
-	public bool isHigher = false;
-	public bool isLower = false;
-	public bool isSame = false;
+    public enum EnemyMap { Higher, Lower, Same, Nullus};
+    public EnemyMap enemyMap = EnemyMap.Nullus;
+
 	public bool firstPass = false;
 
 	private NavMeshAgent agent;
@@ -35,6 +35,12 @@ public class EnemyBase : NetworkBehaviour {
 			target = finalPosition;
 			RpcSetPosition(target);
 		}
+	}
+
+	void OnDestroy()
+	{
+		if(isServer)
+			GameManager.instance.DestroyEnemy();
 	}
 
 	//Set the target of the ai agent across the network

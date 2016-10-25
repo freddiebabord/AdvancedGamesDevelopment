@@ -156,6 +156,8 @@
     <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Art\Shader\RippleAlt.shader" />
+    <None Include="Assets\Art\Shader\RippleShader.shader" />
     <None Include="Assets\External\Fonts\OpenSans\License!.txt" />
     <None Include="Assets\External\Lobby\Documentation.txt" />
     <None Include="Assets\External\Lobby\Instruction.txt" />
@@ -353,9 +355,11 @@
     <None Include="Assets\External\ShaderForge\Example Assets\Shaders\VertexAnimation.shader" />
     <None Include="Assets\External\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
     <None Include="Assets\External\ShaderForge\Readme.txt" />
+    <None Include="Assets\RippleEffect\RippleEffect.shader" />
     <None Include="Assets\Rotorz\Reorderable List Field\!LICENSE.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\!README.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
+    <None Include="Assets\Scripts\TEST - To Delete.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />

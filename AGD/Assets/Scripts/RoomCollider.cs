@@ -14,12 +14,14 @@ public class RoomCollider : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		room.OnTriggerEnter(other);
+		if(room)
+			room.OnTriggerEnter(other);
 	}
 
 	void OnTriggerExit(Collider other)
 	{
-		room.OnTriggerExit(other);
+		if(room)
+			room.OnTriggerExit(other);
 	}
 
 }

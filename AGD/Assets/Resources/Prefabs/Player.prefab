@@ -62,6 +62,7 @@ GameObject:
   - 114: {fileID: 114000014053925588}
   - 114: {fileID: 114000012039368216}
   - 114: {fileID: 114000010244008266}
+  - 114: {fileID: 114000013560021574}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -291,6 +292,10 @@ MonoBehaviour:
   image_up: {fileID: 114000010002177554, guid: a1fd4f01d3aabc246bd93e8edbc7f347, type: 2}
   image_down: {fileID: 114000010002177554, guid: e24db6b15d6f9df45a72e232f3e23aa5,
     type: 2}
+  item: {fileID: 114000010869778252, guid: d30f1d63410d7ea49a6bfc64d9b8cffd, type: 2}
+  item_up: {fileID: 114000013134259602, guid: 38917f6b121a10f4f9154ac6eada7d19, type: 2}
+  item_down: {fileID: 114000013672757364, guid: 6240a56ec6c9a7a4d84de4d468f24796,
+    type: 2}
 --- !u!114 &114000011736465096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -402,6 +407,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbeaef0464f6b9d49b57fe65eeac37bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000013560021574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012924558280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c713d0b6423c12f4fa983cb76696eb73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power_obtained: {fileID: 0}
+  timer: {fileID: 0}
 --- !u!114 &114000013607451234
 MonoBehaviour:
   m_ObjectHideFlags: 1

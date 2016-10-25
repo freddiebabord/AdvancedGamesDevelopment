@@ -90,6 +90,95 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &66598133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 66598136}
+  - 114: {fileID: 66598135}
+  - 114: {fileID: 66598134}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &66598134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 66598133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31110984fe040435eba5d8f13fafbacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 5
+    - enemySpawner: 0
+      quantity: 4
+  currentWave: 0
+  waveSleepTimer: 0
+  enemyPrefabs:
+  - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
+  - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
+  - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
+  - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
+  - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
+  - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
+  - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
+--- !u!114 &66598135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 66598133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!4 &66598136
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 66598133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 997.1449, y: 552.0416, z: -336.6825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1 &1297270330
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +249,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: waves.Array.data[0].enemyDef.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224000013043369800, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -253,7 +352,7 @@ Prefab:
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.9664727
       objectReference: {fileID: 0}
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
@@ -273,22 +372,22 @@ Prefab:
     - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1383
+      value: 1391.05
       objectReference: {fileID: 0}
     - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -74.17679
+      value: -82.67679
       objectReference: {fileID: 0}
     - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 2766
+      value: 2782.1
       objectReference: {fileID: 0}
     - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 148.35358
+      value: 165.35358
       objectReference: {fileID: 0}
     - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
@@ -310,7 +409,75 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 2782.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: prematchCountdown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
+        type: 2}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
+        type: 2}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
+        type: 2}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
+        type: 2}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
+        type: 2}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
+        type: 2}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
+        type: 2}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: waves.Array.data[0].enemyDef.Array.data[0].quantity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: waves.Array.data[0].enemyDef.Array.data[1].quantity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010885870066, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
+      propertyPath: m_Name
+      value: NetworkManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010843209398, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_Text
+      value: Spooktacle
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000013818705816, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
+    - {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2076967079
