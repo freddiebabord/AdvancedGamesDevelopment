@@ -79,6 +79,9 @@ public class GameManager : NetworkBehaviour {
 
 	public void SpawnEnemies()
 	{
+	    if (!isServer)
+	        return;
+
 		var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
 		var enemySpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("enemySpawn")).ToList();
 		for(int i = 0; i < waves[currentWave].enemyDef.Count; ++i)

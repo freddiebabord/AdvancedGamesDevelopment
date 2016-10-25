@@ -4464,6 +4464,9 @@ MonoBehaviour:
   - enemyDef:
     - enemySpawner: 0
       quantity: 0
+  currentWave: 0
+  waveSleepTimer: 0
+  enemyPrefabs: []
 --- !u!114 &114000012972160518
 MonoBehaviour:
   m_ObjectHideFlags: 1

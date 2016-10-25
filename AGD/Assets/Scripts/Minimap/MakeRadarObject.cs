@@ -32,9 +32,14 @@ public class MakeRadarObject : NetworkBehaviour {
 	    if (!isLocalPlayer)
 	        return;
 
+        // TODO: This should not be done each frame, this is a slow Unity oberation -> again consider using Unity event calls such as Start() and OnDestroy()
 		enemies = FindObjectsOfType<EnemyBase> ();
         collectables = FindObjectsOfType<PickUpBase>();
 
+        // TODO: REFACTOR: Base it on events, Instantiating and Destroying the same objects each frame is costly same for checking a bool for each frame, consider adding it on Start() and removing them OnDestroy()
+        // TODO: NOTE: Above also makes code more redable
+        // TODO: REFACTOR: NOTE: Consider using object pooling
+        // TODO: REFACTOR: Not all floors have the same height -> remove hardcoded 3.6 to be the current room height
         #region EnemiesOnRadar
         for (int i = 0; i < enemies.Length; i++)
 		{

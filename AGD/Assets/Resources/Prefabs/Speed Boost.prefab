@@ -23,6 +23,7 @@ GameObject:
   - 65: {fileID: 65000014138402120}
   - 23: {fileID: 23000013182609310}
   - 114: {fileID: 114000012768685570}
+  - 114: {fileID: 114000012145059448}
   m_Layer: 0
   m_Name: Speed Boost
   m_TagString: PickUp
@@ -91,6 +92,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000012145059448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011653685352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 238
+    i1: 213
+    i2: 172
+    i3: 74
+    i4: 235
+    i5: 49
+    i6: 40
+    i7: 132
+    i8: 234
+    i9: 85
+    i10: 123
+    i11: 244
+    i12: 87
+    i13: 110
+    i14: 53
+    i15: 197
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114000012768685570
 MonoBehaviour:
   m_ObjectHideFlags: 1

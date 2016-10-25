@@ -23,6 +23,7 @@ GameObject:
   - 65: {fileID: 65000011717031496}
   - 23: {fileID: 23000012739663460}
   - 114: {fileID: 114000013448739570}
+  - 114: {fileID: 114000013324773216}
   m_Layer: 0
   m_Name: Weapon Recharge
   m_TagString: PickUp
@@ -91,6 +92,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000013324773216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013705018322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 135
+    i1: 206
+    i2: 165
+    i3: 170
+    i4: 84
+    i5: 31
+    i6: 22
+    i7: 52
+    i8: 202
+    i9: 112
+    i10: 215
+    i11: 143
+    i12: 90
+    i13: 134
+    i14: 116
+    i15: 10
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114000013448739570
 MonoBehaviour:
   m_ObjectHideFlags: 1

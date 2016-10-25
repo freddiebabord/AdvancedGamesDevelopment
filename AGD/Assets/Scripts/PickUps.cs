@@ -5,7 +5,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 using System.Collections;
 using System;
 
-public class PickUps : MonoBehaviour {
+public class PickUps : NetworkBehaviour {
     Color[] colours = { Color.red, Color.green, Color.blue };
 
     Color temp;
@@ -24,6 +24,9 @@ public class PickUps : MonoBehaviour {
 
     void Start()
     {
+        if (!isLocalPlayer)
+            return;
+        // TODO: REFACTOR: SAFETY: Change Text to something mroe specifc (Quality Of Life)
         power_obtained = GameObject.FindGameObjectWithTag("Text").gameObject.GetComponent<Text>();
         timer = FindObjectOfType<Slider>();
 
@@ -32,7 +35,8 @@ public class PickUps : MonoBehaviour {
 
     void Update()
     {
-
+       // if (!isLocalPlayer)
+       //     return;
         if (power && !timer.gameObject.activeInHierarchy)
         {
             timer.gameObject.SetActive(true);
@@ -40,7 +44,8 @@ public class PickUps : MonoBehaviour {
         }
         else if (!power && timer.gameObject.activeInHierarchy)
             timer.gameObject.SetActive(false);
-
+        // TODO: REFACTOR: Move logic of each power up to their own script keeping shared behaviour in this one! (INHERITANCE) > The object itself determins what happens to the player as opposed to the player determins what happens
+        // TODO: NOTE: Have sensible Debug.Log() so its more obvious what is happening
         if(timer.gameObject.activeInHierarchy)
         {
             if (timer.value <= 0)
@@ -50,6 +55,7 @@ public class PickUps : MonoBehaviour {
             }
             timer.value -= 1;
 
+            // TODO: REFACTOR: These string comparisons are SLOW - change to enumerated type
             if (power_name == "Speed Boost" && active != ActivePower.Speed)
             {
                 gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 2.0f;
@@ -80,6 +86,9 @@ public class PickUps : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
+       // if (!isLocalPlayer)
+          //  return;
+
         if (power || other.gameObject.GetComponent<PickUpBase>() == null)
         {
             return;
@@ -88,6 +97,7 @@ public class PickUps : MonoBehaviour {
         {
             if (other.gameObject.GetComponent<PickUpBase>() != null)
             {
+                // TODO: REFACTOR: These string comparisons are SLOW - change to enumerated type
                 if (other.gameObject.name == "Speed Boost")
                 {
                     temp = colours[0];
@@ -102,7 +112,7 @@ public class PickUps : MonoBehaviour {
                     temp = colours[2];
                 }
 
-                other.gameObject.GetComponent<PickUpBase>().Triggered(gameObject.GetComponent<Collider>());
+                other.gameObject.GetComponent<PickUpBase>().Triggered();
 
                 power_name = other.gameObject.name;
 
