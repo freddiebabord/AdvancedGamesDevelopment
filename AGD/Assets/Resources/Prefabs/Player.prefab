@@ -60,8 +60,9 @@ GameObject:
   - 82: {fileID: 82000013881799432}
   - 114: {fileID: 114000013607451234}
   - 114: {fileID: 114000014053925588}
-  - 114: {fileID: 114000012039368216}
+  - 114: {fileID: 114000013006256576}
   - 114: {fileID: 114000010244008266}
+  - 114: {fileID: 114000012039368216}
   - 114: {fileID: 114000013560021574}
   m_Layer: 0
   m_Name: Player
@@ -307,6 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f85464fd44b40e68aed506d85ee4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Multiplier: 1
   m_IsWalking: 0
   m_WalkSpeed: 5
   m_RunSpeed: 10
@@ -407,6 +409,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbeaef0464f6b9d49b57fe65eeac37bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000013006256576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012924558280}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8665018ec4efb544bb77603188f35503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013560021574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,8 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c713d0b6423c12f4fa983cb76696eb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power_obtained: {fileID: 0}
-  timer: {fileID: 0}
+  power: 0
 --- !u!114 &114000013607451234
 MonoBehaviour:
   m_ObjectHideFlags: 1

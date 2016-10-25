@@ -20,8 +20,12 @@ public class PickUps : MonoBehaviour {
     GameObject the_text;
     Text power_obtained;
     Slider timer;
+    Slider stamina;
 
     Radar radar;
+
+    float cooldown = 5.0f;
+    bool cooloff = false;
 
     void Start()
     {
@@ -30,7 +34,7 @@ public class PickUps : MonoBehaviour {
 
         power_obtained = the_text.AddComponent<Text>();
 
-        power_obtained.transform.position = new Vector3(400, 250, 0);
+        power_obtained.transform.position = new Vector3(410, 220, 0);
 
         power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
@@ -39,15 +43,57 @@ public class PickUps : MonoBehaviour {
 
         power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
 
+        Slider[] get_sliders = FindObjectsOfType<Slider>();
 
-        //power_obtained = GameObject.FindGameObjectWithTag("Text").gameObject.GetComponent<Text>();
-        timer = FindObjectOfType<Slider>();
+        for(int i = 0; i < get_sliders.Length; i++)
+        {
+            if (get_sliders[i].name == "Stamina")
+                stamina = get_sliders[i];
+            else if (get_sliders[i].name == "Slider")
+                timer = get_sliders[i];
+        }
 
         radar = gameObject.GetComponent<Radar>();
     }
 
     void Update()
     {
+        if (active != ActivePower.Speed && !cooloff)
+        {
+            if (!gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value != stamina.minValue)
+            {
+                stamina.value -= 1.0f;
+            }
+            else if (!gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value <= stamina.minValue)
+            {
+                gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed;
+                stamina.value += 1.0f;
+                cooloff = true;
+            }
+            else if (gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value != stamina.maxValue)
+            {
+                stamina.value += 1.0f;
+            }
+        }
+        else if(cooloff)
+        {
+            gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed;
+
+            cooldown -= Time.deltaTime;
+            stamina.value += 1.0f;
+
+            if(cooldown <= 0.0f)
+            {
+                cooldown = 5.0f;
+                cooloff = false;
+                gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed * 2;
+
+            }
+        }
+        else if(active == ActivePower.Speed)
+        {
+            stamina.value = stamina.maxValue;
+        }
 
         if (power && !timer.gameObject.activeInHierarchy)
         {
@@ -62,13 +108,11 @@ public class PickUps : MonoBehaviour {
             if (timer.value <= 0)
             {
                 power = false;
-                gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 1.0f;
             }
             timer.value -= 1;
 
-            if (power_name == "Speed Boost" && active != ActivePower.Speed)
+            if (power_name == "Unlimited Stamina" && active != ActivePower.Speed)
             {
-                gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 2.0f;
                 active = ActivePower.Speed;
             }
             else if(power_name == "Power Boost" && active != ActivePower.Power)
@@ -82,7 +126,7 @@ public class PickUps : MonoBehaviour {
                 active = ActivePower.Weapon;
             }
 
-            power_obtained.text = power_name + " Obtained";
+            power_obtained.text = power_name;
             power_obtained.color = temp;
 
         }
@@ -104,7 +148,7 @@ public class PickUps : MonoBehaviour {
         {
             if (other.gameObject.GetComponent<PickUpBase>() != null)
             {
-                if (other.gameObject.name == "Speed Boost")
+                if (other.gameObject.name == "Unlimited Stamina")
                 {
                     temp = colours[0];
                 }
