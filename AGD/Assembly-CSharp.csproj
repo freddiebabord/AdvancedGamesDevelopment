@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>J:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>F:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>J:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>F:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +60,7 @@
      <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
      <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
+     <Compile Include="Assets\RippleEffect\RippleEffect.cs" />
      <Compile Include="Assets\Scripts\DevShortcuts.cs" />
      <Compile Include="Assets\Scripts\EnemyBase.cs" />
      <Compile Include="Assets\Scripts\EnemyPoolSpawner.cs" />
@@ -68,6 +69,7 @@
      <Compile Include="Assets\Scripts\Ghosts\GhostBehaviour.cs" />
      <Compile Include="Assets\Scripts\Ghosts\MyMsgType.cs" />
      <Compile Include="Assets\Scripts\Ghosts\Teleportation.cs" />
+     <Compile Include="Assets\Scripts\MakingUI.cs" />
      <Compile Include="Assets\Scripts\Minimap\MakeRadarObject.cs" />
      <Compile Include="Assets\Scripts\Minimap\Radar.cs" />
      <Compile Include="Assets\Scripts\NetManager.cs" />
@@ -75,8 +77,11 @@
      <Compile Include="Assets\Scripts\NetworkedFirstPersonController.cs" />
      <Compile Include="Assets\Scripts\PickUpBase.cs" />
      <Compile Include="Assets\Scripts\PickUps.cs" />
+     <Compile Include="Assets\Scripts\PowerBoost.cs" />
      <Compile Include="Assets\Scripts\Room.cs" />
      <Compile Include="Assets\Scripts\RoomCollider.cs" />
+     <Compile Include="Assets\Scripts\UnlimitedStamina.cs" />
+     <Compile Include="Assets\Scripts\WeaponRecharge.cs" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightPosition\SFN_LightPosition.shader" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_EXP.shader" />
@@ -116,6 +121,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_UV_REF.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Cos\SFN_Cos.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_SceneDepth\SFN_SceneDepth.shader" />
+     <None Include="Assets\RippleEffect\RippleEffect.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Ceil\SFN_Ceil.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Dot\SFN_Dot_POS.shader" />
@@ -239,6 +245,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_HalfVector\SFN_HalfVector.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_4.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetPBR.shader" />
+     <None Include="Assets\Art\Shader\RippleAlt.shader" />
      <None Include="Assets\External\ShaderForge\Example Assets\Shaders\LightWrapping.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetPostEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
@@ -340,6 +347,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\DepthOfField\Resources\BokehSplatting.shader" />
+     <None Include="Assets\Art\Shader\RippleShader.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_NRM.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_4.shader" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
@@ -376,10 +384,10 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetSky.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>J:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>F:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>J:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>F:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

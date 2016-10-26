@@ -30,6 +30,7 @@ public class NetManager :  LobbyManager{
 		pl.playerName = player.playerName;
 		pl.playerColour = player.playerColor;
 		return go;
+
 	}
 
 	public void ShowSettings(bool show)
@@ -42,6 +43,15 @@ public class NetManager :  LobbyManager{
 		QualitySettings.SetQualityLevel(qualityDropdown.value);
 		PlayerPrefs.SetFloat("Setting.Volume", volumeSlider.value);
 		ShowSettings(false);
+	}
+
+	public void OnLevelWasLoaded(int levelID)
+	{
+		if(levelID != 0 && !GameManager.instance.enabled)
+		{
+			GameManager.instance.enabled = true;
+			GameManager.instance.SpawnEnemies();
+		}
 	}
 
 

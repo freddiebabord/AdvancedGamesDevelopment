@@ -67,7 +67,7 @@ public class NetworkedFirstPersonController : NetworkBehaviour
 		m_Jumping = false;
 		m_AudioSource = GetComponent<AudioSource>();
 		m_MouseLook.Init(transform , m_Camera.transform);
-
+		GetComponentInChildren<Renderer>().material.color = playerColour;
 		if(!isLocalPlayer)
 			m_Camera.gameObject.SetActive(false);
 	}

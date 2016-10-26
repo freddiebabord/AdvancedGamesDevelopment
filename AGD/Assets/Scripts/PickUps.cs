@@ -5,13 +5,16 @@ using UnityStandardAssets.Characters.FirstPerson;
 using System.Collections;
 using System;
 
-public class PickUps : MonoBehaviour {
+public class PickUps : NetworkBehaviour {
     Color[] colours = { Color.red, Color.green, Color.blue };
 
     Color temp;
 
-    enum ActivePower { Speed, Power, Weapon, None};
-    ActivePower active = ActivePower.None;
+    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, None };
+    PowerName pow = PowerName.None;
+
+    public enum ActivePower { Speed, Power, Weapon, None};
+    public ActivePower active = ActivePower.None;
 
     public bool power = false;
 
@@ -20,15 +23,18 @@ public class PickUps : MonoBehaviour {
     GameObject the_text;
     Text power_obtained;
     Slider timer;
-    Slider stamina;
+    public Slider stamina;
 
     Radar radar;
 
-    float cooldown = 5.0f;
-    bool cooloff = false;
+    public float cooldown = 5.0f;
+    public bool cooloff = false;
+
+    GameObject the_pickup;
 
     void Start()
     {
+ 
         the_text = new GameObject("MyText");
         the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
 
@@ -52,6 +58,9 @@ public class PickUps : MonoBehaviour {
             else if (get_sliders[i].name == "Slider")
                 timer = get_sliders[i];
         }
+
+        if (!isLocalPlayer)
+            return;
 
         radar = gameObject.GetComponent<Radar>();
     }
@@ -90,11 +99,9 @@ public class PickUps : MonoBehaviour {
 
             }
         }
-        else if(active == ActivePower.Speed)
-        {
-            stamina.value = stamina.maxValue;
-        }
 
+       // if (!isLocalPlayer)
+       //     return;
         if (power && !timer.gameObject.activeInHierarchy)
         {
             timer.gameObject.SetActive(true);
@@ -111,18 +118,20 @@ public class PickUps : MonoBehaviour {
             }
             timer.value -= 1;
 
-            if (power_name == "Unlimited Stamina" && active != ActivePower.Speed)
+
+            if (pow == PowerName.UnlimitedStamina && active != ActivePower.Speed)
             {
+                the_pickup.GetComponent<UnlimitedStamina>().Triggered();
                 active = ActivePower.Speed;
             }
-            else if(power_name == "Power Boost" && active != ActivePower.Power)
+            else if(pow == PowerName.PowerBoost && active != ActivePower.Power)
             {
-                Debug.Log("I know you hate this Freddie");
+                the_pickup.GetComponent<PowerBoost>().Triggered();
                 active = ActivePower.Power;
             }
-            else if (power_name == "Weapon Recharge" && active != ActivePower.Weapon)
+            else if (pow == PowerName.WeaponRecharge && active != ActivePower.Weapon)
             {
-                Debug.Log("That's why I'm doing it haha!");
+                the_pickup.GetComponent<WeaponRecharge>().Triggered();
                 active = ActivePower.Weapon;
             }
 
@@ -140,6 +149,9 @@ public class PickUps : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
+       // if (!isLocalPlayer)
+          //  return;
+
         if (power || other.gameObject.GetComponent<PickUpBase>() == null)
         {
             return;
@@ -148,21 +160,28 @@ public class PickUps : MonoBehaviour {
         {
             if (other.gameObject.GetComponent<PickUpBase>() != null)
             {
-                if (other.gameObject.name == "Unlimited Stamina")
+                if (other.gameObject.GetComponent<UnlimitedStamina>() != null)
                 {
                     temp = colours[0];
+                    pow = PowerName.UnlimitedStamina;
+
                 }
-                else if (other.gameObject.name == "Power Boost")
+                else if (other.gameObject.GetComponent<PowerBoost>() != null)
                 {
                     temp = colours[1];
+                    pow = PowerName.PowerBoost;
 
                 }
-                else if (other.gameObject.name == "Weapon Recharge")
+                else if (other.gameObject.GetComponent<WeaponRecharge>() != null)
                 {
                     temp = colours[2];
+                    pow = PowerName.WeaponRecharge;
+
                 }
 
-                other.gameObject.GetComponent<PickUpBase>().Triggered(gameObject.GetComponent<Collider>());
+                other.gameObject.GetComponent<PickUpBase>().player = gameObject;
+
+                the_pickup = other.gameObject;
 
                 power_name = other.gameObject.name;
 
