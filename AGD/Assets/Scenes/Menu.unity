@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4469244, g: 0.4967847, b: 0.575083, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -153,26 +153,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1 &1301672074 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010885870066, guid: 8b999f494b7264554ac4d23789c721d6,
-    type: 2}
-  m_PrefabInternal: {fileID: 1507666401}
---- !u!114 &1301672075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1301672074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1180575928, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HostMigration: 1
-  m_ShowGUI: 1
-  m_OffsetX: 10
-  m_OffsetY: 300
 --- !u!1001 &1507666401
 Prefab:
   m_ObjectHideFlags: 0
@@ -180,6 +160,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224000013043369800, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -270,6 +255,77 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.4782493
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 1391.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -82.67679
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 2782.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000010779161538, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 165.35358
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013116526636, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 2782.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: prematchCountdown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1000010079989698, guid: e268d018186052e4dade4dff5a1849c6,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
   m_IsPrefabParent: 0

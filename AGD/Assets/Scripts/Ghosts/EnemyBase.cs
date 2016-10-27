@@ -4,6 +4,11 @@ using UnityEngine.Networking;
 
 public class EnemyBase : NetworkBehaviour {
 
+	public bool isHigher = false;
+	public bool isLower = false;
+	public bool isSame = false;
+	public bool firstPass = false;
+
 	private NavMeshAgent agent;
 	[SerializeField] private float walkRadius = 10;
 	[SyncVar][SerializeField] public Vector3 target = Vector3.zero;
@@ -43,12 +48,15 @@ public class EnemyBase : NetworkBehaviour {
 	//Draw the agents path towards the target
 	void OnDrawGizmos()
 	{
-		Gizmos.color = Color.cyan;
-		Gizmos.DrawWireSphere(target, 0.5f);
-		Gizmos.DrawLine(transform.position, agent.path.corners[0]);
-		for (int i = 0; i < agent.path.corners.Length - 1; i++)
-		{
-			Gizmos.DrawLine(agent.path.corners[i], agent.path.corners[i + 1]);
-		}
+        if (Application.isPlaying)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(target, 0.5f);
+            Gizmos.DrawLine(transform.position, agent.path.corners[0]);
+            for (int i = 0; i < agent.path.corners.Length - 1; i++)
+            {
+                Gizmos.DrawLine(agent.path.corners[i], agent.path.corners[i + 1]);
+            }
+        }
 	}
 }
