@@ -332,8 +332,8 @@
     <None Include="Assets\Rotorz\Reorderable List Field\!LICENSE.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\!README.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
-    <None Include="Assets\Scripts\TEST - To Delete.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />

@@ -352,7 +352,7 @@ Prefab:
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.9664727
+      value: 0.47948626
       objectReference: {fileID: 0}
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
@@ -475,6 +475,18 @@ Prefab:
       propertyPath: m_Text
       value: Spooktacle
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_GamePlayerPrefab
+      value: 
+      objectReference: {fileID: 1000010241756804, guid: d1337e17787ba7441a51cc43d7a6057f,
+        type: 2}
+    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 1000010241756804, guid: d1337e17787ba7441a51cc43d7a6057f,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114000013818705816, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
     - {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}

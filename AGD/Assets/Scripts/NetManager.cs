@@ -5,6 +5,7 @@ using Prototype.NetworkLobby;
 using UnityEngine.Networking;
 using System.Linq;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class NetManager :  LobbyManager{
 
@@ -25,7 +26,7 @@ public class NetManager :  LobbyManager{
 		Transform spawnLocation = playerSpawns[Random.Range(0, playerSpawns.Count)].transform;
 		GameObject go = Instantiate(gamePlayerPrefab, spawnLocation.position, spawnLocation.rotation) as GameObject;
 		LobbyPlayer player = lobbySlots[conn.connectionId].gameObject.GetComponent<LobbyPlayer>();
-		NetworkedFirstPersonController pl = go.GetComponent<NetworkedFirstPersonController>();
+		NetworkedThirdPersonCharacter pl = go.GetComponent<NetworkedThirdPersonCharacter>();
 		pl.name = player.playerName;
 		pl.playerName = player.playerName;
 		pl.playerColour = player.playerColor;
