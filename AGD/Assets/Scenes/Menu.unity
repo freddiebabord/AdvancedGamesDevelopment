@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4469244, g: 0.4967847, b: 0.575083, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -249,16 +249,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: enemyPrefabs.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: waves.Array.data[0].enemyDef.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 224000013043369800, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -349,10 +339,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010885870066, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
+      propertyPath: m_Name
+      value: NetworkManager
+      objectReference: {fileID: 0}
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.6586876
+      value: 0.43559593
       objectReference: {fileID: 0}
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
@@ -389,107 +383,7 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 165.35358
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000013116526636, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 2782.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: prematchCountdown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: enemyPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
-        type: 2}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: enemyPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
-        type: 2}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: enemyPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
-        type: 2}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: enemyPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
-        type: 2}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: enemyPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
-        type: 2}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: enemyPrefabs.Array.data[5]
-      value: 
-      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
-        type: 2}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: enemyPrefabs.Array.data[6]
-      value: 
-      objectReference: {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc,
-        type: 2}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: waves.Array.data[0].enemyDef.Array.data[0].quantity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: waves.Array.data[0].enemyDef.Array.data[1].quantity
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010885870066, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
-      propertyPath: m_Name
-      value: NetworkManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010843209398, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: m_Text
-      value: Spooktacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: m_GamePlayerPrefab
-      value: 
-      objectReference: {fileID: 1000010241756804, guid: d1337e17787ba7441a51cc43d7a6057f,
-        type: 2}
-    - target: {fileID: 114000010024629476, guid: 8b999f494b7264554ac4d23789c721d6,
-        type: 2}
-      propertyPath: m_PlayerPrefab
-      value: 
-      objectReference: {fileID: 1000010241756804, guid: d1337e17787ba7441a51cc43d7a6057f,
-        type: 2}
-    m_RemovedComponents:
-    - {fileID: 114000013818705816, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
-    - {fileID: 114000012960887626, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2076967079

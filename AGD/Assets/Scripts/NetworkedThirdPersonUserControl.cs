@@ -14,9 +14,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
         private bool m_firing;
-        
+        public int multiplyer = 1;
+
         private void Start()
         {
+            multiplyer = 1;
+            if (!isLocalPlayer)
+                return;
+
             m_Cam = GetComponentInChildren<Camera>().transform;
 
             // get the third person character ( this should never be null due to require component )
@@ -50,7 +55,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
-            m_Move = new Vector3(h, 0, v);
+            m_Move = new Vector3(h, 0, v) / 2;
+            m_Move *= multiplyer;
             // calculate move direction to pass to character
             /*if (m_Cam != null)
             {
@@ -64,8 +70,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 m_Move = v*Vector3.forward + h*Vector3.right;
             }*/
 #if !MOBILE_INPUT
-			// walk speed multiplier
-	        if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
+            // walk speed multiplier
+            if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 2.0f;
 #endif
 
             // pass all parameters to the character control script

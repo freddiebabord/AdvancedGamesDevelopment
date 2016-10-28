@@ -35,8 +35,8 @@ public class PickUps : NetworkBehaviour {
 
     void Update()
     {
-       // if (!isLocalPlayer)
-       //     return;
+        if (!isLocalPlayer)
+            return;
         if (power && !timer.gameObject.activeInHierarchy)
         {
             timer.gameObject.SetActive(true);
@@ -51,14 +51,14 @@ public class PickUps : NetworkBehaviour {
             if (timer.value <= 0)
             {
                 power = false;
-                gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 1.0f;
+               // gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 1.0f;
             }
             timer.value -= 1;
 
             // TODO: REFACTOR: These string comparisons are SLOW - change to enumerated type
             if (power_name == "Speed Boost" && active != ActivePower.Speed)
             {
-                gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 2.0f;
+                //gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 2.0f;
                 active = ActivePower.Speed;
             }
             else if(power_name == "Power Boost" && active != ActivePower.Power)
@@ -86,8 +86,8 @@ public class PickUps : NetworkBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-       // if (!isLocalPlayer)
-          //  return;
+        if (!isLocalPlayer)
+            return;
 
         if (power || other.gameObject.GetComponent<PickUpBase>() == null)
         {

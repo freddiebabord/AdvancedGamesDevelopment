@@ -355,8 +355,6 @@ GameObject:
   - 114: {fileID: 114000013355579602}
   - 114: {fileID: 114000013274501136}
   - 114: {fileID: 114000010024629476}
-  - 114: {fileID: 114000012960887626}
-  - 114: {fileID: 114000013818705816}
   - 114: {fileID: 114000013003944276}
   m_Layer: 5
   m_Name: GameManager
@@ -1788,7 +1786,7 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 1000012924558280, guid: 6a65a23a772df4c8899ae655d32e4154,
+  m_PlayerPrefab: {fileID: 1000010241756804, guid: d1337e17787ba7441a51cc43d7a6057f,
     type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
@@ -1796,6 +1794,7 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
+  - {fileID: 1000014230611392, guid: 0ddd68e23b0b8634e91d9684037d6a44, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -1844,12 +1843,12 @@ MonoBehaviour:
   m_MinPlayers: 1
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1000012924558280, guid: 6a65a23a772df4c8899ae655d32e4154,
+  m_GamePlayerPrefab: {fileID: 1000010241756804, guid: d1337e17787ba7441a51cc43d7a6057f,
     type: 2}
   m_LobbyScene: Menu
   m_PlayScene: TestScene
   lobbySlots: []
-  prematchCountdown: 5
+  prematchCountdown: 0
   topPanel: {fileID: 114000010183568654}
   mainMenuPanel: {fileID: 224000012429965744}
   lobbyPanel: {fileID: 224000013326596732}
@@ -2464,7 +2463,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 0
-  m_Text: GHOSTBUSTERS
+  m_Text: Spooktacle
 --- !u!114 &114000010850953868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4449,24 +4448,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114000012960887626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010885870066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31110984fe040435eba5d8f13fafbacf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - enemyDef:
-    - enemySpawner: 0
-      quantity: 0
-  currentWave: 0
-  waveSleepTimer: 0
-  enemyPrefabs: []
 --- !u!114 &114000012972160518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4612,7 +4593,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224000011598445158}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.33126906
+  m_Size: 0.43559593
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5499,21 +5480,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114000013818705816
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010885870066}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1180575928, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HostMigration: 1
-  m_ShowGUI: 1
-  m_OffsetX: 10
-  m_OffsetY: 300
 --- !u!114 &114000013871046070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7851,7 +7817,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3129.4, y: 0}
+  m_SizeDelta: {x: 2782.1, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224000013179252282
 RectTransform:
