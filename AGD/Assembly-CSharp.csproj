@@ -77,6 +77,11 @@
      <Compile Include="Assets\Scripts\NetManager.cs" />
      <Compile Include="Assets\Scripts\NetworkBroadcastList.cs" />
      <Compile Include="Assets\Scripts\NetworkedFirstPersonController.cs" />
+     <Compile Include="Assets\Scripts\NetworkedPlayer.cs" />
+     <Compile Include="Assets\Scripts\NetworkedThirdPersonCharacter.cs" />
+     <Compile Include="Assets\Scripts\NetworkedThirdPersonUserControl.cs" />
+     <Compile Include="Assets\Scripts\PickUpBase.cs" />
+     <Compile Include="Assets\Scripts\PickUps.cs" />
      <Compile Include="Assets\Scripts\Room.cs" />
      <Compile Include="Assets\Scripts\RoomCollider.cs" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightPosition\SFN_LightPosition.shader" />
@@ -328,6 +333,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectScale\SFN_ObjectScale_Reciprocal.shader" />
      <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
+     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Effects\Bloom\Resources\Bloom.cginc" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />

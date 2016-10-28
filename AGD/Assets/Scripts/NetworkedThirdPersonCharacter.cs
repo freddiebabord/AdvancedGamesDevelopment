@@ -1,17 +1,12 @@
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityStandardAssets.Characters.FirstPerson;
+using UnityStandardAssets.Characters.ThirdPerson;
 
-namespace UnityStandardAssets.Characters.ThirdPerson
-{
-    [RequireComponent(typeof(NetworkIdentity))]
-    [RequireComponent(typeof(NetworkTransform))]
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(CapsuleCollider))]
 	[RequireComponent(typeof(Animator))]
 	public class NetworkedThirdPersonCharacter : NetworkBehaviour
-    {
+	{ 
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[SerializeField] float m_JumpPower = 12f;
@@ -33,45 +28,31 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-        public float m_Multiplier = 1.0f;
-        [SerializeField]MouseLook m_mouseLook;
-        Camera m_camera;
 
-        [SyncVar]
-        public string playerName;
-        [SyncVar]
-        public Color playerColour;
-        public const int maxHealth = 100;
-        [SyncVar]
-        public int currentHealth = maxHealth;
+		[SyncVar]public string playerName;
+		[SyncVar]public Color playerColour;
+		[SyncVar]public float playerHealth;
 
+		LineRenderer lineRenderer;
+		public Transform weaponSpawnPoint;
 
-        void Start()
+		void Start()
 		{
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
 			m_CapsuleHeight = m_Capsule.height;
 			m_CapsuleCenter = m_Capsule.center;
-            m_camera = GetComponentInChildren<Camera>();
-            m_mouseLook.Init(transform, m_camera.transform);
+
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
+			lineRenderer = GetComponentInChildren<LineRenderer>();
+			
 		}
-
-        void Update()
-        {
-            if (!isLocalPlayer)
-                return;
-            RotateView();
-            
-        }
 
 
 		public void Move(Vector3 move, bool crouch, bool jump)
 		{
-		    if (!isLocalPlayer)
-		        return;
 
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
@@ -80,7 +61,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-			m_TurnAmount = Mathf.Deg2Rad * m_camera.transform.rotation.eulerAngles.y;
+			m_TurnAmount = Mathf.Atan2(move.x, move.z);
 			m_ForwardAmount = move.z;
 
 			ApplyExtraTurnRotation();
@@ -186,7 +167,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
 			m_Rigidbody.AddForce(extraGravityForce);
 
-			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.3f;
+			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.2f;
 		}
 
 
@@ -249,34 +230,40 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
-        void RotateView()
-        {
-            m_mouseLook.LookRotation(transform, m_camera.transform);
-        }
+		public void Fire(bool fire)
+		{
+			if(fire && isLocalPlayer)
+				Cmd_Fire();
+			else if(!fire)
+				lineRenderer.gameObject.SetActive(false);
+		}
 
-        public void TakeDamage(int amount)
-        {
-            if (!isServer)
-                return;
+		[Command]
+		void Cmd_Fire()
+		{
+			Rpc_Fire();
+		}
 
-            currentHealth -= amount;
-            if (currentHealth <= 0)
-            {
-                currentHealth = maxHealth;
-                RpcRespawn();
-            }
-        }
+		[ClientRpc]
+		void Rpc_Fire()
+		{
+			
+			Ray ray = new Ray(weaponSpawnPoint.position, weaponSpawnPoint.forward);
+			RaycastHit hit;
+			if(Physics.Raycast(ray, out hit, 100))
+			{
+				lineRenderer.gameObject.SetActive(true);
+				lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+				lineRenderer.SetPosition(1, hit.point);
+				if(hit.transform.GetComponent<EnemyBase>())
+				{
+					print("Take away health");
+				}
+				else
+				{
+					print("Draw a decal");
+				}
+			}
+		}
+	}
 
-        [ClientRpc]
-        void RpcRespawn()
-        {
-            if (isLocalPlayer)
-            {
-                var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
-                Transform spawnLocation = spawnLocations[Random.Range(0, spawnLocations.Count)].transform;
-                transform.position = spawnLocation.position;
-                transform.rotation = spawnLocation.rotation;
-            }
-        }
-    }
-}
