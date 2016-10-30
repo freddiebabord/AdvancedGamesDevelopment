@@ -101,7 +101,7 @@ public class Frustum : NetworkBehaviour {
         meshCollider = GetComponent<MeshCollider>();
         if (!rootNetID.isServer)
         {
-            print("Apparently I'm Local Player...");
+            //print("Apparently I'm Local Player...");
             return;
         }
         if (rootNetID.isServer)
@@ -139,7 +139,7 @@ public class Frustum : NetworkBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        print("<color=green>" + other.tag + "</color>");
+        //print("<color=green>" + other.tag + "</color>");
         if (other.tag == "Player")
         {
             RaycastHit hit;
@@ -198,7 +198,7 @@ public class Frustum : NetworkBehaviour {
     [ClientRpc]
     void Rpc_SetMeshes(FrustumFramework peaceful, FrustumFramework aggro)
     {
-        print("<color=yellow>SetMeshes Triggered!</color>");
+        ////print("<color=yellow>SetMeshes Triggered!</color>");
         peacefulMesh = new Mesh();
         aggroMesh = new Mesh();
 
@@ -246,7 +246,7 @@ public class Frustum : NetworkBehaviour {
         int rangeMax = 0;
         // Sort the list based on the result of CalculatePriority
         List<PlayerPriority> playerList = interactablePlayers.Values.OrderBy(x=>x.CalculatePriority()).ToList();
-        print(playerList);
+        //print(playerList);
         for (int i = 0; i < interactablePlayers.Count; i++)
         {
             rangeMax += interactablePlayers[i].priority;

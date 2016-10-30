@@ -39,7 +39,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	public Transform weaponSpawnPoint;
 	private Camera m_Camera;
     public GameObject tempDecalParticleSystem;
-
+    private int m_uNetID;
     void Start()
 	{
 		m_Animator = GetComponent<Animator>();
@@ -56,7 +56,12 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         
         if(!isLocalPlayer)    
             m_Camera.gameObject.SetActive(false);
-    }
+
+        if (isServer)
+            m_uNetID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
+        else
+            m_uNetID = GetComponent<NetworkIdentity>().connectionToServer.connectionId;
+	}
 
 
 	public void Move(Vector3 move, bool crouch, bool jump)
@@ -275,9 +280,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 			lineRenderer.gameObject.SetActive(true);
 			lineRenderer.SetPosition(0, weaponSpawnPoint.position);
 			lineRenderer.SetPosition(1, hit.point);
-			if(hit.transform.GetComponent<EnemyBase>())
+			if(hit.transform.GetComponent<GhostBehaviour>())
 			{
-                Cmd_DestoryGhost(hit.transform.gameObject);
+                hit.transform.GetComponent<GhostBehaviour>().TakeDamage(m_uNetID, 5);
+               // Cmd_DestoryGhost(hit.transform.gameObject);
 			}
 			else
 			{
@@ -292,6 +298,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
         }
 	}
+
     [Command]
     private void Cmd_DestoryGhost(GameObject ghost)
     {

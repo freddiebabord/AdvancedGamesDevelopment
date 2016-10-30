@@ -4,12 +4,11 @@ using UnityEngine.Networking;
 
 public class EnemyBase : NetworkBehaviour {
 
-	public bool isHigher = false;
-	public bool isLower = false;
-	public bool isSame = false;
-	public bool firstPass = false;
+    public enum EnemyMap { Higher, Lower, Same, Nullus };
+    public EnemyMap enemyMap = EnemyMap.Nullus;
+    public bool firstPass = false;
 
-	private NavMeshAgent agent;
+    private NavMeshAgent agent;
 	[SerializeField] private float walkRadius = 10;
 	[SyncVar][SerializeField] public Vector3 target = Vector3.zero;
 

@@ -21,7 +21,7 @@ public class GhostBehaviour : NetworkBehaviour
     NavMeshAgent agent;
 
     List<float> damageFromPlayers = new List<float>();
-
+    private GameObject m_networkFrustum;
     // Use this for initialization
     void Start()
     {
@@ -38,16 +38,22 @@ public class GhostBehaviour : NetworkBehaviour
         {
             print("<color=red>Ghost Target not set!</color>");
         }
-
-        GameObject frustumChild = Instantiate(frustumPrefab,transform.GetChild(0).position,transform.GetChild(0).rotation) as GameObject;
-        frustumChild.GetComponent<Frustum>().parentNetID = netId;
-        NetworkServer.Spawn(frustumChild);
+        currentHealth = maxHealth;
+        m_networkFrustum = Instantiate(frustumPrefab,transform.GetChild(0).position,transform.GetChild(0).rotation) as GameObject;
+        m_networkFrustum.GetComponent<Frustum>().parentNetID = netId;
+        NetworkServer.Spawn(m_networkFrustum);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!isServer)
+            return;
+        if (currentHealth <= 0)
+        {
+            NetworkServer.Destroy(m_networkFrustum);
+            Cmd_DestoryGhost(gameObject);
+        }
     }
 
     public void TakeDamage(int id, float dmg)
@@ -60,6 +66,7 @@ public class GhostBehaviour : NetworkBehaviour
     {
         while (damageFromPlayers.Count - 1 <= id)
             damageFromPlayers.Add(0.0f);
+        currentHealth -= dmg;
         Rpc_TakeDamage(id, dmg);
     }
 
@@ -70,6 +77,14 @@ public class GhostBehaviour : NetworkBehaviour
             damageFromPlayers.Add(0.0f);
         damageFromPlayers[id] += dmg;
         print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
+        
+    }
+
+    [Command]
+    private void Cmd_DestoryGhost(GameObject ghost)
+    {
+        GameManager.instance.DestroyEnemy();
+        NetworkServer.Destroy(ghost);
     }
 
 }
