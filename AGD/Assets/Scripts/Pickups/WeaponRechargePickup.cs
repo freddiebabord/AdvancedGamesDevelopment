@@ -2,15 +2,13 @@
 using System.Collections;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-public class SpeedBoostPickup : Pickup
+public class WeaponRechargePickup : Pickup
 {
-
-    public int multiplyer;
+    
     public float durationTimer;
 
     protected override void PickupLogic(GameObject player)
     {
-        player.GetComponent<NetworkedThirdPersonUserControl>().multiplyer = multiplyer;
         StartCoroutine( ResetMultiplier(player.GetComponent<NetworkedThirdPersonUserControl>()));
     }
 

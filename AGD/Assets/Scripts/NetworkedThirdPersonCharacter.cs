@@ -277,12 +277,12 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 			lineRenderer.SetPosition(1, hit.point);
 			if(hit.transform.GetComponent<EnemyBase>())
 			{
-				print("Take away health");
+                Cmd_DestoryGhost(hit.transform.gameObject);
 			}
 			else
 			{
 			    GameObject go = (GameObject)Instantiate(tempDecalParticleSystem, hit.point, Quaternion.identity);
-                Destroy(go, 1);
+                Destroy(go, 0.5f);
 			}
 		}
 		else
@@ -292,5 +292,11 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
         }
 	}
+    [Command]
+    private void Cmd_DestoryGhost(GameObject ghost)
+    {
+        GameManager.instance.DestroyEnemy();
+        NetworkServer.Destroy(ghost);
+    }
 }
 

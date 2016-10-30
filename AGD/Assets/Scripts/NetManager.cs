@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Prototype.NetworkLobby;
 using UnityEngine.Networking;
 using System.Linq;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 
@@ -16,8 +17,18 @@ public class NetManager :  LobbyManager{
 	public GameObject settingsPanel;
 	public Dropdown qualityDropdown;
 	public Slider volumeSlider;
-    
-    
+
+    public override void Start()
+    {
+        base.Start();
+        SceneManager.sceneLoaded += LevelOnLoad;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= LevelOnLoad;
+    }
+
 
     public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
 	{
@@ -46,9 +57,9 @@ public class NetManager :  LobbyManager{
 		ShowSettings(false);
 	}
 
-	public void OnLevelWasLoaded(int levelID)
+	public void LevelOnLoad(Scene newScene, LoadSceneMode mode)
 	{
-		if(levelID != 0 && !GameManager.instance.enabled)
+		if(newScene.buildIndex != 0 && !GameManager.instance.enabled)
 		{
 			GameManager.instance.enabled = true;
 			GameManager.instance.SpawnEnemies();

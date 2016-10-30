@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-public class SpeedBoostPickup : Pickup
+public class PowerBoostPickup : Pickup
 {
 
     public int multiplyer;

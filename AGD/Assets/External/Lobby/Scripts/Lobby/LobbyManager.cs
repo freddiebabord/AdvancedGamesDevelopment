@@ -60,6 +60,7 @@ namespace Prototype.NetworkLobby
             currentPanel = mainMenuPanel;
 
             backButton.gameObject.SetActive(false);
+            backButton.onClick.AddListener( () => backDelegate() );
             GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);

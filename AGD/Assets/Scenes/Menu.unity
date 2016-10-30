@@ -100,6 +100,7 @@ GameObject:
   - 4: {fileID: 66598136}
   - 114: {fileID: 66598135}
   - 114: {fileID: 66598134}
+  - 114: {fileID: 66598137}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -164,7 +165,7 @@ MonoBehaviour:
     i13: 0
     i14: 0
     i15: 0
-  m_ServerOnly: 0
+  m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
 --- !u!4 &66598136
 Transform:
@@ -179,6 +180,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &66598137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 66598133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe2604bba5733744a8343126affb398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerBoostPickup: {fileID: 1000010194181886, guid: a521676f6d6f931499fde9cd40d76922,
+    type: 2}
+  speedBoostPickup: {fileID: 1000014230611392, guid: 0ddd68e23b0b8634e91d9684037d6a44,
+    type: 2}
+  weaponRechargePickup: {fileID: 1000011022287238, guid: b63a86eb624f37f49983db1966575b3d,
+    type: 2}
 --- !u!1 &1297270330
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +364,7 @@ Prefab:
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.43559593
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224000011598445158, guid: 8b999f494b7264554ac4d23789c721d6,
         type: 2}
@@ -382,6 +400,25 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 165.35358
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000013034083726, guid: 8b999f494b7264554ac4d23789c721d6,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010442974646, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b999f494b7264554ac4d23789c721d6, type: 2}
