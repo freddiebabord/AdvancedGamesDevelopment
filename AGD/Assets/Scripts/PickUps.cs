@@ -10,33 +10,98 @@ public class PickUps : NetworkBehaviour {
 
     Color temp;
 
-    enum ActivePower { Speed, Power, Weapon, None};
-    ActivePower active = ActivePower.None;
+    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, None };
+    PowerName pow = PowerName.None;
+
+    public enum ActivePower { Speed, Power, Weapon, None};
+    public ActivePower active = ActivePower.None;
 
     public bool power = false;
 
     string power_name = "";
 
+    GameObject the_text;
     Text power_obtained;
     Slider timer;
+    public Slider stamina;
 
     Radar radar;
 
+    public float cooldown = 5.0f;
+    public bool cooloff = false;
+
+    GameObject the_pickup;
+
     void Start()
     {
+ 
+        the_text = new GameObject("MyText");
+        the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
+
+        power_obtained = the_text.AddComponent<Text>();
+
+        power_obtained.transform.position = new Vector3(410, 220, 0);
+
+        power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+
+        the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
+        the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+
+        power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
+
+        Slider[] get_sliders = FindObjectsOfType<Slider>();
+
+        for(int i = 0; i < get_sliders.Length; i++)
+        {
+            if (get_sliders[i].name == "Stamina")
+                stamina = get_sliders[i];
+            else if (get_sliders[i].name == "Slider")
+                timer = get_sliders[i];
+        }
+
         if (!isLocalPlayer)
             return;
-        // TODO: REFACTOR: SAFETY: Change Text to something mroe specifc (Quality Of Life)
-        power_obtained = GameObject.FindGameObjectWithTag("Text").gameObject.GetComponent<Text>();
-        timer = FindObjectOfType<Slider>();
 
         radar = gameObject.GetComponent<Radar>();
     }
 
     void Update()
     {
-        if (!isLocalPlayer)
-            return;
+        if (active != ActivePower.Speed && !cooloff)
+        {
+            if (!gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value != stamina.minValue)
+            {
+                stamina.value -= 1.0f;
+            }
+            else if (!gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value <= stamina.minValue)
+            {
+                gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed;
+                stamina.value += 1.0f;
+                cooloff = true;
+            }
+            else if (gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value != stamina.maxValue)
+            {
+                stamina.value += 1.0f;
+            }
+        }
+        else if(cooloff)
+        {
+            gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed;
+
+            cooldown -= Time.deltaTime;
+            stamina.value += 1.0f;
+
+            if(cooldown <= 0.0f)
+            {
+                cooldown = 5.0f;
+                cooloff = false;
+                gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed * 2;
+
+            }
+        }
+
+       // if (!isLocalPlayer)
+       //     return;
         if (power && !timer.gameObject.activeInHierarchy)
         {
             timer.gameObject.SetActive(true);
@@ -44,35 +109,33 @@ public class PickUps : NetworkBehaviour {
         }
         else if (!power && timer.gameObject.activeInHierarchy)
             timer.gameObject.SetActive(false);
-        // TODO: REFACTOR: Move logic of each power up to their own script keeping shared behaviour in this one! (INHERITANCE) > The object itself determins what happens to the player as opposed to the player determins what happens
-        // TODO: NOTE: Have sensible Debug.Log() so its more obvious what is happening
+
         if(timer.gameObject.activeInHierarchy)
         {
             if (timer.value <= 0)
             {
                 power = false;
-               // gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 1.0f;
             }
             timer.value -= 1;
 
-            // TODO: REFACTOR: These string comparisons are SLOW - change to enumerated type
-            if (power_name == "Speed Boost" && active != ActivePower.Speed)
+
+            if (pow == PowerName.UnlimitedStamina && active != ActivePower.Speed)
             {
-                //gameObject.GetComponent<NetworkedFirstPersonController>().m_Multiplier = 2.0f;
+                the_pickup.GetComponent<UnlimitedStamina>().Triggered();
                 active = ActivePower.Speed;
             }
-            else if(power_name == "Power Boost" && active != ActivePower.Power)
+            else if(pow == PowerName.PowerBoost && active != ActivePower.Power)
             {
-                Debug.Log("I know you hate this Freddie");
+                the_pickup.GetComponent<PowerBoost>().Triggered();
                 active = ActivePower.Power;
             }
-            else if (power_name == "Weapon Recharge" && active != ActivePower.Weapon)
+            else if (pow == PowerName.WeaponRecharge && active != ActivePower.Weapon)
             {
-                Debug.Log("That's why I'm doing it haha!");
+                the_pickup.GetComponent<WeaponRecharge>().Triggered();
                 active = ActivePower.Weapon;
             }
 
-            power_obtained.text = power_name + " Obtained";
+            power_obtained.text = power_name;
             power_obtained.color = temp;
 
         }
@@ -86,8 +149,8 @@ public class PickUps : NetworkBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-        if (!isLocalPlayer)
-            return;
+       // if (!isLocalPlayer)
+          //  return;
 
         if (power || other.gameObject.GetComponent<PickUpBase>() == null)
         {
@@ -97,22 +160,28 @@ public class PickUps : NetworkBehaviour {
         {
             if (other.gameObject.GetComponent<PickUpBase>() != null)
             {
-                // TODO: REFACTOR: These string comparisons are SLOW - change to enumerated type
-                if (other.gameObject.name == "Speed Boost")
+                if (other.gameObject.GetComponent<UnlimitedStamina>() != null)
                 {
                     temp = colours[0];
+                    pow = PowerName.UnlimitedStamina;
+
                 }
-                else if (other.gameObject.name == "Power Boost")
+                else if (other.gameObject.GetComponent<PowerBoost>() != null)
                 {
                     temp = colours[1];
+                    pow = PowerName.PowerBoost;
 
                 }
-                else if (other.gameObject.name == "Weapon Recharge")
+                else if (other.gameObject.GetComponent<WeaponRecharge>() != null)
                 {
                     temp = colours[2];
+                    pow = PowerName.WeaponRecharge;
+
                 }
 
-                other.gameObject.GetComponent<PickUpBase>().Triggered();
+                other.gameObject.GetComponent<PickUpBase>().player = gameObject;
+
+                the_pickup = other.gameObject;
 
                 power_name = other.gameObject.name;
 

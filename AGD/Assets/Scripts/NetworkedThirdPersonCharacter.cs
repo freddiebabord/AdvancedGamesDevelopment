@@ -299,11 +299,6 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         }
 	}
 
-    [Command]
-    private void Cmd_DestoryGhost(GameObject ghost)
-    {
-        GameManager.instance.DestroyEnemy();
-        NetworkServer.Destroy(ghost);
-    }
+    
 }
 
