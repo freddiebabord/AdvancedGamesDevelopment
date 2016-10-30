@@ -4,9 +4,9 @@ using UnityEngine.Networking;
 
 public class EnemyBase : NetworkBehaviour {
 
-    public enum EnemyMap { Higher, Lower, Same, Nullus};
-    public EnemyMap enemyMap = EnemyMap.Nullus;
-
+	public bool isHigher = false;
+	public bool isLower = false;
+	public bool isSame = false;
 	public bool firstPass = false;
 
 	private NavMeshAgent agent;
@@ -37,12 +37,6 @@ public class EnemyBase : NetworkBehaviour {
 		}
 	}
 
-	void OnDestroy()
-	{
-		if(isServer)
-			GameManager.instance.DestroyEnemy();
-	}
-
 	//Set the target of the ai agent across the network
 	[ClientRpc]
 	public void RpcSetPosition(Vector3 position)
@@ -54,12 +48,15 @@ public class EnemyBase : NetworkBehaviour {
 	//Draw the agents path towards the target
 	void OnDrawGizmos()
 	{
-		Gizmos.color = Color.cyan;
-		Gizmos.DrawWireSphere(target, 0.5f);
-		Gizmos.DrawLine(transform.position, agent.path.corners[0]);
-		for (int i = 0; i < agent.path.corners.Length - 1; i++)
-		{
-			Gizmos.DrawLine(agent.path.corners[i], agent.path.corners[i + 1]);
-		}
+        if (Application.isPlaying)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(target, 0.5f);
+            Gizmos.DrawLine(transform.position, agent.path.corners[0]);
+            for (int i = 0; i < agent.path.corners.Length - 1; i++)
+            {
+                Gizmos.DrawLine(agent.path.corners[i], agent.path.corners[i + 1]);
+            }
+        }
 	}
 }

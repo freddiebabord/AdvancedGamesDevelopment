@@ -7,9 +7,6 @@ TagManager:
   - enemySpawn
   - playerSpawn
   - Radar
-  - PickUp
-  - Text
-  - Slider
   layers:
   - Default
   - TransparentFX
