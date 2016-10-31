@@ -20,12 +20,11 @@ public class PickUps : NetworkBehaviour {
     public bool power = false;
 
     string power_name = "";
+    string remove = "(Clone)";
 
-   // GameObject the_text;
     Text power_obtained;
     Slider timer;
     public Slider stamina;
-    
 
     public float cooldown = 5.0f;
     public bool cooloff = false;
@@ -37,19 +36,17 @@ public class PickUps : NetworkBehaviour {
         if (!isLocalPlayer)
             return;
 
-        //the_text = new GameObject("MyText");
-        //the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
-
         power_obtained = GameObject.Find("PowerupText").GetComponent<Text>();
 
-        power_obtained.transform.position = new Vector3(410, 220, 0);
+        power_obtained.transform.position = new Vector3(390, 220, 0);
 
         power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-
-      //  the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
-      //  the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+    
 
         power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
+        power_obtained.verticalOverflow = VerticalWrapMode.Overflow;
+
+        power_obtained.fontSize = 32;
 
         Slider[] get_sliders = FindObjectsOfType<Slider>();
 
@@ -136,6 +133,7 @@ public class PickUps : NetworkBehaviour {
                 active = ActivePower.Weapon;
             }
 
+            power_name = power_name.Replace(remove, "");
             power_obtained.text = power_name;
             power_obtained.color = temp;
 
