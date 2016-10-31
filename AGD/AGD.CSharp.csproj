@@ -88,7 +88,6 @@
     <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
     <Compile Include="Assets\RippleEffect\RippleEffect.cs" />
     <Compile Include="Assets\Scripts\Developer\DevShortcuts.cs" />
-    <Compile Include="Assets\Scripts\Developer\FrustumInspector.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\Charge.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\Teleportation.cs" />
@@ -96,6 +95,7 @@
     <Compile Include="Assets\Scripts\Ghosts\EnemyPoolSpawner.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Frustum.cs" />
     <Compile Include="Assets\Scripts\Ghosts\GhostBehaviour.cs" />
+    <Compile Include="Assets\Scripts\MakingUI.cs" />
     <Compile Include="Assets\Scripts\Minimap\MakeRadarObject.cs" />
     <Compile Include="Assets\Scripts\Minimap\Radar.cs" />
     <Compile Include="Assets\Scripts\NetworkedPlayer.cs" />
@@ -112,8 +112,11 @@
     <Compile Include="Assets\Scripts\Pickups\PowerBoostPickup.cs" />
     <Compile Include="Assets\Scripts\Pickups\SpeedBoostPickup.cs" />
     <Compile Include="Assets\Scripts\Pickups\WeaponRechargePickup.cs" />
+    <Compile Include="Assets\Scripts\PowerBoost.cs" />
     <Compile Include="Assets\Scripts\Rooms\Room.cs" />
     <Compile Include="Assets\Scripts\Rooms\RoomCollider.cs" />
+    <Compile Include="Assets\Scripts\UnlimitedStamina.cs" />
+    <Compile Include="Assets\Scripts\WeaponRecharge.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\Shader\Beam.shader" />

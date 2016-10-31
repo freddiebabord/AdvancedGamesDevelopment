@@ -48,7 +48,7 @@ public class PickupManager : NetworkBehaviour
     {
         Vector3 spawnPos = trans.position + (Vector3.up*0.75f);
         GameObject newPickup = (GameObject) Instantiate(prefab, spawnPos, trans.rotation);
-        newPickup.GetComponent<Pickup>().pickupType = type;
+        newPickup.GetComponent<PickUpBase>().pickupType = type;
         NetworkServer.Spawn(newPickup);
     }
 }

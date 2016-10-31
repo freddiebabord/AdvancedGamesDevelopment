@@ -4,13 +4,23 @@ using UnityEngine.Networking;
 
 public class PickUpBase : NetworkBehaviour {
 
-    public enum ItemMap { Higher, Lower, Same, Nullus };
+    
     public ItemMap itemMap = ItemMap.Nullus;
     public bool firstPass = false;
 
     public GameObject player;
 
     bool alreadyDestroyed = false;
+    protected bool respawning = false;
+    protected Renderer renderer;
+    protected Collider collider;
+    public PickupType pickupType;
+
+    void Start()
+    {
+        renderer = GetComponent<Renderer>();
+        collider = GetComponent<Collider>();
+    }
 
     public void Triggered()
     {
@@ -19,43 +29,23 @@ public class PickUpBase : NetworkBehaviour {
         //Cmd_ServerTrigger();
         ApplyEffect();
 
-        if(!alreadyDestroyed)
+        if (!alreadyDestroyed && isLocalPlayer)
         {
             DestroyObject();
             alreadyDestroyed = true;
         }
-            
-       // }
+
+        // }
     }
-
-    //[Command]
-    //void Cmd_ServerTrigger()
-    //{
-    //    Rpc_RemoveRadarObjFromClients();
-    //    //DestroyObject();
-    //}
-
-    //[ClientRpc]
-    //void Rpc_RemoveRadarObjFromClients()
-    //{
-    //    Radar[] players = FindObjectsOfType<Radar>();
-
-    //    for (int i = 0; i < players.Length; i++)
-    //    {
-    //        players[i].RemoveRadarObject(gameObject);
-    //    }
-    //}
+    
 
 
     public void DestroyObject()
     {
         Radar[] players = FindObjectsOfType<Radar>();
 
-        for (int i = 0; i < players.Length; i++)
-        {
-            players[i].RemoveRadarObject(this.gameObject);
-        }
-      //  NetworkServer.Destroy(this.gameObject);
+        StartCoroutine( RespawnTimer());
+        Cmd_RemoveRadarObj();
     }
 
     public virtual void ApplyEffect()
@@ -63,4 +53,34 @@ public class PickUpBase : NetworkBehaviour {
         
     }
 
+    IEnumerator RespawnTimer()
+    {
+        respawning = true;
+        renderer.enabled = false;
+        collider.enabled = false;
+        yield return new WaitForSeconds(20);
+        renderer.enabled = true;
+        collider.enabled = true;
+        respawning = false;
+        alreadyDestroyed = false;
+    }
+
+    [Command]
+    void Cmd_RemoveRadarObj()
+    {
+        Rpc_RemoveRadarObjFromClients();
+    }
+
+    [ClientRpc]
+    void Rpc_RemoveRadarObjFromClients()
+    {
+        Radar[] players = FindObjectsOfType<Radar>();
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].RemoveRadarObject(gameObject);
+        }
+    }
+
+    
 }

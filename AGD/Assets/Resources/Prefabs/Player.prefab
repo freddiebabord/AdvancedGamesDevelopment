@@ -2685,6 +2685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplyer: 1
+  allowRunning: 1
 --- !u!114 &114000010970691156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2902,20 +2903,20 @@ MonoBehaviour:
       scale: 3.08
       strength: 0.659
     temporal:
-      enabled: 1
+      enabled: 0
       fuzzSize: 0.93
   m_FXAA:
     preset:
       qualitySettings:
-        subpixelAliasingRemovalAmount: 0.75
-        edgeDetectionThreshold: 0.166
-        minimumRequiredLuminance: 0.0833
+        subpixelAliasingRemovalAmount: 1
+        edgeDetectionThreshold: 0.063
+        minimumRequiredLuminance: 0.0312
       consoleSettings:
         subpixelSpreadAmount: 0.5
-        edgeSharpnessAmount: 8
+        edgeSharpnessAmount: 2
         edgeDetectionThreshold: 0.125
-        minimumRequiredLuminance: 0.05
-  m_Method: 0
+        minimumRequiredLuminance: 0.04
+  m_Method: 1
 --- !u!114 &114000013701791818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2927,7 +2928,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c713d0b6423c12f4fa983cb76696eb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 3
   power: 0
+  stamina: {fileID: 0}
+  cooldown: 5
+  cooloff: 0
 --- !u!114 &114000014270372416
 MonoBehaviour:
   m_ObjectHideFlags: 1

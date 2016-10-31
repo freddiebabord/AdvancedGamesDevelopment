@@ -241,9 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70742c3df74894a9f8169af42df801fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHigher: 0
-  isLower: 0
-  isSame: 0
+  enemyMap: 3
   firstPass: 0
   walkRadius: 10
   target: {x: 0, y: 0, z: 0}

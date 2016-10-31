@@ -51,13 +51,13 @@ public class GhostBehaviour : NetworkBehaviour
             return;
         if (currentHealth <= 0)
         {
-            NetworkServer.Destroy(m_networkFrustum);
-            Cmd_DestoryGhost(gameObject);
+            Cmd_RemoveRadarObj();
         }
     }
 
     public void TakeDamage(int id, float dmg)
     {
+        Debug.Log(id + " " + dmg);
         Cmd_TakeDamage(id, dmg);
     }
 
@@ -85,6 +85,25 @@ public class GhostBehaviour : NetworkBehaviour
     {
         GameManager.instance.DestroyEnemy();
         NetworkServer.Destroy(ghost);
+    }
+
+    [Command]
+    void Cmd_RemoveRadarObj()
+    {
+        Rpc_RemoveRadarObjFromClients();
+    }
+
+    [ClientRpc]
+    void Rpc_RemoveRadarObjFromClients()
+    {
+        Radar[] players = FindObjectsOfType<Radar>();
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].RemoveRadarObject(gameObject);
+        }
+        if(isServer)
+            Cmd_DestoryGhost(gameObject);
     }
 
 }

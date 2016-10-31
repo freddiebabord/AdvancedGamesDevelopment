@@ -17,7 +17,7 @@ public class MakeRadarObject : NetworkBehaviour {
     public Image item_up;
     public Image item_down;
 
-    Pickup[] collectables;
+    PickUpBase[] collectables;
 
     Radar radar;
 
@@ -34,7 +34,7 @@ public class MakeRadarObject : NetworkBehaviour {
 
         // TODO: This should not be done each frame, this is a slow Unity oberation -> again consider using Unity event calls such as Start() and OnDestroy()
 		enemies = FindObjectsOfType<EnemyBase> ();
-        collectables = FindObjectsOfType<Pickup>();
+        collectables = FindObjectsOfType<PickUpBase>();
 
         // TODO: REFACTOR: Base it on events, Instantiating and Destroying the same objects each frame is costly same for checking a bool for each frame, consider adding it on Start() and removing them OnDestroy()
         // TODO: NOTE: Above also makes code more redable

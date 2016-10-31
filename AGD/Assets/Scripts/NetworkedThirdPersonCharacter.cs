@@ -53,14 +53,19 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		lineRenderer = GetComponentInChildren<LineRenderer>();
         m_MouseLook.Init(transform, m_Camera.transform);
-        
+
+        GetComponentInChildren<Renderer>().material.color = playerColour;
+
         if(!isLocalPlayer)    
             m_Camera.gameObject.SetActive(false);
 
-        if (isServer)
-            m_uNetID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
-        else
-            m_uNetID = GetComponent<NetworkIdentity>().connectionToServer.connectionId;
+        if (isLocalPlayer)
+        {
+            if (isServer)
+                m_uNetID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
+            else
+                m_uNetID = GetComponent<NetworkIdentity>().connectionToServer.connectionId;
+        }
 	}
 
 
@@ -254,19 +259,21 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
     public void Fire(bool fire)
 	{
-		if(isLocalPlayer)
-			Cmd_Fire(fire);
+        if (isLocalPlayer)
+        {
+            Cmd_Fire(fire, m_uNetID);
+        }
 		
 	}
 
 	[Command]
-	void Cmd_Fire(bool fire)
+	void Cmd_Fire(bool fire, int unID)
 	{
-		Rpc_Fire(fire);
+		Rpc_Fire(fire, unID);
 	}
 
 	[ClientRpc]
-	void Rpc_Fire(bool fire)
+	void Rpc_Fire(bool fire, int unID)
 	{
 	    if (!fire)
 	    {
@@ -280,16 +287,17 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 			lineRenderer.gameObject.SetActive(true);
 			lineRenderer.SetPosition(0, weaponSpawnPoint.position);
 			lineRenderer.SetPosition(1, hit.point);
-			if(hit.transform.GetComponent<GhostBehaviour>())
-			{
-                hit.transform.GetComponent<GhostBehaviour>().TakeDamage(m_uNetID, 5);
+            if (hit.transform.parent.GetComponent<GhostBehaviour>())
+            {
+                hit.transform.parent.GetComponent<GhostBehaviour>().TakeDamage(unID, 5);
                // Cmd_DestoryGhost(hit.transform.gameObject);
-			}
-			else
-			{
-			    GameObject go = (GameObject)Instantiate(tempDecalParticleSystem, hit.point, Quaternion.identity);
+                Debug.Log(1);
+            }
+            else
+            {
+                GameObject go = (GameObject)Instantiate(tempDecalParticleSystem, hit.point, Quaternion.identity);
                 Destroy(go, 0.5f);
-			}
+            }
 		}
 		else
 		{
@@ -298,6 +306,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
         }
 	}
+
+    [Command]
+    private void Cmd_DestoryGhost(GameObject ghost)
+    {
+        GameManager.instance.DestroyEnemy();
+        NetworkServer.Destroy(ghost);
+    }
 
     
 }

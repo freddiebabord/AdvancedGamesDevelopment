@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
 using System.Collections;
 using System;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class PickUps : NetworkBehaviour {
     Color[] colours = { Color.red, Color.green, Color.blue };
@@ -20,12 +21,11 @@ public class PickUps : NetworkBehaviour {
 
     string power_name = "";
 
-    GameObject the_text;
+   // GameObject the_text;
     Text power_obtained;
     Slider timer;
     public Slider stamina;
-
-    Radar radar;
+    
 
     public float cooldown = 5.0f;
     public bool cooloff = false;
@@ -34,18 +34,20 @@ public class PickUps : NetworkBehaviour {
 
     void Start()
     {
- 
-        the_text = new GameObject("MyText");
-        the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
+        if (!isLocalPlayer)
+            return;
 
-        power_obtained = the_text.AddComponent<Text>();
+        //the_text = new GameObject("MyText");
+        //the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
+
+        power_obtained = GameObject.Find("PowerupText").GetComponent<Text>();
 
         power_obtained.transform.position = new Vector3(410, 220, 0);
 
         power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
-        the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
-        the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+      //  the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
+      //  the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
 
         power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
 
@@ -58,35 +60,35 @@ public class PickUps : NetworkBehaviour {
             else if (get_sliders[i].name == "Slider")
                 timer = get_sliders[i];
         }
+        
 
-        if (!isLocalPlayer)
-            return;
 
-        radar = gameObject.GetComponent<Radar>();
     }
 
     void Update()
     {
+         if (!isLocalPlayer)
+             return;
         if (active != ActivePower.Speed && !cooloff)
         {
-            if (!gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value != stamina.minValue)
+            if (gameObject.GetComponent<NetworkedThirdPersonUserControl>().running && stamina.value != stamina.minValue)
             {
                 stamina.value -= 1.0f;
             }
-            else if (!gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value <= stamina.minValue)
+            else if (gameObject.GetComponent<NetworkedThirdPersonUserControl>().running && stamina.value <= stamina.minValue)
             {
-                gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed;
+                gameObject.GetComponent<NetworkedThirdPersonUserControl>().allowRunning = false;
                 stamina.value += 1.0f;
                 cooloff = true;
             }
-            else if (gameObject.GetComponent<NetworkedFirstPersonController>().m_IsWalking && stamina.value != stamina.maxValue)
+            else if (!gameObject.GetComponent<NetworkedThirdPersonUserControl>().running && stamina.value != stamina.maxValue)
             {
                 stamina.value += 1.0f;
             }
         }
         else if(cooloff)
         {
-            gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed;
+            gameObject.GetComponent<NetworkedThirdPersonUserControl>().allowRunning = false;
 
             cooldown -= Time.deltaTime;
             stamina.value += 1.0f;
@@ -95,13 +97,12 @@ public class PickUps : NetworkBehaviour {
             {
                 cooldown = 5.0f;
                 cooloff = false;
-                gameObject.GetComponent<NetworkedFirstPersonController>().m_RunSpeed = gameObject.GetComponent<NetworkedFirstPersonController>().m_WalkSpeed * 2;
+                gameObject.GetComponent<NetworkedThirdPersonUserControl>().allowRunning = true;
 
             }
         }
 
-       // if (!isLocalPlayer)
-       //     return;
+       
         if (power && !timer.gameObject.activeInHierarchy)
         {
             timer.gameObject.SetActive(true);
@@ -149,8 +150,8 @@ public class PickUps : NetworkBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-       // if (!isLocalPlayer)
-          //  return;
+        if (!isLocalPlayer)
+            return;
 
         if (power || other.gameObject.GetComponent<PickUpBase>() == null)
         {
