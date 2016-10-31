@@ -116,50 +116,50 @@ public class MakeRadarObject : NetworkBehaviour {
 
             if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y > 3.6)
             {
-                if (collectables[i].itemMap != PickUpBase.ItemMap.Lower)
+                if (collectables[i].itemMap != ItemMap.Lower)
                 {
                     radar.RemoveRadarObject(collectables[i].gameObject);
                     Radar.RegisterRadarObject(collectables[i].gameObject, item_down);
-                    collectables[i].itemMap = PickUpBase.ItemMap.Lower;
+                    collectables[i].itemMap = ItemMap.Lower;
                 }
 
                 if (!collectables[i].firstPass)
                 {
                     Radar.RegisterRadarObject(collectables[i].gameObject, item_down);
-                    collectables[i].itemMap = PickUpBase.ItemMap.Lower;
+                    collectables[i].itemMap = ItemMap.Lower;
                     collectables[i].firstPass = true;
                 }
 
             }
             else if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y < -3.6)
             {
-                if (collectables[i].itemMap != PickUpBase.ItemMap.Higher)
+                if (collectables[i].itemMap != ItemMap.Higher)
                 {
                     radar.RemoveRadarObject(collectables[i].gameObject);
                     Radar.RegisterRadarObject(collectables[i].gameObject, item_up);
-                    collectables[i].itemMap = PickUpBase.ItemMap.Higher;
+                    collectables[i].itemMap = ItemMap.Higher;
                 }
 
                 if (!collectables[i].firstPass)
                 {
                     Radar.RegisterRadarObject(collectables[i].gameObject, item_up);
-                    collectables[i].itemMap = PickUpBase.ItemMap.Higher;
+                    collectables[i].itemMap = ItemMap.Higher;
                     collectables[i].firstPass = true;
                 }
             }
             else
             {
-                if (collectables[i].itemMap != PickUpBase.ItemMap.Same)
+                if (collectables[i].itemMap != ItemMap.Same)
                 {
                     radar.RemoveRadarObject(collectables[i].gameObject);
                     Radar.RegisterRadarObject(collectables[i].gameObject, item);
-                    collectables[i].itemMap = PickUpBase.ItemMap.Same;
+                    collectables[i].itemMap = ItemMap.Same;
                 }
 
                 if (!collectables[i].firstPass)
                 {
                     Radar.RegisterRadarObject(collectables[i].gameObject, item);
-                    collectables[i].itemMap = PickUpBase.ItemMap.Same;
+                    collectables[i].itemMap = ItemMap.Same;
                     collectables[i].firstPass = true;
                 }
 

@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000011608605714}
+  m_IsPrefabParent: 1
+--- !u!1 &1000011608605714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000014074950234}
+  - 114: {fileID: 114000011212881432}
+  - 114: {fileID: 114000013206277500}
+  - 114: {fileID: 114000010352031786}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000014074950234
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011608605714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 997.1449, y: 552.0416, z: -336.6825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000010352031786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011608605714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe2604bba5733744a8343126affb398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerBoostPickup: {fileID: 1000012936964408, guid: a43699a4ae7112f43a97ae446ac6fb56,
+    type: 2}
+  speedBoostPickup: {fileID: 1000011784412228, guid: 322a1350ff47f5f4b83c1d35b75b31a4,
+    type: 2}
+  weaponRechargePickup: {fileID: 1000013566745354, guid: 460ca7e83c8d318489faf59ac2c1582f,
+    type: 2}
+--- !u!114 &114000011212881432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011608605714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 92
+    i1: 80
+    i2: 206
+    i3: 212
+    i4: 149
+    i5: 81
+    i6: 226
+    i7: 68
+    i8: 104
+    i9: 100
+    i10: 24
+    i11: 176
+    i12: 198
+    i13: 167
+    i14: 158
+    i15: 104
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114000013206277500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011608605714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31110984fe040435eba5d8f13fafbacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 5
+    - enemySpawner: 4
+      quantity: 4
+  currentWave: 0
+  waveSleepTimer: 0
+  enemyPrefabs:
+  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}

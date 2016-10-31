@@ -74,6 +74,10 @@ public class GameManager : NetworkBehaviour {
 		currentWave++;
 		if(currentWave < waves.Count)
 			SpawnEnemies();
+		else
+		{
+		    Debug.Log("GAME OVER: NO MORE WAVES!");
+		}
 		waveComplete = false;
 	}
 

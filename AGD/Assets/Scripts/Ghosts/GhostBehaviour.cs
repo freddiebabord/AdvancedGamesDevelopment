@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -12,73 +13,97 @@ public class GhostBehaviour : NetworkBehaviour
     public float movementSpeed = 5f;
     public float fearPresence = 10f;
     public Transform ghostTarget;
+    public GameObject frustumPrefab;
 
+    [SyncVar]
     float currentHealth;
-    //Dictionary<int, float> damageFromPlayers = new Dictionary<int, float>();
-    NavMeshAgent agent;
-    List<float> damageFromPlayers = new List<float>();
 
+    NavMeshAgent agent;
+
+    List<float> damageFromPlayers = new List<float>();
+    private GameObject m_networkFrustum;
     // Use this for initialization
     void Start()
     {
-        //agent = GetComponent<NavMeshAgent>();
-        //agent.destination = ghostTarget.position;
+        try
+        {
+            if (ghostTarget)
+            {
+                agent = GetComponent<NavMeshAgent>();
+                agent.destination = ghostTarget.position;
+                agent.speed = movementSpeed;
+            }
+        }
+        catch (NullReferenceException)
+        {
+            print("<color=red>Ghost Target not set!</color>");
+        }
+        currentHealth = maxHealth;
+        m_networkFrustum = Instantiate(frustumPrefab,transform.GetChild(0).position,transform.GetChild(0).rotation) as GameObject;
+        m_networkFrustum.GetComponent<Frustum>().parentNetID = netId;
+        NetworkServer.Spawn(m_networkFrustum);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!isServer)
+            return;
+        if (currentHealth <= 0)
+        {
+            Cmd_RemoveRadarObj();
+        }
     }
 
-    public void TakeDamage(int id)
+    public void TakeDamage(int id, float dmg)
     {
-        Cmd_TakeDamage(id);
+        Debug.Log(id + " " + dmg);
+        Cmd_TakeDamage(id, dmg);
     }
 
     [Command]
-    public void Cmd_TakeDamage(int id)
-    {
-
-        while (damageFromPlayers.Count-1 <= id)
-            damageFromPlayers.Add(0.0f);
-        //damageFromPlayers[id] += 5;
-        //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
-        Rpc_TakeDamage(id);
-        //SendDamage(id, 5);
-    }
-
-    [ClientRpc]
-    public void Rpc_TakeDamage(int id)
+    public void Cmd_TakeDamage(int id, float dmg)
     {
         while (damageFromPlayers.Count - 1 <= id)
             damageFromPlayers.Add(0.0f);
-        damageFromPlayers[id] += 5;
+        currentHealth -= dmg;
+        Rpc_TakeDamage(id, dmg);
+    }
+
+    [ClientRpc]
+    public void Rpc_TakeDamage(int id, float dmg)
+    {
+        while (damageFromPlayers.Count - 1 <= id)
+            damageFromPlayers.Add(0.0f);
+        damageFromPlayers[id] += dmg;
         print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
+        
     }
 
-    //public void DEBUG()
-    //{
-    //    foreach (KeyValuePair<int, float> kvp in damageFromPlayers)
-    //    {
-    //        Debug.Log("Player ID: " + kvp.Key + "\nDamage Dealt: " + kvp.Value);
-    //    }
-    //}
-
-/*
-    public void SendDamage(int id, float damage)
+    [Command]
+    private void Cmd_DestoryGhost(GameObject ghost)
     {
-        DamageMessage message = new DamageMessage();
-        message.damage = damage;
-        message.id = id;
-        NetworkServer.SendToAll(MyMsgType.Dmg, message);
+        GameManager.instance.DestroyEnemy();
+        NetworkServer.Destroy(ghost);
     }
 
-    public void OnDamage(NetworkMessage netMsg)
+    [Command]
+    void Cmd_RemoveRadarObj()
     {
-        DamageMessage msg = netMsg.ReadMessage<DamageMessage>();
-        damageFromPlayers[msg.id] += msg.damage;
-        Debug.Log("Player ID: " + msg.id + "\nDamage Dealt: " + damageFromPlayers[msg.id]);
-    }*/
+        Rpc_RemoveRadarObjFromClients();
+    }
+
+    [ClientRpc]
+    void Rpc_RemoveRadarObjFromClients()
+    {
+        Radar[] players = FindObjectsOfType<Radar>();
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].RemoveRadarObject(gameObject);
+        }
+        if(isServer)
+            Cmd_DestoryGhost(gameObject);
+    }
 
 }
