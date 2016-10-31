@@ -14,6 +14,10 @@ public class GhostBehaviour : NetworkBehaviour
     public float fearPresence = 10f;
     public Transform ghostTarget;
     public GameObject frustumPrefab;
+    [Tooltip("None: Ghost is always Aggravated.\nVisible: Ghost will attack on sight or when attacked.\nAttacking: Ghost will retaliate when attacked.")]
+    public PlayerState ghostTrigger;
+    [Tooltip("True: The Ghost will never attack.\nFalse: The Ghost can attack.")]
+    public bool isPeaceful = false;
 
     [SyncVar]
     float currentHealth;

@@ -180,7 +180,7 @@ Animator:
   m_GameObject: {fileID: 216426183}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dc32ebac181be9240bb07ca6684d6c33, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5d77113ed3bf32844acefcbf060fa7fa, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1233898474}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20b9c9fd2194a13498788b1d23f62cff, type: 3}
   m_Name: 
@@ -567,6 +567,7 @@ MonoBehaviour:
   movementSpeed: 5
   fearPresence: 10
   ghostTarget: {fileID: 0}
+  frustumPrefab: {fileID: 0}
 --- !u!195 &1233898477
 NavMeshAgent:
   m_ObjectHideFlags: 0

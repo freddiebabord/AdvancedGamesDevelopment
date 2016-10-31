@@ -42,6 +42,8 @@ GameObject:
   - 135: {fileID: 135000013184165890}
   - 33: {fileID: 33000012237614778}
   - 23: {fileID: 23000013304605092}
+  - 95: {fileID: 95000012574013886}
+  - 114: {fileID: 114000011898681922}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -112,6 +114,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013931111920}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &95000012574013886
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013931111920}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a870b82849df8f4097649b0da3a836b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000010860531104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,6 +149,8 @@ MonoBehaviour:
   ghostTarget: {fileID: 0}
   frustumPrefab: {fileID: 1000010079989698, guid: e268d018186052e4dade4dff5a1849c6,
     type: 2}
+  ghostTrigger: 0
+  isPeaceful: 0
 --- !u!114 &114000011782983114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,6 +183,18 @@ MonoBehaviour:
     i15: 223
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114000011898681922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013931111920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857da290aec59a24c8a6498491b0c232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yThreshold: 0.5
 --- !u!114 &114000012014231250
 MonoBehaviour:
   m_ObjectHideFlags: 1

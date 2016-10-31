@@ -274,6 +274,8 @@ MonoBehaviour:
   fearPresence: 10
   ghostTarget: {fileID: 0}
   frustumPrefab: {fileID: 0}
+  ghostTrigger: 0
+  isPeaceful: 0
 --- !u!135 &135000014130653904
 SphereCollider:
   m_ObjectHideFlags: 1
