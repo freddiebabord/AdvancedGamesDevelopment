@@ -76,8 +76,6 @@ public class GhostBehaviour : NetworkBehaviour
         while (damageFromPlayers.Count - 1 <= id)
             damageFromPlayers.Add(0.0f);
         damageFromPlayers[id] += dmg;
-        print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
-        
     }
 
     [Command]

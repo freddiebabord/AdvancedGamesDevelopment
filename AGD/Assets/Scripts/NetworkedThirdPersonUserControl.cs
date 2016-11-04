@@ -18,6 +18,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool m_isRunning = false;
         public bool running { get { return m_isRunning; } }
         public bool allowRunning = true;
+        public bool escapeMenu = false;
 
         private void Start()
         {
@@ -37,13 +38,19 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if(!isLocalPlayer)
                 return;
 
-            if (!m_Jump)
+            if (Input.GetKeyDown(KeyCode.Escape))
+                escapeMenu = !escapeMenu;
+
+            if (!escapeMenu)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
-            if(!m_firing)
-            {
-                m_firing = Input.GetButton("Fire1");
+                if (!m_Jump)
+                {
+                    m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                }
+                if (!m_firing)
+                {
+                    m_firing = Input.GetButton("Fire1");
+                }
             }
         }
 
@@ -53,29 +60,31 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if(!isLocalPlayer)
                 return;
-
-            // read inputs
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
-            bool crouch = Input.GetKey(KeyCode.C);
-            m_Move = new Vector3(h, 0, v) / 2;
-            m_Move *= multiplyer;
+            bool crouch = false;
+            if (!escapeMenu)
+            {
+                // read inputs
+                float h = CrossPlatformInputManager.GetAxis("Horizontal");
+                float v = CrossPlatformInputManager.GetAxis("Vertical");
+                crouch = Input.GetKey(KeyCode.C);
+                m_Move = new Vector3(h, 0, v)/2;
+                m_Move *= multiplyer;
 
 #if !MOBILE_INPUT
-            // run speed multiplier
-            if (Input.GetKey(KeyCode.LeftShift) && allowRunning)
-            {
-                m_isRunning = true;
-                m_Move *= 2.0f;
-            }
-            else
-            {
-                m_isRunning = false;
-            }
+                // run speed multiplier
+                if (Input.GetKey(KeyCode.LeftShift) && allowRunning)
+                {
+                    m_isRunning = true;
+                    m_Move *= 2.0f;
+                }
+                else
+                {
+                    m_isRunning = false;
+                }
 #endif
-
+            }
             // pass all parameters to the character control script
-            m_Character.Move(m_Move, crouch, m_Jump);
+            m_Character.Move(m_Move, crouch, m_Jump, escapeMenu);
             m_Character.Fire(m_firing);
             m_firing = false;
             m_Jump = false;

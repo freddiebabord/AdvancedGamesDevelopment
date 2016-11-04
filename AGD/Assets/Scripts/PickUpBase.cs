@@ -15,7 +15,8 @@ public class PickUpBase : NetworkBehaviour {
     protected Renderer renderer;
     protected Collider collider;
     public PickupType pickupType;
-
+    public bool ShowOnMinimap {
+        get { return !alreadyDestroyed; } }
     void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -29,7 +30,7 @@ public class PickUpBase : NetworkBehaviour {
         //Cmd_ServerTrigger();
         ApplyEffect();
 
-        if (!alreadyDestroyed && isLocalPlayer)
+        if (!alreadyDestroyed)
         {
             DestroyObject();
             alreadyDestroyed = true;
@@ -45,7 +46,8 @@ public class PickUpBase : NetworkBehaviour {
         Radar[] players = FindObjectsOfType<Radar>();
 
         StartCoroutine( RespawnTimer());
-        Cmd_RemoveRadarObj();
+        if(isLocalPlayer)
+            Cmd_RemoveRadarObj();
     }
 
     public virtual void ApplyEffect()

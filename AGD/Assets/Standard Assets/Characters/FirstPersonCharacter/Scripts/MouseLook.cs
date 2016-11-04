@@ -9,22 +9,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
     {
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
-        public bool clampVerticalRotation = true;
+
         public float MinimumX = -90F;
         public float MaximumX = 90F;
-        public bool smooth;
-        public float smoothTime = 5f;
         public bool lockCursor = true;
 
-
-        private Quaternion m_CharacterTargetRot;
-        private Quaternion m_CameraTargetRot;
+        
         private bool m_cursorIsLocked = true;
 
         public void Init(Transform character, Transform camera)
         {
-            m_CharacterTargetRot = character.localRotation;
-            m_CameraTargetRot = camera.localRotation;
+          
         }
 
         // TODO: Fix me
@@ -34,30 +29,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
 
             
-            m_CameraTargetRot *= Quaternion.Euler (0f, yRot, 0f);
-            m_CharacterTargetRot = camera.localRotation;
-
-            if (clampVerticalRotation)
-                m_CameraTargetRot = ClampRotationAroundXAxis (m_CameraTargetRot);
-
-            if(smooth)
-            {
-                //character.localRotation = Quaternion.Slerp (character.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
-                // m_CameraTargetRot.z = 0.0f;
-                //camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
-                character.transform.RotateAround(character.position, Vector3.up, yRot);
-                //camera.transform.RotateAround(camera.position, Vector3.right, -xRot);
-            }
-            else
-            {
-                //character.localRotation = m_CharacterTargetRot;
-                //m_CameraTargetRot.z = 0.0f;
-                //camera.localRotation = m_CameraTargetRot;
-                character.transform.RotateAround(character.position, Vector3.up, yRot);
-                //camera.transform.RotateAround(camera.position, Vector3.right, -xRot);
-            }
-
-            UpdateCursorLock();
+            
+            //character.localRotation = Quaternion.Slerp (character.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
+            // m_CameraTargetRot.z = 0.0f;
+            //camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
+            character.transform.RotateAround(character.position, Vector3.up, yRot);
+            camera.transform.RotateAround(camera.position, camera.right, -xRot);
+            camera.transform.localRotation = ClampRotationAroundXAxis(camera.transform.localRotation);
+           // UpdateCursorLock();
         }
 
         public void SetCursorLock(bool value)
@@ -68,26 +47,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
 
         public void UpdateCursorLock()
         {
             //if the user set "lockCursor" we check & properly lock the cursos
-            if (lockCursor)
-                InternalLockUpdate();
+           // if (lockCursor)
+            //    InternalLockUpdate();
         }
 
         private void InternalLockUpdate()
         {
-            if(Input.GetKeyUp(KeyCode.Escape))
-            {
-                m_cursorIsLocked = false;
-            }
-            else if(Input.GetMouseButtonUp(0))
-            {
-                m_cursorIsLocked = true;
-            }
-
+            
             if (m_cursorIsLocked)
             {
                 Cursor.lockState = CursorLockMode.Locked;

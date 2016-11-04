@@ -62,9 +62,15 @@ public class NetManager :  LobbyManager{
 		if(newScene.buildIndex != 0 && !GameManager.instance.enabled)
 		{
 			GameManager.instance.enabled = true;
-			GameManager.instance.SpawnEnemies();
+            GameManager.instance.enemiesRemainigText = GameObject.Find("EnemiesRemaining").GetComponent<Text>();
+            GameManager.instance.SpawnEnemies();
+		    
 		}
 	}
 
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

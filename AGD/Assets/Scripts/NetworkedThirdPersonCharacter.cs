@@ -40,6 +40,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	private Camera m_Camera;
     public GameObject tempDecalParticleSystem;
     private int m_uNetID;
+
     void Start()
 	{
 		m_Animator = GetComponent<Animator>();
@@ -65,11 +66,17 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 m_uNetID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
             else
                 m_uNetID = GetComponent<NetworkIdentity>().connectionToServer.connectionId;
+
+            //var pnc = FindObjectsOfType<PlayerNameCanvas>();
+            //for (var i = 0; i < pnc.Length; i++)
+            //{
+            //    pnc[i].targetCamera = m_Camera;
+            //}
         }
 	}
 
 
-	public void Move(Vector3 move, bool crouch, bool jump)
+	public void Move(Vector3 move, bool crouch, bool jump, bool cursorLock)
 	{
 
 		// convert the world relative moveInput vector into a local-relative
@@ -100,8 +107,11 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
 		// send input and other state parameters to the animator
 		UpdateAnimator(move);
-        m_MouseLook.UpdateCursorLock();
-        RotateView();
+        m_MouseLook.SetCursorLock(!cursorLock);
+	   
+        //m_MouseLook.UpdateCursorLock();
+        if(!cursorLock)
+            RotateView();
 
 	}
     
