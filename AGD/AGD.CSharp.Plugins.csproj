@@ -213,6 +213,7 @@
     <None Include="Assets\Art\Shader\Beam.shader" />
     <None Include="Assets\Art\Shader\RippleAlt.shader" />
     <None Include="Assets\Art\Shader\RippleShader.shader" />
+    <None Include="Assets\DependencyPro\AssetUsageFinderGuidelines.txt" />
     <None Include="Assets\External\Fonts\OpenSans\License!.txt" />
     <None Include="Assets\External\Lobby\Documentation.txt" />
     <None Include="Assets\External\Lobby\Instruction.txt" />

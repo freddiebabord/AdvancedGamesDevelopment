@@ -51,19 +51,19 @@ MonoBehaviour:
       reflection:
         blendType: 0
         reflectionQuality: 0
-        maxDistance: 159
-        iterationCount: 412
-        stepSize: 5
-        widthModifier: 0.64
-        reflectionBlur: 1.49
+        maxDistance: 232
+        iterationCount: 942
+        stepSize: 7
+        widthModifier: 1
+        reflectionBlur: 0.1
         reflectBackfaces: 1
       intensity:
-        reflectionMultiplier: 1.551
-        fadeDistance: 88
-        fresnelFade: 1
-        fresnelFadePower: 0.24
+        reflectionMultiplier: 2
+        fadeDistance: 42
+        fresnelFade: 0.772
+        fresnelFadePower: 1
       screenEdgeMask:
-        intensity: 0.03
+        intensity: 0.012
   depthOfField:
     m_Enabled: 0
     m_Settings:
@@ -79,7 +79,7 @@ MonoBehaviour:
       sampleCount: 10
       frameBlending: 0
   eyeAdaptation:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       lowPercent: 65
       highPercent: 95
@@ -95,14 +95,14 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.5
+        intensity: 4.74
         threshold: 1.1
-        softKnee: 0.5
-        radius: 4
+        softKnee: 0.76
+        radius: 5.68
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}
-        intensity: 3
+        intensity: 15
   colorGrading:
     m_Enabled: 1
     m_Settings:
@@ -273,7 +273,7 @@ MonoBehaviour:
       spectralTexture: {fileID: 0}
       intensity: 0.1
   grain:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       colored: 1
       intensity: 0.665
@@ -282,11 +282,11 @@ MonoBehaviour:
   vignette:
     m_Enabled: 0
     m_Settings:
-      mode: 0
-      color: {r: 0.12602922, g: 0.005622843, b: 0.7647059, a: 1}
+      mode: 1
+      color: {r: 0.50735295, g: 0.08207179, b: 0.30204484, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.397
-      smoothness: 0.54
+      intensity: 0.169
+      smoothness: 0.83
       roundness: 1
       mask: {fileID: 0}
       opacity: 1

@@ -16,7 +16,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         
         private bool m_cursorIsLocked = true;
-
+        public Transform weaponRotationPoint;
+        public Transform weapon;
         public void Init(Transform character, Transform camera)
         {
           
@@ -36,6 +37,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             character.transform.RotateAround(character.position, Vector3.up, yRot);
             camera.transform.RotateAround(camera.position, camera.right, -xRot);
             camera.transform.localRotation = ClampRotationAroundXAxis(camera.transform.localRotation);
+            weapon.RotateAround(weaponRotationPoint.position, camera.right, -xRot);
            // UpdateCursorLock();
         }
 

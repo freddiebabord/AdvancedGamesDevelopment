@@ -57,7 +57,6 @@ public class GhostBehaviour : NetworkBehaviour
 
     public void TakeDamage(int id, float dmg)
     {
-        Debug.Log(id + " " + dmg);
         Cmd_TakeDamage(id, dmg);
     }
 
