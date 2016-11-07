@@ -113,6 +113,11 @@ public class MakeRadarObject : NetworkBehaviour {
                 continue;
 
             }
+            if (!collectables[i].ShowOnMinimap)
+            {
+                radar.RemoveRadarObject(collectables[i].gameObject);
+                continue;
+            }
 
             if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y > 3.6)
             {
