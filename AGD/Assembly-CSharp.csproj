@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>I:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>J:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>I:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>J:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +80,7 @@
      <Compile Include="Assets\Scripts\Networking\NetManager.cs" />
      <Compile Include="Assets\Scripts\Networking\NetworkBroadcastList.cs" />
      <Compile Include="Assets\Scripts\Networking\NetworkedFirstPersonController.cs" />
+     <Compile Include="Assets\Scripts\NullifyFear.cs" />
      <Compile Include="Assets\Scripts\PickUpBase.cs" />
      <Compile Include="Assets\Scripts\PickUps.cs" />
      <Compile Include="Assets\Scripts\Pickups\Pickup.cs" />
@@ -402,10 +403,10 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetSky.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>I:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>J:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>I:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>J:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

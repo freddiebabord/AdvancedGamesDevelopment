@@ -7,14 +7,14 @@ using System;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 public class PickUps : NetworkBehaviour {
-    Color[] colours = { Color.red, Color.green, Color.blue };
+    Color[] colours = { Color.red, Color.green, Color.blue, Color.cyan };
 
     Color temp;
 
-    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, None };
+    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, NullifyFear, None };
     PowerName pow = PowerName.None;
 
-    public enum ActivePower { Speed, Power, Weapon, None};
+    public enum ActivePower { Speed, Power, Weapon, Nullify, None};
     public ActivePower active = ActivePower.None;
 
     public bool power = false;
@@ -24,12 +24,17 @@ public class PickUps : NetworkBehaviour {
 
     Text power_obtained;
     Slider timer;
+    Slider fear;
     public Slider stamina;
 
     public float cooldown = 5.0f;
     public bool cooloff = false;
 
     GameObject the_pickup;
+
+    float radius = 5f;
+
+    EnemyBase[] enemies;
 
     void Start()
     {
@@ -56,9 +61,11 @@ public class PickUps : NetworkBehaviour {
                 stamina = get_sliders[i];
             else if (get_sliders[i].name == "Slider")
                 timer = get_sliders[i];
+            else if (get_sliders[i].name == "Fear")
+                fear = get_sliders[i];
         }
-        
 
+        enemies = FindObjectsOfType<EnemyBase>();
 
     }
 
@@ -132,6 +139,11 @@ public class PickUps : NetworkBehaviour {
                 the_pickup.GetComponent<WeaponRecharge>().Triggered();
                 active = ActivePower.Weapon;
             }
+            else if(pow == PowerName.NullifyFear && active != ActivePower.Nullify)
+            {
+                the_pickup.GetComponent<NullifyFear>().Triggered();
+                active = ActivePower.Nullify;
+            }
 
             power_name = power_name.Replace(remove, "");
             power_obtained.text = power_name;
@@ -144,6 +156,20 @@ public class PickUps : NetworkBehaviour {
             active = ActivePower.None; 
         }
 
+    }
+
+    void EnemiesCloseForFear()
+    {
+        for(int i = 0; i < enemies.Length; i++)
+        {
+            if(Vector3.Distance(gameObject.transform.position, enemies[i].gameObject.transform.position) < radius)
+            {
+                if(!fear.gameObject.activeInHierarchy)
+                {
+                    fear.gameObject.SetActive(true);
+                }
+            }
+        }
     }
 
 	void OnTriggerEnter(Collider other)
@@ -176,6 +202,11 @@ public class PickUps : NetworkBehaviour {
                     temp = colours[2];
                     pow = PowerName.WeaponRecharge;
 
+                }
+                else if(other.gameObject.GetComponent<NullifyFear>() != null)
+                {
+                    temp = colours[3];
+                    pow = PowerName.NullifyFear;
                 }
 
                 other.gameObject.GetComponent<PickUpBase>().player = gameObject;
