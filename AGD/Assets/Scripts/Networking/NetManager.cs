@@ -36,7 +36,7 @@ public class NetManager :  LobbyManager{
 		var playerSpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("playerSpawn")).ToList();
 		Transform spawnLocation = playerSpawns[Random.Range(0, playerSpawns.Count)].transform;
 		GameObject go = Instantiate(gamePlayerPrefab, spawnLocation.position, spawnLocation.rotation) as GameObject;
-		LobbyPlayer player = lobbySlots[conn.connectionId].gameObject.GetComponent<LobbyPlayer>();
+		LobbyPlayer player = lobbySlots[playerControllerId].gameObject.GetComponent<LobbyPlayer>();
 		NetworkedThirdPersonCharacter pl = go.GetComponent<NetworkedThirdPersonCharacter>();
 		pl.name = player.playerName;
 		pl.playerName = player.playerName;
@@ -62,7 +62,7 @@ public class NetManager :  LobbyManager{
 		if(newScene.buildIndex != 0 && !GameManager.instance.enabled)
 		{
 			GameManager.instance.enabled = true;
-            GameManager.instance.enemiesRemainigText = GameObject.Find("EnemiesRemaining").GetComponent<Text>();
+            //GameManager.instance.enemiesRemainigText = GameObject.Find("EnemiesRemaining").GetComponent<Text>();
             GameManager.instance.SpawnEnemies();
 		    
 		}

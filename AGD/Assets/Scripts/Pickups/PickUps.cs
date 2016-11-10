@@ -21,9 +21,9 @@ public class PickUps : NetworkBehaviour {
 
     string power_name = "";
 
-   // GameObject the_text;
-    Text power_obtained;
-    Slider timer;
+    // GameObject the_text;
+    public Text power_obtained;
+    public Slider timer;
     public Slider stamina;
     
 
@@ -40,26 +40,26 @@ public class PickUps : NetworkBehaviour {
         //the_text = new GameObject("MyText");
         //the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
 
-        power_obtained = GameObject.Find("PowerupText").GetComponent<Text>();
+       // power_obtained = GameObject.Find("PowerupText").GetComponent<Text>();
 
-        power_obtained.transform.position = new Vector3(410, 220, 0);
+      //  power_obtained.transform.position = new Vector3(410, 220, 0);
 
-        power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+      //  power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
       //  the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
       //  the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
 
-        power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
+        //power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
 
-        Slider[] get_sliders = FindObjectsOfType<Slider>();
+        //Slider[] get_sliders = FindObjectsOfType<Slider>();
 
-        for(int i = 0; i < get_sliders.Length; i++)
-        {
-            if (get_sliders[i].name == "Stamina")
-                stamina = get_sliders[i];
-            else if (get_sliders[i].name == "Slider")
-                timer = get_sliders[i];
-        }
+        //for(int i = 0; i < get_sliders.Length; i++)
+        //{
+        //    if (get_sliders[i].name == "Stamina")
+        //        stamina = get_sliders[i];
+        //    else if (get_sliders[i].name == "Slider")
+        //        timer = get_sliders[i];
+        //}
         
 
 
