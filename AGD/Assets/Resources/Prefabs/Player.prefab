@@ -792,6 +792,7 @@ GameObject:
   - 124: {fileID: 124000012117147480}
   - 92: {fileID: 92000010790428332}
   - 81: {fileID: 81000013576950254}
+  - 114: {fileID: 114000012325863230}
   - 114: {fileID: 114000010768292420}
   m_Layer: 0
   m_Name: Camera
@@ -2834,6 +2835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbeaef0464f6b9d49b57fe65eeac37bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  map_scale: 0.29
 --- !u!114 &114000011682989728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2871,7 +2873,7 @@ MonoBehaviour:
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1.5
+  m_AnimSpeedMultiplier: 2.5
   m_GroundCheckDistance: 0.5
   m_MouseLook:
     XSensitivity: 2
@@ -2922,6 +2924,25 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!114 &114000012325863230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012380301650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b5ec6153a1d55438228df10fe66844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceFog: 1
+  excludeFarPixels: 1
+  useRadialDistance: 1
+  heightFog: 1
+  height: 7.19
+  heightDensity: 0.23
+  startDistance: 0
+  fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
 --- !u!114 &114000012389598384
 MonoBehaviour:
   m_ObjectHideFlags: 1
