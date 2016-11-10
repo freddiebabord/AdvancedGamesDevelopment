@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
@@ -16,7 +17,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	[SerializeField] float m_MoveSpeedMultiplier = 1f;
 	[SerializeField] float m_AnimSpeedMultiplier = 1f;
 	[SerializeField] float m_GroundCheckDistance = 0.1f;
-    [SerializeField] private MouseLook m_MouseLook;
+    [SerializeField] public MouseLook m_MouseLook;
 
     Rigidbody m_Rigidbody;
 	Animator m_Animator;
@@ -40,6 +41,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	private Camera m_Camera;
     public GameObject tempDecalParticleSystem;
     private int m_uNetID;
+    public GameObject playerUI;
+    private bool spawningPS = false;
+    private Transform spawnedParticleSystem;
 
     void Start()
 	{
@@ -66,6 +70,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 m_uNetID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
             else
                 m_uNetID = GetComponent<NetworkIdentity>().connectionToServer.connectionId;
+            spawnedParticleSystem = ((GameObject)Instantiate(tempDecalParticleSystem, transform.position, Quaternion.identity)).transform;
+            spawnedParticleSystem.gameObject.SetActive(false);
+            
+            FindObjectOfType<SplitscreenManager>().RegisterCamera(m_Camera);
 
             //var pnc = FindObjectsOfType<PlayerNameCanvas>();
             //for (var i = 0; i < pnc.Length; i++)
@@ -288,7 +296,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	    if (!fire)
 	    {
 	        lineRenderer.gameObject.SetActive(false);
-	        return;
+            spawnedParticleSystem.gameObject.SetActive(false);
+            return;
 	    }
         Ray ray = new Ray(weaponSpawnPoint.position, weaponSpawnPoint.forward);
 		RaycastHit hit;
@@ -304,18 +313,22 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             }
             else
             {
-                GameObject go = (GameObject)Instantiate(tempDecalParticleSystem, hit.point, Quaternion.identity);
-                Destroy(go, 0.5f);
+                if(!spawnedParticleSystem.gameObject.activeInHierarchy)
+                    spawnedParticleSystem.gameObject.SetActive(true);
+                Vector3 norm = weaponSpawnPoint.position - hit.point;
+                norm.Normalize();
+                spawnedParticleSystem.position = hit.point + norm * 0.1f;
             }
 		}
 		else
 		{
             lineRenderer.gameObject.SetActive(true);
+            spawnedParticleSystem.gameObject.SetActive(false);
             lineRenderer.SetPosition(0, weaponSpawnPoint.position);
             lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
         }
 	}
-
+    
     [Command]
     private void Cmd_DestoryGhost(GameObject ghost)
     {

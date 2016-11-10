@@ -1,6 +1,7 @@
 using System;
+using Rewired;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+using Cursor = UnityEngine.Cursor;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -18,19 +19,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_cursorIsLocked = true;
         public Transform weaponRotationPoint;
         public Transform weapon;
+        public Player player;
+
         public void Init(Transform character, Transform camera)
         {
-          
-        }
 
-        // TODO: Fix me
+        }
+        
         public void LookRotation(Transform character, Transform camera)
         {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+            if (player == null)
+                return;
 
-            
-            
+            float yRot = player.GetAxis("LookHorizontal") * XSensitivity;
+            float xRot = player.GetAxis("LookVertical") * YSensitivity;
+
+
+
             //character.localRotation = Quaternion.Slerp (character.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
             // m_CameraTargetRot.z = 0.0f;
             //camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
