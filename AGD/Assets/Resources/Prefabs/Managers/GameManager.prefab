@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000014074950234}
   - 114: {fileID: 114000011212881432}
   - 114: {fileID: 114000013206277500}
-  - 114: {fileID: 114000010352031786}
+  - 114: {fileID: 114000010346843748}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -42,7 +42,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000010352031786
+--- !u!114 &114000010346843748
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -118,3 +118,4 @@ MonoBehaviour:
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  enemiesRemainigText: {fileID: 0}

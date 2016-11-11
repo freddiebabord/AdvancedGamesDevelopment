@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.Linq;
+using UnityEngine.UI;
 
 public enum	EnemyType
 {
@@ -40,6 +41,7 @@ public class GameManager : NetworkBehaviour {
 	private bool waveComplete = false;
 	public bool WaveComplete { get { return waveComplete; } }
 	public List<GameObject> enemyPrefabs = new List<GameObject>();
+    public Text enemiesRemainigText;
 
 	void Awake()
 	{
@@ -50,7 +52,8 @@ public class GameManager : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 		enabled = false;
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -65,6 +68,10 @@ public class GameManager : NetworkBehaviour {
 	public void DestroyEnemy()
 	{
 		enemyCount--;
+	    if (enemyCount > 0)
+	        enemiesRemainigText.text = enemyCount.ToString();
+	    else
+	        enemiesRemainigText.text = "Loading next wave";
 	}
 
 	IEnumerator WaveWaitTimer()
@@ -76,8 +83,8 @@ public class GameManager : NetworkBehaviour {
 			SpawnEnemies();
 		else
 		{
-		    Debug.Log("GAME OVER: NO MORE WAVES!");
-		}
+            enemiesRemainigText.text = "GAME OVER!";
+        }
 		waveComplete = false;
 	}
 
@@ -101,7 +108,8 @@ public class GameManager : NetworkBehaviour {
 				enemyCount++;
 			}
 		}
-		
-		
+
+	    enemiesRemainigText.text = enemyCount.ToString();
+
 	}
 }

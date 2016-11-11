@@ -9,6 +9,7 @@ public class PickupManager : NetworkBehaviour
     public GameObject powerBoostPickup;
     public GameObject speedBoostPickup;
     public GameObject weaponRechargePickup;
+    
 
 	// Use this for initialization
 	void OnEnable ()

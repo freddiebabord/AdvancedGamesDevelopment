@@ -50,7 +50,7 @@ public class MakeRadarObject : NetworkBehaviour {
                 continue;
             }
 
-			if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y > 3.6) 
+			if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y > 3) 
 			{
 				if (enemies [i].enemyMap != EnemyBase.EnemyMap.Lower) 
 				{
@@ -67,7 +67,7 @@ public class MakeRadarObject : NetworkBehaviour {
 				}
 
 			}
-			else if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y < -3.6) 
+			else if (gameObject.transform.position.y - enemies [i].gameObject.transform.position.y < -3) 
 			{
 				if (enemies[i].enemyMap != EnemyBase.EnemyMap.Higher) 
 				{
@@ -113,8 +113,13 @@ public class MakeRadarObject : NetworkBehaviour {
                 continue;
 
             }
+            if (!collectables[i].ShowOnMinimap)
+            {
+                radar.RemoveRadarObject(collectables[i].gameObject);
+                continue;
+            }
 
-            if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y > 3.6)
+            if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y > 3)
             {
                 if (collectables[i].itemMap != ItemMap.Lower)
                 {
@@ -131,7 +136,7 @@ public class MakeRadarObject : NetworkBehaviour {
                 }
 
             }
-            else if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y < -3.6)
+            else if (gameObject.transform.position.y - collectables[i].gameObject.transform.position.y < -3)
             {
                 if (collectables[i].itemMap != ItemMap.Higher)
                 {
