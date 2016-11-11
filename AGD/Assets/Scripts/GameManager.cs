@@ -42,11 +42,14 @@ public class GameManager : NetworkBehaviour {
 	public bool WaveComplete { get { return waveComplete; } }
 	public List<GameObject> enemyPrefabs = new List<GameObject>();
     public Text enemiesRemainigText;
+    public bool playerOneAssigned = false;
 
 	void Awake()
 	{
 		DontDestroyOnLoad(this);
-		instance = this;
+        if(instance != null)
+            Destroy(this.gameObject);
+        instance = this;
 	}
 
 	// Use this for initialization
@@ -69,9 +72,15 @@ public class GameManager : NetworkBehaviour {
 	{
 		enemyCount--;
 	    if (enemyCount > 0)
-	        enemiesRemainigText.text = enemyCount.ToString();
+	    {
+	        if (enemiesRemainigText)
+	            enemiesRemainigText.text = enemyCount.ToString();
+	    }
 	    else
-	        enemiesRemainigText.text = "Loading next wave";
+	    {
+            if(enemiesRemainigText)
+                enemiesRemainigText.text = "Loading next wave";
+	    }
 	}
 
 	IEnumerator WaveWaitTimer()
@@ -83,7 +92,8 @@ public class GameManager : NetworkBehaviour {
 			SpawnEnemies();
 		else
 		{
-            enemiesRemainigText.text = "GAME OVER!";
+            if(enemiesRemainigText)
+                enemiesRemainigText.text = "GAME OVER!";
         }
 		waveComplete = false;
 	}
@@ -108,8 +118,8 @@ public class GameManager : NetworkBehaviour {
 				enemyCount++;
 			}
 		}
-
-	    enemiesRemainigText.text = enemyCount.ToString();
+        if(enemiesRemainigText)
+	        enemiesRemainigText.text = enemyCount.ToString();
 
 	}
 }

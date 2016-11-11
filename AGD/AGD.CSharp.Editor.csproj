@@ -97,11 +97,24 @@
     <Reference Include="ShaderForge">
       <HintPath>Assets\External\ShaderForge\Editor\ShaderForge.dll</HintPath>
     </Reference>
+    <Reference Include="Rewired_Editor">
+      <HintPath>Assets\Rewired\Internal\Libraries\Editor\Rewired_Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows_Lib">
+      <HintPath>Assets\Rewired\Internal\Libraries\Runtime\Rewired_Windows_Lib.dll</HintPath>
+    </Reference>
     <Reference Include="Editor.ReorderableList">
       <HintPath>Assets\Rotorz\Reorderable List Field\Editor\Editor.ReorderableList.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="AGD.CSharp.Plugins.csproj">
+      <Project>{385DF04B-81F5-38AE-9633-96DF7D3A4BFF}</Project>
+      <Name>AGD.CSharp.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="AGD.CSharp.csproj">
       <Project>{41818DAA-81FD-37F9-36F8-2CD5E9A482EC}</Project>
       <Name>AGD.CSharp</Name>
@@ -137,6 +150,7 @@
     <Compile Include="Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\TonemappingEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
+    <Compile Include="Assets\Editor\SpokkticleEditorWindow.cs" />
     <Compile Include="Assets\External\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeInspector.cs" />
     <Compile Include="Assets\External\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeMaterialInspector.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Editor\AmbientOcclusionEditor.cs" />
@@ -184,6 +198,17 @@
     <Compile Include="Assets\Resources\Standard Assets\PostProcessing\Editor\Utils\EditorGUIHelper.cs" />
     <Compile Include="Assets\Resources\Standard Assets\PostProcessing\Editor\Utils\EditorResources.cs" />
     <Compile Include="Assets\Resources\Standard Assets\PostProcessing\Editor\Utils\FxStyles.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\ControlMapperInspector.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\CustomButtonInspector.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\CustomSliderInspector.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Editor\CustomToggleInspector.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\ControllerDataFilesInspector.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\CustomInspector_External.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\HardwareJoystickMapInspector.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\HardwareJoystickTemplateMapInspector.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\InputManagerInspector.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\UserDataStore_PlayerPrefsInspector.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Editor\UnityEditorBridge.cs" />
     <Compile Include="Assets\Scripts\Developer\Editor\FrustumInspector.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -391,7 +416,6 @@
     <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
     <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
-    <None Include="Assets\Resources\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
     <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />
     <None Include="Assets\Resources\Standard Assets\Effects\AntiAliasing\FXAA\Resources\FXAA.shader" />
@@ -528,10 +552,15 @@
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\Resources\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
+    <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
+    <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
+    <None Include="Assets\Rewired\Documentation\licences.txt" />
+    <None Include="Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
     <None Include="Assets\RippleEffect\RippleEffect.shader" />
     <None Include="Assets\Rotorz\Reorderable List Field\!LICENSE.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\!README.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

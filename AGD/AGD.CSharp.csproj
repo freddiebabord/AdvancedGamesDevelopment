@@ -61,6 +61,18 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows_Lib">
+      <HintPath>Assets\Rewired\Internal\Libraries\Runtime\Rewired_Windows_Lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AGD.CSharp.Plugins.csproj">
+      <Project>{385DF04B-81F5-38AE-9633-96DF7D3A4BFF}</Project>
+      <Name>AGD.CSharp.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Do NOT Show\GhostCharge.cs" />
@@ -87,17 +99,6 @@
     <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\AmbientOcclusion.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Helpers\PropertyObserver.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Helpers\Settings.cs" />
@@ -225,7 +226,55 @@
     <Compile Include="Assets\Resources\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Utility\WaypointProgressTracker.cs" />
+    <Compile Include="Assets\Rewired\Examples\ControlRemapping1\Scripts\ControlRemappingDemo1.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTilt\Scripts\CustomControllersTiltDemo.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\CustomControllerDemo.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\CustomControllerDemo_Player.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\TouchButtonExample.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\TouchControllerExample.cs" />
+    <Compile Include="Assets\Rewired\Examples\CustomControllersTouch\Scripts\TouchJoystickExample.cs" />
+    <Compile Include="Assets\Rewired\Examples\EightPlayers\Scripts\EightPlayersExample_Player.cs" />
+    <Compile Include="Assets\Rewired\Examples\FallbackJoystickIdentification\Scripts\FallbackJoystickIdentificationDemo.cs" />
+    <Compile Include="Assets\Rewired\Examples\Shared\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Examples\ControlMapperDemo\Scripts\ControlMapperDemoMessage.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ButtonInfo.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CalibrationWindow.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CanvasScalerExt.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CanvasScalerFitter.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper_Classes.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper_Enums.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper_InputGrid.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ControlMapper_WindowManager.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CustomButton.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CustomSlider.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\CustomToggle.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ICustomSelectable.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\InputBehaviorWindow.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\InputFieldInfo.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\InputRow.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\LanguageData.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ScrollRectSelectableChild.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ScrollbarVisibilityHelper.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ThemeSettings.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ThemedElement.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\ToggleInfo.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIControl.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIControlSet.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIElementInfo.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIGroup.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UIImageHelper.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UISelectionUtility.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UISliderControl.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\UITools.cs" />
+    <Compile Include="Assets\Rewired\Extras\ControlMapper\Scripts\Window.cs" />
+    <Compile Include="Assets\Rewired\Integration\UnityUI\RewiredStandaloneInputModule.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\DataStorage\UserDataStore_PlayerPrefs.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\InputManager.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
+    <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
     <Compile Include="Assets\RippleEffect\RippleEffect.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Developer\DevShortcuts.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\Charge.cs" />
@@ -252,6 +301,8 @@
     <Compile Include="Assets\Scripts\ResourceLoader.cs" />
     <Compile Include="Assets\Scripts\Rooms\Room.cs" />
     <Compile Include="Assets\Scripts\Rooms\RoomCollider.cs" />
+    <Compile Include="Assets\Scripts\SettingsManager.cs" />
+    <Compile Include="Assets\Scripts\SplitscreenManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DependencyPro\AssetUsageFinderGuidelines.txt" />
@@ -458,7 +509,6 @@
     <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
     <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
-    <None Include="Assets\Resources\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
     <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />
     <None Include="Assets\Resources\Standard Assets\Effects\AntiAliasing\FXAA\Resources\FXAA.shader" />
@@ -595,10 +645,15 @@
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\Resources\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
+    <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
+    <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
+    <None Include="Assets\Rewired\Documentation\licences.txt" />
+    <None Include="Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
     <None Include="Assets\RippleEffect\RippleEffect.shader" />
     <None Include="Assets\Rotorz\Reorderable List Field\!LICENSE.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\!README.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

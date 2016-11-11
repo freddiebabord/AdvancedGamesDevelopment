@@ -16,7 +16,11 @@ public class Radar : NetworkBehaviour {
 	GameObject radar;
 
 	//Play with this map_scale to bring the objects either closer together or further away in the radar.
+<<<<<<< HEAD
 	float map_scale = 3.0f;
+=======
+	public float map_scale = 5.0f;
+>>>>>>> fae690225c8fbd69cf29c42982c00b5d29f17a05
 
 	public static List<RadarObject> radar_objects = new List<RadarObject>();
 

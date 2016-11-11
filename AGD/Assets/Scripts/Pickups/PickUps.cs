@@ -7,65 +7,61 @@ using System;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 public class PickUps : NetworkBehaviour {
-    Color[] colours = { Color.red, Color.green, Color.blue, Color.cyan };
+    Color[] colours = { Color.red, Color.green, Color.blue };
 
     Color temp;
 
-    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, NullifyFear, None };
+    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, None };
     PowerName pow = PowerName.None;
 
-    public enum ActivePower { Speed, Power, Weapon, Nullify, None};
+    public enum ActivePower { Speed, Power, Weapon, None};
     public ActivePower active = ActivePower.None;
 
     public bool power = false;
 
     string power_name = "";
-    string remove = "(Clone)";
 
-    Text power_obtained;
-    Slider timer;
-    Slider fear;
+    // GameObject the_text;
+    public Text power_obtained;
+    public Slider timer;
     public Slider stamina;
+    
 
     public float cooldown = 5.0f;
     public bool cooloff = false;
 
     GameObject the_pickup;
 
-    float radius = 5f;
-
-    EnemyBase[] enemies;
-
     void Start()
     {
         if (!isLocalPlayer)
             return;
 
-        power_obtained = GameObject.Find("PowerupText").GetComponent<Text>();
+        //the_text = new GameObject("MyText");
+        //the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
 
-        power_obtained.transform.position = new Vector3(390, 220, 0);
+       // power_obtained = GameObject.Find("PowerupText").GetComponent<Text>();
 
-        power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-    
+      //  power_obtained.transform.position = new Vector3(410, 220, 0);
 
-        power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
-        power_obtained.verticalOverflow = VerticalWrapMode.Overflow;
+      //  power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
-        power_obtained.fontSize = 32;
+      //  the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
+      //  the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
 
-        Slider[] get_sliders = FindObjectsOfType<Slider>();
+        //power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
 
-        for(int i = 0; i < get_sliders.Length; i++)
-        {
-            if (get_sliders[i].name == "Stamina")
-                stamina = get_sliders[i];
-            else if (get_sliders[i].name == "Slider")
-                timer = get_sliders[i];
-            else if (get_sliders[i].name == "Fear")
-                fear = get_sliders[i];
-        }
+        //Slider[] get_sliders = FindObjectsOfType<Slider>();
 
-        enemies = FindObjectsOfType<EnemyBase>();
+        //for(int i = 0; i < get_sliders.Length; i++)
+        //{
+        //    if (get_sliders[i].name == "Stamina")
+        //        stamina = get_sliders[i];
+        //    else if (get_sliders[i].name == "Slider")
+        //        timer = get_sliders[i];
+        //}
+        
+
 
     }
 
@@ -139,13 +135,7 @@ public class PickUps : NetworkBehaviour {
                 the_pickup.GetComponent<WeaponRecharge>().Triggered();
                 active = ActivePower.Weapon;
             }
-            else if(pow == PowerName.NullifyFear && active != ActivePower.Nullify)
-            {
-                the_pickup.GetComponent<NullifyFear>().Triggered();
-                active = ActivePower.Nullify;
-            }
 
-            power_name = power_name.Replace(remove, "");
             power_obtained.text = power_name;
             power_obtained.color = temp;
 
@@ -156,20 +146,6 @@ public class PickUps : NetworkBehaviour {
             active = ActivePower.None; 
         }
 
-    }
-
-    void EnemiesCloseForFear()
-    {
-        for(int i = 0; i < enemies.Length; i++)
-        {
-            if(Vector3.Distance(gameObject.transform.position, enemies[i].gameObject.transform.position) < radius)
-            {
-                if(!fear.gameObject.activeInHierarchy)
-                {
-                    fear.gameObject.SetActive(true);
-                }
-            }
-        }
     }
 
 	void OnTriggerEnter(Collider other)
@@ -202,11 +178,6 @@ public class PickUps : NetworkBehaviour {
                     temp = colours[2];
                     pow = PowerName.WeaponRecharge;
 
-                }
-                else if(other.gameObject.GetComponent<NullifyFear>() != null)
-                {
-                    temp = colours[3];
-                    pow = PowerName.NullifyFear;
                 }
 
                 other.gameObject.GetComponent<PickUpBase>().player = gameObject;
