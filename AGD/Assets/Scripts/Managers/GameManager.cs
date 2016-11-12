@@ -41,7 +41,7 @@ public class GameManager : NetworkBehaviour {
 	private bool waveComplete = false;
 	public bool WaveComplete { get { return waveComplete; } }
 	public List<GameObject> enemyPrefabs = new List<GameObject>();
-    public Text enemiesRemainigText;
+    public List<Text>enemiesRemainigText = new List<Text>();
     public bool playerOneAssigned = false;
 
 	void Awake()
@@ -73,14 +73,14 @@ public class GameManager : NetworkBehaviour {
 		enemyCount--;
 	    if (enemyCount > 0)
 	    {
-	        if (enemiesRemainigText)
-	            enemiesRemainigText.text = enemyCount.ToString();
-	    }
+            foreach (Text text in enemiesRemainigText)
+                text.text = enemyCount.ToString();
+        }
 	    else
 	    {
-            if(enemiesRemainigText)
-                enemiesRemainigText.text = "Loading next wave";
-	    }
+            foreach (Text text in enemiesRemainigText)
+                text.text = "Loading next wave";
+        }
 	}
 
 	IEnumerator WaveWaitTimer()
@@ -92,13 +92,18 @@ public class GameManager : NetworkBehaviour {
 			SpawnEnemies();
 		else
 		{
-            if(enemiesRemainigText)
-                enemiesRemainigText.text = "GAME OVER!";
-        }
-		waveComplete = false;
+		    foreach (Text text in enemiesRemainigText)
+                text.text = "GAME OVER!";
+		}
+	    waveComplete = false;
 	}
+    public IEnumerator SpawnFirstWaveWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SpawnEnemies();
+    }
 
-	public void SpawnEnemies()
+    public void SpawnEnemies()
 	{
 	    if (!isServer)
 	        return;
@@ -118,8 +123,18 @@ public class GameManager : NetworkBehaviour {
 				enemyCount++;
 			}
 		}
-        if(enemiesRemainigText)
-	        enemiesRemainigText.text = enemyCount.ToString();
 
-	}
+        foreach (Text text in enemiesRemainigText)
+        {
+            if (text == null)
+            {
+                enemiesRemainigText.TrimExcess();
+                continue;
+            }
+            text.text = enemyCount.ToString();
+        }
+
+    }
+
+    
 }

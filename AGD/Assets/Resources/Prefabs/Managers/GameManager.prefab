@@ -22,6 +22,8 @@ GameObject:
   - 114: {fileID: 114000011212881432}
   - 114: {fileID: 114000013206277500}
   - 114: {fileID: 114000010346843748}
+  - 114: {fileID: 114000012462407044}
+  - 114: {fileID: 114000010852378934}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011608605714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 997.1449, y: 552.0416, z: -336.6825}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -59,6 +61,21 @@ MonoBehaviour:
     type: 2}
   weaponRechargePickup: {fileID: 1000013566745354, guid: 460ca7e83c8d318489faf59ac2c1582f,
     type: 2}
+--- !u!114 &114000010852378934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011608605714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151d9f1346fdc1248be4b06685383c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitscreenMode: 0
+  overallVolumeLevel: 100
+  splitscreenDuelControllerMode: 1
+  profiles: []
 --- !u!114 &114000011212881432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,6 +108,18 @@ MonoBehaviour:
     i15: 104
   m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
+--- !u!114 &114000012462407044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011608605714}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d1bdf608e224cd8836348794578a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadedClips: []
 --- !u!114 &114000013206277500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,8 +137,28 @@ MonoBehaviour:
       quantity: 5
     - enemySpawner: 4
       quantity: 4
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 5
+    - enemySpawner: 4
+      quantity: 4
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 5
+    - enemySpawner: 4
+      quantity: 4
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 5
+    - enemySpawner: 4
+      quantity: 4
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 5
+    - enemySpawner: 4
+      quantity: 4
   currentWave: 0
-  waveSleepTimer: 0
+  waveSleepTimer: 10
   enemyPrefabs:
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
@@ -118,4 +167,5 @@ MonoBehaviour:
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
-  enemiesRemainigText: {fileID: 0}
+  enemiesRemainigText: []
+  playerOneAssigned: 0

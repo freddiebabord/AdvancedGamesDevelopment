@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.CrossPlatformInput;
+using Joystick = Rewired.Joystick;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -108,6 +109,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if (!m_firing)
                 {
                     m_firing = player.GetButton("Fire");
+
+                }
+            }
+
+            if (m_firing)
+            {
+                foreach (Joystick j in player.controllers.Joysticks)
+                {
+                    if (!j.supportsVibration) continue;
+                    j.SetVibration(0.8f, 0.8f);
+                }
+            }
+            else
+            {
+                foreach (Joystick j in player.controllers.Joysticks)
+                {
+                    if (!j.supportsVibration) continue;
+                    j.StopVibration();
                 }
             }
         }
@@ -129,8 +148,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 crouch = player.GetButton("Crouch");
                 m_Move = new Vector3(h, 0, v) / 2;
                 m_Move *= multiplyer;
-
-#if !MOBILE_INPUT
+                
                 // TODO: run input
                 // run speed multiplier
                 if (player.GetButton("Run") && allowRunning)
@@ -142,7 +160,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     m_isRunning = false;
                 }
-#endif
             }
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump, escapeMenu);

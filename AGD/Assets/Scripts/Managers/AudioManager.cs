@@ -12,7 +12,7 @@ public class AudioManager : NetworkBehaviour {
 	void Awake()
 	{
 		inst = this;
-		loadedClips = ((AudioClip[])Resources.LoadAll("", typeof(AudioClip))).ToList();
+		//loadedClips = ((AudioClip[])Resources.LoadAll("", typeof(AudioClip))).ToList();
 	}
 
 	void OnDisable()

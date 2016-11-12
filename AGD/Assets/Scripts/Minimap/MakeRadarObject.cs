@@ -55,13 +55,13 @@ public class MakeRadarObject : NetworkBehaviour {
 				if (enemies [i].enemyMap != EnemyBase.EnemyMap.Lower) 
 				{
                     radar.RemoveRadarObject (enemies [i].gameObject);
-                    Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
+                    radar.RegisterRadarObject (enemies [i].gameObject, image_down);
 					enemies [i].enemyMap = EnemyBase.EnemyMap.Lower;
 				}
 
 				if (!enemies [i].firstPass) 
 				{
-					Radar.RegisterRadarObject (enemies [i].gameObject, image_down);
+                    radar.RegisterRadarObject (enemies [i].gameObject, image_down);
                     enemies[i].enemyMap = EnemyBase.EnemyMap.Lower;
                     enemies [i].firstPass = true;
 				}
@@ -72,13 +72,13 @@ public class MakeRadarObject : NetworkBehaviour {
 				if (enemies[i].enemyMap != EnemyBase.EnemyMap.Higher) 
 				{
                     radar.RemoveRadarObject (enemies [i].gameObject);
-					Radar.RegisterRadarObject (enemies [i].gameObject, image_up);
+                    radar.RegisterRadarObject (enemies [i].gameObject, image_up);
                     enemies[i].enemyMap = EnemyBase.EnemyMap.Higher;
                 }
 
 				if (!enemies [i].firstPass) 
 				{
-					Radar.RegisterRadarObject (enemies [i].gameObject, image_up);
+                    radar.RegisterRadarObject (enemies [i].gameObject, image_up);
                     enemies[i].enemyMap = EnemyBase.EnemyMap.Higher;
                     enemies [i].firstPass = true;
 				}
@@ -88,13 +88,13 @@ public class MakeRadarObject : NetworkBehaviour {
 				if (enemies[i].enemyMap != EnemyBase.EnemyMap.Same) 
 				{
                     radar.RemoveRadarObject (enemies [i].gameObject);
-					Radar.RegisterRadarObject (enemies [i].gameObject, image);
+                    radar.RegisterRadarObject (enemies [i].gameObject, image);
                     enemies[i].enemyMap = EnemyBase.EnemyMap.Same;
                 }
 
 				if (!enemies [i].firstPass) 
 				{
-					Radar.RegisterRadarObject (enemies [i].gameObject, image);
+                    radar.RegisterRadarObject (enemies [i].gameObject, image);
                     enemies[i].enemyMap = EnemyBase.EnemyMap.Same;
                     enemies [i].firstPass = true;
 				}
@@ -124,13 +124,13 @@ public class MakeRadarObject : NetworkBehaviour {
                 if (collectables[i].itemMap != ItemMap.Lower)
                 {
                     radar.RemoveRadarObject(collectables[i].gameObject);
-                    Radar.RegisterRadarObject(collectables[i].gameObject, item_down);
+                    radar.RegisterRadarObject(collectables[i].gameObject, item_down);
                     collectables[i].itemMap = ItemMap.Lower;
                 }
 
                 if (!collectables[i].firstPass)
                 {
-                    Radar.RegisterRadarObject(collectables[i].gameObject, item_down);
+                    radar.RegisterRadarObject(collectables[i].gameObject, item_down);
                     collectables[i].itemMap = ItemMap.Lower;
                     collectables[i].firstPass = true;
                 }
@@ -141,13 +141,13 @@ public class MakeRadarObject : NetworkBehaviour {
                 if (collectables[i].itemMap != ItemMap.Higher)
                 {
                     radar.RemoveRadarObject(collectables[i].gameObject);
-                    Radar.RegisterRadarObject(collectables[i].gameObject, item_up);
+                    radar.RegisterRadarObject(collectables[i].gameObject, item_up);
                     collectables[i].itemMap = ItemMap.Higher;
                 }
 
                 if (!collectables[i].firstPass)
                 {
-                    Radar.RegisterRadarObject(collectables[i].gameObject, item_up);
+                    radar.RegisterRadarObject(collectables[i].gameObject, item_up);
                     collectables[i].itemMap = ItemMap.Higher;
                     collectables[i].firstPass = true;
                 }
@@ -157,13 +157,13 @@ public class MakeRadarObject : NetworkBehaviour {
                 if (collectables[i].itemMap != ItemMap.Same)
                 {
                     radar.RemoveRadarObject(collectables[i].gameObject);
-                    Radar.RegisterRadarObject(collectables[i].gameObject, item);
+                    radar.RegisterRadarObject(collectables[i].gameObject, item);
                     collectables[i].itemMap = ItemMap.Same;
                 }
 
                 if (!collectables[i].firstPass)
                 {
-                    Radar.RegisterRadarObject(collectables[i].gameObject, item);
+                    radar.RegisterRadarObject(collectables[i].gameObject, item);
                     collectables[i].itemMap = ItemMap.Same;
                     collectables[i].firstPass = true;
                 }

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.PostProcessing;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.Characters.ThirdPerson;
 
@@ -42,9 +43,19 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	private Camera m_Camera;
     public GameObject tempDecalParticleSystem;
     private int m_uNetID;
-    public GameObject playerUI;
+
     private bool spawningPS = false;
     private Transform spawnedParticleSystem;
+    public Text enemiesRemainingText;
+
+    private Material beamMaterial;
+    [Space(10)]
+    [Header("Weapon Variables")]
+    public float maxWeaponFireTime = 10.0f;
+    private float currentWeaponFireTime = 0.0f;
+    public float weaponRechargeRate = 0.75f;
+    private bool isFiring = false;
+    public CustomLight beamLight;
 
     void Start()
 	{
@@ -72,8 +83,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             else
                 m_uNetID = GetComponent<NetworkIdentity>().connectionToServer.connectionId;
             spawnedParticleSystem = ((GameObject)Instantiate(tempDecalParticleSystem, transform.position, Quaternion.identity)).transform;
-            spawnedParticleSystem.gameObject.SetActive(false);
-            
+            //spawnedParticleSystem.gameObject.SetActive(false);
+            StopParticleSystem();
             FindObjectOfType<SplitscreenManager>().RegisterCamera(m_Camera);
             SettingsManager.instance.RegisterPostProfile(m_Camera.GetComponent<PostProcessingBehaviour>().profile);
             //var pnc = FindObjectsOfType<PlayerNameCanvas>();
@@ -81,8 +92,25 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             //{
             //    pnc[i].targetCamera = m_Camera;
             //}
+            GameManager.instance.enemiesRemainigText.Add(enemiesRemainingText);
         }
+
+        beamMaterial = lineRenderer.material;
+
 	}
+
+    void Update()
+    {
+        if (isFiring)
+        {
+            currentWeaponFireTime += Time.deltaTime;
+        }
+        else
+        {
+            if (currentWeaponFireTime > 0)
+                currentWeaponFireTime -= weaponRechargeRate*Time.deltaTime;
+        }
+    }
 
 
 	public void Move(Vector3 move, bool crouch, bool jump, bool cursorLock)
@@ -294,19 +322,34 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	[ClientRpc]
 	void Rpc_Fire(bool fire, int unID)
 	{
-	    if (!fire)
+	    isFiring = fire;
+
+        if (!fire || currentWeaponFireTime >= maxWeaponFireTime)
 	    {
 	        lineRenderer.gameObject.SetActive(false);
-            spawnedParticleSystem.gameObject.SetActive(false);
+            //spawnedParticleSystem.gameObject.SetActive(false);
+            beamLight.gameObject.SetActive(false);
+            StopParticleSystem();
             return;
 	    }
-        Ray ray = new Ray(weaponSpawnPoint.position, weaponSpawnPoint.forward);
+        beamLight.gameObject.SetActive(true);
+        beamMaterial.SetFloat("Intensity", 1-(maxWeaponFireTime / currentWeaponFireTime));
+        Ray ray = new Ray(m_Camera.transform.position, weaponSpawnPoint.forward);
 		RaycastHit hit;
 		if(Physics.Raycast(ray, out hit, 100))
 		{
 			lineRenderer.gameObject.SetActive(true);
 			lineRenderer.SetPosition(0, weaponSpawnPoint.position);
 			lineRenderer.SetPosition(1, hit.point);
+		    float dist = Vector3.Distance(hit.point, weaponSpawnPoint.position);
+		    float halfDist = dist/2;
+		    beamLight.m_TubeLength = halfDist;
+		    beamLight.transform.position = weaponSpawnPoint.position;
+            beamLight.transform.LookAt(hit.point);
+            beamLight.transform.Rotate(beamLight.transform.up, 90);
+            beamLight.transform.Translate(beamLight.transform.right * -halfDist);
+            beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
+
             if (hit.transform.parent.GetComponent<GhostBehaviour>())
             {
                 hit.transform.parent.GetComponent<GhostBehaviour>().TakeDamage(unID, 5);
@@ -314,17 +357,18 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             }
             else
             {
-                if(!spawnedParticleSystem.gameObject.activeInHierarchy)
-                    spawnedParticleSystem.gameObject.SetActive(true);
+                StartParticleSystem();
                 Vector3 norm = weaponSpawnPoint.position - hit.point;
                 norm.Normalize();
                 spawnedParticleSystem.position = hit.point + norm * 0.1f;
+                
             }
 		}
 		else
 		{
             lineRenderer.gameObject.SetActive(true);
-            spawnedParticleSystem.gameObject.SetActive(false);
+            //spawnedParticleSystem.gameObject.SetActive(false);
+		    StopParticleSystem();
             lineRenderer.SetPosition(0, weaponSpawnPoint.position);
             lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
         }
@@ -337,6 +381,18 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         NetworkServer.Destroy(ghost);
     }
 
+
+    void StopParticleSystem()
+    {
+        ParticleSystem rootParticleSystem = spawnedParticleSystem.GetComponent<ParticleSystem>();
+        rootParticleSystem.Stop(true);
+    }
+
+    void StartParticleSystem()
+    {
+        ParticleSystem rootParticleSystem = spawnedParticleSystem.GetComponent<ParticleSystem>();
+        rootParticleSystem.Play(true);
+    }
     
 }
 

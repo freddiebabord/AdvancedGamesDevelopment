@@ -414,6 +414,13 @@
     <None Include="Assets\External\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
     <None Include="Assets\External\ShaderForge\Readme.txt" />
     <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
+    <None Include="Assets\Resources\Art\Assets\Barrel\BarrelShader.shader" />
+    <None Include="Assets\Resources\Art\Assets\Book\Book02\Project.xml" />
+    <None Include="Assets\Resources\Art\Assets\Book\Book02\previewer\Camera1.xml" />
+    <None Include="Assets\Resources\Art\Assets\Book\Book02\previewer\renderModes.xml" />
+    <None Include="Assets\Resources\Art\Assets\Candle Bunch\Emissive Colour.txt" />
+    <None Include="Assets\Resources\Art\Assets\Candle Single\Emissive Colour.txt" />
+    <None Include="Assets\Resources\Art\Assets\Emissive Colour.txt" />
     <None Include="Assets\Resources\Art\Realistic Effects Pack\Readme.txt" />
     <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\AlphaBlended.shader" />
     <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\AlphaBlendedNoSmooth.shader" />
@@ -594,6 +601,8 @@
     <None Include="Assets\Rotorz\Reorderable List Field\!README.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Standard Assets\DeferredCustomLights\CustomLightShader.shader" />
+    <None Include="Assets\Standard Assets\DeferredCustomLights\_ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
