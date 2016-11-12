@@ -1,0 +1,10 @@
+Emissive Map Colour
+
+#faae40
+
+R:250
+G:174
+B:64
+H:35
+S:74
+V:98
