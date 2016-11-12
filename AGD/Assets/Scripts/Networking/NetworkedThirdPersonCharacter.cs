@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.PostProcessing;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.Characters.ThirdPerson;
 
@@ -74,7 +75,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             spawnedParticleSystem.gameObject.SetActive(false);
             
             FindObjectOfType<SplitscreenManager>().RegisterCamera(m_Camera);
-
+            SettingsManager.instance.RegisterPostProfile(m_Camera.GetComponent<PostProcessingBehaviour>().profile);
             //var pnc = FindObjectsOfType<PlayerNameCanvas>();
             //for (var i = 0; i < pnc.Length; i++)
             //{

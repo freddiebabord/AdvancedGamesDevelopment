@@ -7,6 +7,11 @@ TagManager:
   - enemySpawn
   - playerSpawn
   - Radar
+  - PickUp
+  - Slider
+  - Text
+  - WroldGeo
+  - Fire
   layers:
   - Default
   - TransparentFX
