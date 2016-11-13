@@ -42,8 +42,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             character.transform.RotateAround(character.position, Vector3.up, yRot);
             camera.transform.RotateAround(camera.position, camera.right, -xRot);
             camera.transform.localRotation = ClampRotationAroundXAxis(camera.transform.localRotation);
-            weapon.RotateAround(weaponRotationPoint.position, camera.right, -xRot);
-           // UpdateCursorLock();
+            //weapon.RotateAround(weaponRotationPoint.position, camera.right, -xRot);
+            Vector3 eRot = camera.transform.rotation.eulerAngles;
+            eRot.y = 0;
+            eRot.z = 0;
+            weapon.transform.localRotation = Quaternion.Euler(eRot);
+            // UpdateCursorLock();
         }
 
         public void SetCursorLock(bool value)

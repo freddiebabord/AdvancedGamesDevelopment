@@ -13,20 +13,20 @@ public class RadarObject
 
 public class Radar : NetworkBehaviour {
 
-	GameObject radar;
+	public GameObject radar;
 
 	//Play with this map_scale to bring the objects either closer together or further away in the radar.
 	public float map_scale = 5.0f;
 
-	public static List<RadarObject> radar_objects = new List<RadarObject>();
+	public List<RadarObject> radar_objects = new List<RadarObject>();
 
 	void Start()
 	{
-		radar = GameObject.FindGameObjectWithTag("Radar");
+		//radar = GameObject.FindGameObjectWithTag("Radar");
 	}
 		
     //This will add objects to the radar.
-    public static void RegisterRadarObject(GameObject o, Image i)
+    public void RegisterRadarObject(GameObject o, Image i)
     {
         Image image = Instantiate(i);
         radar_objects.Add(new RadarObject() { owner = o, icon = image });
