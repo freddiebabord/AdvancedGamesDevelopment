@@ -640,6 +640,7 @@ GameObject:
   - 33: {fileID: 33000010450528552}
   - 23: {fileID: 23000012580081814}
   - 114: {fileID: 114000012100055828}
+  - 114: {fileID: 114000013239779152}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -3638,6 +3639,8 @@ MonoBehaviour:
   maxWeaponFireTime: 10
   weaponRechargeRate: 0.75
   beamLight: {fileID: 114000011490319938}
+  impactDecal: {fileID: 114000014173520016, guid: f0e14d37c6cef4055b6e1d4e7b89c192,
+    type: 2}
 --- !u!114 &114000012036239190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3791,6 +3794,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114000013239779152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011438949494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6fa5f2e7607459ba395388ad01d8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CubeMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114000013321977402
 MonoBehaviour:
   m_ObjectHideFlags: 1

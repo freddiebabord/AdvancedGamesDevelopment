@@ -109,7 +109,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if (!m_firing)
                 {
                     m_firing = player.GetButton("Fire");
-
+                    if(m_firing)
+                        Debug.Log("Fire");
                 }
             }
 
