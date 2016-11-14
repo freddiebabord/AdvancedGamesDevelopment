@@ -169,3 +169,5 @@ MonoBehaviour:
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   enemiesRemainigText: []
   playerOneAssigned: 0
+  GameOverPanel: {fileID: 0}
+  StatusPanel: {fileID: 0}

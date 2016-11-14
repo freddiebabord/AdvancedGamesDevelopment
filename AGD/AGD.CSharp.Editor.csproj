@@ -452,6 +452,7 @@
     <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\SlimeCutOut.shader" />
     <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Water.shader" />
     <None Include="Assets\Resources\Art\Shader\Beam.shader" />
+    <None Include="Assets\Resources\Art\Shader\GhostDemo.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleAlt.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
     <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

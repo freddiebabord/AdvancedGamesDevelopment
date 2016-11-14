@@ -43,14 +43,16 @@ public class GameManager : NetworkBehaviour {
 	public List<GameObject> enemyPrefabs = new List<GameObject>();
     public List<Text>enemiesRemainigText = new List<Text>();
     public bool playerOneAssigned = false;
+    public GameObject GameOverPanel, StatusPanel;
 
 	void Awake()
 	{
-		DontDestroyOnLoad(this);
-        if(instance != null)
-            Destroy(this.gameObject);
-        instance = this;
-	}
+        if (!instance)
+            instance = this;
+        else 
+            DestroyObject(gameObject);
+        DontDestroyOnLoad(this);
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -92,8 +94,10 @@ public class GameManager : NetworkBehaviour {
 			SpawnEnemies();
 		else
 		{
-		    foreach (Text text in enemiesRemainigText)
-                text.text = "GAME OVER!";
+            GameOverPanel.SetActive(true);
+            StatusPanel.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+		    Cursor.visible = true;
 		}
 	    waveComplete = false;
 	}
@@ -104,7 +108,7 @@ public class GameManager : NetworkBehaviour {
     }
 
     public void SpawnEnemies()
-	{
+    {
 	    if (!isServer)
 	        return;
 
@@ -136,5 +140,10 @@ public class GameManager : NetworkBehaviour {
 
     }
 
+
+    public void HideGameOverPanel()
+    {
+        GameOverPanel.SetActive(false);
+    }
     
 }
