@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.CrossPlatformInput;
+using Joystick = Rewired.Joystick;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -37,10 +38,40 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void Awake()
         {
             // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
-            if (GameManager.instance.playerOneAssigned)
-                playerID++;
-            player = ReInput.players.GetPlayer(playerID);
-            GameManager.instance.playerOneAssigned = true;
+            if (SettingsManager.instance.splitscreenDuelControllerMode)
+            {
+                if (GameManager.instance.playerOneAssigned)
+                    playerID++;
+                player = ReInput.players.GetPlayer(playerID);
+                player.isPlaying = true;
+                GameManager.instance.playerOneAssigned = true;
+            }
+            else
+            {
+                if (!GameManager.instance.playerOneAssigned)
+                    playerID = 2;
+                else
+                    playerID = 1;
+                player = ReInput.players.GetPlayer(playerID);
+                if (GameManager.instance.playerOneAssigned)
+                {
+                    foreach (var controller in ReInput.controllers.Controllers)
+                    {
+                        if (controller.type == ControllerType.Joystick)
+                            player.controllers.AddController(controller, true);
+                    }
+                }
+                else
+                {
+                    foreach (var controller in ReInput.controllers.Controllers)
+                    {
+                        if (controller.type != ControllerType.Joystick)
+                            player.controllers.AddController(controller, true);
+                    }
+                }
+                player.isPlaying = true;
+                GameManager.instance.playerOneAssigned = true;
+            }
         }
 
         private void Start()
@@ -66,7 +97,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!isLocalPlayer)
                 return;
 
-            if (player.GetButton("Menu"))
+            if (player.GetButtonDown("Menu"))
                 escapeMenu = !escapeMenu;
 
             if (!escapeMenu)
@@ -78,6 +109,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if (!m_firing)
                 {
                     m_firing = player.GetButton("Fire");
+
+                }
+            }
+
+            if (m_firing)
+            {
+                foreach (Joystick j in player.controllers.Joysticks)
+                {
+                    if (!j.supportsVibration) continue;
+                    j.SetVibration(0.8f, 0.8f);
+                }
+            }
+            else
+            {
+                foreach (Joystick j in player.controllers.Joysticks)
+                {
+                    if (!j.supportsVibration) continue;
+                    j.StopVibration();
                 }
             }
         }
@@ -99,8 +148,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 crouch = player.GetButton("Crouch");
                 m_Move = new Vector3(h, 0, v) / 2;
                 m_Move *= multiplyer;
-
-#if !MOBILE_INPUT
+                
                 // TODO: run input
                 // run speed multiplier
                 if (player.GetButton("Run") && allowRunning)
@@ -112,7 +160,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     m_isRunning = false;
                 }
-#endif
             }
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump, escapeMenu);

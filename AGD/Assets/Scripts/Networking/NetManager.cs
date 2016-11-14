@@ -63,7 +63,7 @@ public class NetManager :  LobbyManager{
 		{
 			GameManager.instance.enabled = true;
             //GameManager.instance.enemiesRemainigText = GameObject.Find("EnemiesRemaining").GetComponent<Text>();
-            GameManager.instance.SpawnEnemies();
+            StartCoroutine( GameManager.instance.SpawnFirstWaveWithDelay(5.0f));
 		    
 		}
 	}

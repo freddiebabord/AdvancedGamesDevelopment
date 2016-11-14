@@ -109,6 +109,9 @@
     <Reference Include="Editor.ReorderableList">
       <HintPath>Assets\Rotorz\Reorderable List Field\Editor\Editor.ReorderableList.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="AGD.CSharp.Plugins.csproj">
@@ -323,6 +326,43 @@
     <None Include="Assets\External\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
     <None Include="Assets\External\ShaderForge\Readme.txt" />
     <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
+    <None Include="Assets\Resources\Art\Assets\Barrel\BarrelShader.shader" />
+    <None Include="Assets\Resources\Art\Assets\Book\Book02\Project.xml" />
+    <None Include="Assets\Resources\Art\Assets\Book\Book02\previewer\Camera1.xml" />
+    <None Include="Assets\Resources\Art\Assets\Book\Book02\previewer\renderModes.xml" />
+    <None Include="Assets\Resources\Art\Assets\Candle Bunch\Emissive Colour.txt" />
+    <None Include="Assets\Resources\Art\Assets\Candle Single\Emissive Colour.txt" />
+    <None Include="Assets\Resources\Art\Assets\Emissive Colour.txt" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Readme.txt" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\AlphaBlended.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\AlphaBlendedNoSmooth.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\DistortionCullBack.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\DistortionCullOff.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\DistortionParticlesCutout.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullBack.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullOff.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCutOut.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Explosion.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\GlowAdditiveSimple.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\GlowAdditiveTwoColor.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\IceShaderDistortion.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\IceShaderFastSimple.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\IceVert.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Mobile\Distortion\DistortionCullBack.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Mobile\Distortion\DistortionCullOff.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Mobile\Distortion\DistortionParticlesCutout.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Mobile\IceShaderDistortion.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Mobile\IceVert.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Mobile\SlimeCutOut.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Mobile\Water.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\MultiplyDouble.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\ParticleAdd.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\ParticleAddNoSmooth.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Particles.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Projectors\ProjectorAdditive.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Projectors\ProjectorBlended.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\SlimeCutOut.shader" />
+    <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Water.shader" />
     <None Include="Assets\Resources\Art\Shader\Beam.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleAlt.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
@@ -473,6 +513,8 @@
     <None Include="Assets\Rotorz\Reorderable List Field\!README.txt" />
     <None Include="Assets\Rotorz\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Standard Assets\DeferredCustomLights\CustomLightShader.shader" />
+    <None Include="Assets\Standard Assets\DeferredCustomLights\_ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
