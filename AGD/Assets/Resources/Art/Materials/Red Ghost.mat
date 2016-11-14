@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Red Ghost
+  m_Shader: {fileID: 4800000, guid: f78d9e4dd515d2645a50e35ffcc16379, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _Diffuse
+      second:
+        m_Texture: {fileID: 2800000, guid: b66bceaf0cc0ace4e9bdc92f14bba709, type: 3}
+        m_Scale: {x: 16, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _InnerNormals
+      second:
+        m_Texture: {fileID: 2800000, guid: cf20bfced7e912046a9ce991a4d775ec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Normals
+      second:
+        m_Texture: {fileID: 2800000, guid: bbab0a6f7bae9cf42bf057d8ee2755f6, type: 3}
+        m_Scale: {x: 16, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Texture
+      second:
+        m_Texture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node108
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node116
+      second:
+        m_Texture: {fileID: 2800000, guid: 5fb7986dd6d0a8e4093ba82369dd6a4d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node117
+      second:
+        m_Texture: {fileID: 2800000, guid: 5fb7986dd6d0a8e4093ba82369dd6a4d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node72
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node85
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _BulgeScale
+      second: 0.2
+    - first:
+        name: _BulgeShape
+      second: 5
+    - first:
+        name: _EdgeBlend
+      second: 1.69
+    - first:
+        name: _GlowIntensity
+      second: 8.51
+    - first:
+        name: _Intensity
+      second: 0.871
+    - first:
+        name: _Magnitude
+      second: 0.23076925
+    - first:
+        name: _PanSpeed
+      second: 0
+    - first:
+        name: _Sharpness
+      second: 2.6153843
+    - first:
+        name: _Value
+      second: 5
+    m_Colors:
+    - first:
+        name: _Colour
+      second: {r: 0.5, g: 0, b: 0, a: 1}
+    - first:
+        name: _GlowColor
+      second: {r: 0.1102941, g: 0.41095343, b: 1, a: 1}

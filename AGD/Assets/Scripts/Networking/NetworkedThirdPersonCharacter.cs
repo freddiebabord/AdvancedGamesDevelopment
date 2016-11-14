@@ -334,7 +334,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             return;
 	    }
 		Debug.Log(fire);
-        beamLight.gameObject.SetActive(true);
+        beamLight.gameObject.SetActive(false);
         //beamMaterial.SetFloat("Intensity", 1-(maxWeaponFireTime / currentWeaponFireTime));
         Ray ray = new Ray(m_Camera.transform.position, weaponSpawnPoint.forward);
 		RaycastHit hit;
@@ -352,9 +352,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             beamLight.transform.Translate(beamLight.transform.right * -halfDist);
             beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
 
-            if (hit.transform.parent.GetComponent<GhostBehaviour>())
+            if (hit.transform.parent.parent.GetComponent<GhostBehaviour>())
             {
-                hit.transform.parent.GetComponent<GhostBehaviour>().TakeDamage(unID, 5);
+                hit.transform.parent.parent.GetComponent<GhostBehaviour>().TakeDamage(unID, 5);
                // Cmd_DestoryGhost(hit.transform.gameObject);
             }
             else

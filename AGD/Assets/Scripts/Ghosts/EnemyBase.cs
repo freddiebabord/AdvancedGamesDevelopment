@@ -7,33 +7,38 @@ public class EnemyBase : NetworkBehaviour {
     public enum EnemyMap { Higher, Lower, Same, Nullus };
     public EnemyMap enemyMap = EnemyMap.Nullus;
     public bool firstPass = false;
+    public float maxFloatHeight = 50f;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 	[SerializeField] private float walkRadius = 10;
 	[SyncVar][SerializeField] public Vector3 target = Vector3.zero;
+    GhostBodyAdjustments ghostPosition;
 
 
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
+        ghostPosition = GetComponentInChildren<GhostBodyAdjustments>();
 	}
 	
 	// Update is called once per frame on the server
 	void Update () {
 		if(!isServer)
 			return;
-		
-		// TODO: Ad actual logic
-		//Currently gets a random point on the navmesh
-		if(!agent.hasPath)
-		{
-			Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
-			randomDirection += transform.position;
-			NavMeshHit hit;
-			NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
-			Vector3 finalPosition = hit.position;
-			target = finalPosition;
-			RpcSetPosition(target);
-		}
+
+
+        //Currently gets a random point on the navmesh
+        if (!agent.hasPath)
+        {
+            Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
+            randomDirection += transform.position;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
+            Vector3 finalPosition = hit.position;
+            float randY = Random.Range(0, maxFloatHeight);
+            target = new Vector3(finalPosition.x, randY, finalPosition.z);
+            RpcSetPosition(target);
+        }
+        
 	}
 
 	//Set the target of the ai agent across the network
@@ -41,6 +46,7 @@ public class EnemyBase : NetworkBehaviour {
 	public void RpcSetPosition(Vector3 position)
 	{
 		target = position;
+       // Vector3.Slerp(transform.position, position, );
 		agent.SetDestination(target);
 	}
 

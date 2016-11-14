@@ -51,12 +51,17 @@ public class SpokkticleEditorWindow : EditorWindow {
 			doQuickStart = true;
 			EditorApplication.isPlaying = true;
 		}
+        GUILayout.FlexibleSpace();
 		if(GUILayout.Button("Jump To Scenes Folder"))
 			Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(@"Assets/Resources/Scenes/Menu.unity");
-		if(GUILayout.Button("Jump To Art Folder"))
+        if (GUILayout.Button("Jump To Prefabs Folder"))
+            Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(@"Assets/Resources/Prefabs/UI");
+        if (GUILayout.Button("Jump To Art Folder"))
 			Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(@"Assets/Resources/Art/Assets");
 		if(GUILayout.Button("Jump To Post Processing"))
 			Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(@"Assets/Resources/Standard Assets/PostProcessing/Default.asset");
-		GUILayout.EndVertical();
+        if (GUILayout.Button("Jump To Scripts"))
+            Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(@"Assets/Scripts/Managers");
+        GUILayout.EndVertical();
     }
 }
