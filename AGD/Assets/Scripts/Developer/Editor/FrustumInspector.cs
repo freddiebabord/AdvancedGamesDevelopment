@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
 
 [CustomEditor(typeof(Frustum))]
 public class FrustumInspector : Editor {
@@ -42,7 +41,7 @@ public class FrustumInspector : Editor {
                 EditorGUI.indentLevel--;
             }
             myTarget.IsAggravated = EditorGUILayout.Foldout(myTarget.IsAggravated, "Aggravated");
-            if (myTarget.IsAggravated)
+          /*  if (myTarget.IsAggravated)
             {
                 EditorGUI.indentLevel++;
                 EditorGUILayout.BeginHorizontal();
@@ -65,7 +64,7 @@ public class FrustumInspector : Editor {
                 EditorGUILayout.Space();
                 myTarget.aggro.distance = EditorGUILayout.FloatField("Distance", myTarget.aggro.distance);
                 EditorGUI.indentLevel--;
-            }
+            }*/
             EditorGUI.indentLevel--;
             EditorGUILayout.Space();
         }

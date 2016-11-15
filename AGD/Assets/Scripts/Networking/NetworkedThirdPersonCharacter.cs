@@ -56,6 +56,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     public float weaponRechargeRate = 0.75f;
     private bool isFiring = false;
     public CustomLight beamLight;
+	public Decal impactDecal;
 
     void Start()
 	{
@@ -323,8 +324,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	void Rpc_Fire(bool fire, int unID)
 	{
 	    isFiring = fire;
-
-        if (!fire || currentWeaponFireTime >= maxWeaponFireTime)
+		
+        if (!fire /*|| currentWeaponFireTime >= maxWeaponFireTime*/)
 	    {
 	        lineRenderer.gameObject.SetActive(false);
             //spawnedParticleSystem.gameObject.SetActive(false);
@@ -332,8 +333,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             StopParticleSystem();
             return;
 	    }
-        beamLight.gameObject.SetActive(true);
-        beamMaterial.SetFloat("Intensity", 1-(maxWeaponFireTime / currentWeaponFireTime));
+		Debug.Log(fire);
+        beamLight.gameObject.SetActive(false);
+        //beamMaterial.SetFloat("Intensity", 1-(maxWeaponFireTime / currentWeaponFireTime));
         Ray ray = new Ray(m_Camera.transform.position, weaponSpawnPoint.forward);
 		RaycastHit hit;
 		if(Physics.Raycast(ray, out hit, 100))
@@ -350,9 +352,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             beamLight.transform.Translate(beamLight.transform.right * -halfDist);
             beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
 
-            if (hit.transform.parent.GetComponent<GhostBehaviour>())
+            if (hit.transform.parent.parent.GetComponent<GhostBehaviour>())
             {
-                hit.transform.parent.GetComponent<GhostBehaviour>().TakeDamage(unID, 5);
+                hit.transform.parent.parent.GetComponent<GhostBehaviour>().TakeDamage(unID, 5);
                // Cmd_DestoryGhost(hit.transform.gameObject);
             }
             else
@@ -361,7 +363,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 Vector3 norm = weaponSpawnPoint.position - hit.point;
                 norm.Normalize();
                 spawnedParticleSystem.position = hit.point + norm * 0.1f;
-                
+                // if(!hit.transform.gameObject.CompareTag("Player"))
+				// {
+				// 	Instantiate(impactDecal, hit.transform.position, hit.transform.rotation);
+				// }
             }
 		}
 		else

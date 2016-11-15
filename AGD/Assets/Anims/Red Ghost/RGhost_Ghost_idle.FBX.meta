@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 1b1d060b88b4ddc48beff4ee29631b5c
+timeCreated: 1479142801
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Brow_L
+    100002: Brow_L_end
+    100004: Brow_R
+    100006: Brow_R_end
+    100008: C_Brow_L
+    100010: C_Brow_R
+    100012: C_Hand_L
+    100014: C_Hand_R
+    100016: C_Head
+    100018: C_Index_L_1
+    100020: C_Index_L_2
+    100022: C_index_R_1
+    100024: C_index_R_2
+    100026: C_Mid_L_1
+    100028: C_Mid_L_2
+    100030: C_Mid_R_1
+    100032: C_Mid_R_2
+    100034: C_Ponytail_1
+    100036: C_Ponytail_2
+    100038: C_Root
+    100040: C_Tail_1
+    100042: C_Tail_2
+    100044: C_Thumb_L_1
+    100046: C_Thumb_L_2
+    100048: C_Thumb_R_1
+    100050: C_Thumb_R_2
+    100052: H_Index_L_1
+    100054: H_Index_L_2
+    100056: H_Index_R_1
+    100058: H_Index_R_2
+    100060: H_Mid_L_1
+    100062: H_Mid_L_2
+    100064: H_Mid_R_1
+    100066: H_Mid_R_2
+    100068: H_PonyTail_1
+    100070: H_Ponytail_2
+    100072: H_Tail_1
+    100074: H_Tail_2
+    100076: H_Thumb_L_1
+    100078: H_Thumb_L_2
+    100080: H_Thumb_R_1
+    100082: H_Thumb_R_2
+    100084: Hand_L
+    100086: Hand_R
+    100088: Head
+    100090: index_Finger_L_1
+    100092: index_Finger_L_2
+    100094: index_Finger_L_3
+    100096: index_Finger_L_end
+    100098: index_Finger_R_1
+    100100: index_Finger_R_2
+    100102: index_Finger_R_3
+    100104: index_Finger_R_end
+    100106: Mid_finger_L_1
+    100108: Mid_finger_L_2
+    100110: Mid_finger_L_3
+    100112: Mid_finger_L_end
+    100114: Mid_finger_R_1
+    100116: Mid_finger_R_2
+    100118: Mid_finger_R_3
+    100120: Mid_finger_R_end
+    100122: Pelvis
+    100124: PonyTail_1
+    100126: PonyTail_2
+    100128: PonyTail_3
+    100130: PonyTail_4
+    100132: PonyTail_5
+    100134: PonyTail_6
+    100136: PonyTail_End
+    100138: //RootNode
+    100140: RGhost_Mesh
+    100142: Tail_1
+    100144: Tail_2
+    100146: Tail_3
+    100148: Tail_4
+    100150: Tail_5
+    100152: Tail_6
+    100154: Tail_7
+    100156: Tail_8
+    100158: Tail_end
+    100160: thumb_Finger_L_1
+    100162: thumb_Finger_L_2
+    100164: thumb_Finger_L_3
+    100166: thumb_Finger_L_end
+    100168: thumb_Finger_R_1
+    100170: thumb_Finger_R_2
+    100172: thumb_Finger_R_3
+    100174: thumb_Finger_R_end
+    400000: Brow_L
+    400002: Brow_L_end
+    400004: Brow_R
+    400006: Brow_R_end
+    400008: C_Brow_L
+    400010: C_Brow_R
+    400012: C_Hand_L
+    400014: C_Hand_R
+    400016: C_Head
+    400018: C_Index_L_1
+    400020: C_Index_L_2
+    400022: C_index_R_1
+    400024: C_index_R_2
+    400026: C_Mid_L_1
+    400028: C_Mid_L_2
+    400030: C_Mid_R_1
+    400032: C_Mid_R_2
+    400034: C_Ponytail_1
+    400036: C_Ponytail_2
+    400038: C_Root
+    400040: C_Tail_1
+    400042: C_Tail_2
+    400044: C_Thumb_L_1
+    400046: C_Thumb_L_2
+    400048: C_Thumb_R_1
+    400050: C_Thumb_R_2
+    400052: H_Index_L_1
+    400054: H_Index_L_2
+    400056: H_Index_R_1
+    400058: H_Index_R_2
+    400060: H_Mid_L_1
+    400062: H_Mid_L_2
+    400064: H_Mid_R_1
+    400066: H_Mid_R_2
+    400068: H_PonyTail_1
+    400070: H_Ponytail_2
+    400072: H_Tail_1
+    400074: H_Tail_2
+    400076: H_Thumb_L_1
+    400078: H_Thumb_L_2
+    400080: H_Thumb_R_1
+    400082: H_Thumb_R_2
+    400084: Hand_L
+    400086: Hand_R
+    400088: Head
+    400090: index_Finger_L_1
+    400092: index_Finger_L_2
+    400094: index_Finger_L_3
+    400096: index_Finger_L_end
+    400098: index_Finger_R_1
+    400100: index_Finger_R_2
+    400102: index_Finger_R_3
+    400104: index_Finger_R_end
+    400106: Mid_finger_L_1
+    400108: Mid_finger_L_2
+    400110: Mid_finger_L_3
+    400112: Mid_finger_L_end
+    400114: Mid_finger_R_1
+    400116: Mid_finger_R_2
+    400118: Mid_finger_R_3
+    400120: Mid_finger_R_end
+    400122: Pelvis
+    400124: PonyTail_1
+    400126: PonyTail_2
+    400128: PonyTail_3
+    400130: PonyTail_4
+    400132: PonyTail_5
+    400134: PonyTail_6
+    400136: PonyTail_End
+    400138: //RootNode
+    400140: RGhost_Mesh
+    400142: Tail_1
+    400144: Tail_2
+    400146: Tail_3
+    400148: Tail_4
+    400150: Tail_5
+    400152: Tail_6
+    400154: Tail_7
+    400156: Tail_8
+    400158: Tail_end
+    400160: thumb_Finger_L_1
+    400162: thumb_Finger_L_2
+    400164: thumb_Finger_L_3
+    400166: thumb_Finger_L_end
+    400168: thumb_Finger_R_1
+    400170: thumb_Finger_R_2
+    400172: thumb_Finger_R_3
+    400174: thumb_Finger_R_end
+    4300000: RGhost_Mesh
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: RGhost_Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: C_Root
+        weight: 1
+      - path: C_Root/C_Head
+        weight: 1
+      - path: C_Root/C_Head/C_Brow_L
+        weight: 1
+      - path: C_Root/C_Head/C_Brow_L/Brow_L
+        weight: 1
+      - path: C_Root/C_Head/C_Brow_L/Brow_L/Brow_L_end
+        weight: 1
+      - path: C_Root/C_Head/C_Brow_R
+        weight: 1
+      - path: C_Root/C_Head/C_Brow_R/Brow_R
+        weight: 1
+      - path: C_Root/C_Head/C_Brow_R/Brow_R/Brow_R_end
+        weight: 1
+      - path: C_Root/C_Head/C_Ponytail_1
+        weight: 1
+      - path: C_Root/C_Head/C_Ponytail_1/C_Ponytail_2
+        weight: 1
+      - path: C_Root/C_Head/C_Ponytail_1/C_Ponytail_2/H_Ponytail_2
+        weight: 1
+      - path: C_Root/C_Head/C_Ponytail_1/H_PonyTail_1
+        weight: 1
+      - path: C_Root/C_Head/Head
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Index_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Index_L_1/C_Index_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Index_L_1/C_Index_L_2/H_Index_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Index_L_1/H_Index_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Mid_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Mid_L_1/C_Mid_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Mid_L_1/C_Mid_L_2/H_Mid_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Mid_L_1/H_Mid_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Thumb_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Thumb_L_1/C_Thumb_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Thumb_L_1/C_Thumb_L_2/H_Thumb_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/C_Thumb_L_1/H_Thumb_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/index_Finger_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/index_Finger_L_1/index_Finger_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/index_Finger_L_1/index_Finger_L_2/index_Finger_L_3
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/index_Finger_L_1/index_Finger_L_2/index_Finger_L_3/index_Finger_L_end
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/Mid_finger_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/Mid_finger_L_1/Mid_finger_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/Mid_finger_L_1/Mid_finger_L_2/Mid_finger_L_3
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/Mid_finger_L_1/Mid_finger_L_2/Mid_finger_L_3/Mid_finger_L_end
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/thumb_Finger_L_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/thumb_Finger_L_1/thumb_Finger_L_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/thumb_Finger_L_1/thumb_Finger_L_2/thumb_Finger_L_3
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_L/Hand_L/thumb_Finger_L_1/thumb_Finger_L_2/thumb_Finger_L_3/thumb_Finger_L_end
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_index_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_index_R_1/C_index_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_index_R_1/C_index_R_2/H_Index_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_index_R_1/H_Index_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_Mid_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_Mid_R_1/C_Mid_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_Mid_R_1/C_Mid_R_2/H_Mid_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_Mid_R_1/H_Mid_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_Thumb_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_Thumb_R_1/C_Thumb_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_Thumb_R_1/C_Thumb_R_2/H_Thumb_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/C_Thumb_R_1/H_Thumb_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/index_Finger_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/index_Finger_R_1/index_Finger_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/index_Finger_R_1/index_Finger_R_2/index_Finger_R_3
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/index_Finger_R_1/index_Finger_R_2/index_Finger_R_3/index_Finger_R_end
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/Mid_finger_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/Mid_finger_R_1/Mid_finger_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/Mid_finger_R_1/Mid_finger_R_2/Mid_finger_R_3
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/Mid_finger_R_1/Mid_finger_R_2/Mid_finger_R_3/Mid_finger_R_end
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/thumb_Finger_R_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/thumb_Finger_R_1/thumb_Finger_R_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/thumb_Finger_R_1/thumb_Finger_R_2/thumb_Finger_R_3
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/C_Hand_R/Hand_R/thumb_Finger_R_1/thumb_Finger_R_2/thumb_Finger_R_3/thumb_Finger_R_end
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1/Tail_2
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1/Tail_2/Tail_3
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1/Tail_2/Tail_3/Tail_4
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1/Tail_2/Tail_3/Tail_4/Tail_5
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1/Tail_2/Tail_3/Tail_4/Tail_5/Tail_6
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1/Tail_2/Tail_3/Tail_4/Tail_5/Tail_6/Tail_7
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1/Tail_2/Tail_3/Tail_4/Tail_5/Tail_6/Tail_7/Tail_8
+        weight: 1
+      - path: C_Root/C_Head/Head/Pelvis/Tail_1/Tail_2/Tail_3/Tail_4/Tail_5/Tail_6/Tail_7/Tail_8/Tail_end
+        weight: 1
+      - path: C_Root/C_Head/Head/PonyTail_1
+        weight: 1
+      - path: C_Root/C_Head/Head/PonyTail_1/PonyTail_2
+        weight: 1
+      - path: C_Root/C_Head/Head/PonyTail_1/PonyTail_2/PonyTail_3
+        weight: 1
+      - path: C_Root/C_Head/Head/PonyTail_1/PonyTail_2/PonyTail_3/PonyTail_4
+        weight: 1
+      - path: C_Root/C_Head/Head/PonyTail_1/PonyTail_2/PonyTail_3/PonyTail_4/PonyTail_5
+        weight: 1
+      - path: C_Root/C_Head/Head/PonyTail_1/PonyTail_2/PonyTail_3/PonyTail_4/PonyTail_5/PonyTail_6
+        weight: 1
+      - path: C_Root/C_Head/Head/PonyTail_1/PonyTail_2/PonyTail_3/PonyTail_4/PonyTail_5/PonyTail_6/PonyTail_End
+        weight: 1
+      - path: C_Root/C_Tail_1
+        weight: 1
+      - path: C_Root/C_Tail_1/C_Tail_2
+        weight: 1
+      - path: C_Root/C_Tail_1/C_Tail_2/H_Tail_2
+        weight: 1
+      - path: C_Root/C_Tail_1/H_Tail_1
+        weight: 1
+      - path: RGhost_Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.Linq;
+using Rewired;
 using UnityEngine.UI;
 
 public enum	EnemyType
@@ -43,13 +44,18 @@ public class GameManager : NetworkBehaviour {
 	public List<GameObject> enemyPrefabs = new List<GameObject>();
     public List<Text>enemiesRemainigText = new List<Text>();
     public bool playerOneAssigned = false;
+    public GameObject GameOverPanel, StatusPanel;
+    public bool firstWave = false;
 
 	void Awake()
 	{
-		DontDestroyOnLoad(this);
-        if(instance != null)
-            Destroy(this.gameObject);
-        instance = this;
+        if (!instance)
+            instance = this;
+        else 
+            DestroyObject(gameObject);
+        DontDestroyOnLoad(this);
+
+	    ReWiredAwake();
 	}
 
 	// Use this for initialization
@@ -64,7 +70,7 @@ public class GameManager : NetworkBehaviour {
 		if(!isServer)
 			return;
 		
-		if(enemyCount <= 0 && !waveComplete)
+		if(enemyCount <= 0 && !waveComplete && firstWave)
 			StartCoroutine(WaveWaitTimer());
 	}
 
@@ -92,8 +98,10 @@ public class GameManager : NetworkBehaviour {
 			SpawnEnemies();
 		else
 		{
-		    foreach (Text text in enemiesRemainigText)
-                text.text = "GAME OVER!";
+            //GameOverPanel.SetActive(true);
+            //StatusPanel.SetActive(true);
+            //Cursor.lockState = CursorLockMode.None;
+		    //Cursor.visible = true;
 		}
 	    waveComplete = false;
 	}
@@ -104,10 +112,11 @@ public class GameManager : NetworkBehaviour {
     }
 
     public void SpawnEnemies()
-	{
+    {
 	    if (!isServer)
 	        return;
-
+        if (!firstWave)
+            firstWave = true;
 		var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
 		var enemySpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("enemySpawn")).ToList();
 		for(int i = 0; i < waves[currentWave].enemyDef.Count; ++i)
@@ -136,5 +145,44 @@ public class GameManager : NetworkBehaviour {
 
     }
 
-    
+
+    public void HideGameOverPanel()
+    {
+        GameOverPanel.SetActive(false);
+    }
+
+
+    void ReWiredAwake()
+    {
+        // Listen for controller connection events
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
+
+        // Assign each Joystick to a Player initially
+        foreach (Joystick j in ReInput.controllers.Joysticks)
+        {
+            if (ReInput.controllers.IsJoystickAssigned(j)) continue; // Joystick is already assigned
+
+            // Assign Joystick to first Player that doesn't have any assigned
+            AssignJoystickToNextOpenPlayer(j);
+        }
+    }
+
+    // This will be called when a controller is connected
+    void OnControllerConnected(ControllerStatusChangedEventArgs args)
+    {
+        if (args.controllerType != ControllerType.Joystick) return; // skip if this isn't a Joystick
+
+        // Assign Joystick to first Player that doesn't have any assigned
+        AssignJoystickToNextOpenPlayer(ReInput.controllers.GetJoystick(args.controllerId));
+    }
+
+    void AssignJoystickToNextOpenPlayer(Joystick j)
+    {
+        foreach (Player p in ReInput.players.Players)
+        {
+            if (p.controllers.joystickCount > 0) continue; // player already has a joystick
+            p.controllers.AddController(j, true); // assign joystick to player
+            return;
+        }
+    }
 }
