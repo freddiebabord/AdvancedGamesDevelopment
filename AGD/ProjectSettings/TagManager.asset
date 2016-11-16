@@ -12,6 +12,7 @@ TagManager:
   - Text
   - WroldGeo
   - Fire
+  - Parent
   layers:
   - Default
   - TransparentFX
