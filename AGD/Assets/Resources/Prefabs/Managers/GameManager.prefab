@@ -133,35 +133,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemyDef:
-    - enemySpawner: 0
+    - enemySpawner: 1
       quantity: 5
-    - enemySpawner: 4
-      quantity: 4
   - enemyDef:
+    - enemySpawner: 1
+      quantity: 6
     - enemySpawner: 0
-      quantity: 5
-    - enemySpawner: 4
-      quantity: 4
-  - enemyDef:
-    - enemySpawner: 0
-      quantity: 5
-    - enemySpawner: 4
-      quantity: 4
-  - enemyDef:
-    - enemySpawner: 0
-      quantity: 5
-    - enemySpawner: 4
-      quantity: 4
-  - enemyDef:
-    - enemySpawner: 0
-      quantity: 5
-    - enemySpawner: 4
-      quantity: 4
+      quantity: 3
   currentWave: 0
   waveSleepTimer: 10
   enemyPrefabs:
-  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
-  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  - {fileID: 1000010856007744, guid: 54163254686d1824c8b3108028ed84ce, type: 2}
+  - {fileID: 1000010856007744, guid: 0a24dbede6fa01a409e88eb2f997ab07, type: 2}
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
@@ -169,3 +152,6 @@ MonoBehaviour:
   - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
   enemiesRemainigText: []
   playerOneAssigned: 0
+  GameOverPanel: {fileID: 0}
+  StatusPanel: {fileID: 0}
+  firstWave: 0

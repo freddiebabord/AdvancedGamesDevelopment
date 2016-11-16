@@ -32,46 +32,51 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public bool allowRunning = true;
         public bool escapeMenu = false;
 
-        public int playerID; // Rewired playerid
+        public int playerID = 1; // Rewired playerid
         private Player player; // The Rewired Player
 
         void Awake()
         {
             // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
-            if (SettingsManager.instance.splitscreenDuelControllerMode)
-            {
-                if (GameManager.instance.playerOneAssigned)
-                    playerID++;
-                player = ReInput.players.GetPlayer(playerID);
-                player.isPlaying = true;
-                GameManager.instance.playerOneAssigned = true;
-            }
-            else
-            {
-                if (!GameManager.instance.playerOneAssigned)
-                    playerID = 2;
-                else
-                    playerID = 1;
-                player = ReInput.players.GetPlayer(playerID);
-                if (GameManager.instance.playerOneAssigned)
-                {
-                    foreach (var controller in ReInput.controllers.Controllers)
-                    {
-                        if (controller.type == ControllerType.Joystick)
-                            player.controllers.AddController(controller, true);
-                    }
-                }
-                else
-                {
-                    foreach (var controller in ReInput.controllers.Controllers)
-                    {
-                        if (controller.type != ControllerType.Joystick)
-                            player.controllers.AddController(controller, true);
-                    }
-                }
-                player.isPlaying = true;
-                GameManager.instance.playerOneAssigned = true;
-            }
+            if (GameManager.instance.playerOneAssigned)
+                playerID++;
+            player = ReInput.players.GetPlayer(playerID);
+            player.isPlaying = true;
+            GameManager.instance.playerOneAssigned = true;
+            //if (SettingsManager.instance.splitscreenDuelControllerMode)
+            //{
+            //    if (GameManager.instance.playerOneAssigned)
+            //        playerID++;
+            //    player = ReInput.players.GetPlayer(playerID);
+            //    player.isPlaying = true;
+            //    GameManager.instance.playerOneAssigned = true;
+            //}
+            //else
+            //{
+            //    if (!GameManager.instance.playerOneAssigned)
+            //        playerID = 2;
+            //    else
+            //        playerID = 1;
+            //    player = ReInput.players.GetPlayer(playerID);
+            //    if (GameManager.instance.playerOneAssigned)
+            //    {
+            //        foreach (var controller in ReInput.controllers.Controllers)
+            //        {
+            //            if (controller.type == ControllerType.Joystick)
+            //                player.controllers.AddController(controller, true);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        foreach (var controller in ReInput.controllers.Controllers)
+            //        {
+            //            if (controller.type != ControllerType.Joystick)
+            //                player.controllers.AddController(controller, true);
+            //        }
+            //    }
+            //    player.isPlaying = true;
+            //    GameManager.instance.playerOneAssigned = true;
+            //}
         }
 
         private void Start()
@@ -109,7 +114,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if (!m_firing)
                 {
                     m_firing = player.GetButton("Fire");
-
+                    if(m_firing)
+                        Debug.Log("Fire");
                 }
             }
 
@@ -137,6 +143,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (!isLocalPlayer)
                 return;
+
+           
             bool crouch = false;
             if (!escapeMenu)
             {

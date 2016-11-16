@@ -29,6 +29,7 @@ public class SettingsManager : MonoBehaviour
             Destroy(this.gameObject);
         instance = this;
         DontDestroyOnLoad(this);
+        QualitySettings.SetQualityLevel(0, true);
     }
 
     public SplitscreenManager.SplitscreenMode splitscreenMode = SplitscreenManager.SplitscreenMode.Horizontal;
