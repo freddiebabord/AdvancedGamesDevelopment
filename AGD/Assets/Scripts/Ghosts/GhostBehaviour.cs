@@ -59,6 +59,8 @@ public class GhostBehaviour : NetworkBehaviour
             return;
         if (currentHealth <= 0)
         {
+            //for(int i = 0; i < damageFromPlayers.Count; ++i)
+            //    GameManager.instance.PostScoreToScoreTable(i, damageFromPlayers[i] / score);
             Cmd_RemoveRadarObj();
         }
     }

@@ -41,6 +41,7 @@ public class NetManager :  LobbyManager{
 		pl.name = player.playerName;
 		pl.playerName = player.playerName;
 		pl.playerColour = player.playerColor;
+        pl.playerID = playerControllerId;
 		return go;
 
 	}
