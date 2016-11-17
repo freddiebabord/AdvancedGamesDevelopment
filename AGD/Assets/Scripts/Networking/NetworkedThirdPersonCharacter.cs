@@ -33,12 +33,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	Vector3 m_CapsuleCenter;
 	CapsuleCollider m_Capsule;
 	bool m_Crouching;
+    [SyncVar] public int playerID;
+	[SyncVar] public string playerName;
+	[SyncVar] public Color playerColour;
+	[SyncVar] public float playerHealth;
+    [SyncVar] public int playerScore;
 
-	[SyncVar]public string playerName;
-	[SyncVar]public Color playerColour;
-	[SyncVar]public float playerHealth;
-
-	LineRenderer lineRenderer;
+    LineRenderer lineRenderer;
 	public Transform weaponSpawnPoint;
 	private Camera m_Camera;
     public GameObject tempDecalParticleSystem;
@@ -57,6 +58,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     private bool isFiring = false;
     public CustomLight beamLight;
 	public Decal impactDecal;
+    
 
     void Start()
 	{
@@ -74,7 +76,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
         GetComponentInChildren<Renderer>().material.color = playerColour;
 
-        if(!isLocalPlayer)    
+        playerScore = 0;
+
+        if (!isLocalPlayer)    
             m_Camera.gameObject.SetActive(false);
 
         if (isLocalPlayer)
@@ -363,16 +367,11 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 Vector3 norm = weaponSpawnPoint.position - hit.point;
                 norm.Normalize();
                 spawnedParticleSystem.position = hit.point + norm * 0.1f;
-                // if(!hit.transform.gameObject.CompareTag("Player"))
-				// {
-				// 	Instantiate(impactDecal, hit.transform.position, hit.transform.rotation);
-				// }
             }
 		}
 		else
 		{
             lineRenderer.gameObject.SetActive(true);
-            //spawnedParticleSystem.gameObject.SetActive(false);
 		    StopParticleSystem();
             lineRenderer.SetPosition(0, weaponSpawnPoint.position);
             lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);

@@ -323,6 +323,7 @@
     <Compile Include="Assets\Scripts\Ghosts\GhostBehaviour.cs" />
     <Compile Include="Assets\Scripts\Ghosts\GhostBehaviourLocal.cs" />
     <Compile Include="Assets\Scripts\Ghosts\GhostBodyAdjustments.cs" />
+    <Compile Include="Assets\Scripts\LockRotation.cs" />
     <Compile Include="Assets\Scripts\LookAtHelper.cs" />
     <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Managers\CameraManager.cs" />
