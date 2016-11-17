@@ -3,32 +3,32 @@ using System.Collections;
 
 public class CameraManager : MonoBehaviour
 {
-    public Camera camera;
+    public Camera targetCamera;
     private Vector3 cameraOriginalStartPosition;
 
     void Start()
     {
-        cameraOriginalStartPosition = camera.transform.localPosition;
+        cameraOriginalStartPosition = targetCamera.transform.localPosition;
     }
 
     void Update()
     {
-        Vector3 bottomLeft = camera.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(0, 0, 0)));
-        Vector3 topLeft = camera.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(0, 1, 0)));
-        Vector3 topRight = camera.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(1, 1, 0)));
-        Vector3 bottomRight = camera.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(1, 0, 0)));
-        camera.transform.localPosition = HandleCollisionZoom(cameraOriginalStartPosition, transform.localPosition, 1.0f, new [] {bottomLeft, bottomRight, topLeft, topRight});
+        Vector3 bottomLeft = targetCamera.transform.InverseTransformPoint(targetCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)));
+        Vector3 topLeft = targetCamera.transform.InverseTransformPoint(targetCamera.ScreenToWorldPoint(new Vector3(0, 1, 0)));
+        Vector3 topRight = targetCamera.transform.InverseTransformPoint(targetCamera.ScreenToWorldPoint(new Vector3(1, 1, 0)));
+        Vector3 bottomRight = targetCamera.transform.InverseTransformPoint(targetCamera.ScreenToWorldPoint(new Vector3(1, 0, 0)));
+        targetCamera.transform.localPosition = HandleCollisionZoom(cameraOriginalStartPosition, transform.localPosition, 1.0f, new [] {bottomLeft, bottomRight, topLeft, topRight});
         
     }
 
-    // returns a new camera position
+    // returns a new targetCamera position
     Vector3 HandleCollisionZoom(Vector3 camPos, Vector3 targetPos, float minOffsetDist, Vector3[] frustumNearCorners)
     {
         float offsetDist = (targetPos - camPos).magnitude;
         float raycastLength = offsetDist - minOffsetDist;
         if (raycastLength < 0.0f)
         {
-            // camera is already too near the lookat target
+            // targetCamera is already too near the lookat target
             return camPos;
         }
 

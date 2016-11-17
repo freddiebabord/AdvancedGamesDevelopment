@@ -368,7 +368,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
             if (hit.transform.GetComponentInParent<GhostBehaviour>())
             {
-                hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(unID, 5);
+                hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, 5);
                // Cmd_DestoryGhost(hit.transform.gameObject);
             }
             else
