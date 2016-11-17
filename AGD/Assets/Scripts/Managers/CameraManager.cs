@@ -3,82 +3,63 @@ using System.Collections;
 
 public class CameraManager : MonoBehaviour
 {
+    public Camera camera;
+    private Vector3 cameraOriginalStartPosition;
 
-    private Vector3 startPosition;
-    private Quaternion startRotation;
-    private bool withinPlayer, moveCamera = false, resetCamera = false;
-    [SerializeField]private Transform headTransform;
-    private float colliderRadius;
-    private Vector3 targetPosition;
-
-	// Use this for initialization
-	void Start ()
-	{
-	    startPosition = transform.localPosition;
-	    startRotation = transform.rotation;
-	    colliderRadius = GetComponent<SphereCollider>().radius + 0.01f;
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    if (resetCamera)
-	    {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, startPosition, 1*Time.deltaTime);
-            Debug.Log(Vector3.Distance(transform.localPosition, startPosition));
-	        if (Vector3.Distance(transform.localPosition, startPosition) < 0.15f)
-	            resetCamera = false;
-	    }
-        if (moveCamera)
-        {
-            Vector3 direction = headTransform.position - transform.position;
-            direction.Normalize();
-            transform.position += direction * 0.01f;
-
-            if (Vector3.Distance(transform.position, headTransform.position) < 0.15f)
-            {
-                moveCamera = false;
-                resetCamera = true;
-            }
-        }        
+    void Start()
+    {
+        cameraOriginalStartPosition = camera.transform.localPosition;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        Ray ray = new Ray(transform.position + transform.forward * colliderRadius, headTransform.position - transform.position);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 30))
-        {
-            if (!hit.transform.CompareTag("Player"))
-            {
-                moveCamera = true;
-            }
-        }        
-        Debug.DrawRay(transform.position + transform.forward * colliderRadius, headTransform.position - transform.position, Color.blue);
+        Vector3 bottomLeft = camera.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(0, 0, 0)));
+        Vector3 topLeft = camera.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(0, 1, 0)));
+        Vector3 topRight = camera.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(1, 1, 0)));
+        Vector3 bottomRight = camera.transform.InverseTransformPoint(camera.ScreenToWorldPoint(new Vector3(1, 0, 0)));
+        camera.transform.localPosition = HandleCollisionZoom(cameraOriginalStartPosition, transform.localPosition, 1.0f, new [] {bottomLeft, bottomRight, topLeft, topRight});
         
     }
 
-    void OnTriggerEnter(Collider other)
+    // returns a new camera position
+    Vector3 HandleCollisionZoom(Vector3 camPos, Vector3 targetPos, float minOffsetDist, Vector3[] frustumNearCorners)
     {
-        Debug.Log(other.transform.tag);
-        if (other.transform.CompareTag("Player"))
+        float offsetDist = (targetPos - camPos).magnitude;
+        float raycastLength = offsetDist - minOffsetDist;
+        if (raycastLength < 0.0f)
         {
-            moveCamera = false;
-            resetCamera = true;
+            // camera is already too near the lookat target
+            return camPos;
+        }
+
+    Vector3 camOut = (targetPos - camPos).normalized;
+    Vector3 nearestCamPos = targetPos - camOut * minOffsetDist;
+    float minHitFraction = 1.0f;
+
+        for (int i = 0; i< frustumNearCorners.Length; i++)
+        {
+            Vector3 corner = frustumNearCorners[i];
+            Vector3 offsetToCorner = corner - camPos;
+            Vector3 rayStart = nearestCamPos + offsetToCorner;
+            Vector3 rayEnd = corner;
+            Debug.DrawLine(rayStart, rayEnd, Color.green);
+            // a result between 0 and 1 indicates a hit along the ray segment
+            RaycastHit hit;
+            if(Physics.Linecast(rayStart, rayEnd, out hit))
+            {
+                float hitFraction = (rayStart - hit.point).magnitude;
+                minHitFraction = Mathf.Min(hitFraction, minHitFraction);
+            }
+            
+        }        
+
+        if (minHitFraction< 1.0f)
+        {
+            return nearestCamPos - camOut* (raycastLength* minHitFraction);
+        }
+        else
+        {
+            return camPos;
         }
     }
-
-    //void OnTriggerStay(Collider other)
-    //{
-    //    Debug.Log(other.transform.tag);
-    //}
-
-    //void OnTriggerExit(Collider other)
-    //{
-    //    if (other.transform.CompareTag("Player"))
-    //    {
-    //        moveCamera = false;
-    //        resetCamera = true;
-    //    }
-    //}
 }

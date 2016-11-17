@@ -59,10 +59,15 @@ public class GhostBehaviour : NetworkBehaviour
             return;
         if (currentHealth <= 0)
         {
-            //for(int i = 0; i < damageFromPlayers.Count; ++i)
-            //    GameManager.instance.PostScoreToScoreTable(i, damageFromPlayers[i] / score);
+            for(int i = 0; i < damageFromPlayers.Count; ++i)
+                GameManager.instance.PostScoreToScoreTable(i, Mathf.RoundToInt((damageFromPlayers[i] / maxHealth) * score));
             Cmd_RemoveRadarObj();
         }
+    }
+
+    public void Kill()
+    {
+        currentHealth = 0;
     }
 
     public void TakeDamage(int id, float dmg)
@@ -77,7 +82,8 @@ public class GhostBehaviour : NetworkBehaviour
         while (damageFromPlayers.Count - 1 <= id)
             damageFromPlayers.Add(0.0f);
         currentHealth -= dmg;
-        Rpc_TakeDamage(id, dmg);
+        if(currentHealth > 0.0f)
+            Rpc_TakeDamage(id, dmg);
     }
 
     [ClientRpc]
