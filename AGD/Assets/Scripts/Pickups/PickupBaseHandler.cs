@@ -4,7 +4,8 @@ public enum PickupType
 {
     SpeedBoost,
     WeaponRecharge,
-    PowerBoost
+    PowerBoost,
+    NullifyFear
 }
 
 public class PickupBaseHandler : MonoBehaviour {

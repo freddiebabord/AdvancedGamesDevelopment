@@ -67,7 +67,18 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		m_Capsule = GetComponent<CapsuleCollider>();
 		m_CapsuleHeight = m_Capsule.height;
 		m_CapsuleCenter = m_Capsule.center;
-        m_Camera = GetComponentInChildren<Camera>();
+
+        GameObject[] _cameralist = GameObject.FindGameObjectsWithTag("MainCamera");
+
+        foreach (var item in _cameralist)
+        {
+            if (item.transform.parent = this.transform) {
+                m_Camera = item.GetComponent<Camera>();
+                break;
+            }
+        }
+
+        //m_Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
