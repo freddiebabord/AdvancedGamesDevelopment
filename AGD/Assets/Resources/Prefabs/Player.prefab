@@ -2397,7 +2397,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010241756804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3771318, y: 1.0000001, z: -3.9476058}
+  m_LocalPosition: {x: -41.724625, y: 5.347727, z: -6.7759743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -3079,10 +3079,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 88
+  far clip plane: 2
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 200
   m_Depth: 50
   m_CullingMask:
     serializedVersion: 2
@@ -3500,7 +3500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radar: {fileID: 1000010527084682}
-  map_scale: 0.5
+  map_scale: 2
 --- !u!114 &114000011490319938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3694,9 +3694,11 @@ MonoBehaviour:
     lockCursor: 1
     weaponRotationPoint: {fileID: 4000010791986650}
     weapon: {fileID: 4000012410580236}
+  playerID: 0
   playerName: 
   playerColour: {r: 0, g: 0, b: 0, a: 0}
   playerHealth: 100
+  playerScore: 0
   weaponSpawnPoint: {fileID: 4000013318944234}
   tempDecalParticleSystem: {fileID: 100006, guid: 0438351a6e6422d43a09930e9be00ee9,
     type: 2}

@@ -67,18 +67,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		m_Capsule = GetComponent<CapsuleCollider>();
 		m_CapsuleHeight = m_Capsule.height;
 		m_CapsuleCenter = m_Capsule.center;
-
-        GameObject[] _cameralist = GameObject.FindGameObjectsWithTag("MainCamera");
-
-        foreach (var item in _cameralist)
-        {
-            if (item.transform.parent = this.transform) {
-                m_Camera = item.GetComponent<Camera>();
-                break;
-            }
-        }
-
-        //m_Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        m_Camera = GetComponentInChildren<Camera>();
 
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
@@ -367,9 +356,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             beamLight.transform.Translate(beamLight.transform.right * -halfDist);
             beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
 
-            if (hit.transform.parent.parent.GetComponent<GhostBehaviour>())
+            if (hit.transform.GetComponentInParent<GhostBehaviour>())
             {
-                hit.transform.parent.parent.GetComponent<GhostBehaviour>().TakeDamage(unID, 5);
+                hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(unID, 5);
                // Cmd_DestoryGhost(hit.transform.gameObject);
             }
             else
