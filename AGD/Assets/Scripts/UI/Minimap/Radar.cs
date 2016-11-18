@@ -73,6 +73,7 @@ public class Radar : NetworkBehaviour {
                 continue;
 
 
+
             // Pulled and adapted from: http://wiki.unity3d.com/index.php?title=Radar - Freddie Babord
 
             Vector3 centerPos = transform.position;
@@ -103,19 +104,22 @@ public class Radar : NetworkBehaviour {
             // Kept James original code below for refrance
 
 
-            Vector3 radar_position = rad_obj.owner.transform.position - gameObject.transform.position;
-			float distance_object = Vector3.Distance (gameObject.transform.position, rad_obj.owner.transform.position) * map_scale;
-            float delta_y = Mathf.Atan2(radar_position.x, radar_position.z) * Mathf.Rad2Deg - 270 - gameObject.transform.eulerAngles.y;
-            radar_position.x = distance_object * Mathf.Cos(delta_y * Mathf.Deg2Rad) * -1;
-            radar_position.z = distance_object * Mathf.Sin(delta_y * Mathf.Deg2Rad);
+   //         Vector3 radar_position = rad_obj.owner.transform.position - gameObject.transform.position;
+			//float distance_object = Vector3.Distance (gameObject.transform.position, rad_obj.owner.transform.position) * map_scale;
+   //         float delta_y = Mathf.Atan2(radar_position.x, radar_position.z) * Mathf.Rad2Deg - 270 - gameObject.transform.eulerAngles.y;
+   //         radar_position.x = distance_object * Mathf.Cos(delta_y * Mathf.Deg2Rad) * -1;
+   //         radar_position.z = distance_object * Mathf.Sin(delta_y * Mathf.Deg2Rad);
 
-            //Transform trans = GameObject.FindGameObjectWithTag("Parent").transform;
+   //         //Transform trans = GameObject.FindGameObjectWithTag("Parent").transform;
 
+			//rad_obj.icon.transform.SetParent(trans);
+   //         rad_obj.icon.transform.position = new Vector3(radar_position.x / radar.GetComponent<RectTransform>().rect.width, radar_position.z / radar.GetComponent<RectTransform>().rect.height, 0) + trans.position;
 			
-            rad_obj.icon.transform.position =
-                new Vector3(radar_position.x,
-                    radar_position.z/radar.GetComponent<RectTransform>().rect.height, 0);// + radar.transform.position;
-            rad_obj.icon.transform.rotation = new Quaternion(0, 0, 0, 0);
+   //         rad_obj.icon.transform.position = new Vector3(radar_position.x, radar_position.z/radar.GetComponent<RectTransform>().rect.height, 0);// + radar.transform.position;
+   //         rad_obj.icon.transform.rotation = new Quaternion(0, 0, 0, 0);
+			//rad_obj.icon.transform.SetParent(trans);
+          //  rad_obj.icon.transform.position = new Vector3(radar_position.x / radar.GetComponent<RectTransform>().rect.width, radar_position.z / radar.GetComponent<RectTransform>().rect.height, 0) + trans.position;
+         //   rad_obj.icon.transform.rotation = new Quaternion(0, 0, 0, 0);
         }
     }
 	

@@ -336,7 +336,6 @@
     <Compile Include="Assets\Scripts\Networking\NetworkedFirstPersonController.cs" />
     <Compile Include="Assets\Scripts\Networking\NetworkedThirdPersonCharacter.cs" />
     <Compile Include="Assets\Scripts\Networking\NetworkedThirdPersonUserControl.cs" />
-    <Compile Include="Assets\Scripts\Pickups\NullifyFear.cs" />
     <Compile Include="Assets\Scripts\Pickups\PickUpBase.cs" />
     <Compile Include="Assets\Scripts\Pickups\PickUps.cs" />
     <Compile Include="Assets\Scripts\Pickups\PickupBaseHandler.cs" />
