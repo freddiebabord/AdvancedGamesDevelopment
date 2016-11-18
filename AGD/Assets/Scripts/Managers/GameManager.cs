@@ -47,8 +47,11 @@ public class GameManager : NetworkBehaviour {
     public GameObject GameOverPanel, StatusPanel;
     public bool firstWave = false;
     private Dictionary<int, int> scoreTable = new Dictionary<int, int>();
+    public List<NetworkedThirdPersonCharacter> players = new List<NetworkedThirdPersonCharacter>();
+    private List<ScorePanel> scorePanels = new List<ScorePanel>();
+    
 
-	void Awake()
+    void Awake()
 	{
         if (!instance)
             instance = this;
@@ -125,6 +128,8 @@ public class GameManager : NetworkBehaviour {
 
     IEnumerator Spawn()
     {
+        scorePanels.Clear();
+        scorePanels = FindObjectsOfType<ScorePanel>().ToList();
         var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
         var enemySpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("enemySpawn")).ToList();
         for (int i = 0; i < waves[currentWave].enemyDef.Count; ++i)
@@ -201,6 +206,9 @@ public class GameManager : NetworkBehaviour {
     {
         if (isServer)
         {
+            if(!players.Find(x => x.playerID == playerID))
+                return;
+
             if (!scoreTable.ContainsKey(playerID))
                 scoreTable.Add(playerID, scoreToAdd);
             else
@@ -218,5 +226,11 @@ public class GameManager : NetworkBehaviour {
             scoreTable.Add(id, serverScore);
         else
             scoreTable[id] = serverScore;
+
+        
+        for (var i = 0; i < scorePanels.Count; i++)
+        {
+            scorePanels[i].PostScoreToThisBoard(id, scoreTable[id]);
+        }
     }
 }

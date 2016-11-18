@@ -32,8 +32,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public bool allowRunning = true;
         public bool escapeMenu = false;
 
-        public int playerID = 1; // Rewired playerid
+        private int playerID = 1; // Rewired playerid
         private Player player; // The Rewired Player
+        public GameObject scorboardUI;
 
         void Awake()
         {
@@ -117,6 +118,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     if(m_firing)
                         Debug.Log("Fire");
                 }
+
+                if(player.GetButtonDown("Score"))
+                    scorboardUI.SetActive(!scorboardUI.activeInHierarchy);
             }
 
             if (m_firing)
@@ -168,6 +172,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     m_isRunning = false;
                 }
+            }
+            else
+            {
+                m_firing = false;
+                m_Move = Vector3.zero;
             }
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump, escapeMenu);

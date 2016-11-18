@@ -331,8 +331,6 @@
     <Compile Include="Assets\Scripts\Managers\ResourceLoader.cs" />
     <Compile Include="Assets\Scripts\Managers\SettingsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SplitscreenManager.cs" />
-    <Compile Include="Assets\Scripts\Minimap\MakeRadarObject.cs" />
-    <Compile Include="Assets\Scripts\Minimap\Radar.cs" />
     <Compile Include="Assets\Scripts\Networking\NetManager.cs" />
     <Compile Include="Assets\Scripts\Networking\NetworkBroadcastList.cs" />
     <Compile Include="Assets\Scripts\Networking\NetworkedFirstPersonController.cs" />
@@ -349,6 +347,11 @@
     <Compile Include="Assets\Scripts\PlayerNameCanvas.cs" />
     <Compile Include="Assets\Scripts\Rooms\Room.cs" />
     <Compile Include="Assets\Scripts\Rooms\RoomCollider.cs" />
+    <Compile Include="Assets\Scripts\RotateAroundObject.cs" />
+    <Compile Include="Assets\Scripts\UI\Minimap\MakeRadarObject.cs" />
+    <Compile Include="Assets\Scripts\UI\Minimap\Radar.cs" />
+    <Compile Include="Assets\Scripts\UI\Score\PlayerScoreItem.cs" />
+    <Compile Include="Assets\Scripts\UI\Score\ScorePanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DependencyPro\AssetUsageFinderGuidelines.txt" />
