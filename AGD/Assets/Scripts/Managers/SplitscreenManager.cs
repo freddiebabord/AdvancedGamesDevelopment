@@ -21,7 +21,7 @@ public class SplitscreenManager : MonoBehaviour {
     void Start()
     {
         mode = SettingsManager.instance.splitscreenMode;
-        Invoke("Setup", 1.0f);
+        Invoke("Setup", 0.1f);
     }
 
     public void Setup()
@@ -31,11 +31,17 @@ public class SplitscreenManager : MonoBehaviour {
         {
             case SplitscreenMode.Vertical:
                 for (int i = 0; i < cameras.Count; i++)
+                {
                     cameras[i].rect = new Rect(0, fraction * i, 1, fraction);
+                    cameras[i].GetComponentInChildren<Camera>().rect = new Rect(0, fraction * i, 1, fraction);
+                }
                 break;
             case SplitscreenMode.Horizontal:
                 for (int i = 0; i < cameras.Count; i++)
+                {
                     cameras[i].rect = new Rect(fraction * i, 0, fraction, 1);
+                    cameras[i].GetComponentInChildren<Camera>().rect = new Rect(fraction * i, 0, fraction, 1);
+                }
                 break;
         }
     }

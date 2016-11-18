@@ -46,6 +46,7 @@ public class GameManager : NetworkBehaviour {
     public bool playerOneAssigned = false;
     public GameObject GameOverPanel, StatusPanel;
     public bool firstWave = false;
+    private Dictionary<int, int> scoreTable = new Dictionary<int, int>();
 
 	void Awake()
 	{
@@ -117,32 +118,42 @@ public class GameManager : NetworkBehaviour {
 	        return;
         if (!firstWave)
             firstWave = true;
-		var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
-		var enemySpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("enemySpawn")).ToList();
-		for(int i = 0; i < waves[currentWave].enemyDef.Count; ++i)
-		{
-			EnemyType etype = waves[currentWave].enemyDef[i].enemySpawner;
-			GameObject prefab;
-			for(int j = 0; j < waves[currentWave].enemyDef[i].quantity; ++j)
-			{
-				prefab = enemyPrefabs[(int)etype];
-				var enemySpawn = enemySpawns[Random.Range(0, enemySpawns.Count)].transform;
-				GameObject newEnemy = (GameObject)Instantiate(prefab, enemySpawn.position, enemySpawn.rotation);
-				NetworkServer.Spawn(newEnemy);
-				enemyCount++;
-			}
-		}
 
-        foreach (Text text in enemiesRemainigText)
+        StartCoroutine(Spawn());
+
+    }
+
+    IEnumerator Spawn()
+    {
+        var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
+        var enemySpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("enemySpawn")).ToList();
+        for (int i = 0; i < waves[currentWave].enemyDef.Count; ++i)
         {
-            if (text == null)
+            EnemyType etype = waves[currentWave].enemyDef[i].enemySpawner;
+            GameObject prefab;
+            for (int j = 0; j < waves[currentWave].enemyDef[i].quantity; ++j)
             {
-                enemiesRemainigText.TrimExcess();
-                continue;
+                prefab = enemyPrefabs[(int)etype];
+                var enemySpawn = enemySpawns[Random.Range(0, enemySpawns.Count)].transform;
+                GameObject newEnemy = (GameObject)Instantiate(prefab, enemySpawn.position, enemySpawn.rotation);
+                NetworkServer.Spawn(newEnemy);
+                enemyCount++;
+
+                foreach (Text text in enemiesRemainigText)
+                {
+                    if (text == null)
+                    {
+                        enemiesRemainigText.TrimExcess();
+                        continue;
+                    }
+                    text.text = enemyCount.ToString();
+                }
+
+                yield return new WaitForSeconds(0.5f);
             }
-            text.text = enemyCount.ToString();
         }
 
+        
     }
 
 
@@ -184,5 +195,28 @@ public class GameManager : NetworkBehaviour {
             p.controllers.AddController(j, true); // assign joystick to player
             return;
         }
+    }
+
+    public void PostScoreToScoreTable(int playerID, int scoreToAdd)
+    {
+        if (isServer)
+        {
+            if (!scoreTable.ContainsKey(playerID))
+                scoreTable.Add(playerID, scoreToAdd);
+            else
+                scoreTable[playerID] += scoreToAdd;
+
+            RpcPostServerScoreToClients(playerID, scoreTable[playerID]);
+        }
+    }
+    
+
+    [ClientRpc]
+    private void RpcPostServerScoreToClients(int id, int serverScore)
+    {
+        if (!scoreTable.ContainsKey(id))
+            scoreTable.Add(id, serverScore);
+        else
+            scoreTable[id] = serverScore;
     }
 }
