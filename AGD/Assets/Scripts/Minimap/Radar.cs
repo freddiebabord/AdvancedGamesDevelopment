@@ -73,6 +73,7 @@ public class Radar : NetworkBehaviour {
                 continue;
 
 
+<<<<<<< HEAD
             // Pulled and adapted from: http://wiki.unity3d.com/index.php?title=Radar - Freddie Babord
 
             Vector3 centerPos = transform.position;
@@ -116,6 +117,11 @@ public class Radar : NetworkBehaviour {
 			
    //         rad_obj.icon.transform.position = new Vector3(radar_position.x, radar_position.z/radar.GetComponent<RectTransform>().rect.height, 0);// + radar.transform.position;
    //         rad_obj.icon.transform.rotation = new Quaternion(0, 0, 0, 0);
+=======
+			rad_obj.icon.transform.SetParent(trans);
+          //  rad_obj.icon.transform.position = new Vector3(radar_position.x / radar.GetComponent<RectTransform>().rect.width, radar_position.z / radar.GetComponent<RectTransform>().rect.height, 0) + trans.position;
+         //   rad_obj.icon.transform.rotation = new Quaternion(0, 0, 0, 0);
+>>>>>>> parent of b55921d... Radar math updated
         }
     }
 	
