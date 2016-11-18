@@ -101,6 +101,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         }
 
         beamMaterial = lineRenderer.material;
+        GameManager.instance.players.Add(this);
 
 	}
 
@@ -114,6 +115,15 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         {
             if (currentWeaponFireTime > 0)
                 currentWeaponFireTime -= weaponRechargeRate*Time.deltaTime;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (GameManager.instance.players.Contains(this))
+        {
+            GameManager.instance.players.Remove(this);
+            GameManager.instance.players.TrimExcess();
         }
     }
 
@@ -358,7 +368,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
             if (hit.transform.GetComponentInParent<GhostBehaviour>())
             {
-                hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(unID, 5);
+                hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, 5);
                // Cmd_DestoryGhost(hit.transform.gameObject);
             }
             else

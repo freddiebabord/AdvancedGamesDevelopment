@@ -3,18 +3,14 @@ using UnityEditor;
 using System.Collections;
 
 public class SpokkticleEditorWindow : EditorWindow {
-
-	string myString = "Hello World";
-    bool groupEnabled;
-    bool myBool = true;
-    float myFloat = 1.23f;
+    
     
     // Add menu named "My Window" to the Window menu
     [MenuItem ("Window/Spookticle Manager")]
     static void Init () {
         // Get existing open window or if none, make a new one:
         SpokkticleEditorWindow window = (SpokkticleEditorWindow)EditorWindow.GetWindow (typeof (SpokkticleEditorWindow));
-		window.title = "Spookticle Manager";
+		window.titleContent = new GUIContent("Spookticle Manager");
         window.Show();
     }
 

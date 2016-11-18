@@ -46,8 +46,11 @@ public class EnemyBase : NetworkBehaviour {
 	public void RpcSetPosition(Vector3 position)
 	{
 		target = position;
+        if(agent.isOnNavMesh)
        // Vector3.Slerp(transform.position, position, );
-		agent.SetDestination(target);
+		    agent.SetDestination(target);
+        else
+            GetComponent<GhostBehaviour>().Kill();
 	}
 
 	//Draw the agents path towards the target
