@@ -70,8 +70,8 @@ public class Radar : NetworkBehaviour {
             Transform trans = GameObject.FindGameObjectWithTag("Parent").transform;
 
 			rad_obj.icon.transform.SetParent(trans);
-          //  rad_obj.icon.transform.position = new Vector3(radar_position.x / radar.GetComponent<RectTransform>().rect.width, radar_position.z / radar.GetComponent<RectTransform>().rect.height, 0) + trans.position;
-         //   rad_obj.icon.transform.rotation = new Quaternion(0, 0, 0, 0);
+            rad_obj.icon.transform.position = new Vector3(radar_position.x / radar.GetComponent<RectTransform>().rect.width, radar_position.z / radar.GetComponent<RectTransform>().rect.height, 0) + trans.position;
+            rad_obj.icon.transform.rotation = new Quaternion(0, 0, 0, 0);
         }
     }
 	
