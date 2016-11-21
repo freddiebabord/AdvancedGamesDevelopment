@@ -281,6 +281,7 @@ GameObject:
   - 114: {fileID: 114000010656762796}
   - 114: {fileID: 114000010575005378}
   - 114: {fileID: 114000012272156032}
+  - 114: {fileID: 114000011816598798}
   m_Layer: 0
   m_Name: WhiteGhost
   m_TagString: Untagged
@@ -2645,8 +2646,9 @@ MonoBehaviour:
   ghostTarget: {fileID: 0}
   frustumPrefab: {fileID: 1000010079989698, guid: e268d018186052e4dade4dff5a1849c6,
     type: 2}
-  ghostTrigger: 1
+  ghostTrigger: 0
   isPeaceful: 0
+  damageTextPool: {fileID: 114000011816598798}
 --- !u!114 &114000010656762796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2690,6 +2692,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52a1aaf63836704ca4402844ebff6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011816598798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010856007744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba62e101abd9243eaaf75f1cfc02e4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToPool: {fileID: 1000011526883230, guid: 0a8c936e459a2494a903ac0458a701ac,
+    type: 2}
+  poolSize: 20
 --- !u!114 &114000012272156032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2704,7 +2720,7 @@ MonoBehaviour:
   enemyMap: 3
   firstPass: 0
   maxFloatHeight: 50
-  agent: {fileID: 195000010713252202}
+  agent: {fileID: 0}
   walkRadius: 10
   target: {x: 0, y: 0, z: 0}
 --- !u!135 &135000014012333174

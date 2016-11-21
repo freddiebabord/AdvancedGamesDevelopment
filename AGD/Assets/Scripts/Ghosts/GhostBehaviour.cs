@@ -27,6 +27,8 @@ public class GhostBehaviour : NetworkBehaviour
 
     List<float> damageFromPlayers = new List<float>();
     private GameObject m_networkFrustum;
+    public ObjectPool damageTextPool;
+
     // Use this for initialization
     void Start()
     {
@@ -50,6 +52,7 @@ public class GhostBehaviour : NetworkBehaviour
         m_networkFrustum.GetComponent<Frustum>().parentNetID = netId;
         NetworkServer.Spawn(m_networkFrustum);
         m_networkFrustum.GetComponent<Frustum>().PostStart();
+        damageTextPool = GetComponent<ObjectPool>();
     }
 
     // Update is called once per frame
@@ -92,8 +95,11 @@ public class GhostBehaviour : NetworkBehaviour
         while (damageFromPlayers.Count - 1 <= id)
             damageFromPlayers.Add(0.0f);
         damageFromPlayers[id] += dmg;
+
         //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
-        
+        GhostDamageText txt = damageTextPool.Spawn(transform.position + Vector3.forward * 1.5f, transform.rotation).GetComponent<GhostDamageText>();
+        txt.SetDamageText(dmg);
+        txt.owningPool = damageTextPool;
     }
 
     [Command]

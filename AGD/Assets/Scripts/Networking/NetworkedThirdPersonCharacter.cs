@@ -104,19 +104,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         GameManager.instance.players.Add(this);
 
 	}
+    public float damagePerSecond = 10;
 
     void Update()
     {
-        if (isFiring)
-        {
-            currentWeaponFireTime += Time.deltaTime;
-        }
-        else
-        {
-            if (currentWeaponFireTime > 0)
-                currentWeaponFireTime -= weaponRechargeRate*Time.deltaTime;
-        }
-    
         if(firing)
         {
             Ray ray = new Ray(m_Camera.transform.position, weaponSpawnPoint.forward);
@@ -134,9 +125,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 beamLight.transform.Translate(beamLight.transform.right * -halfDist);
                 beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
 
-                if (hit.transform.GetComponentInParent<GhostBehaviour>())
+                if (hit.transform.GetComponentInParent<GhostBehaviour>() && isLocalPlayer)
                 {
-                    hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, 5);
+                    hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, damagePerSecond * Time.deltaTime);
                 }
                 else
                 {
@@ -153,6 +144,20 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
             }
         }
+
+        if(!isLocalPlayer)
+            return;
+        if (isFiring)
+        {
+            currentWeaponFireTime += Time.deltaTime;
+        }
+        else
+        {
+            if (currentWeaponFireTime > 0)
+                currentWeaponFireTime -= weaponRechargeRate*Time.deltaTime;
+        }
+    
+        
     }
 
     void OnDisable()
@@ -391,9 +396,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             beamLight.transform.Translate(beamLight.transform.right * -halfDist);
             beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
 
-            if (hit.transform.GetComponentInParent<GhostBehaviour>())
+            if (hit.transform.GetComponentInParent<GhostBehaviour>() && isLocalPlayer)
             {
-                hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, 5);
+                hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, damagePerSecond * Time.deltaTime);
             }
             else
             {

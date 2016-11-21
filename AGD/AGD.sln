@@ -1,6 +1,5 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{C28A7056-6D84-0F2A-8FC3-377875CC26EA}") = "AGD", "Assembly-CSharp-firstpass.csproj", "{AA3E4E44-E7A8-CAB9-EFF2-E3647051E1DF}"
 EndProject
 Project("{C28A7056-6D84-0F2A-8FC3-377875CC26EA}") = "AGD", "Assembly-CSharp.csproj", "{16FB95AE-EE0C-BB4C-3C85-9EC01C5BEB54}"
@@ -31,9 +30,6 @@ Global
 		{A522A3E8-0994-1605-C2F1-2F91FBC9CFB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A522A3E8-0994-1605-C2F1-2F91FBC9CFB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A522A3E8-0994-1605-C2F1-2F91FBC9CFB1}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
