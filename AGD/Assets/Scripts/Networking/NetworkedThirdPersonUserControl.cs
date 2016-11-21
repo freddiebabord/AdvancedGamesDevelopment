@@ -112,13 +112,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     m_Jump = player.GetButtonDown("Jump");
                 }
-                if (!m_firing)
+                if(player.GetButtonDown("Fire"))
                 {
-                    m_firing = player.GetButton("Fire");
-                    if(m_firing)
-                        Debug.Log("Fire");
+                    m_Character.Cmd_BeginFire();
                 }
-
+                else if(player.GetButtonUp("Fire"))
+                {
+                    m_Character.Cmd_EndFire();
+                }
                 if(player.GetButtonDown("Score"))
                     scorboardUI.SetActive(!scorboardUI.activeInHierarchy);
             }
@@ -180,7 +181,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump, escapeMenu);
-            m_Character.Fire(m_firing);
+            //m_Character.Fire(m_firing);
             m_firing = false;
             m_Jump = false;
 

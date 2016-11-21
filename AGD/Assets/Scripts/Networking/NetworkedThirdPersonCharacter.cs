@@ -116,6 +116,43 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             if (currentWeaponFireTime > 0)
                 currentWeaponFireTime -= weaponRechargeRate*Time.deltaTime;
         }
+    
+        if(firing)
+        {
+            Ray ray = new Ray(m_Camera.transform.position, weaponSpawnPoint.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+                lineRenderer.SetPosition(1, hit.point);
+                float dist = Vector3.Distance(hit.point, weaponSpawnPoint.position);
+                float halfDist = dist / 2;
+                beamLight.m_TubeLength = halfDist;
+                beamLight.transform.position = weaponSpawnPoint.position;
+                beamLight.transform.LookAt(hit.point);
+                beamLight.transform.Rotate(beamLight.transform.up, 90);
+                beamLight.transform.Translate(beamLight.transform.right * -halfDist);
+                beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
+
+                if (hit.transform.GetComponentInParent<GhostBehaviour>())
+                {
+                    hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, 5);
+                }
+                else
+                {
+                    StartParticleSystem();
+                    Vector3 norm = weaponSpawnPoint.position - hit.point;
+                    norm.Normalize();
+                    spawnedParticleSystem.position = hit.point + norm * 0.1f;
+                }
+            }
+            else
+            {
+                StopParticleSystem();
+                lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+                lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
+            }
+        }
     }
 
     void OnDisable()
@@ -323,12 +360,75 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	{
         if (isLocalPlayer)
         {
-            Cmd_Fire(fire, m_uNetID);
+            //Cmd_Fire(fire, m_uNetID);
         }
 		
 	}
 
-	[Command]
+    [Command]
+    public void Cmd_BeginFire()
+    {
+        Rpc_BeginFire();
+    }
+
+    [ClientRpc]
+    void Rpc_BeginFire()
+    {
+        firing = true;
+        lineRenderer.gameObject.SetActive(true);
+        Ray ray = new Ray(m_Camera.transform.position, weaponSpawnPoint.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+            lineRenderer.SetPosition(1, hit.point);
+            float dist = Vector3.Distance(hit.point, weaponSpawnPoint.position);
+            float halfDist = dist / 2;
+            beamLight.m_TubeLength = halfDist;
+            beamLight.transform.position = weaponSpawnPoint.position;
+            beamLight.transform.LookAt(hit.point);
+            beamLight.transform.Rotate(beamLight.transform.up, 90);
+            beamLight.transform.Translate(beamLight.transform.right * -halfDist);
+            beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
+
+            if (hit.transform.GetComponentInParent<GhostBehaviour>())
+            {
+                hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, 5);
+            }
+            else
+            {
+                StartParticleSystem();
+                Vector3 norm = weaponSpawnPoint.position - hit.point;
+                norm.Normalize();
+                spawnedParticleSystem.position = hit.point + norm * 0.1f;
+            }
+        }
+        else
+        {
+            StopParticleSystem();
+            lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+            lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
+        }
+    }
+
+    [Command]
+    public void Cmd_EndFire()
+    {
+        Rpc_EndFire();
+    }
+
+    bool firing = false;
+    [ClientRpc]
+    void Rpc_EndFire()
+    {
+        firing = false;
+        lineRenderer.gameObject.SetActive(false);
+        //spawnedParticleSystem.gameObject.SetActive(false);
+        beamLight.gameObject.SetActive(false);
+        StopParticleSystem();
+    }
+
+    [Command]
 	void Cmd_Fire(bool fire, int unID)
 	{
 		Rpc_Fire(fire, unID);

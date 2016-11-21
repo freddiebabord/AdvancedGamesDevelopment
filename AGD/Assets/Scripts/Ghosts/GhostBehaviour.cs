@@ -72,7 +72,7 @@ public class GhostBehaviour : NetworkBehaviour
 
     public void TakeDamage(int id, float dmg)
     {
-        Debug.Log(id + " " + dmg);
+        //Debug.Log(id + " " + dmg);
         Cmd_TakeDamage(id, dmg);
     }
 
@@ -92,7 +92,7 @@ public class GhostBehaviour : NetworkBehaviour
         while (damageFromPlayers.Count - 1 <= id)
             damageFromPlayers.Add(0.0f);
         damageFromPlayers[id] += dmg;
-        print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
+        //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
         
     }
 
