@@ -6,15 +6,21 @@ public class GhostDamageText : MonoBehaviour {
 	public TextMesh damageText;
 	public float floatingSpeed;
 	public ObjectPool owningPool;
+	public float visibleTime = 5.0f;
+	private float startTime = 0.0f;
+	public Color colour;
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		Invoke("DisableFromPool", 5.0f);
+		startTime = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(new Vector3(Mathf.Sin(Time.time), floatingSpeed, Mathf.Sin(Time.time) * Time.deltaTime));
+		transform.Translate(new Vector3(floatingSpeed * Mathf.Sin(Time.time), floatingSpeed, floatingSpeed * Mathf.Sin(Time.time) * Time.deltaTime));
+		colour.a = Mathf.Lerp(1, 0, (Time.time - startTime) / visibleTime);
+		damageText.color = colour;
 	}
 
 	void DisableFromPool()

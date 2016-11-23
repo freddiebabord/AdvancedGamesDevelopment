@@ -104,5 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageText: {fileID: 102000013821938394}
-  floatingSpeed: 0.5
+  floatingSpeed: 0.05
   owningPool: {fileID: 0}
+  visibleTime: 5
+  colour: {r: 1, g: 0.99997437, b: 0.9999913, a: 0}

@@ -98,7 +98,7 @@ public class GhostBehaviour : NetworkBehaviour
 
         //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
         GhostDamageText txt = damageTextPool.Spawn(transform.position + Vector3.forward * 1.5f, transform.rotation).GetComponent<GhostDamageText>();
-        txt.SetDamageText(dmg);
+        txt.SetDamageText(Mathf.RoundToInt(dmg * 2));
         txt.owningPool = damageTextPool;
     }
 
