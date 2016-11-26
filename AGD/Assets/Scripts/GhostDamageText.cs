@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GhostDamageText : MonoBehaviour {
+public class GhostDamageText : PooledObject
+{
 
 	public TextMesh damageText;
 	public float floatingSpeed;
-	public ObjectPool owningPool;
 	public float visibleTime = 5.0f;
 	private float startTime = 0.0f;
 	public Color colour;

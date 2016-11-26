@@ -47,6 +47,7 @@ public class GameManager : NetworkBehaviour {
     public GameObject GameOverPanel, StatusPanel;
     public bool firstWave = false;
     private Dictionary<int, int> scoreTable = new Dictionary<int, int>();
+    public Dictionary<int, int> ScoreTable { get { return scoreTable; } }
     public List<NetworkedThirdPersonCharacter> players = new List<NetworkedThirdPersonCharacter>();
     private List<ScorePanel> scorePanels = new List<ScorePanel>();
     
@@ -227,7 +228,8 @@ public class GameManager : NetworkBehaviour {
         else
             scoreTable[id] = serverScore;
 
-        
+        scorePanels = FindObjectsOfType<ScorePanel>().ToList();
+
         for (var i = 0; i < scorePanels.Count; i++)
         {
             scorePanels[i].PostScoreToThisBoard(id, scoreTable[id]);

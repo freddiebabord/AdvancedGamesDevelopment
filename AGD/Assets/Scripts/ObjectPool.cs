@@ -14,6 +14,7 @@ public class ObjectPool : MonoBehaviour {
 		for(int i = 0; i < poolSize; ++i)
 		{
 			pooledObjects.Add((GameObject)Instantiate(prefabToPool));
+		    pooledObjects[i].GetComponent<PooledObject>().owningPool = this;
 			pooledObjects[i].SetActive(false);
 		}
 		currentPoolSize = poolSize;
@@ -51,4 +52,9 @@ public class ObjectPool : MonoBehaviour {
 		pooledObjects.Clear();
 		currentPoolSize = 0;
 	}
+}
+
+public class PooledObject : MonoBehaviour
+{
+    public ObjectPool owningPool;
 }
