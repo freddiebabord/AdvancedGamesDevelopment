@@ -324,6 +324,7 @@
     <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\SlimeCutOut.shader" />
     <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Water.shader" />
     <None Include="Assets\Resources\Art\Shader\Beam.shader" />
+    <None Include="Assets\Resources\Art\Shader\CaptureSphere.shader" />
     <None Include="Assets\Resources\Art\Shader\Dust.shader" />
     <None Include="Assets\Resources\Art\Shader\GhostDemo.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleAlt.shader" />

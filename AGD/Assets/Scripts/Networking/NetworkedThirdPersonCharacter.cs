@@ -61,6 +61,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     private Material weaponRechargeRenderer;
     public GameObject weaponRechargeIndicator;
     private Material beamRenderer;
+    public GameObject captureSpherePrefab;
+    private GameObject spawnedCaptureSphere;
 
     void Start()
 	{
@@ -110,6 +112,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         cbssparks = sparkspsRootMzzle.colorBySpeed;
         cbssparks.color = grad;
 
+        spawnedCaptureSphere = Instantiate(captureSpherePrefab);
+        spawnedCaptureSphere.SetActive(false);
+
         if (!isLocalPlayer)
         {
             m_Camera.gameObject.SetActive(false);
@@ -151,6 +156,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             {
                 lineRenderer.SetPosition(0, weaponSpawnPoint.position);
                 lineRenderer.SetPosition(1, hit.point);
+                
                 float dist = Vector3.Distance(hit.point, weaponSpawnPoint.position);
                 float halfDist = dist / 2;
                 beamLight.m_TubeLength = halfDist;
@@ -160,9 +166,12 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 beamLight.transform.Translate(beamLight.transform.right * -halfDist);
                 beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
 
-                if (hit.transform.GetComponentInParent<GhostBehaviour>() && isLocalPlayer)
+                if (hit.transform.GetComponentInParent<GhostBehaviour>())
                 {
-                    hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, damagePerSecond * Time.deltaTime);
+                    if(isLocalPlayer)
+                        hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, damagePerSecond * Time.deltaTime);
+                    spawnedCaptureSphere.transform.position = hit.transform.gameObject.transform.position;
+                    spawnedCaptureSphere.GetComponent<Renderer>().material.SetFloat("_PercentageComplete", 1 - (hit.transform.GetComponentInParent<GhostBehaviour>().CurrentHealth / hit.transform.GetComponentInParent<GhostBehaviour>().maxHealth));
                 }
                 else
                 {
@@ -170,6 +179,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                     Vector3 norm = weaponSpawnPoint.position - hit.point;
                     norm.Normalize();
                     spawnedParticleSystem.position = hit.point + norm * 0.1f;
+                    //spawnedCaptureSphere.SetActive(false);
                 }
             }
             else
@@ -177,6 +187,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 StopParticleSystem();
                 lineRenderer.SetPosition(0, weaponSpawnPoint.position);
                 lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
+                //spawnedCaptureSphere.SetActive(false);
             }
         }
 
@@ -443,6 +454,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             if (hit.transform.GetComponentInParent<GhostBehaviour>() && isLocalPlayer)
             {
                 hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, damagePerSecond * Time.deltaTime);
+                spawnedCaptureSphere.SetActive(true);
+                spawnedCaptureSphere.transform.position = hit.transform.position;
+                spawnedCaptureSphere.transform.localScale = hit.transform.lossyScale;
+                spawnedCaptureSphere.GetComponent<Renderer>().material.SetFloat("_PercentageComplete", 0.0f);
             }
             else
             {

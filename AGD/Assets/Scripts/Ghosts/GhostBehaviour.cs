@@ -24,6 +24,7 @@ public class GhostBehaviour : NetworkBehaviour
     float currentHealth;
 
     NavMeshAgent agent;
+    public float CurrentHealth { get { return currentHealth; } }
 
     List<float> damageFromPlayers = new List<float>();
     private GameObject m_networkFrustum;
