@@ -5,12 +5,13 @@ using System.Linq;
 
 public class Room : MonoBehaviour {
 
-	public List<Collider> colliders = new List<Collider>();
-	public List<EnemyBase> enemies = new List<EnemyBase>();
-	public List<NetworkedFirstPersonController> players = new List<NetworkedFirstPersonController>();
+	private List<Collider> colliders = new List<Collider>();
+	private List<EnemyBase> enemies = new List<EnemyBase>();
+	private List<NetworkedFirstPersonController> players = new List<NetworkedFirstPersonController>();
 	public int enemyCount { get{ return enemies.Count; } }
 	public int playerCount { get{ return players.Count; } }
-	public List<Collider> doors = new List<Collider>();
+	private List<Collider> doors = new List<Collider>();
+    public List<Collider> Doors { get { return doors; } }
 
 	// Use this for initialization
 	void Start () {

@@ -193,6 +193,7 @@ public class GameManager : NetworkBehaviour {
         AssignJoystickToNextOpenPlayer(ReInput.controllers.GetJoystick(args.controllerId));
     }
 
+    
     void AssignJoystickToNextOpenPlayer(Joystick j)
     {
         foreach (Player p in ReInput.players.Players)

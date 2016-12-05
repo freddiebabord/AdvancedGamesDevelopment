@@ -60,6 +60,8 @@ public class EnemyBase : NetworkBehaviour {
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(target, 0.5f);
+            if (!agent.hasPath)
+                return;
             Gizmos.DrawLine(transform.position, agent.path.corners[0]);
             for (int i = 0; i < agent.path.corners.Length - 1; i++)
             {

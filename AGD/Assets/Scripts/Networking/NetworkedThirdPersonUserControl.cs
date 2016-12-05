@@ -32,8 +32,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public bool allowRunning = true;
         public bool escapeMenu = false;
 
-        private int playerID = 1; // Rewired playerid
-        private Player player; // The Rewired Player
+        private int playerID = 0; // Rewired playerid
+        public Player player; // The Rewired Player
         public GameObject scorboardUI;
 
         void Awake()
@@ -44,40 +44,46 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             //player = ReInput.players.GetPlayer(playerID);
             //player.isPlaying = true;
             //GameManager.instance.playerOneAssigned = true;
-            if (SettingsManager.instance.splitscreenDuelControllerMode)
-            {
-                if (GameManager.instance.playerOneAssigned)
-                    playerID++;
-                player = ReInput.players.GetPlayer(playerID);
-                player.isPlaying = true;
-                GameManager.instance.playerOneAssigned = true;
-            }
-            else
-            {
-                if (!GameManager.instance.playerOneAssigned)
-                    playerID = 2;
-                else
-                    playerID = 1;
-                player = ReInput.players.GetPlayer(playerID);
-                if (GameManager.instance.playerOneAssigned)
-                {
-                    foreach (var controller in ReInput.controllers.Controllers)
-                    {
-                        if (controller.type == ControllerType.Joystick)
-                            player.controllers.AddController(controller, true);
-                    }
-                }
-                else
-                {
-                    foreach (var controller in ReInput.controllers.Controllers)
-                    {
-                        if (controller.type != ControllerType.Joystick)
-                            player.controllers.AddController(controller, true);
-                    }
-                }
-                player.isPlaying = true;
-                GameManager.instance.playerOneAssigned = true;
-            }
+            if (GameManager.instance.playerOneAssigned)
+                playerID++;
+            player = ReInput.players.GetPlayer(playerID);
+            player.isPlaying = true;
+            GameManager.instance.playerOneAssigned = true;
+
+            //if (SettingsManager.instance.splitscreenDuelControllerMode)
+            //{
+            //    if (GameManager.instance.playerOneAssigned)
+            //        playerID++;
+            //    player = ReInput.players.GetPlayer(playerID);
+            //    player.isPlaying = true;
+            //    GameManager.instance.playerOneAssigned = true;
+            //}
+            //else
+            //{
+            //    if (!GameManager.instance.playerOneAssigned)
+            //        playerID = 2;
+            //    else
+            //        playerID = 1;
+            //    player = ReInput.players.GetPlayer(playerID);
+            //    if (GameManager.instance.playerOneAssigned)
+            //    {
+            //        foreach (var controller in ReInput.controllers.Controllers)
+            //        {
+            //            if (controller.type == ControllerType.Joystick)
+            //                player.controllers.AddController(controller, true);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        foreach (var controller in ReInput.controllers.Controllers)
+            //        {
+            //            if (controller.type != ControllerType.Joystick)
+            //                player.controllers.AddController(controller, true);
+            //        }
+            //    }
+            //    player.isPlaying = true;
+            //    GameManager.instance.playerOneAssigned = true;
+            //}
         }
 
         private void Start()
