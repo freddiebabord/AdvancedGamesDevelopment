@@ -32,8 +32,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public bool allowRunning = true;
         public bool escapeMenu = false;
 
-        private int playerID = 1; // Rewired playerid
-        private Player player; // The Rewired Player
+        private int playerID = 0; // Rewired playerid
+        public Player player; // The Rewired Player
         public GameObject scorboardUI;
 
         void Awake()
@@ -44,40 +44,46 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             //player = ReInput.players.GetPlayer(playerID);
             //player.isPlaying = true;
             //GameManager.instance.playerOneAssigned = true;
-            if (SettingsManager.instance.splitscreenDuelControllerMode)
-            {
-                if (GameManager.instance.playerOneAssigned)
-                    playerID++;
-                player = ReInput.players.GetPlayer(playerID);
-                player.isPlaying = true;
-                GameManager.instance.playerOneAssigned = true;
-            }
-            else
-            {
-                if (!GameManager.instance.playerOneAssigned)
-                    playerID = 2;
-                else
-                    playerID = 1;
-                player = ReInput.players.GetPlayer(playerID);
-                if (GameManager.instance.playerOneAssigned)
-                {
-                    foreach (var controller in ReInput.controllers.Controllers)
-                    {
-                        if (controller.type == ControllerType.Joystick)
-                            player.controllers.AddController(controller, true);
-                    }
-                }
-                else
-                {
-                    foreach (var controller in ReInput.controllers.Controllers)
-                    {
-                        if (controller.type != ControllerType.Joystick)
-                            player.controllers.AddController(controller, true);
-                    }
-                }
-                player.isPlaying = true;
-                GameManager.instance.playerOneAssigned = true;
-            }
+            if (GameManager.instance.playerOneAssigned)
+                playerID++;
+            player = ReInput.players.GetPlayer(playerID);
+            player.isPlaying = true;
+            GameManager.instance.playerOneAssigned = true;
+
+            //if (SettingsManager.instance.splitscreenDuelControllerMode)
+            //{
+            //    if (GameManager.instance.playerOneAssigned)
+            //        playerID++;
+            //    player = ReInput.players.GetPlayer(playerID);
+            //    player.isPlaying = true;
+            //    GameManager.instance.playerOneAssigned = true;
+            //}
+            //else
+            //{
+            //    if (!GameManager.instance.playerOneAssigned)
+            //        playerID = 2;
+            //    else
+            //        playerID = 1;
+            //    player = ReInput.players.GetPlayer(playerID);
+            //    if (GameManager.instance.playerOneAssigned)
+            //    {
+            //        foreach (var controller in ReInput.controllers.Controllers)
+            //        {
+            //            if (controller.type == ControllerType.Joystick)
+            //                player.controllers.AddController(controller, true);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        foreach (var controller in ReInput.controllers.Controllers)
+            //        {
+            //            if (controller.type != ControllerType.Joystick)
+            //                player.controllers.AddController(controller, true);
+            //        }
+            //    }
+            //    player.isPlaying = true;
+            //    GameManager.instance.playerOneAssigned = true;
+            //}
         }
 
         private void Start()
@@ -112,13 +118,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     m_Jump = player.GetButtonDown("Jump");
                 }
-                if (!m_firing)
+                if(player.GetButtonDown("Fire"))
                 {
-                    m_firing = player.GetButton("Fire");
-                    if(m_firing)
-                        Debug.Log("Fire");
+                    m_Character.Cmd_BeginFire();
                 }
-
+                else if(player.GetButtonUp("Fire"))
+                {
+                    m_Character.Cmd_EndFire();
+                }
                 if(player.GetButtonDown("Score"))
                     scorboardUI.SetActive(!scorboardUI.activeInHierarchy);
             }
@@ -180,7 +187,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump, escapeMenu);
-            m_Character.Fire(m_firing);
+            //m_Character.Fire(m_firing);
             m_firing = false;
             m_Jump = false;
 

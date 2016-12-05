@@ -21,6 +21,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Transform weapon;
         public Player player;
 
+        [HideInInspector]public Quaternion currentOriginalRoation = Quaternion.identity;
+
         public void Init(Transform character, Transform camera)
         {
 
@@ -31,23 +33,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (player == null)
                 return;
 
-            float yRot = player.GetAxis("LookHorizontal") * XSensitivity;
-            float xRot = player.GetAxis("LookVertical") * YSensitivity;
+            float yRot = player.GetAxis("LookHorizontal") * XSensitivity * SettingsManager.instance.lookSensitivity;
+            float xRot = player.GetAxis("LookVertical") * YSensitivity * SettingsManager.instance.lookSensitivity * (SettingsManager.instance.invertYAxis ? -1 : 1);
 
+            currentOriginalRoation.eulerAngles += Quaternion.AngleAxis(-xRot, camera.right).eulerAngles;
+            currentOriginalRoation.eulerAngles += Quaternion.AngleAxis(yRot, Vector3.up).eulerAngles;
+            currentOriginalRoation = ClampRotationAroundXAxis(currentOriginalRoation);
 
-
-            //character.localRotation = Quaternion.Slerp (character.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
-            // m_CameraTargetRot.z = 0.0f;
-            //camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot, smoothTime * Time.deltaTime);
             character.transform.RotateAround(character.position, Vector3.up, yRot);
             camera.transform.RotateAround(camera.position, camera.right, -xRot);
             camera.transform.localRotation = ClampRotationAroundXAxis(camera.transform.localRotation);
-            //weapon.RotateAround(weaponRotationPoint.position, camera.right, -xRot);
+
             Vector3 eRot = camera.transform.rotation.eulerAngles;
             eRot.y = 0;
             eRot.z = 0;
             weapon.transform.localRotation = Quaternion.Euler(eRot);
-            // UpdateCursorLock();
+
         }
 
         public void SetCursorLock(bool value)

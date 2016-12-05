@@ -132,6 +132,7 @@ MonoBehaviour:
     type: 2}
   ghostTrigger: 0
   isPeaceful: 0
+  damageTextPool: {fileID: 0}
 --- !u!114 &114000011782983114
 MonoBehaviour:
   m_ObjectHideFlags: 1
