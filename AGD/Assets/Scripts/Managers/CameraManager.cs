@@ -4,62 +4,69 @@ using System.Collections;
 public class CameraManager : MonoBehaviour
 {
     public Camera targetCamera;
-    private Vector3 cameraOriginalStartPosition;
+    public Transform characterHead;
+    private Vector3 startLocalPosition;
+    private float nearClipPlane;
+    public LayerMask targetMask;
+    private float maxDistance;
+    public float speed = 5.0f;
 
     void Start()
     {
-        cameraOriginalStartPosition = targetCamera.transform.localPosition;
+        if (!targetCamera)
+            targetCamera = Camera.main;
+        startLocalPosition = targetCamera.transform.localPosition;
+        nearClipPlane = targetCamera.nearClipPlane;
+        maxDistance = Vector3.Distance(targetCamera.transform.position, characterHead.position);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 bottomLeft = targetCamera.transform.InverseTransformPoint(targetCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)));
-        Vector3 topLeft = targetCamera.transform.InverseTransformPoint(targetCamera.ScreenToWorldPoint(new Vector3(0, 1, 0)));
-        Vector3 topRight = targetCamera.transform.InverseTransformPoint(targetCamera.ScreenToWorldPoint(new Vector3(1, 1, 0)));
-        Vector3 bottomRight = targetCamera.transform.InverseTransformPoint(targetCamera.ScreenToWorldPoint(new Vector3(1, 0, 0)));
-        targetCamera.transform.localPosition = HandleCollisionZoom(cameraOriginalStartPosition, transform.localPosition, 1.0f, new [] {bottomLeft, bottomRight, topLeft, topRight});
         
-    }
-
-    // returns a new targetCamera position
-    Vector3 HandleCollisionZoom(Vector3 camPos, Vector3 targetPos, float minOffsetDist, Vector3[] frustumNearCorners)
-    {
-        float offsetDist = (targetPos - camPos).magnitude;
-        float raycastLength = offsetDist - minOffsetDist;
-        if (raycastLength < 0.0f)
+        Ray invertedRay = new Ray(characterHead.position,
+            (targetCamera.transform.TransformPoint(startLocalPosition) - characterHead.position).normalized);
+        Debug.DrawRay(characterHead.position, (targetCamera.transform.TransformPoint(startLocalPosition) - characterHead.position).normalized,
+            Color.red);
+        RaycastHit hit;
+        if (Physics.Raycast(invertedRay, out hit, maxDistance, targetMask))
         {
-            // targetCamera is already too near the lookat target
-            return camPos;
-        }
-
-    Vector3 camOut = (targetPos - camPos).normalized;
-    Vector3 nearestCamPos = targetPos - camOut * minOffsetDist;
-    float minHitFraction = 1.0f;
-
-        for (int i = 0; i< frustumNearCorners.Length; i++)
-        {
-            Vector3 corner = frustumNearCorners[i];
-            Vector3 offsetToCorner = corner - camPos;
-            Vector3 rayStart = nearestCamPos + offsetToCorner;
-            Vector3 rayEnd = corner;
-            Debug.DrawLine(rayStart, rayEnd, Color.green);
-            // a result between 0 and 1 indicates a hit along the ray segment
-            RaycastHit hit;
-            if(Physics.Linecast(rayStart, rayEnd, out hit))
+            Debug.DrawLine(invertedRay.origin, hit.point, Color.blue);
+            // targetCamera.transform.InverseTransformPoint(hit.point + (targetCamera.transform.position - characterHead.position).normalized * 0.1f);
+            if (!lerpToHead)
             {
-                float hitFraction = (rayStart - hit.point).magnitude;
-                minHitFraction = Mathf.Min(hitFraction, minHitFraction);
+                lerpToHead = true;
+                currentLerpTime = 0.0f;
             }
-            
-        }        
-
-        if (minHitFraction< 1.0f)
-        {
-            return nearestCamPos - camOut* (raycastLength* minHitFraction);
+            LerpToHead();
         }
         else
         {
-            return camPos;
+            if (lerpToHead)
+            {
+                lerpToHead = false;
+                currentLerpTime = 0.0f;
+            }
+            LerpToStart();
         }
+
+
+        // targetCamera.transform.localPosition = Vector3.Slerp(targetCamera.transform.localPosition, targetLocalPosition, Time.deltaTime * speed);
+        targetCamera.transform.localPosition = new Vector3(targetCamera.transform.localPosition.x, startLocalPosition.y, targetCamera.transform.localPosition.z);
+    }
+
+    private bool lerpToHead = false;
+    private float currentLerpTime = 0f;
+    public float lerpDuration = 5f;
+
+    void LerpToHead()
+    {
+        targetCamera.transform.localPosition = Vector3.Lerp(targetCamera.transform.localPosition, targetCamera.transform.InverseTransformPoint(characterHead.transform.position), Mathf.Clamp01(currentLerpTime / lerpDuration));
+        currentLerpTime+=Time.deltaTime;
+    }
+
+    void LerpToStart()
+    {
+        targetCamera.transform.localPosition = Vector3.Lerp(targetCamera.transform.localPosition, startLocalPosition, Mathf.Clamp01(currentLerpTime / lerpDuration));
+        currentLerpTime += Time.deltaTime;
     }
 }

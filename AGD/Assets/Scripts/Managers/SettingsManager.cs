@@ -36,6 +36,8 @@ public class SettingsManager : MonoBehaviour
     public float overallVolumeLevel = 100;
     public bool splitscreenDuelControllerMode = true;
     public List<PostProcessingProfile> profiles = new List<PostProcessingProfile>();
+    public float lookSensitivity = 0.5f;
+    public bool invertYAxis = false;
 
     public void RegisterPostProfile(PostProcessingProfile profile)
     {
@@ -59,6 +61,16 @@ public class SettingsManager : MonoBehaviour
     public void SetMasterVolume(Single volume)
     {
         overallVolumeLevel = volume;
+    }
+
+    public void SetLookSensitivity(float sensitivity)
+    {
+        lookSensitivity = sensitivity;
+    }
+
+    public void SetInvertYAxis(bool invert)
+    {
+        invertYAxis = invert;
     }
 
     public void SetAAMode(int value)

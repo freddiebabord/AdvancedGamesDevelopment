@@ -206,7 +206,7 @@ public class Frustum : NetworkBehaviour {
     [ClientRpc]
     void Rpc_SetMeshes(FrustumFramework peaceful/*, FrustumFramework aggro*/)
     {
-        print("<color=yellow>SetMeshes Triggered!</color>");
+       // print("<color=yellow>SetMeshes Triggered!</color>");
 
         int[] triangles = new int[36]
         {
@@ -280,7 +280,7 @@ public class Frustum : NetworkBehaviour {
     public void Rpc_ChangeFrustum(int ghostStateInt)
     {
         GhostState curGhostState = (GhostState)ghostStateInt;
-        print("Hello");
+       // print("Hello");
         if (curGhostState == GhostState.Peaceful)
         {
             meshFilter.mesh = peacefulMesh;

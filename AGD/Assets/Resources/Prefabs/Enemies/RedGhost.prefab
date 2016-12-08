@@ -282,6 +282,7 @@ GameObject:
   - 114: {fileID: 114000010656762796}
   - 114: {fileID: 114000010575005378}
   - 114: {fileID: 114000012272156032}
+  - 114: {fileID: 114000014185423514}
   m_Layer: 0
   m_Name: RedGhost
   m_TagString: Untagged
@@ -1857,7 +1858,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010856007744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.2984989, y: 3.294, z: -2.9519725}
+  m_LocalPosition: {x: -0.9724623, y: 3.49, z: -6.8441644}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2646,8 +2647,9 @@ MonoBehaviour:
   ghostTarget: {fileID: 0}
   frustumPrefab: {fileID: 1000010079989698, guid: e268d018186052e4dade4dff5a1849c6,
     type: 2}
-  ghostTrigger: 1
+  ghostTrigger: 0
   isPeaceful: 0
+  damageTextPool: {fileID: 114000014185423514}
 --- !u!114 &114000010656762796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2694,7 +2696,7 @@ MonoBehaviour:
   enemyMap: 3
   firstPass: 0
   maxFloatHeight: 50
-  agent: {fileID: 195000010713252202}
+  agent: {fileID: 0}
   walkRadius: 10
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &114000013196008886
@@ -2729,6 +2731,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52a1aaf63836704ca4402844ebff6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000014185423514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010856007744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba62e101abd9243eaaf75f1cfc02e4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToPool: {fileID: 1000011526883230, guid: 0a8c936e459a2494a903ac0458a701ac,
+    type: 2}
+  poolSize: 20
 --- !u!135 &135000011663408366
 SphereCollider:
   m_ObjectHideFlags: 1
