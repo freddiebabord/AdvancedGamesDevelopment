@@ -9,7 +9,7 @@ public class PickupManager : NetworkBehaviour
     public GameObject powerBoostPickup;
     public GameObject speedBoostPickup;
     public GameObject weaponRechargePickup;
-    
+    public GameObject nullifyFearPickup;   
 
 	// Use this for initialization
 	void OnEnable ()
@@ -40,6 +40,9 @@ public class PickupManager : NetworkBehaviour
                     break;
                 case PickupType.WeaponRecharge:
                     InstantiatePickup(pubh[i].transform, weaponRechargePickup, PickupType.WeaponRecharge);
+                    break;
+                case PickupType.NullifyFear:
+                    InstantiatePickup(pubh[i].transform, nullifyFearPickup, PickupType.NullifyFear);
                     break;
             }
         }

@@ -7,14 +7,14 @@ using System;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 public class PickUps : NetworkBehaviour {
-    Color[] colours = { Color.red, Color.green, Color.blue };
+    Color[] colours = { Color.red, Color.green, Color.blue, Color.yellow };
 
     Color temp;
 
-    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, None };
+    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, NullifyFear, None };
     PowerName pow = PowerName.None;
 
-    public enum ActivePower { Speed, Power, Weapon, None};
+    public enum ActivePower { Speed, Power, Weapon, Nullify, None};
     public ActivePower active = ActivePower.None;
 
     public bool power = false;
@@ -25,10 +25,14 @@ public class PickUps : NetworkBehaviour {
     public Text power_obtained;
     public Slider timer;
     public Slider stamina;
+    public Slider fear;
     
 
-    public float cooldown = 5.0f;
+    public float cooldown = 100.0f;
     public bool cooloff = false;
+
+    public float fear_increase = 5f;
+    public bool fear_cooloff = false;
 
     GameObject the_pickup;
 
@@ -69,6 +73,8 @@ public class PickUps : NetworkBehaviour {
     {
          if (!isLocalPlayer)
              return;
+
+        #region SpeedBoost
         if (active != ActivePower.Speed && !cooloff)
         {
             if (gameObject.GetComponent<NetworkedThirdPersonUserControl>().running && stamina.value != stamina.minValue)
@@ -101,8 +107,19 @@ public class PickUps : NetworkBehaviour {
 
             }
         }
+        #endregion
 
-       
+        #region FearBoostAndFear
+        if (active != ActivePower.Nullify && !fear_cooloff)
+        {
+            
+        }
+        else if (fear_cooloff)
+        {
+            
+        }
+        #endregion
+
         if (power && !timer.gameObject.activeInHierarchy)
         {
             timer.gameObject.SetActive(true);
@@ -134,6 +151,11 @@ public class PickUps : NetworkBehaviour {
             {
                 the_pickup.GetComponent<WeaponRecharge>().Triggered();
                 active = ActivePower.Weapon;
+            }
+            else if (pow == PowerName.NullifyFear && active != ActivePower.Nullify)
+            {
+                the_pickup.GetComponent<NullifyFear>().Triggered();
+                active = ActivePower.Nullify;
             }
 
             power_obtained.text = power_name;
@@ -177,6 +199,12 @@ public class PickUps : NetworkBehaviour {
                 {
                     temp = colours[2];
                     pow = PowerName.WeaponRecharge;
+
+                }
+                else if (other.gameObject.GetComponent<NullifyFear>() != null)
+                {
+                    temp = colours[3];
+                    pow = PowerName.NullifyFear;
 
                 }
 

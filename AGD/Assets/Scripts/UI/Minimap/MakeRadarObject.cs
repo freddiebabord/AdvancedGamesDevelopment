@@ -23,7 +23,7 @@ public class MakeRadarObject : NetworkBehaviour {
 
     void Start()
     {
-        radar = gameObject.GetComponent<Radar>();
+        radar = GetComponent<Radar>();
     }
 
     // Update is called once per frame

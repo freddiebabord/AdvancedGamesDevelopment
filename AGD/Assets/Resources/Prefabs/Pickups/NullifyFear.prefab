@@ -106,7 +106,7 @@ MonoBehaviour:
   itemMap: 3
   firstPass: 0
   player: {fileID: 0}
-  pickupType: 0
+  pickupType: 3
 --- !u!114 &114000011254984194
 MonoBehaviour:
   m_ObjectHideFlags: 1
