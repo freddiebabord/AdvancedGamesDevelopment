@@ -52,6 +52,24 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     public Text enemiesRemainingText;
 
     private Material beamMaterial;
+
+    [HideInInspector] public bool controllsReversed = false;
+    public bool ReversedControls {
+        get { return controllsReversed; }
+        set {
+            controllsReversed = value;
+            uc.reverseControls = controllsReversed;
+        }
+    }
+    [HideInInspector] public bool disableControls = false;
+    public bool DisableControls {
+        get { return disableControls; }
+        set {
+            disableControls = value;
+            uc.disableControls = disableControls;
+        }
+    }
+
     [Space(10)]
     [Header("Weapon Variables")]
     public float weaponRechargeRate = 0.75f;
@@ -548,7 +566,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         virtaulWeaponAudioSource.clip = weaponEndSound;
         virtaulWeaponAudioSource.loop = false;
         virtaulWeaponAudioSource.Play();
-        
+
+        foreach (Joystick j in uc.player.controllers.Joysticks)
+        {
+            if (!j.supportsVibration) continue;
+            j.StopVibration();
+        }
+
     }
 
     void StopParticleSystem()

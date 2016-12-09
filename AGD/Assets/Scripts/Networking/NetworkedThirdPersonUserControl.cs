@@ -35,7 +35,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private int playerID = 0; // Rewired playerid
         public Player player; // The Rewired Player
         public GameObject scorboardUI;
-
+        [HideInInspector]
+        public bool reverseControls = false;
+        [HideInInspector]
+        public bool disableControls = false;
         void Awake()
         {
             // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
@@ -112,7 +115,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (player.GetButtonDown("Menu"))
                 escapeMenu = !escapeMenu;
 
-            if (!escapeMenu)
+            if (!escapeMenu || disableControls)
             {
                 if (!m_Jump)
                 {
@@ -130,22 +133,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     scorboardUI.SetActive(!scorboardUI.activeInHierarchy);
             }
 
-            if (m_firing)
-            {
-                foreach (Joystick j in player.controllers.Joysticks)
-                {
-                    if (!j.supportsVibration) continue;
-                    j.SetVibration(0.8f, 0.8f);
-                }
-            }
-            else
-            {
-                foreach (Joystick j in player.controllers.Joysticks)
-                {
-                    if (!j.supportsVibration) continue;
-                    j.StopVibration();
-                }
-            }
+            //if (m_firing)
+            //{
+                
+            //}
+            //else
+            //{
+            //    foreach (Joystick j in player.controllers.Joysticks)
+            //    {
+            //        if (!j.supportsVibration) continue;
+            //        j.StopVibration();
+            //    }
+            //}
         }
 
 
@@ -157,11 +156,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
            
             bool crouch = false;
-            if (!escapeMenu)
+            if (!escapeMenu || disableControls)
             {
                 // read inputs
-                float h = player.GetAxis("WalkHorizontal");
-                float v = player.GetAxis("WalkVertical");
+                float h = player.GetAxis("WalkHorizontal") * (reverseControls ? -1 : 1);
+                float v = player.GetAxis("WalkVertical") * (reverseControls ? -1 : 1);
 
                 // TODO: crouch input
                 crouch = player.GetButton("Crouch");
