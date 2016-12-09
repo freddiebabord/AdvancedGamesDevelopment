@@ -108,6 +108,7 @@ GameObject:
   - 114: {fileID: 114000010108531394}
   - 114: {fileID: 114000012729063960}
   - 114: {fileID: 114000011993937054}
+  - 195: {fileID: 195000013242170360}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2670,7 +2671,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010241756804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.192577, y: 5.987483, z: 15.921757}
+  m_LocalPosition: {x: 2.8749034, y: 0.9999998, z: -5.264911}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -3845,6 +3846,8 @@ MonoBehaviour:
   allowRunning: 1
   escapeMenu: 0
   scorboardUI: {fileID: 1000012651090818}
+  reverseControls: 0
+  disableControls: 0
 --- !u!114 &114000010541238828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4245,6 +4248,7 @@ MonoBehaviour:
     lockCursor: 1
     weaponRotationPoint: {fileID: 4000010791986650}
     weapon: {fileID: 4000012410580236}
+    disabled: 0
     currentOriginalRoation: {x: 0, y: 0, z: 0, w: 1}
   playerID: 0
   playerName: 
@@ -4256,6 +4260,8 @@ MonoBehaviour:
     type: 2}
   muzzleParticleSystem: {fileID: 1000013626073212}
   enemiesRemainingText: {fileID: 114000012365975248}
+  controllsReversed: 0
+  disableControls: 0
   weaponRechargeRate: 0.75
   damagePerSecond: 50
   shake: {fileID: 114000013202157956}
@@ -5143,6 +5149,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.081615, y: -0.040415905, z: 0.00029075146}
     m_Extent: {x: 0.037738636, y: 0.060759716, z: 0.07119451}
   m_DirtyAABB: 0
+--- !u!195 &195000013242170360
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010241756804}
+  m_Enabled: 0
+  m_Radius: 0.26
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.6
+  m_BaseOffset: 0
+  m_WalkableMask: 7
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &198000010078176180
 ParticleSystem:
   m_ObjectHideFlags: 1

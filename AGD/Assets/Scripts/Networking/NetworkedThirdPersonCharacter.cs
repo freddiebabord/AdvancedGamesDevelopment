@@ -11,6 +11,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class NetworkedThirdPersonCharacter : NetworkBehaviour
 { 
 	[SerializeField] float m_MovingTurnSpeed = 360;
@@ -67,8 +68,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         set {
             disableControls = value;
             uc.disableControls = disableControls;
+            m_MouseLook.disabled = value;
         }
     }
+    private NavMeshAgent navMeshAgent;
 
     [Space(10)]
     [Header("Weapon Variables")]
@@ -107,6 +110,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     public AudioSource weaponAudioSource;
 
 
+
+    Vector3 positionOnSpawn = Vector3.zero;
+
     void Start()
 	{
 		m_Animator = GetComponent<Animator>();
@@ -116,6 +122,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         m_CapsuleHeight = m_Capsule.height;
 		m_CapsuleCenter = m_Capsule.center;
         m_Camera = GetComponentInChildren<Camera>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
 
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
@@ -159,6 +166,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         spawnedCaptureSphere = Instantiate(captureSpherePrefab);
         spawnedCaptureSphere.SetActive(false);
         weaponSteam.Stop(true);
+        positionOnSpawn = transform.position;
         if (!isLocalPlayer)
         {
             m_Camera.gameObject.SetActive(false);
@@ -192,118 +200,140 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
    
     void Update()
     {
-        if(firing)
+        if(Input.GetKeyDown(KeyCode.F3))
         {
-            if (!hasStarted)
+            RevokePlayerControlAndSetPlayerAIToTarget(positionOnSpawn);
+        }
+        if (navMeshAgent.enabled)
+        {
+            Vector3 move = Vector3.ProjectOnPlane(navMeshAgent.velocity, m_GroundNormal);
+            move = transform.TransformDirection(move * -1);
+            m_TurnAmount = move.x;
+            m_ForwardAmount = move.z;
+
+            UpdateAnimator(transform.InverseTransformDirection(navMeshAgent.velocity));
+            if (Vector3.Distance(transform.position, navMeshAgent.destination) < 2.5f &&  navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
-                if (curresntStartupTime < startupTime)
-                {
-                    shake.ShakeCamera((curresntStartupTime / startupTime) * cameraShakeIntensity, Time.deltaTime);
-                    curresntStartupTime += Time.deltaTime;
-                    foreach (Joystick j in uc.player.controllers.Joysticks)
-                    {
-                        if (!j.supportsVibration) continue;
-                        j.SetVibration((curresntStartupTime / startupTime), (curresntStartupTime / startupTime));
-                    }
-                }
-                else
-                {
-                    hasStarted = true;
-                    virtaulWeaponAudioSource.clip = weaponMainSound;
-                    virtaulWeaponAudioSource.loop = true;
-                    virtaulWeaponAudioSource.Play();
-                }
+                navMeshAgent.enabled = false;
+                DisableControls = false;
             }
-            else
+        }
+        else
+        {
+            if (firing)
             {
-                if (currentWeaponTime < maxWeaponTime)
+                if (!hasStarted)
                 {
-                    if (!lineRenderer.enabled)
-                        lineRenderer.enabled = true;
-                    ParticleSystem rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
-                    rootMuzzleParticleSystem.Play();
-                    shake.ShakeCamera(1 * cameraShakeIntensity, Time.deltaTime);
-                    foreach (Joystick j in uc.player.controllers.Joysticks)
+                    if (curresntStartupTime < startupTime)
                     {
-                        if (!j.supportsVibration) continue;
-                        j.SetVibration(1, 1);
-                    }
-                    Ray ray = new Ray(m_Camera.transform.position + m_Camera.transform.forward * m_Camera.nearClipPlane, weaponSpawnPoint.forward);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit, distance))
-                    {
-                        
-                        lineRenderer.SetPosition(0, weaponSpawnPoint.position);
-                        for (int i = 1; i < 19; i++)
+                        shake.ShakeCamera((curresntStartupTime / startupTime) * cameraShakeIntensity, Time.deltaTime);
+                        curresntStartupTime += Time.deltaTime;
+                        foreach (Joystick j in uc.player.controllers.Joysticks)
                         {
-                            //Set the position here to the current location and project it in the forward direction of the object it is attached to
-                            Vector3 pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (Vector3.Distance(weaponSpawnPoint.position, hit.point) / 20) + 
-                                          new Vector3(Random.Range(-lineNoise, lineNoise), Random.Range(-lineNoise, lineNoise), 0);
-
-                            lineRenderer.SetPosition(i, pos);
-
-                        }
-                        lineRenderer.SetPosition(19, hit.point);
-
-                        float dist = Vector3.Distance(hit.point, weaponSpawnPoint.position);
-                        float halfDist = dist / 2;
-                        beamLight.m_TubeLength = halfDist;
-                        beamLight.transform.position = weaponSpawnPoint.position;
-                        beamLight.transform.LookAt(hit.point);
-                        beamLight.transform.Rotate(beamLight.transform.up, 90);
-                        beamLight.transform.Translate(beamLight.transform.right * -halfDist);
-                        beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
-
-                        if (hit.transform.GetComponentInParent<GhostBehaviour>())
-                        {
-                            if (isLocalPlayer)
-                                hit.transform.GetComponentInParent<GhostBehaviour>()
-                                    .TakeDamage(playerID, damagePerSecond * Time.deltaTime);
-                            spawnedCaptureSphere.transform.position = hit.transform.gameObject.transform.position + Vector3.up;
-                            spawnedCaptureSphere.GetComponent<Renderer>()
-                                .material.SetFloat("_PercentageComplete",
-                                    1 -
-                                    (hit.transform.GetComponentInParent<GhostBehaviour>().CurrentHealth /
-                                     hit.transform.GetComponentInParent<GhostBehaviour>().maxHealth));
-                        }
-                        else
-                        {
-                            StartParticleSystem();
-                            Vector3 norm = weaponSpawnPoint.position - hit.point;
-                            norm.Normalize();
-                            spawnedParticleSystem.position = hit.point + norm * 0.1f;
-                            //spawnedCaptureSphere.SetActive(false);
+                            if (!j.supportsVibration) continue;
+                            j.SetVibration((curresntStartupTime / startupTime), (curresntStartupTime / startupTime));
                         }
                     }
                     else
                     {
-                        StopParticleSystem();
-                        //lineRenderer.SetPosition(0, weaponSpawnPoint.position);
-                        // lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * distance);
-                        //lineRenderer.SetVertexCount(Mathf.FloorToInt(Vector3.Distance(weaponSpawnPoint.position, weaponSpawnPoint.forward * distance)));
-                        lineRenderer.SetPosition(0, weaponSpawnPoint.position);
-                        for (int i = 1; i < 19; i++)
-                        {
-                            //Set the position here to the current location and project it in the forward direction of the object it is attached to
-                            Vector3 pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (distance / 20) +
-                                          new Vector3(Random.Range(-lineNoise, lineNoise), Random.Range(-lineNoise, lineNoise), 0);
-
-                            lineRenderer.SetPosition(i, pos);
-
-                        }
-                        lineRenderer.SetPosition(19, weaponSpawnPoint.position + weaponSpawnPoint.forward * distance);
-                        //spawnedCaptureSphere.SetActive(false);
-                        distance += distanceOverTime * Time.deltaTime;
+                        hasStarted = true;
+                        virtaulWeaponAudioSource.clip = weaponMainSound;
+                        virtaulWeaponAudioSource.loop = true;
+                        virtaulWeaponAudioSource.Play();
                     }
-                    
-                    currentWeaponTime += Time.deltaTime;
                 }
                 else
                 {
-                    
-                    if (isLocalPlayer)
-                        Cmd_EndFire();
+                    if (currentWeaponTime < maxWeaponTime)
+                    {
+                        if (!lineRenderer.enabled)
+                            lineRenderer.enabled = true;
+                        ParticleSystem rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
+                        rootMuzzleParticleSystem.Play();
+                        shake.ShakeCamera(1 * cameraShakeIntensity, Time.deltaTime);
+                        foreach (Joystick j in uc.player.controllers.Joysticks)
+                        {
+                            if (!j.supportsVibration) continue;
+                            j.SetVibration(1, 1);
+                        }
+                        Ray ray = new Ray(m_Camera.transform.position + m_Camera.transform.forward * m_Camera.nearClipPlane, weaponSpawnPoint.forward);
+                        RaycastHit hit;
+                        if (Physics.Raycast(ray, out hit, distance))
+                        {
+
+                            lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+                            for (int i = 1; i < 19; i++)
+                            {
+                                //Set the position here to the current location and project it in the forward direction of the object it is attached to
+                                Vector3 pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (Vector3.Distance(weaponSpawnPoint.position, hit.point) / 20) +
+                                              new Vector3(Random.Range(-lineNoise, lineNoise), Random.Range(-lineNoise, lineNoise), 0);
+
+                                lineRenderer.SetPosition(i, pos);
+
+                            }
+                            lineRenderer.SetPosition(19, hit.point);
+
+                            float dist = Vector3.Distance(hit.point, weaponSpawnPoint.position);
+                            float halfDist = dist / 2;
+                            beamLight.m_TubeLength = halfDist;
+                            beamLight.transform.position = weaponSpawnPoint.position;
+                            beamLight.transform.LookAt(hit.point);
+                            beamLight.transform.Rotate(beamLight.transform.up, 90);
+                            beamLight.transform.Translate(beamLight.transform.right * -halfDist);
+                            beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
+
+                            if (hit.transform.GetComponentInParent<GhostBehaviour>())
+                            {
+                                if (isLocalPlayer)
+                                    hit.transform.GetComponentInParent<GhostBehaviour>()
+                                        .TakeDamage(playerID, damagePerSecond * Time.deltaTime);
+                                spawnedCaptureSphere.transform.position = hit.transform.gameObject.transform.position + Vector3.up;
+                                spawnedCaptureSphere.GetComponent<Renderer>()
+                                    .material.SetFloat("_PercentageComplete",
+                                        1 -
+                                        (hit.transform.GetComponentInParent<GhostBehaviour>().CurrentHealth /
+                                         hit.transform.GetComponentInParent<GhostBehaviour>().maxHealth));
+                            }
+                            else
+                            {
+                                StartParticleSystem();
+                                Vector3 norm = weaponSpawnPoint.position - hit.point;
+                                norm.Normalize();
+                                spawnedParticleSystem.position = hit.point + norm * 0.1f;
+                                //spawnedCaptureSphere.SetActive(false);
+                            }
+                        }
+                        else
+                        {
+                            StopParticleSystem();
+                            //lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+                            // lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * distance);
+                            //lineRenderer.SetVertexCount(Mathf.FloorToInt(Vector3.Distance(weaponSpawnPoint.position, weaponSpawnPoint.forward * distance)));
+                            lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+                            for (int i = 1; i < 19; i++)
+                            {
+                                //Set the position here to the current location and project it in the forward direction of the object it is attached to
+                                Vector3 pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (distance / 20) +
+                                              new Vector3(Random.Range(-lineNoise, lineNoise), Random.Range(-lineNoise, lineNoise), 0);
+
+                                lineRenderer.SetPosition(i, pos);
+
+                            }
+                            lineRenderer.SetPosition(19, weaponSpawnPoint.position + weaponSpawnPoint.forward * distance);
+                            //spawnedCaptureSphere.SetActive(false);
+                            distance += distanceOverTime * Time.deltaTime;
+                        }
+
+                        currentWeaponTime += Time.deltaTime;
+                    }
+                    else
+                    {
+
+                        if (isLocalPlayer)
+                            Cmd_EndFire();
+                    }
                 }
+
             }
         }
 
@@ -318,8 +348,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         float value = currentWeaponTime / maxWeaponTime;
         weaponRechargeRenderer.SetFloat("_CurrentOverheatValue", value);
 
-        if (!isLocalPlayer)
-            return;
+        
         
     }
 
@@ -588,5 +617,16 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         rootParticleSystem.Play(true);
     }
     
+    public void RevokePlayerControlAndSetPlayerAIToTarget(Transform target)
+    {
+        RevokePlayerControlAndSetPlayerAIToTarget(target.position);
+    }
+
+    public void RevokePlayerControlAndSetPlayerAIToTarget(Vector3 targetPosition)
+    {
+        DisableControls = true;
+        navMeshAgent.enabled = true;
+        navMeshAgent.SetDestination(targetPosition);
+    }
 }
 

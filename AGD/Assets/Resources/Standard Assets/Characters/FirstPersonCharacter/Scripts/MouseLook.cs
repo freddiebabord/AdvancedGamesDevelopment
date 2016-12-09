@@ -21,6 +21,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Transform weapon;
         public Player player;
 
+        [HideInInspector]
+        public bool disabled = false;
+
         [HideInInspector]public Quaternion currentOriginalRoation = Quaternion.identity;
 
         public void Init(Transform character, Transform camera)
@@ -30,7 +33,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
         public void LookRotation(Transform character, Transform camera)
         {
-            if (player == null)
+            if (player == null || disabled)
                 return;
 
             float yRot = player.GetAxis("LookHorizontal") * XSensitivity * SettingsManager.instance.lookSensitivity;
