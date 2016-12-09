@@ -6,6 +6,7 @@ using UnityEngine.PostProcessing;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.Characters.ThirdPerson;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -73,8 +74,21 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     public ParticleSystem weaponSteam;
     private NetworkedThirdPersonUserControl uc;
     public float lineNoise = 1.00f;
-
     [Range(0.0f, 1.0f)]public float cameraShakeIntensity = 0.5f;
+
+    [Space(10)]
+    [Header("Weapon Variables")]
+    public AudioClip weaponChargeSound;
+    public AudioClip weaponMainSound;
+    public AudioClip weaponEndSound;
+    public AudioClip playerStepSound;
+    public List<AudioClip> playerAmbientSounds = new List<AudioClip>();
+    [Tooltip("Do not edit")]
+    public VirtualAudioSource virtaulWeaponAudioSource;
+    [Tooltip("Do not edit")]
+    public AudioSource weaponAudioSource;
+
+
     void Start()
 	{
 		m_Animator = GetComponent<Animator>();
@@ -177,6 +191,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 else
                 {
                     hasStarted = true;
+                    virtaulWeaponAudioSource.clip = weaponMainSound;
+                    virtaulWeaponAudioSource.loop = true;
+                    virtaulWeaponAudioSource.Play();
                 }
             }
             else
@@ -489,14 +506,6 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         m_MouseLook.LookRotation(transform, m_Camera.transform);
     }
 
-    public void Fire(bool fire)
-	{
-        if (isLocalPlayer)
-        {
-            //Cmd_Fire(fire, m_uNetID);
-        }
-		
-	}
 
     [Command]
     public void Cmd_BeginFire()
@@ -511,6 +520,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         distance = 0;
         hasStarted = false;
         curresntStartupTime = 0.0f;
+        weaponAudioSource.clip = weaponChargeSound;
+        virtaulWeaponAudioSource.clip = weaponChargeSound;
+        virtaulWeaponAudioSource.Play();
     }
 
     [Command]
@@ -532,74 +544,12 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             weaponSteam.Play(true);
         ParticleSystem rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
         rootMuzzleParticleSystem.Stop();
+
+        virtaulWeaponAudioSource.clip = weaponEndSound;
+        virtaulWeaponAudioSource.loop = false;
+        virtaulWeaponAudioSource.Play();
+        
     }
-
- //   [Command]
-	//void Cmd_Fire(bool fire, int unID)
-	//{
-	//	Rpc_Fire(fire, unID);
-	//}
-
-	//[ClientRpc]
-	//void Rpc_Fire(bool fire, int unID)
-	//{
-	//    isFiring = fire;
-		
- //       if (!fire /*|| currentWeaponFireTime >= maxWeaponFireTime*/)
-	//    {
-	//        lineRenderer.gameObject.SetActive(false);
- //           //spawnedParticleSystem.gameObject.SetActive(false);
- //           beamLight.gameObject.SetActive(false);
- //           StopParticleSystem();
- //           return;
-	//    }
-	//	Debug.Log(fire);
- //       beamLight.gameObject.SetActive(true);
- //       //beamMaterial.SetFloat("Intensity", 1-(maxWeaponFireTime / currentWeaponFireTime));
- //       Ray ray = new Ray(m_Camera.transform.position, weaponSpawnPoint.forward);
-	//	RaycastHit hit;
- //       lineRenderer.gameObject.SetActive(true);
- //       lineRenderer.SetPosition(0, weaponSpawnPoint.position);
- //       muzzleParticleSystem.position = weaponSpawnPoint.position;
- //       if (Physics.Raycast(ray, out hit, 100))
-	//	{
-			
-	//		lineRenderer.SetPosition(1, hit.point);
-	//	    float dist = Vector3.Distance(hit.point, weaponSpawnPoint.position);
-	//	    float halfDist = dist/2;
-	//	    beamLight.m_TubeLength = halfDist;
-	//	    beamLight.transform.position = weaponSpawnPoint.position;
- //           beamLight.transform.LookAt(hit.point);
- //           beamLight.transform.Rotate(beamLight.transform.up, 90);
- //           beamLight.transform.Translate(beamLight.transform.right * -halfDist);
- //           beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
-
- //           if (hit.transform.GetComponentInParent<GhostBehaviour>())
- //           {
- //               hit.transform.GetComponentInParent<GhostBehaviour>().TakeDamage(playerID, 5);
- //           }
- //           else
- //           {
- //               StartParticleSystem();
- //               Vector3 norm = weaponSpawnPoint.position - hit.point;
- //               norm.Normalize();
- //               spawnedParticleSystem.position = hit.point + norm * 0.1f;
- //           }
-	//	}
-	//	else
-	//	{
-	//	    StopParticleSystem();
- //           lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * 100.0f);
- //       }
-	//}
-    
-    //[Command]
-    //private void Cmd_DestoryGhost(GameObject ghost)
-    //{
-    //    GameManager.instance.DestroyEnemy();
-    //    NetworkServer.Destroy(ghost);
-    //}
-
 
     void StopParticleSystem()
     {
