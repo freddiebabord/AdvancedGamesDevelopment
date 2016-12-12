@@ -207,7 +207,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         if (navMeshAgent.enabled)
         {
             Vector3 move = Vector3.ProjectOnPlane(navMeshAgent.velocity, m_GroundNormal);
-            move = transform.TransformDirection(move * -1);
+            move = transform.TransformDirection(move);
             m_TurnAmount = move.x;
             m_ForwardAmount = move.z;
 
