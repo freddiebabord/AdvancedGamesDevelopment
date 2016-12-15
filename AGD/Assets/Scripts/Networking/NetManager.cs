@@ -42,6 +42,7 @@ public class NetManager :  LobbyManager{
 		pl.playerName = player.playerName;
 		pl.playerColour = player.playerColor;
         pl.playerID = playerControllerId;
+		GameManager.instance.RadarHelper.Add(go.GetComponent<MakeRadarObject>());
 		return go;
 
 	}

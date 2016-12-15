@@ -171,10 +171,12 @@
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Uber.shader" />
      <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
+     <None Include="Assets\Resources\Art\Shader\Fire.shader" />
      <None Include="Assets\External\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\DepthOfField\Resources\DepthOfField.shader" />
+     <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ScreenSpaceReflection\Resources\ScreenSpaceRaytrace.cginc" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_UV_DEP_REF.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\DistortionParticlesCutout.shader" />

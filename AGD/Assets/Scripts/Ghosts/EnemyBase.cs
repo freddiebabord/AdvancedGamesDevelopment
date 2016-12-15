@@ -18,7 +18,15 @@ public class EnemyBase : NetworkBehaviour {
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
         ghostPosition = GetComponentInChildren<GhostBodyAdjustments>();
+        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
+            GameManager.instance.RadarHelper[i].RegisterEnemy(this);
 	}
+
+    void OnDestroy()
+    {
+        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
+            GameManager.instance.RadarHelper[i].DeregisterEnemy(this);
+    }
 	
 	// Update is called once per frame on the server
 	void Update () {

@@ -51,7 +51,7 @@ public class GameManager : NetworkBehaviour {
     public Dictionary<int, int> ScoreTable { get { return scoreTable; } }
     public List<NetworkedThirdPersonCharacter> players = new List<NetworkedThirdPersonCharacter>();
     private List<ScorePanel> scorePanels = new List<ScorePanel>();
-    
+    public List<MakeRadarObject> RadarHelper = new List<MakeRadarObject>();
 
     void Awake()
 	{
