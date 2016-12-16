@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using Prototype.NetworkLobby;
 using UnityEngine.Networking;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 public class NetManager :  LobbyManager{
 
