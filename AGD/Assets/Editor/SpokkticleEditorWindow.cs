@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class SpokkticleEditorWindow : EditorWindow {
     
@@ -38,6 +40,9 @@ public class SpokkticleEditorWindow : EditorWindow {
         }
     }
     
+    GameObject childObject, targetParent;
+    string targetString = "";
+
     void OnGUI () {
 		GUILayout.Label("");
         GUILayout.BeginVertical();
@@ -47,6 +52,20 @@ public class SpokkticleEditorWindow : EditorWindow {
 			doQuickStart = true;
 			EditorApplication.isPlaying = true;
 		}
+        GUILayout.FlexibleSpace();
+        targetString = GUILayout.TextField(targetString);
+        childObject = EditorGUILayout.ObjectField(childObject, typeof(GameObject), true) as GameObject;
+        if(GUILayout.Button("Add GameObject as Child to target parent"))
+        {
+            var parents = Object.FindObjectsOfType<Light>().ToList();
+            foreach(var p in parents)
+            {
+                GameObject child = (GameObject)Instantiate(childObject);
+                child.transform.parent = p.transform;
+                child.transform.localPosition = Vector3.zero;
+            }
+        }
+        
         GUILayout.FlexibleSpace();
 		if(GUILayout.Button("Jump To Scenes Folder"))
 			Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(@"Assets/Resources/Scenes/Menu.unity");

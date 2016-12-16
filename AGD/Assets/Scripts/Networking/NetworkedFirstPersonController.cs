@@ -109,25 +109,26 @@ public class NetworkedFirstPersonController : NetworkBehaviour
 		m_NextStep = m_StepCycle + .5f;
 	}
 
-
-	private void FixedUpdate()
+    private float inputSpeed = 0f;
+    private RaycastHit hitInfo;
+    private void FixedUpdate()
 	{
 		if(!isLocalPlayer)
 			return;
 
-		float speed;
-		GetInput(out speed);
+		
+		GetInput(out inputSpeed);
 		// always move along the camera forward as it is the direction that it being aimed at
 		Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
 		// get a normal for the surface that is being touched to move along it
-		RaycastHit hitInfo;
+		
 		Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
 							m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
 		desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-		m_MoveDir.x = desiredMove.x*speed;
-		m_MoveDir.z = desiredMove.z*speed;
+		m_MoveDir.x = desiredMove.x*inputSpeed;
+		m_MoveDir.z = desiredMove.z* inputSpeed;
 
 
 		if (m_CharacterController.isGrounded)
@@ -148,8 +149,8 @@ public class NetworkedFirstPersonController : NetworkBehaviour
 		}
 		m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
-		ProgressStepCycle(speed);
-		UpdateCameraPosition(speed);
+		ProgressStepCycle(inputSpeed);
+		UpdateCameraPosition(inputSpeed);
 
 		m_MouseLook.UpdateCursorLock();
 	}
@@ -180,27 +181,27 @@ public class NetworkedFirstPersonController : NetworkBehaviour
 		PlayFootStepAudio();
 	}
 
-
+    private int randomFootstepSound = 0;
 	private void PlayFootStepAudio()
 	{
 		if (!m_CharacterController.isGrounded)
 		{
 			return;
 		}
-		// pick & play a random footstep sound from the array,
-		// excluding sound at index 0
-		int n = Random.Range(1, m_FootstepSounds.Length);
-		m_AudioSource.clip = m_FootstepSounds[n];
+        // pick & play a random footstep sound from the array,
+        // excluding sound at index 0
+        randomFootstepSound = Random.Range(1, m_FootstepSounds.Length);
+		m_AudioSource.clip = m_FootstepSounds[randomFootstepSound];
 		m_AudioSource.PlayOneShot(m_AudioSource.clip);
 		// move picked sound to index 0 so it's not picked next time
-		m_FootstepSounds[n] = m_FootstepSounds[0];
+		m_FootstepSounds[randomFootstepSound] = m_FootstepSounds[0];
 		m_FootstepSounds[0] = m_AudioSource.clip;
 	}
 
-
-	private void UpdateCameraPosition(float speed)
+    private Vector3 newCameraPosition;
+    private void UpdateCameraPosition(float speed)
 	{
-		Vector3 newCameraPosition;
+		
 		if (!m_UseHeadBob)
 		{
 			return;
@@ -221,14 +222,17 @@ public class NetworkedFirstPersonController : NetworkBehaviour
 		m_Camera.transform.localPosition = newCameraPosition;
 	}
 
+    private float horizontal;
+    private float vertical;
+    private bool waswalking;
 
-	private void GetInput(out float speed)
+    private void GetInput(out float speed)
 	{
-		// Read input
-		float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-		float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+        // Read input
+        horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+		vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
-		bool waswalking = m_IsWalking;
+        waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT
 		// On standalone builds, walk/run speed is modified by a key press.
@@ -260,21 +264,22 @@ public class NetworkedFirstPersonController : NetworkBehaviour
 		m_MouseLook.LookRotation (transform, m_Camera.transform);
 	}
 
+    private Rigidbody collidedBody;
 
-	private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
-		Rigidbody body = hit.collider.attachedRigidbody;
+        collidedBody = hit.collider.attachedRigidbody;
 		//dont move the rigidbody if the character is on top of it
 		if (m_CollisionFlags == CollisionFlags.Below)
 		{
 			return;
 		}
 
-		if (body == null || body.isKinematic)
+		if (collidedBody == null || collidedBody.isKinematic)
 		{
 			return;
 		}
-		body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        collidedBody.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
 	}
 
 
@@ -296,8 +301,8 @@ public class NetworkedFirstPersonController : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-			var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
-			Transform spawnLocation = spawnLocations[Random.Range(0, spawnLocations.Count)].transform;
+			var spawnLocations = FindObjectsOfType<NetworkStartPosition>();
+			Transform spawnLocation = spawnLocations[Random.Range(0, spawnLocations.Length)].transform;
             transform.position = spawnLocation.position;
 			transform.rotation = spawnLocation.rotation;
         }

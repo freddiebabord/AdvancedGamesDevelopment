@@ -166,6 +166,7 @@
     <Compile Include="Assets\Editor\ImageEffects\TonemappingEditor.cs" />
     <Compile Include="Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
     <Compile Include="Assets\Editor\SpokkticleEditorWindow.cs" />
+    <Compile Include="Assets\Editor\TransformInspector.cs" />
     <Compile Include="Assets\External\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeInspector.cs" />
     <Compile Include="Assets\External\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeMaterialInspector.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Editor\AmbientOcclusionEditor.cs" />
@@ -467,10 +468,13 @@
     <None Include="Assets\Resources\Art\Shader\Beam.shader" />
     <None Include="Assets\Resources\Art\Shader\CaptureSphere.shader" />
     <None Include="Assets\Resources\Art\Shader\Dust.shader" />
+    <None Include="Assets\Resources\Art\Shader\Fire.shader" />
     <None Include="Assets\Resources\Art\Shader\GhostDemo.shader" />
+    <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleAlt.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
     <None Include="Assets\Resources\Art\Shader\WeaponOverheatMeter.shader" />
+    <None Include="Assets\Resources\Audio\Sources.txt" />
     <None Include="Assets\Resources\Ghost.shader" />
     <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
