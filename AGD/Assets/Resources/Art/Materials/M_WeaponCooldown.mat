@@ -133,10 +133,10 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _EmptyColour
-      second: {r: 8, g: 0, b: 0, a: 1}
+      second: {r: 2.5, g: 0, b: 0, a: 1}
     - first:
         name: _FullColour
-      second: {r: 0, g: 4, b: 0.2298851, a: 1}
+      second: {r: 0, g: 1.2, b: 0.06896553, a: 1}
     - first:
         name: _OffColour
       second: {r: 0, g: 0, b: 0, a: 1}

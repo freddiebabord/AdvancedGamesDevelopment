@@ -10,11 +10,10 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
-	<LangVersion>default</LangVersion>
-</PropertyGroup>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -24,8 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-	<LangVersion>default</LangVersion>
-</PropertyGroup>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
@@ -33,18 +31,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-	<LangVersion>default</LangVersion>
-</PropertyGroup>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>/Applications/Unity-541/Unity5-4-1.app/Contents/Managed/UnityEngine.dll</HintPath>
+      <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>/Applications/Unity-541/Unity5-4-1.app/Contents/Managed/UnityEditor.dll</HintPath>
+      <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +70,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Matrix4x4\SFN_Matrix4x4.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Log\SFN_Log_LOG2.shader" />
+     <None Include="Assets\Resources\Art\Shader\Skybox.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp01\SFN_Clamp01.shader" />
@@ -201,6 +199,7 @@
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\AlphaBlended.shader" />
+     <None Include="Assets\External\Volumetric Lighting\Shaders\BilateralBlur.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_VectorRejection\SFN_VectorRejection.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetParticleAdditive.shader" />
@@ -271,6 +270,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_NRM_EXP.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\DistortionCullOff.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_REF.shader" />
+     <None Include="Assets\External\Volumetric Lighting\Shaders\BlitAdd.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Common.cginc" />
@@ -361,6 +361,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Tex2d\SFN_Tex2d_MIP.shader" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
+     <None Include="Assets\External\Volumetric Lighting\Shaders\VolumetricLight.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Sqrt\SFN_Sqrt.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\TonemappingColorGrading\Resources\TonemappingColorGrading.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
@@ -461,10 +462,10 @@
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetSky.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity-541/Unity5-4-1.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>/Applications/Unity-541/Unity5-4-1.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_Core">
  <HintPath>/Users/fredericbabord/Documents/Git/AdvancedGamesDevelopment/AGD/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
@@ -481,4 +482,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>

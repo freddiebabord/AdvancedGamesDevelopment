@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 82301ccc9bd5da34ba67126a08833711
-timeCreated: 1481139422
-licenseType: Pro
+timeCreated: 1482117363
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -11,27 +11,45 @@ ModelImporter:
     100006: //RootNode
     100008: Steps
     100010: Stringer001
+    100012: Stairs
+    100014: Stringers_Right
+    100016: Stringers_Right 1
     400000: Object063
     400002: Railing Support001
     400004: Stairs under
     400006: //RootNode
     400008: Steps
     400010: Stringer001
+    400012: Stairs
+    400014: Stringers_Right
+    400016: Stringers_Right 1
     2300000: Object063
     2300002: Railing Support001
     2300004: Stairs under
     2300006: Steps
     2300008: Stringer001
+    2300010: Stairs
+    2300012: Stringers_Right
+    2300014: Stringers_Right 1
     3300000: Object063
     3300002: Railing Support001
     3300004: Stairs under
     3300006: Steps
     3300008: Stringer001
+    3300010: Stairs
+    3300012: Stringers_Right
+    3300014: Stringers_Right 1
     4300000: Steps
     4300002: Stairs under
     4300004: Stringer001
     4300006: Railing Support001
     4300008: Object063
+    4300010: Stairs
+    4300012: Stringers_Right
+    4300014: Stringers_Right
+    6400000: Stairs
+    6400002: Stringers_Right
+    6400004: Stringers_Right 1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -59,10 +77,10 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -76,7 +94,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
@@ -91,7 +109,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

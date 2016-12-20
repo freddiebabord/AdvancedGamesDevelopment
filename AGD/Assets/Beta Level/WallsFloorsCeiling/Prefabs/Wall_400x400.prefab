@@ -26,8 +26,8 @@ GameObject:
   m_Name: Wall_400x400
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000013337106946
 Transform:
@@ -36,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011429464424}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.29, y: 4.67, z: -31.84}
-  m_LocalScale: {x: 1, y: 1.0000007, z: 1.0000007}
+  m_LocalPosition: {x: 11.71, y: 4.67, z: -35.84}
+  m_LocalScale: {x: 1, y: 1.0000036, z: 1.0000036}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b68989f9dfb0803489f513233fde6e22, type: 2}
+  - {fileID: 2100000, guid: a1d9adfb4bbe440d8b1bd1499298f877, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
