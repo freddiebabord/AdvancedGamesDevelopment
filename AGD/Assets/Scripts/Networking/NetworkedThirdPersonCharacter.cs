@@ -46,13 +46,11 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	public Transform weaponSpawnPoint;
 	private Camera m_Camera;
     public GameObject tempDecalParticleSystem, muzzleParticleSystem;
-    private int m_uNetID;
 
-    private bool spawningPS = false;
     private Transform spawnedParticleSystem;
     public Text enemiesRemainingText;
 
-    private Material beamMaterial;
+//    private Material beamMaterial;
 
     [HideInInspector] public bool controllsReversed = false;
     public bool ReversedControls {
@@ -113,6 +111,23 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	private List<CustomLight> beamLightCLightSegments = new List<CustomLight> ();
 
     Vector3 positionOnSpawn = Vector3.zero;
+	ParticleSystem rootMuzzleParticleSystem;
+	ParticleSystem rootParticleSystem;
+	bool firing = false;
+	RaycastHit hit;
+	List<Joystick> joysticks = new List<Joystick>();
+
+	Vector3 planeProjection = Vector3.zero;
+	Vector3 endPosition = Vector3.zero;
+	Vector3 previousPos = Vector3.zero;
+	int vertCount = 0;
+	float effectDistance = 0.0f;
+	float halfDist = 0.0f;
+	Vector3 pos = Vector3.zero;
+	Ray ray ;
+	int i = 0;
+	Ray crouchRay;
+	float crouchRayLength = 0.0f;
 
     void Start()
 	{
@@ -135,7 +150,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         playerScore = 0;
 
         spawnedParticleSystem = ((GameObject)Instantiate(tempDecalParticleSystem, transform.position, Quaternion.identity)).transform;
-        ParticleSystem rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
+		rootParticleSystem = spawnedParticleSystem.GetComponent<ParticleSystem>();
+		rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
         rootMuzzleParticleSystem.Stop();
         StopParticleSystem();
         weaponRechargeRenderer = weaponRechargeIndicator.GetComponent<Renderer>().material;
@@ -153,8 +169,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         var cbssparks = sparkspsRootMzzle.colorBySpeed;
         cbssparks.color = grad;
 
-        spawnedParticleSystem.GetComponent<ParticleSystem>().startColor = playerColour;
-        cbs = spawnedParticleSystem.GetComponent<ParticleSystem>().colorBySpeed;
+		rootParticleSystem.startColor = playerColour;
+		cbs = rootParticleSystem.colorBySpeed;
         grad = new ParticleSystem.MinMaxGradient();
         grad.colorMin = playerColour;
         grad.colorMax = Color.white;
@@ -169,10 +185,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         weaponSteam.Stop(true);
         positionOnSpawn = transform.position;
 		//beamLightCLight = beamLight.GetComponent<CustomLight> ();
-		for (int i = 0; i < 50; ++i) {
+		for (i = 0; i < 50; ++i) {
 			beamLightSegments.Add (((GameObject)Instantiate (beamLight.gameObject)).transform);
 		}
-		for (int i = 0; i < 50; ++i) {
+		for (i = 0; i < 50; ++i) {
 			beamLightSegments [i].parent = beamLight.transform.parent;
 			beamLightSegments [i].GetComponentInChildren<CustomLight> ().m_TubeLength = 0.45f;
 			beamLightCLightSegments.Add (beamLightSegments [i].GetComponentInChildren<CustomLight> ());
@@ -188,10 +204,6 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
         if (isLocalPlayer)
         {
-            if (isServer)
-                m_uNetID = GetComponent<NetworkIdentity>().connectionToClient.connectionId;
-            else
-                m_uNetID = GetComponent<NetworkIdentity>().connectionToServer.connectionId;
             
             //spawnedParticleSystem.gameObject.SetActive(false);
            
@@ -205,12 +217,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             GameManager.instance.enemiesRemainigText.Add(enemiesRemainingText);
         }
 
-        beamMaterial = lineRenderer.material;
+        //beamMaterial = lineRenderer.material;
         GameManager.instance.players.Add(this);
-
+		joysticks = new List<Joystick>(uc.player.controllers.Joysticks);
 	}
+		
 
-   
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.F3))
@@ -219,10 +232,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         }
         if (navMeshAgent.enabled)
         {
-            Vector3 move = Vector3.ProjectOnPlane(navMeshAgent.velocity, m_GroundNormal);
-            move = transform.TransformDirection(move);
-            m_TurnAmount = move.x;
-            m_ForwardAmount = move.z;
+			planeProjection = Vector3.ProjectOnPlane(navMeshAgent.velocity, m_GroundNormal);
+			planeProjection = transform.TransformDirection(planeProjection);
+			m_TurnAmount = planeProjection.x;
+			m_ForwardAmount = planeProjection.z;
 
             UpdateAnimator(transform.InverseTransformDirection(navMeshAgent.velocity));
             if (Vector3.Distance(transform.position, navMeshAgent.destination) < 2.5f &&  navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
@@ -241,11 +254,11 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                     {
                         shake.ShakeCamera((curresntStartupTime / startupTime) * cameraShakeIntensity, Time.deltaTime);
                         curresntStartupTime += Time.deltaTime;
-                        foreach (Joystick j in uc.player.controllers.Joysticks)
-                        {
-                            if (!j.supportsVibration) continue;
-                            j.SetVibration((curresntStartupTime / startupTime), (curresntStartupTime / startupTime));
-                        }
+						for (i = 0; i < joysticks.Count; ++i) {
+							if (!joysticks [i].supportsVibration)
+								continue;
+							joysticks[i].SetVibration((curresntStartupTime / startupTime), (curresntStartupTime / startupTime));
+						}
                     }
                     else
                     {
@@ -263,24 +276,23 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 							lineRenderer.enabled = true;
 							beamLight.gameObject.SetActive (true);
 						}
-						ParticleSystem rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
                         rootMuzzleParticleSystem.Play();
                         shake.ShakeCamera(1 * cameraShakeIntensity, Time.deltaTime);
                         
-						foreach (Joystick j in uc.player.controllers.Joysticks)
-                        {
-                            if (!j.supportsVibration) continue;
-                            j.SetVibration(1, 1);
-                        }
+						for (i = 0; i < joysticks.Count; ++i) {
+							if (!joysticks [i].supportsVibration)
+								continue;
+							joysticks[i].SetVibration(1, 1);
+						}
 
-                        Ray ray = new Ray(m_Camera.transform.position + m_Camera.transform.forward * m_Camera.nearClipPlane, weaponSpawnPoint.forward);
-                        RaycastHit hit;
-						Vector3 endPosition = weaponSpawnPoint.position + weaponSpawnPoint.forward * distance;
-						int vertCount = Mathf.RoundToInt (distance);
+                        ray = new Ray(m_Camera.transform.position + m_Camera.transform.forward * m_Camera.nearClipPlane, weaponSpawnPoint.forward);
+                        
+						endPosition = weaponSpawnPoint.position + weaponSpawnPoint.forward * distance;
+						vertCount = Mathf.RoundToInt (distance);
 						lineRenderer.SetVertexCount (vertCount);
 						if (vertCount > 0)
 							lineRenderer.SetPosition(0, weaponSpawnPoint.position);
-						float effectDistance = distance;
+						effectDistance = distance;
 
                         if (Physics.Raycast(ray, out hit, distance))
                         {
@@ -316,16 +328,16 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                         }
 
 
-						float halfDist = effectDistance / 2;
+						halfDist = effectDistance / 2;
 						beamLightCLight.m_TubeLength = halfDist;
 						beamLight.transform.localPosition = Vector3.zero;
 						//beamLight.transform.localRotation = Quaternion.Euler (Vector3.up * 90);
 						beamLight.transform.position += weaponSpawnPoint.forward * halfDist;
-						Vector3 previousPos = weaponSpawnPoint.position;
-						for (int i = 1; i < vertCount; i++)
+						previousPos = weaponSpawnPoint.position;
+						for (i = 1; i < vertCount; i++)
 						{
 							//Set the position here to the current location and project it in the forward direction of the object it is attached to
-							Vector3 pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (effectDistance / vertCount) +
+							pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (effectDistance / vertCount) +
 								new Vector3(Random.Range(-lineNoise, lineNoise), Random.Range(-lineNoise, lineNoise), 0);
 
 							lineRenderer.SetPosition(i, pos);
@@ -367,12 +379,14 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 currentWeaponTime = 0;
         }
 
-        float value = currentWeaponTime / maxWeaponTime;
-        weaponRechargeRenderer.SetFloat("_CurrentOverheatValue", value);
+		currentOverheatValue = currentWeaponTime / maxWeaponTime;
+		weaponRechargeRenderer.SetFloat("_CurrentOverheatValue", currentOverheatValue);
 
         
         
     }
+
+	float currentOverheatValue = 0.0f;
 
     void OnDisable()
     {
@@ -435,8 +449,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		}
 		else
 		{
-			Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-			float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
+			crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
+			crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
 			if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 			{
 				m_Crouching = true;
@@ -453,8 +467,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		// prevent standing up in crouch-only zones
 		if (!m_Crouching)
 		{
-			Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
-			float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
+			crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
+			crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
 			if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 			{
 				m_Crouching = true;
@@ -549,16 +563,15 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
 	void CheckGroundStatus()
 	{
-		RaycastHit hitInfo;
 #if UNITY_EDITOR
 		// helper to visualise the ground check ray in the scene view
 		Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * m_GroundCheckDistance));
 #endif
 		// 0.1f is a small offset to start the ray from inside the character
 		// it is also good to note that the transform position in the sample assets is at the base of the character
-		if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
+		if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hit, m_GroundCheckDistance))
 		{
-			m_GroundNormal = hitInfo.normal;
+			m_GroundNormal = hit.normal;
 			m_IsGrounded = true;
 			m_Animator.applyRootMotion = true;
 		}
@@ -600,7 +613,6 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         Rpc_EndFire();
     }
 
-    bool firing = false;
     [ClientRpc]
     void Rpc_EndFire()
     {
@@ -611,36 +623,32 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         StopParticleSystem();
         if(hasStarted)
             weaponSteam.Play(true);
-        ParticleSystem rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
         rootMuzzleParticleSystem.Stop();
 
         virtaulWeaponAudioSource.clip = weaponEndSound;
         virtaulWeaponAudioSource.loop = false;
         virtaulWeaponAudioSource.Play();
 
-		for (int i = 0; i < 50; ++i) {
+		for (i = 0; i < 50; ++i) {
 			if (beamLightSegments [i].gameObject.activeInHierarchy)
 				beamLightSegments [i].gameObject.SetActive (false);
 		}
 
-        foreach (Joystick j in uc.player.controllers.Joysticks)
-        {
-            if (!j.supportsVibration) continue;
-            j.StopVibration();
-        }
+		for (i = 0; i < joysticks.Count; ++i) {
+			if (!joysticks [i].supportsVibration)
+				continue;
+			joysticks[i].StopVibration();
+		}
 
     }
 
     void StopParticleSystem()
     {
-        ParticleSystem rootParticleSystem = spawnedParticleSystem.GetComponent<ParticleSystem>();
         rootParticleSystem.Stop(true);
-        
     }
 
     void StartParticleSystem()
     {
-        ParticleSystem rootParticleSystem = spawnedParticleSystem.GetComponent<ParticleSystem>();
         rootParticleSystem.Play(true);
     }
     

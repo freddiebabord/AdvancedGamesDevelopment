@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Collections;
 
 [RequireComponent(typeof(NavMeshAgent))]
-
 public class GhostBehaviour : NetworkBehaviour
 {
     public float maxHealth = 100f;
@@ -27,7 +26,7 @@ public class GhostBehaviour : NetworkBehaviour
     public float CurrentHealth { get { return currentHealth; } }
 
     List<float> damageFromPlayers = new List<float>();
-    private GameObject m_networkFrustum;
+    //private GameObject m_networkFrustum;
     public ObjectPool damageTextPool;
 
     // Use this for initialization
@@ -47,26 +46,17 @@ public class GhostBehaviour : NetworkBehaviour
             print("<color=red>Ghost Target not set!</color>");
         }
         currentHealth = maxHealth;
-
+		Frustum frustum = GetComponent<Frustum> ();
+		//m_networkFrustum = frustum.gameObject;
         //TODO: maybe change to add isServer?
-        m_networkFrustum = Instantiate(frustumPrefab,transform.GetChild(0).position,transform.GetChild(0).rotation) as GameObject;
-        m_networkFrustum.GetComponent<Frustum>().parentNetID = netId;
-        NetworkServer.Spawn(m_networkFrustum);
-        m_networkFrustum.GetComponent<Frustum>().PostStart();
+		if (isServer) {
+			//m_networkFrustum = Instantiate (frustumPrefab, transform.GetChild (0).position, transform.GetChild (0).rotation) as GameObject;
+			frustum.parentNetID = netId;
+			//NetworkServer.Spawn (m_networkFrustum);
+			//m_networkFrustum.transform.parent = transform.GetChild(0).transform;
+			frustum.PostStart ();
+		}
         damageTextPool = GetComponent<ObjectPool>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!isServer)
-            return;
-        if (currentHealth <= 0)
-        {
-            for(int i = 0; i < damageFromPlayers.Count; ++i)
-                GameManager.instance.PostScoreToScoreTable(i, Mathf.RoundToInt((damageFromPlayers[i] / maxHealth) * score));
-            Cmd_RemoveRadarObj();
-        }
     }
 
     public void Kill()
@@ -86,8 +76,14 @@ public class GhostBehaviour : NetworkBehaviour
         while (damageFromPlayers.Count - 1 <= id)
             damageFromPlayers.Add(0.0f);
         currentHealth -= dmg;
-        if(currentHealth > 0.0f)
-            Rpc_TakeDamage(id, dmg);
+		if (currentHealth > 0.0f)
+			Rpc_TakeDamage (id, dmg);
+		else {
+			for(int i = 0; i < damageFromPlayers.Count; ++i)
+				GameManager.instance.PostScoreToScoreTable(i, Mathf.RoundToInt((damageFromPlayers[i] / maxHealth) * score));
+			//Cmd_RemoveRadarObj();
+			Cmd_DestoryGhost();
+		}
     }
 
     [ClientRpc]
@@ -106,11 +102,13 @@ public class GhostBehaviour : NetworkBehaviour
 
     private bool displayingText = false;
     private float damage = 0;  
+	private WaitForSeconds wfs = new WaitForSeconds (0.5f);
+
     IEnumerator TextDisplay(float dmg)
     {
         displayingText = true;
         damage = dmg;
-        yield return new WaitForSeconds(0.1f);
+		yield return wfs;
         GhostDamageText txt = damageTextPool.Spawn(transform.position + Vector3.forward * 1.5f, transform.rotation).GetComponent<GhostDamageText>();
         txt.SetDamageText(Mathf.RoundToInt(damage));
         damage = 0;
@@ -118,29 +116,28 @@ public class GhostBehaviour : NetworkBehaviour
     }
 
     [Command]
-    private void Cmd_DestoryGhost(GameObject ghost)
+    private void Cmd_DestoryGhost()
     {
         GameManager.instance.DestroyEnemy();
-        NetworkServer.Destroy(ghost);
+        NetworkServer.Destroy(gameObject);
     }
 
-    [Command]
-    void Cmd_RemoveRadarObj()
-    {
-        Rpc_RemoveRadarObjFromClients();
-    }
+//    [Command]
+//    void Cmd_RemoveRadarObj()
+//    {
+//        Rpc_RemoveRadarObjFromClients();
+//    }
 
-    [ClientRpc]
-    void Rpc_RemoveRadarObjFromClients()
-    {
-        Radar[] players = FindObjectsOfType<Radar>();
-
-        for (int i = 0; i < players.Length; i++)
-        {
-            players[i].RemoveRadarObject(gameObject);
-        }
-        if(isServer)
-            Cmd_DestoryGhost(gameObject);
-    }
+//    [ClientRpc]
+//    void Rpc_RemoveRadarObjFromClients()
+//    {
+//        Radar[] players = FindObjectsOfType<Radar>();
+//
+//        for (int i = 0; i < players.Length; i++)
+//        {
+//            players[i].RemoveRadarObject(gameObject);
+//        }
+//            
+//    }
 
 }

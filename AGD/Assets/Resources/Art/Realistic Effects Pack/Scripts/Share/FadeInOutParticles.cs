@@ -44,14 +44,16 @@ public class FadeInOutParticles : MonoBehaviour {
         foreach (var particle in particles) {
           if (effectSettings.IsVisible) {
             particle.Play();
-            particle.enableEmission = true;
+			var em = particle.emission;
+			em.enabled = true;
           }
         }
       else
         foreach (var particle in particles) {
           if (!effectSettings.IsVisible) {
             particle.Stop();
-            particle.enableEmission = false;
+			var em = particle.emission;
+			em.enabled = false;
           }
         }
     }

@@ -6,7 +6,6 @@ public class CameraManager : MonoBehaviour
     public Camera targetCamera;
     public Transform characterHead;
     private Vector3 startLocalPosition;
-    private float nearClipPlane;
     public LayerMask targetMask;
     private float maxDistance;
     public float speed = 5.0f;
@@ -16,7 +15,6 @@ public class CameraManager : MonoBehaviour
         if (!targetCamera)
             targetCamera = Camera.main;
         startLocalPosition = targetCamera.transform.localPosition;
-        nearClipPlane = targetCamera.nearClipPlane;
         maxDistance = Vector3.Distance(targetCamera.transform.position, characterHead.position);
     }
 

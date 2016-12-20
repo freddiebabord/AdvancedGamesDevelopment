@@ -283,6 +283,7 @@ GameObject:
   - 114: {fileID: 114000010575005378}
   - 114: {fileID: 114000012272156032}
   - 114: {fileID: 114000014185423514}
+  - 114: {fileID: 114000014092773452}
   m_Layer: 0
   m_Name: RedGhost
   m_TagString: Untagged
@@ -360,6 +361,24 @@ GameObject:
   - 4: {fileID: 4000010197683754}
   m_Layer: 0
   m_Name: C_Thumb_R_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000011236983598
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010256677308}
+  - 33: {fileID: 33000014092194422}
+  - 64: {fileID: 64000010244020834}
+  - 114: {fileID: 114000011004444614}
+  m_Layer: 0
+  m_Name: Frustum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1441,6 +1460,19 @@ Transform:
   - {fileID: 4000010137704486}
   m_Father: {fileID: 4000012703125466}
   m_RootOrder: 0
+--- !u!4 &4000010256677308
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011236983598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000011119054968}
+  m_RootOrder: 2
 --- !u!4 &4000010264753220
 Transform:
   m_ObjectHideFlags: 1
@@ -1739,6 +1771,7 @@ Transform:
   m_Children:
   - {fileID: 4000010563041694}
   - {fileID: 4000010817700726}
+  - {fileID: 4000010256677308}
   m_Father: {fileID: 4000011509907318}
   m_RootOrder: 0
 --- !u!4 &4000011129459964
@@ -1858,7 +1891,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010856007744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9724623, y: 3.49, z: -6.8441644}
+  m_LocalPosition: {x: -27.428267, y: -0.9390669, z: -10.812292}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2612,6 +2645,25 @@ Transform:
   - {fileID: 4000012204394522}
   m_Father: {fileID: 4000010002551450}
   m_RootOrder: 0
+--- !u!33 &33000014092194422
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011236983598}
+  m_Mesh: {fileID: 0}
+--- !u!64 &64000010244020834
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011236983598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 0}
 --- !u!95 &95000010170589550
 Animator:
   serializedVersion: 3
@@ -2645,8 +2697,7 @@ MonoBehaviour:
   fearPresence: 10
   score: 100
   ghostTarget: {fileID: 0}
-  frustumPrefab: {fileID: 1000010079989698, guid: e268d018186052e4dade4dff5a1849c6,
-    type: 2}
+  frustumPrefab: {fileID: 1000011236983598}
   ghostTrigger: 0
   isPeaceful: 0
   damageTextPool: {fileID: 114000014185423514}
@@ -2682,6 +2733,17 @@ MonoBehaviour:
     i15: 206
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114000011004444614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011236983598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185b729f63dd644adab6b0050ea4a51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012272156032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2731,6 +2793,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52a1aaf63836704ca4402844ebff6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000014092773452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010856007744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c639f2d4c55c6429637ad3d2a87249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showView: 1
+  isPeaceful: 0
+  isAggravated: 0
+  peaceful:
+    near: {x: 1, y: 1}
+    far: {x: 3, y: 3}
+    distance: 5
+  ghostState: 0
+  drawFrustum: 1
+  isTriggered: 0
+  focus: {fileID: 0}
+  attentionSpan: 5
 --- !u!114 &114000014185423514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2744,7 +2829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToPool: {fileID: 1000011526883230, guid: 0a8c936e459a2494a903ac0458a701ac,
     type: 2}
-  poolSize: 20
+  poolSize: 5
 --- !u!135 &135000011663408366
 SphereCollider:
   m_ObjectHideFlags: 1
