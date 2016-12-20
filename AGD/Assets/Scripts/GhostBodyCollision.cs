@@ -4,16 +4,14 @@ using System.Collections;
 public class GhostBodyCollision : MonoBehaviour {
 
     GameObject root;
-    LocalFrustum childFrustum;
     Charge charge;
-    Teleportation teleport;
+    //Teleportation teleport;
 
     void Start()
     {
-        root = transform.parent.parent.gameObject;
-        childFrustum = GetComponentInChildren<LocalFrustum>();
+		root = transform.root.gameObject;
         charge = root.GetComponent<Charge>();
-        teleport = root.GetComponent<Teleportation>();
+        //teleport = root.GetComponent<Teleportation>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,7 +21,7 @@ public class GhostBodyCollision : MonoBehaviour {
         {
             if (charge)
             {
-                root.GetComponent<Charge>().StealPoints();
+                charge.StealPoints();
             }
         }
     }

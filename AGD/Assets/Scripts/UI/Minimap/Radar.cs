@@ -81,9 +81,12 @@ public class Radar : NetworkBehaviour {
         for (int i = 0; i < radar_objects.Count; ++i)
         {
 
-            if (radar_objects[i].owner.gameObject == null)
-                continue;
-
+			if (radar_objects [i].owner.gameObject == null) {
+				if(radar_objects [i].icon)
+					Destroy (radar_objects [i].icon.gameObject);
+				radar_objects.RemoveAt (i);
+				continue;
+			}
 
 
             // Pulled and adapted from: http://wiki.unity3d.com/index.php?title=Radar - Freddie Babord

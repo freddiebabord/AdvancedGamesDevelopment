@@ -44,7 +44,7 @@ public class MyGUI3_1 : MonoBehaviour
   private float accum = 0; // FPS accumulated over the interval
   private int frames = 0; // Frames drawn over the interval
   private float timeleft; // Left time for current interval
-  private float fps;
+//  private float fps;
 
   private GUIStyle guiStyleHeader = new GUIStyle();
 
@@ -172,7 +172,7 @@ public class MyGUI3_1 : MonoBehaviour
 
     if (timeleft <= 0.0)
     {
-      fps = accum / frames;
+      //fps = accum / frames;
       timeleft = UpdateInterval;
       accum = 0.0F;
       frames = 0;

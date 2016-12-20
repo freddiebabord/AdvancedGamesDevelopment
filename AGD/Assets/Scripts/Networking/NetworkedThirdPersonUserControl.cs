@@ -20,7 +20,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool m_Jump;
             // the world-relative desired move direction, calculated from the camForward and user input.
 
-        private bool m_firing;
+//        private bool m_firing;
         public int multiplyer = 1;
         private bool m_isRunning = false;
 
@@ -132,22 +132,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if(player.GetButtonDown("Score"))
                     scorboardUI.SetActive(!scorboardUI.activeInHierarchy);
             }
-
-            //if (m_firing)
-            //{
-                
-            //}
-            //else
-            //{
-            //    foreach (Joystick j in player.controllers.Joysticks)
-            //    {
-            //        if (!j.supportsVibration) continue;
-            //        j.StopVibration();
-            //    }
-            //}
         }
 
-
+		bool crouch = false;
+		float h, v;
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
@@ -155,12 +143,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 return;
 
            
-            bool crouch = false;
+            crouch = false;
             if (!escapeMenu || disableControls)
             {
                 // read inputs
-                float h = player.GetAxis("WalkHorizontal") * (reverseControls ? -1 : 1);
-                float v = player.GetAxis("WalkVertical") * (reverseControls ? -1 : 1);
+                h = player.GetAxis("WalkHorizontal") * (reverseControls ? -1 : 1);
+                v = player.GetAxis("WalkVertical") * (reverseControls ? -1 : 1);
 
                 // TODO: crouch input
                 crouch = player.GetButton("Crouch");
@@ -181,13 +169,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
             else
             {
-                m_firing = false;
                 m_Move = Vector3.zero;
             }
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump, escapeMenu);
             //m_Character.Fire(m_firing);
-            m_firing = false;
             m_Jump = false;
 
         }

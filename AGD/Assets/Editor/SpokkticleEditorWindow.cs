@@ -3,6 +3,7 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.SceneManagement;
 
 public class SpokkticleEditorWindow : EditorWindow {
     
@@ -48,7 +49,7 @@ public class SpokkticleEditorWindow : EditorWindow {
         GUILayout.BeginVertical();
 		if (GUILayout.Button("Play", GUILayout.MinHeight(EditorGUIUtility.singleLineHeight * 3)))
 		{
-			EditorApplication.SaveCurrentSceneIfUserWantsTo();
+			EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo ();
 			doQuickStart = true;
 			EditorApplication.isPlaying = true;
 		}

@@ -38,7 +38,7 @@ public class Charge : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        ghostFrustum = transform.GetComponentInChildren<Frustum>();
+        ghostFrustum = transform.GetComponent<Frustum>();
         //agent = GetComponent<EnemyBase>().agent;
         //testFrustum = transform.GetChild(0).GetComponentInChildren<LocalFrustum>();
         testAgent = GetComponent<NavMeshAgent>();
