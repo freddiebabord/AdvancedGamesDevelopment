@@ -92,6 +92,9 @@ Material:
         name: _GlossyReflections
       second: 1
     - first:
+        name: _Intensity
+      second: 1
+    - first:
         name: _Metallic
       second: 0
     - first:
@@ -127,7 +130,7 @@ Material:
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _Colour
-      second: {r: 20, g: 11.137256, b: 0, a: 1}
+      second: {r: 1.361, g: 0.7578902, b: 0, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}

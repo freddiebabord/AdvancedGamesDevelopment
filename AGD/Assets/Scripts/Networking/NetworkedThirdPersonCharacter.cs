@@ -85,7 +85,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     private bool hasStarted = false;
     public float currentWeaponTime = 0;
     public float maxWeaponTime = 8.0f;
-    public CustomLight beamLight;
+    public Transform beamLight;
+	public CustomLight beamLightCLight;
 	public Decal impactDecal;
     private Material weaponRechargeRenderer;
     public GameObject weaponRechargeIndicator;
@@ -108,8 +109,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     public VirtualAudioSource virtaulWeaponAudioSource;
     [Tooltip("Do not edit")]
     public AudioSource weaponAudioSource;
-
-
+	private List<Transform> beamLightSegments = new List<Transform> ();
+	private List<CustomLight> beamLightCLightSegments = new List<CustomLight> ();
 
     Vector3 positionOnSpawn = Vector3.zero;
 
@@ -139,7 +140,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         StopParticleSystem();
         weaponRechargeRenderer = weaponRechargeIndicator.GetComponent<Renderer>().material;
         beamRenderer = lineRenderer.GetComponent<Renderer>().material;
-        beamRenderer.SetColor("_Colour", playerColour * 20);
+        beamRenderer.SetColor("_Colour", playerColour * 2);
 
         rootMuzzleParticleSystem.startColor = playerColour;
         var cbs = rootMuzzleParticleSystem.colorBySpeed;
@@ -167,6 +168,18 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         spawnedCaptureSphere.SetActive(false);
         weaponSteam.Stop(true);
         positionOnSpawn = transform.position;
+		//beamLightCLight = beamLight.GetComponent<CustomLight> ();
+		for (int i = 0; i < 50; ++i) {
+			beamLightSegments.Add (((GameObject)Instantiate (beamLight.gameObject)).transform);
+		}
+		for (int i = 0; i < 50; ++i) {
+			beamLightSegments [i].parent = beamLight.transform.parent;
+			beamLightSegments [i].GetComponentInChildren<CustomLight> ().m_TubeLength = 0.45f;
+			beamLightCLightSegments.Add (beamLightSegments [i].GetComponentInChildren<CustomLight> ());
+			beamLightSegments [i].gameObject.SetActive (false);
+		}
+		beamLight.gameObject.SetActive (false);
+		beamLightCLight.m_Color = Color.cyan;
         if (!isLocalPlayer)
         {
             m_Camera.gameObject.SetActive(false);
@@ -246,41 +259,33 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 {
                     if (currentWeaponTime < maxWeaponTime)
                     {
-                        if (!lineRenderer.enabled)
-                            lineRenderer.enabled = true;
-                        ParticleSystem rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
+						if (!lineRenderer.enabled || !beamLight.gameObject.activeInHierarchy) {
+							lineRenderer.enabled = true;
+							beamLight.gameObject.SetActive (true);
+						}
+						ParticleSystem rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
                         rootMuzzleParticleSystem.Play();
                         shake.ShakeCamera(1 * cameraShakeIntensity, Time.deltaTime);
-                        foreach (Joystick j in uc.player.controllers.Joysticks)
+                        
+						foreach (Joystick j in uc.player.controllers.Joysticks)
                         {
                             if (!j.supportsVibration) continue;
                             j.SetVibration(1, 1);
                         }
+
                         Ray ray = new Ray(m_Camera.transform.position + m_Camera.transform.forward * m_Camera.nearClipPlane, weaponSpawnPoint.forward);
                         RaycastHit hit;
+						Vector3 endPosition = weaponSpawnPoint.position + weaponSpawnPoint.forward * distance;
+						int vertCount = Mathf.RoundToInt (distance);
+						lineRenderer.SetVertexCount (vertCount);
+						if (vertCount > 0)
+							lineRenderer.SetPosition(0, weaponSpawnPoint.position);
+						float effectDistance = distance;
+
                         if (Physics.Raycast(ray, out hit, distance))
                         {
-
-                            lineRenderer.SetPosition(0, weaponSpawnPoint.position);
-                            for (int i = 1; i < 19; i++)
-                            {
-                                //Set the position here to the current location and project it in the forward direction of the object it is attached to
-                                Vector3 pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (Vector3.Distance(weaponSpawnPoint.position, hit.point) / 20) +
-                                              new Vector3(Random.Range(-lineNoise, lineNoise), Random.Range(-lineNoise, lineNoise), 0);
-
-                                lineRenderer.SetPosition(i, pos);
-
-                            }
-                            lineRenderer.SetPosition(19, hit.point);
-
-                            float dist = Vector3.Distance(hit.point, weaponSpawnPoint.position);
-                            float halfDist = dist / 2;
-                            beamLight.m_TubeLength = halfDist;
-                            beamLight.transform.position = weaponSpawnPoint.position;
-                            beamLight.transform.LookAt(hit.point);
-                            beamLight.transform.Rotate(beamLight.transform.up, 90);
-                            beamLight.transform.Translate(beamLight.transform.right * -halfDist);
-                            beamLight.transform.Translate(beamLight.transform.forward * -halfDist);
+							endPosition = hit.point;
+							effectDistance = Mathf.Abs(Vector3.Distance(hit.point, weaponSpawnPoint.position));
 
                             if (hit.transform.GetComponentInParent<GhostBehaviour>())
                             {
@@ -306,24 +311,41 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                         else
                         {
                             StopParticleSystem();
-                            //lineRenderer.SetPosition(0, weaponSpawnPoint.position);
-                            // lineRenderer.SetPosition(1, weaponSpawnPoint.position + weaponSpawnPoint.forward * distance);
-                            //lineRenderer.SetVertexCount(Mathf.FloorToInt(Vector3.Distance(weaponSpawnPoint.position, weaponSpawnPoint.forward * distance)));
-                            lineRenderer.SetPosition(0, weaponSpawnPoint.position);
-                            for (int i = 1; i < 19; i++)
-                            {
-                                //Set the position here to the current location and project it in the forward direction of the object it is attached to
-                                Vector3 pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (distance / 20) +
-                                              new Vector3(Random.Range(-lineNoise, lineNoise), Random.Range(-lineNoise, lineNoise), 0);
-
-                                lineRenderer.SetPosition(i, pos);
-
-                            }
-                            lineRenderer.SetPosition(19, weaponSpawnPoint.position + weaponSpawnPoint.forward * distance);
                             //spawnedCaptureSphere.SetActive(false);
                             distance += distanceOverTime * Time.deltaTime;
                         }
 
+
+						float halfDist = effectDistance / 2;
+						beamLightCLight.m_TubeLength = halfDist;
+						beamLight.transform.localPosition = Vector3.zero;
+						//beamLight.transform.localRotation = Quaternion.Euler (Vector3.up * 90);
+						beamLight.transform.position += weaponSpawnPoint.forward * halfDist;
+						Vector3 previousPos = weaponSpawnPoint.position;
+						for (int i = 1; i < vertCount; i++)
+						{
+							//Set the position here to the current location and project it in the forward direction of the object it is attached to
+							Vector3 pos = weaponSpawnPoint.position + weaponSpawnPoint.forward * i * (effectDistance / vertCount) +
+								new Vector3(Random.Range(-lineNoise, lineNoise), Random.Range(-lineNoise, lineNoise), 0);
+
+							lineRenderer.SetPosition(i, pos);
+							if(!beamLightSegments[i].gameObject.activeInHierarchy)
+								beamLightSegments [i].gameObject.SetActive (true);
+							beamLightSegments [i].transform.position = pos;
+							beamLightSegments [i].transform.localRotation = Quaternion.Euler ( beamLightSegments [i].TransformDirection( (previousPos - pos).normalized));
+							//beamLightSegments [i].transform.Rotate(beamLightSegments [i].up * 90);
+							beamLightSegments [i].transform.position += (previousPos - pos).normalized * 0.5f;
+							beamLightCLightSegments [i].m_TubeLength = Mathf.Abs (Vector3.Distance (previousPos, pos) / 2);
+							beamLightSegments [i].transform.LookAt (previousPos);
+							previousPos = pos;
+						}
+						if (vertCount > 1) {
+							lineRenderer.SetPosition (vertCount - 1, endPosition);
+							beamLightSegments [vertCount - 1].transform.position = beamLightSegments [vertCount - 2].position;
+							beamLightSegments [vertCount - 1].transform.localRotation = Quaternion.Euler ( beamLightSegments [vertCount - 1].TransformDirection( (beamLightSegments [vertCount - 2].position - endPosition).normalized));
+							beamLightSegments [vertCount - 1].transform.position -= (beamLightSegments [vertCount - 2].position - endPosition).normalized * Mathf.Abs(Vector3.Distance(beamLightSegments [vertCount - 2].position, endPosition)/2);
+							beamLightSegments [vertCount - 1].transform.LookAt (endPosition);
+						}
                         currentWeaponTime += Time.deltaTime;
                     }
                     else
@@ -595,6 +617,11 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         virtaulWeaponAudioSource.clip = weaponEndSound;
         virtaulWeaponAudioSource.loop = false;
         virtaulWeaponAudioSource.Play();
+
+		for (int i = 0; i < 50; ++i) {
+			if (beamLightSegments [i].gameObject.activeInHierarchy)
+				beamLightSegments [i].gameObject.SetActive (false);
+		}
 
         foreach (Joystick j in uc.player.controllers.Joysticks)
         {

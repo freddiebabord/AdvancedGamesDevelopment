@@ -25,6 +25,9 @@ Material:
     - first:
         name: _Cutoff
       second: 0.5
+    - first:
+        name: _InvFade
+      second: 3
     m_Colors:
     - first:
         name: _TintColor

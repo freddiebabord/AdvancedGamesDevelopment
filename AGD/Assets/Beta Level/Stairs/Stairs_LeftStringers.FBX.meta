@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 7e67d695c4e4c034ebbbb7079cd6e3e3
-timeCreated: 1481138558
-licenseType: Pro
+timeCreated: 1482117363
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -11,27 +11,45 @@ ModelImporter:
     100006: //RootNode
     100008: Steps
     100010: Stringer
+    100012: Object065
+    100014: Stairs
+    100016: Stringers_Left
     400000: Object062
     400002: Railing Support
     400004: Stairs under
     400006: //RootNode
     400008: Steps
     400010: Stringer
+    400012: Object065
+    400014: Stairs
+    400016: Stringers_Left
     2300000: Object062
     2300002: Railing Support
     2300004: Stairs under
     2300006: Steps
     2300008: Stringer
+    2300010: Object065
+    2300012: Stairs
+    2300014: Stringers_Left
     3300000: Object062
     3300002: Railing Support
     3300004: Stairs under
     3300006: Steps
     3300008: Stringer
+    3300010: Object065
+    3300012: Stairs
+    3300014: Stringers_Left
     4300000: Steps
     4300002: Stairs under
     4300004: Stringer
     4300006: Railing Support
     4300008: Object062
+    4300010: Stairs
+    4300012: Object065
+    4300014: Stringers_Left
+    6400000: Object065
+    6400002: Stairs
+    6400004: Stringers_Left
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -59,10 +77,10 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -76,7 +94,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
@@ -91,7 +109,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

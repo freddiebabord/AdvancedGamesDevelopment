@@ -26,8 +26,8 @@ GameObject:
   m_Name: Wall 400x400 Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1000010883771992
 GameObject:
@@ -41,8 +41,8 @@ GameObject:
   m_Name: Wall_400x800
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1000014270904954
 GameObject:
@@ -59,8 +59,8 @@ GameObject:
   m_Name: Wall 400x400 Bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 3
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000011189987630
 Transform:
@@ -68,8 +68,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010883771992}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.44, y: 0.671, z: -35.99}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.29, y: 0.671, z: -11.84}
   m_LocalScale: {x: 1.0000021, y: 1, z: 1.0000021}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_Children:
@@ -116,7 +116,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b68989f9dfb0803489f513233fde6e22, type: 2}
+  - {fileID: 2100000, guid: 7886d907f9e1f4124befc0f899ac9986, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -145,7 +145,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b68989f9dfb0803489f513233fde6e22, type: 2}
+  - {fileID: 2100000, guid: a1d9adfb4bbe440d8b1bd1499298f877, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}

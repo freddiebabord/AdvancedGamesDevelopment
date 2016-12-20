@@ -100,7 +100,7 @@ Material:
     m_Colors:
     - first:
         name: _Colour
-      second: {r: 0.5, g: 0, b: 0, a: 1}
+      second: {r: 0.25, g: 0, b: 0, a: 1}
     - first:
         name: _GlowColor
       second: {r: 0.1102941, g: 0.41095343, b: 1, a: 1}
