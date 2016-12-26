@@ -695,6 +695,7 @@ GameObject:
   - 65: {fileID: 65000013541253510}
   - 23: {fileID: 23000013952523178}
   - 114: {fileID: 114000013394474634}
+  - 114: {fileID: 114000013617181700}
   m_Layer: 0
   m_Name: DefferedLightRenderer
   m_TagString: Untagged
@@ -2903,7 +2904,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011438949494}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.07224665, y: 0, z: 0, w: -0.9973868}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.08594952, y: 0.051637627, z: 0.6518081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3245,7 +3246,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012551107276}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3840,7 +3841,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POWERUP TEXT
+  m_Text: No power
 --- !u!114 &114000010139911680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4160,7 +4161,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0.6413793, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 5
-  m_Size: 0.025
+  m_Size: 0.005
   m_TubeLength: 1
 --- !u!114 &114000011573384250
 MonoBehaviour:
@@ -4390,6 +4391,10 @@ MonoBehaviour:
   weaponSteam: {fileID: 198000012132148266}
   lineNoise: 0.2
   cameraShakeIntensity: 0.16
+  hitDecal: {fileID: 114000010568336304, guid: c6b87ee3f8d924043b34010aadb64a77, type: 2}
+  wallMAsk:
+    serializedVersion: 2
+    m_Bits: 512
   weaponChargeSound: {fileID: 8300000, guid: 236ad637583d9184a967e6eff2ecb075, type: 3}
   weaponMainSound: {fileID: 8300000, guid: f3bc4a152a7e59a4aad9f99e15c9fc5f, type: 3}
   weaponEndSound: {fileID: 8300000, guid: a51d988c303b33f4b8cb9e4dfc849575, type: 3}
@@ -4538,7 +4543,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 4
 --- !u!114 &114000012389598384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4863,6 +4868,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114000013617181700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011463749284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6fa5f2e7607459ba395388ad01d8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CubeMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114000013682940778
 MonoBehaviour:
   m_ObjectHideFlags: 1

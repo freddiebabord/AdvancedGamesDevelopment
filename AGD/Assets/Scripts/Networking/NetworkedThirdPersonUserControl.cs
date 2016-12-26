@@ -9,7 +9,7 @@ using Joystick = Rewired.Joystick;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
-    [RequireComponent(typeof(ThirdPersonCharacter))]
+    [RequireComponent(typeof(NetworkedThirdPersonCharacter))]
     public class NetworkedThirdPersonUserControl : NetworkBehaviour
     {
         private NetworkedThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object

@@ -1456,6 +1456,24 @@ Prefab:
       propertyPath: m_SpawnPrefabs.Array.data[6]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013744727068, guid: 1852a9ec1d1dc2f4eb5e28b9baf340cc,
+        type: 2}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 1000011643388204, guid: 3c2d86cc109e94e99b456b3a1d1c9e50,
+        type: 2}
+    - target: {fileID: 114000013744727068, guid: 1852a9ec1d1dc2f4eb5e28b9baf340cc,
+        type: 2}
+      propertyPath: m_SpawnPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1000011643388204, guid: 3c2d86cc109e94e99b456b3a1d1c9e50,
+        type: 2}
+    - target: {fileID: 114000013744727068, guid: 1852a9ec1d1dc2f4eb5e28b9baf340cc,
+        type: 2}
+      propertyPath: m_GamePlayerPrefab
+      value: 
+      objectReference: {fileID: 1000011643388204, guid: 3c2d86cc109e94e99b456b3a1d1c9e50,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1852a9ec1d1dc2f4eb5e28b9baf340cc, type: 2}
   m_IsPrefabParent: 0

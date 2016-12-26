@@ -75,7 +75,7 @@ Material:
       second: 1
     - first:
         name: _Count
-      second: 16.7
+      second: 20.87
     - first:
         name: _Cutoff
       second: 0.5
@@ -87,7 +87,7 @@ Material:
       second: 0
     - first:
         name: _Fuzzyness
-      second: 1
+      second: 7.6
     - first:
         name: _GlossMapScale
       second: 1
@@ -142,7 +142,7 @@ Material:
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _Colour
-      second: {r: 0, g: 3, b: 0.1724138, a: 1}
+      second: {r: 0, g: 1.4, b: 0.08045978, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
