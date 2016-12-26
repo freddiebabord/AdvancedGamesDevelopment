@@ -49,7 +49,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
     private Transform spawnedParticleSystem;
     public Text enemiesRemainingText;
-
+	public GameObject streamPartcileSysemGameObject;
+	private ParticleSystem streamPartcileSystem;
+	private ParticleSystem.ShapeModule streamShape;
 //    private Material beamMaterial;
 
     [HideInInspector] public bool controllsReversed = false;
@@ -95,6 +97,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     private NetworkedThirdPersonUserControl uc;
     public float lineNoise = 1.00f;
     [Range(0.0f, 1.0f)]public float cameraShakeIntensity = 0.5f;
+	public Decal hitDecal;
+	public LayerMask wallMAsk;
 
     [Space(10)]
     [Header("Weapon Variables")]
@@ -128,6 +132,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	int i = 0;
 	Ray crouchRay;
 	float crouchRayLength = 0.0f;
+	float currentOverheatValue = 0.0f;
 
     void Start()
 	{
@@ -150,6 +155,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         playerScore = 0;
 
         spawnedParticleSystem = ((GameObject)Instantiate(tempDecalParticleSystem, transform.position, Quaternion.identity)).transform;
+		streamPartcileSystem = ((GameObject)Instantiate (streamPartcileSysemGameObject, transform.position, Quaternion.identity)).GetComponentInChildren<ParticleSystem> ();
+		streamShape = streamPartcileSystem.shape;
 		rootParticleSystem = spawnedParticleSystem.GetComponent<ParticleSystem>();
 		rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
         rootMuzzleParticleSystem.Stop();
@@ -191,9 +198,11 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		for (i = 0; i < 50; ++i) {
 			beamLightSegments [i].parent = beamLight.transform.parent;
 			beamLightSegments [i].GetComponentInChildren<CustomLight> ().m_TubeLength = 0.45f;
+			beamLightSegments [i].GetComponentInChildren<CustomLight> ().m_Size = 0.005f;
 			beamLightCLightSegments.Add (beamLightSegments [i].GetComponentInChildren<CustomLight> ());
 			beamLightSegments [i].gameObject.SetActive (false);
 		}
+		beamLight.GetComponentInChildren<CustomLight> ().m_Size = 0.02f;
 		beamLight.gameObject.SetActive (false);
 		beamLightCLight.m_Color = Color.cyan;
         if (!isLocalPlayer)
@@ -221,8 +230,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         GameManager.instance.players.Add(this);
 		joysticks = new List<Joystick>(uc.player.controllers.Joysticks);
 	}
-		
 
+	GhostBehaviour previousGhostBehaviour;
 
     void Update()
     {
@@ -298,41 +307,53 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                         {
 							endPosition = hit.point;
 							effectDistance = Mathf.Abs(Vector3.Distance(hit.point, weaponSpawnPoint.position));
-
-                            if (hit.transform.GetComponentInParent<GhostBehaviour>())
+							GhostBehaviour gb = hit.transform.GetComponentInParent<GhostBehaviour>();
+                            if (gb)
                             {
                                 if (isLocalPlayer)
-                                    hit.transform.GetComponentInParent<GhostBehaviour>()
-                                        .TakeDamage(playerID, damagePerSecond * Time.deltaTime);
-                                spawnedCaptureSphere.transform.position = hit.transform.gameObject.transform.position + Vector3.up;
-                                spawnedCaptureSphere.GetComponent<Renderer>()
-                                    .material.SetFloat("_PercentageComplete",
-                                        1 -
-                                        (hit.transform.GetComponentInParent<GhostBehaviour>().CurrentHealth /
-                                         hit.transform.GetComponentInParent<GhostBehaviour>().maxHealth));
+                                    gb.TakeDamage(playerID, damagePerSecond * Time.deltaTime);
+								if (!spawnedCaptureSphere.activeInHierarchy)
+									spawnedCaptureSphere.SetActive (true);
+								previousGhostBehaviour = gb;
+								spawnedCaptureSphere.transform.position = hit.transform.gameObject.transform.position + Vector3.up;
+								spawnedCaptureSphere.GetComponent<Renderer> ()
+                                .material.SetFloat ("_PercentageComplete",
+									1 -
+									(gb.CurrentHealth /
+									gb.maxHealth));
+								
                             }
-                            else
+							else
                             {
                                 StartParticleSystem();
                                 Vector3 norm = weaponSpawnPoint.position - hit.point;
                                 norm.Normalize();
                                 spawnedParticleSystem.position = hit.point + norm * 0.1f;
+								if (spawnedCaptureSphere.activeInHierarchy && !disablingCaptureSphere && previousGhostBehaviour)
+									StartCoroutine (DisableSpawnSphere (previousGhostBehaviour));
+								//if(!spawningHitDecal)
+								//	StartCoroutine(SpawnHitDecal(hit.point, Quaternion.Euler(hit.normal)));
                                 //spawnedCaptureSphere.SetActive(false);
                             }
                         }
                         else
                         {
                             StopParticleSystem();
+							if(spawnedCaptureSphere.activeInHierarchy)
+							spawnedCaptureSphere.SetActive(false);
                             //spawnedCaptureSphere.SetActive(false);
                             distance += distanceOverTime * Time.deltaTime;
                         }
 
+						streamShape.radius = effectDistance / 2;
+						streamPartcileSystem.transform.parent.position = weaponSpawnPoint.position + weaponSpawnPoint.forward * (effectDistance / 2);
+						streamPartcileSystem.transform.parent.LookAt (weaponSpawnPoint.position);
 
 						halfDist = effectDistance / 2;
 						beamLightCLight.m_TubeLength = halfDist;
-						beamLight.transform.localPosition = Vector3.zero;
+						//beamLight.transform.localPosition = Vector3.zero;
 						//beamLight.transform.localRotation = Quaternion.Euler (Vector3.up * 90);
-						beamLight.transform.position += weaponSpawnPoint.forward * halfDist;
+
 						previousPos = weaponSpawnPoint.position;
 						for (i = 1; i < vertCount; i++)
 						{
@@ -358,6 +379,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 							beamLightSegments [vertCount - 1].transform.position -= (beamLightSegments [vertCount - 2].position - endPosition).normalized * Mathf.Abs(Vector3.Distance(beamLightSegments [vertCount - 2].position, endPosition)/2);
 							beamLightSegments [vertCount - 1].transform.LookAt (endPosition);
 						}
+						beamLight.transform.position = (weaponSpawnPoint.position + endPosition) * 0.5f;
+						beamLight.transform.LookAt (endPosition);
                         currentWeaponTime += Time.deltaTime;
                     }
                     else
@@ -370,6 +393,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
             }
         }
+
+		if (previousGhostBehaviour) {
+			spawnedCaptureSphere.transform.position = previousGhostBehaviour.transform.position;
+		}
 
         if (!firing)
         {
@@ -386,7 +413,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         
     }
 
-	float currentOverheatValue = 0.0f;
+
 
     void OnDisable()
     {
@@ -513,7 +540,6 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 			m_Animator.speed = 1;
 		}
 	}
-
 
 	void HandleAirborneMovement()
 	{
@@ -645,11 +671,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     void StopParticleSystem()
     {
         rootParticleSystem.Stop(true);
+		streamPartcileSystem.Stop ();
     }
 
     void StartParticleSystem()
     {
         rootParticleSystem.Play(true);
+		streamPartcileSystem.Play ();
     }
     
     public void RevokePlayerControlAndSetPlayerAIToTarget(Transform target)
@@ -663,5 +691,48 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         navMeshAgent.enabled = true;
         navMeshAgent.SetDestination(targetPosition);
     }
+
+	float sphereRechargeSpeed = 0.5f;
+	bool enablingCaptureSphere = false, disablingCaptureSphere = false;
+	IEnumerator EnableSpawnSphere(GhostBehaviour targetGhost)
+	{
+		if (!spawnedCaptureSphere.activeInHierarchy)
+			spawnedCaptureSphere.SetActive (true);
+		spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
+		Renderer rend = spawnedCaptureSphere.GetComponent<Renderer> ();
+		float currentspherePercentage = 0.0f;
+		while (currentspherePercentage < 1 - (targetGhost.CurrentHealth / targetGhost.maxHealth)) {
+			spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
+			currentspherePercentage += sphereRechargeSpeed * Time.deltaTime;
+			rend.material.SetFloat ("_PercentageComplete", 1 - currentspherePercentage);
+			yield return null;
+		}
+	}
+
+	IEnumerator DisableSpawnSphere(GhostBehaviour targetGhost)
+	{
+		disablingCaptureSphere = true;
+		spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
+		float currentSpherePercentage = 1 - (targetGhost.CurrentHealth / targetGhost.maxHealth);
+		Renderer rend = spawnedCaptureSphere.GetComponent<Renderer> ();
+		while (currentSpherePercentage > 0) {
+			spawnedCaptureSphere.transform.position = targetGhost.transform.position;
+			currentSpherePercentage -= sphereRechargeSpeed * Time.deltaTime;
+			rend.material.SetFloat ("_PercentageComplete", 1 - currentSpherePercentage);
+			yield return null;
+		}
+		previousGhostBehaviour = null;
+		disablingCaptureSphere = false;
+	}
+
+	bool spawningHitDecal;
+	WaitForSeconds hitDecalWFS = new WaitForSeconds(0.2f);
+	IEnumerator SpawnHitDecal(Vector3 position, Quaternion rotation)
+	{
+		spawningHitDecal = true;
+		Instantiate (hitDecal, position, rotation);
+		yield return hitDecalWFS;
+		spawningHitDecal = false;
+	}
 }
 

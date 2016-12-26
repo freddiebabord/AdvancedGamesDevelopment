@@ -17,6 +17,8 @@ ModelImporter:
     3300002: Wall 400x400 Top
     4300000: Wall 400x400 Bot
     4300002: Wall 400x400 Top
+    6400000: Wall 400x400 Bot
+    6400002: Wall 400x400 Top
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -44,7 +46,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
