@@ -53,6 +53,19 @@ public class GameManager : NetworkBehaviour {
     private List<ScorePanel> scorePanels = new List<ScorePanel>();
     public List<MakeRadarObject> RadarHelper = new List<MakeRadarObject>();
 
+	public void Reset()
+	{
+		currentWave = 0;
+		enemyCount = 0;
+		waveComplete = false;
+		enemiesRemainigText.Clear ();
+		playerOneAssigned = false;
+		firstWave = false;
+		scoreTable.Clear ();
+		scorePanels.Clear ();
+		RadarHelper.Clear ();
+	}
+
     void Awake()
 	{
         if (!instance)

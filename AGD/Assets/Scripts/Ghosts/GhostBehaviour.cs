@@ -49,13 +49,13 @@ public class GhostBehaviour : NetworkBehaviour
 		Frustum frustum = GetComponent<Frustum> ();
 		//m_networkFrustum = frustum.gameObject;
         //TODO: maybe change to add isServer?
-		if (isServer) {
+		//if (isServer) {
 			//m_networkFrustum = Instantiate (frustumPrefab, transform.GetChild (0).position, transform.GetChild (0).rotation) as GameObject;
 			frustum.parentNetID = netId;
 			//NetworkServer.Spawn (m_networkFrustum);
 			//m_networkFrustum.transform.parent = transform.GetChild(0).transform;
 			frustum.PostStart ();
-		}
+		//}
         damageTextPool = GetComponent<ObjectPool>();
     }
 

@@ -16,11 +16,15 @@ public class EnemyBase : NetworkBehaviour {
     //GhostBodyAdjustments ghostPosition;
 	GhostBehaviour ghostBehaviour;
 
+	void Awake()
+	{
+		agent = GetComponent<NavMeshAgent>();
+		//ghostPosition = GetComponentInChildren<GhostBodyAdjustments>();
+		ghostBehaviour = GetComponent<GhostBehaviour> ();
+	}
 
 	void Start () {
-		agent = GetComponent<NavMeshAgent>();
-        //ghostPosition = GetComponentInChildren<GhostBodyAdjustments>();
-		ghostBehaviour = GetComponent<GhostBehaviour> ();
+		
         for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
             GameManager.instance.RadarHelper[i].RegisterEnemy(this);
 	}

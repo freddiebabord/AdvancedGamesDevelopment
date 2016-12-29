@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.Characters.ThirdPerson;
 using System.Collections.Generic;
+using Prototype.NetworkLobby;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -153,7 +154,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         GetComponentInChildren<Renderer>().material.color = playerColour;
 
         playerScore = 0;
-
+		gameObject.name = playerName;
         spawnedParticleSystem = ((GameObject)Instantiate(tempDecalParticleSystem, transform.position, Quaternion.identity)).transform;
 		streamPartcileSystem = ((GameObject)Instantiate (streamPartcileSysemGameObject, transform.position, Quaternion.identity)).GetComponentInChildren<ParticleSystem> ();
 		streamShape = streamPartcileSystem.shape;
@@ -191,7 +192,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         spawnedCaptureSphere.SetActive(false);
         weaponSteam.Stop(true);
         positionOnSpawn = transform.position;
-		//beamLightCLight = beamLight.GetComponent<CustomLight> ();
+		beamLightCLight = beamLight.GetComponentInChildren<CustomLight> ();
+		beamLightCLight.m_Color = playerColour;
 		for (i = 0; i < 50; ++i) {
 			beamLightSegments.Add (((GameObject)Instantiate (beamLight.gameObject)).transform);
 		}
@@ -205,6 +207,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		beamLight.GetComponentInChildren<CustomLight> ().m_Size = 0.02f;
 		beamLight.gameObject.SetActive (false);
 		beamLightCLight.m_Color = Color.cyan;
+		GameManager.instance.players.Add(this);
+		GameManager.instance.RadarHelper.Add(GetComponent<MakeRadarObject>());
         if (!isLocalPlayer)
         {
             m_Camera.gameObject.SetActive(false);
@@ -224,11 +228,14 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             //    pnc[i].targetCamera = m_Camera;
             //}
             GameManager.instance.enemiesRemainigText.Add(enemiesRemainingText);
+			if (uc.player == null)
+				uc.player = ReInput.players.GetPlayer (0);
+			joysticks = new List<Joystick>(uc.player.controllers.Joysticks);
         }
 
         //beamMaterial = lineRenderer.material;
-        GameManager.instance.players.Add(this);
-		joysticks = new List<Joystick>(uc.player.controllers.Joysticks);
+        
+
 	}
 
 	GhostBehaviour previousGhostBehaviour;
@@ -261,7 +268,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                 {
                     if (curresntStartupTime < startupTime)
                     {
-                        shake.ShakeCamera((curresntStartupTime / startupTime) * cameraShakeIntensity, Time.deltaTime);
+						if(isLocalPlayer)
+							shake.ShakeCamera((curresntStartupTime / startupTime) * cameraShakeIntensity, Time.deltaTime);
                         curresntStartupTime += Time.deltaTime;
 						for (i = 0; i < joysticks.Count; ++i) {
 							if (!joysticks [i].supportsVibration)
@@ -286,7 +294,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 							beamLight.gameObject.SetActive (true);
 						}
                         rootMuzzleParticleSystem.Play();
-                        shake.ShakeCamera(1 * cameraShakeIntensity, Time.deltaTime);
+						if(isLocalPlayer)
+							shake.ShakeCamera(1 * cameraShakeIntensity, Time.deltaTime);
                         
 						for (i = 0; i < joysticks.Count; ++i) {
 							if (!joysticks [i].supportsVibration)
@@ -733,6 +742,59 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		Instantiate (hitDecal, position, rotation);
 		yield return hitDecalWFS;
 		spawningHitDecal = false;
+	}
+
+	public void SetPlayerLocalLookSensitivity(float value)
+	{
+		m_MouseLook.lookSensitivity = value;
+	}
+
+	[Header("Player UI")]
+	public GameObject escapeMenuRoot;
+	public GameObject escapeMenu, settingsMenu, quitToDesktopConfirmation, returnToMenuConfirmation;
+
+	public void ShowEscapeMenuRoot(bool show)
+	{
+		escapeMenuRoot.SetActive (show);
+	}
+
+	public void ShowEscapeMenu(bool show)
+	{
+		escapeMenu.SetActive (show);
+		uc.escapeMenu = show;
+	}
+
+	public void ShowEscapeMenuSolo(bool show)
+	{
+		escapeMenu.SetActive (show);
+	}
+
+	public void ShowSettingsMenu(bool show)
+	{
+		settingsMenu.SetActive (show);
+	}
+
+	public void ShowQuitToDesktop(bool show)
+	{
+		quitToDesktopConfirmation.SetActive (show);
+	}
+
+	public void ShowReturnToMenu(bool show)
+	{
+		returnToMenuConfirmation.SetActive (show);
+	}
+
+	public void ReturnToMenu()
+	{
+		if (isServer)
+			NetManager.Instance.StopHost ();
+		else
+			NetManager.Instance.StopClient ();
+	}
+
+	public void QuitToDesktop()
+	{
+		Application.Quit ();
 	}
 }
 

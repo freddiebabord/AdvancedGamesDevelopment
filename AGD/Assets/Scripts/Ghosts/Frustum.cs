@@ -80,24 +80,21 @@ public class Frustum : NetworkBehaviour {
     #region Mesh Variables
     MeshFilter meshFilter;
     MeshCollider meshCollider;
-    Mesh peacefulMesh;
+    //Mesh peacefulMesh;
     //Mesh //aggroMesh;
     #endregion
 
+	void Awake()
+	{
+		meshFilter = GetComponentInChildren<MeshFilter>();
+		meshCollider = GetComponentInChildren<MeshCollider>();
+		rootNetID = GetComponent<NetworkIdentity>();
+		meshFilter.mesh = new Mesh();
+		charge = GetComponent<Charge> ();
+	}
 
     public void PostStart()
     {
-        rootNetID = GetComponent<NetworkIdentity>();
-        meshFilter = GetComponentInChildren<MeshFilter>();
-        meshCollider = GetComponentInChildren<MeshCollider>();
-        peacefulMesh = new Mesh();
-		charge = GetComponent<Charge> ();
-        //aggroMesh = new Mesh();
-        if (!rootNetID.isServer)
-        {
-            print("Apparently I'm Local Player...");
-            return;
-        }
         if (rootNetID.isServer)
         {
             //transform.parent.GetComponentInParent<EnemyBase>().ghostFrustum = this;
@@ -110,6 +107,8 @@ public class Frustum : NetworkBehaviour {
     // Update is called once per frame
 	void Update ()
     {
+		if (!isServer)
+			return;
         if (drawFrustum != DrawFrustum.None)
         {
             /*if (!Application.isPlaying)
@@ -143,6 +142,8 @@ public class Frustum : NetworkBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
+		if (!isServer)
+			return;
         //print("<color=green>" + other.tag + "</color>");
         if (other.tag == "Player")
         {
@@ -161,6 +162,8 @@ public class Frustum : NetworkBehaviour {
 
     public void OnTriggerExit(Collider other)
     {
+		if (!isServer)
+			return;
         if (other.tag == "Player")
         {
             relativePlayerPos = transform.position - other.transform.position;
@@ -185,7 +188,7 @@ public class Frustum : NetworkBehaviour {
             else
                 Gizmos.color = Color.cyan;
 
-            Gizmos.DrawWireMesh(peacefulMesh, transform.position, transform.rotation);
+			Gizmos.DrawWireMesh(meshFilter.mesh, transform.position, transform.rotation);
         }
         if (drawFrustum == DrawFrustum.Aggravated || drawFrustum == DrawFrustum.Both)
         {
@@ -213,8 +216,9 @@ public class Frustum : NetworkBehaviour {
     {
        // print("<color=yellow>SetMeshes Triggered!</color>");
 
-        
-        peacefulMesh.vertices = new Vector3[8]
+		if (meshFilter.mesh == null)
+			meshFilter.mesh = new Mesh ();
+		meshFilter.mesh.vertices = new Vector3[8]
         {
             new Vector3(-(peaceful.near.x / 2), -(peaceful.near.y / 2), 0),
             new Vector3((peaceful.near.x / 2), -(peaceful.near.y / 2), 0),
@@ -225,8 +229,8 @@ public class Frustum : NetworkBehaviour {
             new Vector3(-(peaceful.far.x / 2), (peaceful.far.y / 2), peaceful.distance),
             new Vector3((peaceful.far.x / 2), (peaceful.far.y / 2), peaceful.distance)
         };
-        peacefulMesh.triangles = triangles;
-        peacefulMesh.RecalculateNormals();
+		meshFilter.mesh.triangles = triangles;
+		meshFilter.mesh.RecalculateNormals();
 
         //aggroMesh.vertices = new Vector3[8]
        /* {
@@ -277,11 +281,11 @@ public class Frustum : NetworkBehaviour {
     {
         GhostState curGhostState = (GhostState)ghostStateInt;
        // print("Hello");
-        if (curGhostState == GhostState.Peaceful)
-        {
-            meshFilter.mesh = peacefulMesh;
-            meshCollider.sharedMesh = peacefulMesh;
-        }
+//        if (curGhostState == GhostState.Peaceful)
+//        {
+//            meshFilter.mesh = peacefulMesh;
+//            meshCollider.sharedMesh = peacefulMesh;
+//        }
        /* else if (curGhostState == GhostState.Aggravated)
         {
             meshFilter.mesh = //aggroMesh;

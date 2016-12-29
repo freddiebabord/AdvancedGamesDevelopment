@@ -12,16 +12,26 @@ public class NetworkBroadcastList : NetworkDiscovery {
     public Button templateButton;
     public List<string> networkAddresses = new List<string>();
     public float minWidth = 350.0f;
+	bool init = false;
 
-    public void Start()
+    public void OnEnable()
     {
-        ipHolderContectRect = GameObject.Find("IPContentButtonsList").GetComponent<RectTransform>();
-        templateButton = GameObject.Find("IPButtonTemplate").GetComponent<Button>();
+		if(!ipHolderContectRect)
+			ipHolderContectRect = GameObject.Find("IPContentButtonsList").GetComponent<RectTransform>();
+		if(!templateButton)
+			templateButton = GameObject.Find("IPButtonTemplate").GetComponent<Button>();
         templateButton.gameObject.SetActive(false);
         Initialize();
         StartAsClient();
+		init = true;
     }
 
+	public void OnDisable()
+	{
+		if(init)
+			StopBroadcast ();
+		init = false;
+	}
 
     public override void OnReceivedBroadcast(string fromAddress, string data)
     {
