@@ -1,0 +1,619 @@
+fileFormatVersion: 2
+guid: 1658c7cf1f5154369bc2848253552c73
+timeCreated: 1482913055
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Header
+    21300002: Settings
+    21300004: HUD BOX 2_2
+    21300006: HUD BOX 2_3
+    21300008: HUD BOX 2_4
+    21300010: HeaderSmall
+    21300012: HUD BOX 2_6
+    21300014: Button4
+    21300016: Button3
+    21300018: Arrow2
+    21300020: HUD BOX 2_24
+    21300022: Button2
+    21300024: HUD BOX 2_26
+    21300026: HUD BOX 2_36
+    21300028: HUD BOX 2_37
+    21300030: HUD BOX 2_38
+    21300032: Arrow1
+    21300034: Button1
+    21300036: HUD BOX 2_64
+    21300038: Background
+    21300040: QuitDoor
+    21300042: ButtonSquare
+    21300044: HUD BOX 2_68
+    21300046: Checkbox1
+    21300048: Checkbox2
+    21300050: Checkmark
+    21300052: HUD BOX 2_72
+    21300054: SliderBackground
+    21300056: SliderKnob
+    21300058: DropdownHeader
+    21300060: DropdownBackground
+    21300062: DropdownArrow
+    21300064: DropdownButton
+    21300066: HUD BOX 2_79
+    21300068: HUD BOX 2_80
+    21300070: HUD BOX 2_81
+    21300072: HUD BOX 2_82
+    21300074: HUD BOX 2_83
+    21300076: Title
+    21300078: SliderVertical
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Header
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 4664
+        width: 3438
+        height: 1123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Settings
+      rect:
+        serializedVersion: 2
+        x: 3649
+        y: 4282
+        width: 549
+        height: 1415
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_2
+      rect:
+        serializedVersion: 2
+        x: 3791
+        y: 5561
+        width: 10
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_3
+      rect:
+        serializedVersion: 2
+        x: 3999
+        y: 5680
+        width: 11
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_4
+      rect:
+        serializedVersion: 2
+        x: 4035
+        y: 5694
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeaderSmall
+      rect:
+        serializedVersion: 2
+        x: 4329
+        y: 5232
+        width: 1300
+        height: 537
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_6
+      rect:
+        serializedVersion: 2
+        x: 3305
+        y: 4661
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button4
+      rect:
+        serializedVersion: 2
+        x: 4351
+        y: 4675
+        width: 1225
+        height: 540
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button3
+      rect:
+        serializedVersion: 2
+        x: 4357
+        y: 4051
+        width: 1225
+        height: 539
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Arrow2
+      rect:
+        serializedVersion: 2
+        x: 2836
+        y: 3364
+        width: 904
+        height: 539
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_24
+      rect:
+        serializedVersion: 2
+        x: 3741
+        y: 3603
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button2
+      rect:
+        serializedVersion: 2
+        x: 4357
+        y: 3425
+        width: 1228
+        height: 542
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_26
+      rect:
+        serializedVersion: 2
+        x: 3741
+        y: 3585
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_36
+      rect:
+        serializedVersion: 2
+        x: 4263
+        y: 3486
+        width: 53
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_37
+      rect:
+        serializedVersion: 2
+        x: 3764
+        y: 3445
+        width: 57
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_38
+      rect:
+        serializedVersion: 2
+        x: 4352
+        y: 3450
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Arrow1
+      rect:
+        serializedVersion: 2
+        x: 2867
+        y: 2723
+        width: 841
+        height: 543
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button1
+      rect:
+        serializedVersion: 2
+        x: 4352
+        y: 2757
+        width: 1230
+        height: 539
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_64
+      rect:
+        serializedVersion: 2
+        x: 5755
+        y: 2949
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Background
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 33
+        width: 3631
+        height: 2585
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 242, y: 231, z: 240, w: 229}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: QuitDoor
+      rect:
+        serializedVersion: 2
+        x: 4045
+        y: 1680
+        width: 639
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ButtonSquare
+      rect:
+        serializedVersion: 2
+        x: 4928
+        y: 2023
+        width: 682
+        height: 667
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 125, y: 125, z: 125, w: 125}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_68
+      rect:
+        serializedVersion: 2
+        x: 5611
+        y: 2237
+        width: 32
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Checkbox1
+      rect:
+        serializedVersion: 2
+        x: 4766
+        y: 1663
+        width: 226
+        height: 226
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Checkbox2
+      rect:
+        serializedVersion: 2
+        x: 5109
+        y: 1661
+        width: 230
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Checkmark
+      rect:
+        serializedVersion: 2
+        x: 5393
+        y: 1722
+        width: 138
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_72
+      rect:
+        serializedVersion: 2
+        x: 4643
+        y: 1663
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SliderBackground
+      rect:
+        serializedVersion: 2
+        x: 3887
+        y: 1443
+        width: 1429
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 52, y: 48, z: 65, w: 42}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SliderKnob
+      rect:
+        serializedVersion: 2
+        x: 5435
+        y: 1390
+        width: 194
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DropdownHeader
+      rect:
+        serializedVersion: 2
+        x: 3856
+        y: 1137
+        width: 1418
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 122, y: 57, z: 93, w: 59}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DropdownBackground
+      rect:
+        serializedVersion: 2
+        x: 3721
+        y: 54
+        width: 1477
+        height: 965
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 108, y: 93, z: 103, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DropdownArrow
+      rect:
+        serializedVersion: 2
+        x: 5223
+        y: 920
+        width: 136
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DropdownButton
+      rect:
+        serializedVersion: 2
+        x: 5390
+        y: 852
+        width: 254
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_79
+      rect:
+        serializedVersion: 2
+        x: 5264
+        y: 150
+        width: 9
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_80
+      rect:
+        serializedVersion: 2
+        x: 3969
+        y: 42
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_81
+      rect:
+        serializedVersion: 2
+        x: 3986
+        y: 41
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_82
+      rect:
+        serializedVersion: 2
+        x: 4130
+        y: 39
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HUD BOX 2_83
+      rect:
+        serializedVersion: 2
+        x: 3890
+        y: 33
+        width: 101
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Title
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 3944
+        width: 2899
+        height: 617
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SliderVertical
+      rect:
+        serializedVersion: 2
+        x: 3820
+        y: 1667
+        width: 138
+        height: 1420
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 35, y: 45, z: 31, w: 51}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

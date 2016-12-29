@@ -9,6 +9,13 @@ using Joystick = Rewired.Joystick;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
+	enum ReInputPlayerConfigs
+	{
+		Controller0 = 0,
+		Controller1,
+		KeyboardOnly
+	}
+
     [RequireComponent(typeof(NetworkedThirdPersonCharacter))]
     public class NetworkedThirdPersonUserControl : NetworkBehaviour
     {
@@ -39,16 +46,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public bool reverseControls = false;
         [HideInInspector]
         public bool disableControls = false;
+
         void Awake()
         {
-            // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
-            //if (GameManager.instance.playerOneAssigned)
-            //    playerID++;
-            //player = ReInput.players.GetPlayer(playerID);
-            //player.isPlaying = true;
-            //GameManager.instance.playerOneAssigned = true;
-            if (GameManager.instance.playerOneAssigned)
-                playerID++;
+			if (!isLocalPlayer)
+				return;
+
+
+			if (ReInput.controllers.joystickCount > 1) {
+				if (GameManager.instance.playerOneAssigned)
+					playerID = 2;
+				else
+					playerID = 1;
+			} else {
+				if (!GameManager.instance.playerOneAssigned)
+					playerID = 0;
+				else
+					playerID = 1;
+			}
             player = ReInput.players.GetPlayer(playerID);
             player.isPlaying = true;
             GameManager.instance.playerOneAssigned = true;
@@ -91,17 +106,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Start()
         {
+			Awake ();
             multiplyer = 1;
-            m_Cam = GetComponentInChildren<Camera>().transform;
+            
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<NetworkedThirdPersonCharacter>();
             m_Character.m_MouseLook.player = player;
-
+			m_Cam = transform.FindChild ("Camera").transform;
 
             if (!isLocalPlayer)
             {
                 m_Cam.gameObject.SetActive(false);
-                m_Character.enabled = false;
+                //m_Character.enabled = false;
             }
 
         }
@@ -112,9 +128,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!isLocalPlayer)
                 return;
 
-            if (player.GetButtonDown("Menu"))
-                escapeMenu = !escapeMenu;
-
+			if (player.GetButtonDown ("Menu")) {
+				escapeMenu = !escapeMenu;
+				m_Character.ShowEscapeMenuRoot (escapeMenu);
+				m_Character.ShowEscapeMenu (escapeMenu);
+			}
             if (!escapeMenu || disableControls)
             {
                 if (!m_Jump)

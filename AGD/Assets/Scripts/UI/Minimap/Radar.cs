@@ -29,8 +29,6 @@ public class Radar : NetworkBehaviour {
         radarDims = radar.GetComponent<RectTransform>().rect.size;
         halfRadarDims = radarDims / 2;
 
-        if (!isLocalPlayer)
-            enabled = false;
 	}
 		
     //This will add objects to the radar.
@@ -121,7 +119,8 @@ public class Radar : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        DrawRadar();
+		if(isLocalPlayer)
+        	DrawRadar();
 	}
 
 }

@@ -25,10 +25,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool disabled = false;
 
         [HideInInspector]public Quaternion currentOriginalRoation = Quaternion.identity;
+		public float lookSensitivity;
 
         public void Init(Transform character, Transform camera)
         {
-
+			lookSensitivity = SettingsManager.instance.lookSensitivity;
         }
         
         public void LookRotation(Transform character, Transform camera)
@@ -36,8 +37,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (player == null || disabled)
                 return;
 
-            float yRot = player.GetAxis("LookHorizontal") * XSensitivity * SettingsManager.instance.lookSensitivity;
-            float xRot = player.GetAxis("LookVertical") * YSensitivity * SettingsManager.instance.lookSensitivity * (SettingsManager.instance.invertYAxis ? -1 : 1);
+            float yRot = player.GetAxis("LookHorizontal") * XSensitivity * lookSensitivity;
+            float xRot = player.GetAxis("LookVertical") * YSensitivity * lookSensitivity * (SettingsManager.instance.invertYAxis ? -1 : 1);
 
             currentOriginalRoation.eulerAngles += Quaternion.AngleAxis(-xRot, camera.right).eulerAngles;
             currentOriginalRoation.eulerAngles += Quaternion.AngleAxis(yRot, Vector3.up).eulerAngles;
