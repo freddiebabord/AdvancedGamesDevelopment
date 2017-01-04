@@ -6,7 +6,8 @@ public class NullifyFear : PickUpBase {
     public override void ApplyEffect()
     {
         //player.GetComponent<PickUps>().
-        //Debug.Log("Nullify Fear");
+        //Debug.Log(player.GetComponent<PickUps>().fear_increase.ToString());
+
         player.GetComponent<PickUps>().fear.value += player.GetComponent<PickUps>().fear_increase;
     }
 }

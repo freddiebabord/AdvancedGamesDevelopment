@@ -31,7 +31,7 @@ public class PickUps : NetworkBehaviour {
     public float cooldown = 100.0f;
     public bool cooloff = false;
 
-    public float fear_increase = 5f;
+    public float fear_increase = 100f;
     public bool fear_cooloff = false;
 
     GameObject the_pickup;
