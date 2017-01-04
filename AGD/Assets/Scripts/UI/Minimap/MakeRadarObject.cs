@@ -11,13 +11,13 @@ public class MakeRadarObject : NetworkBehaviour {
     public Image image_up;
 	public Image image_down;
 
-    EnemyBase[] enemies;
+    List<EnemyBase> enemies = new List<EnemyBase>();
 
     public Image item;
     public Image item_up;
     public Image item_down;
 
-    PickUpBase[] collectables;
+    List<PickUpBase> collectables = new List<PickUpBase>();
 
     Radar radar;
 
@@ -26,6 +26,29 @@ public class MakeRadarObject : NetworkBehaviour {
         radar = GetComponent<Radar>();
     }
 
+    public void RegisterEnemy(EnemyBase newEnemy)
+    {
+        enemies.Add(newEnemy);
+    }
+
+    public void DeregisterEnemy(EnemyBase enemyToDestroy)
+    {
+        enemies.Remove(enemyToDestroy);
+        enemies.TrimExcess();
+    }
+
+    public void RegisterPickup(PickUpBase pickup)
+    {
+        collectables.Add(pickup);
+    }
+
+    public void DeregisterPickup(PickUpBase pickup)
+    {
+        collectables.Remove(pickup);
+        collectables.TrimExcess();
+    }
+
+
     // Update is called once per frame
     void Update ()
 	{
@@ -33,11 +56,11 @@ public class MakeRadarObject : NetworkBehaviour {
 	        return;
 
         // TODO: This should not be done each frame, this is a slow Unity oberation -> again consider using Unity event calls such as Start() and OnDestroy()
-		enemies = FindObjectsOfType<EnemyBase> ();
-        collectables = FindObjectsOfType<PickUpBase>();
+		//enemies = FindObjectsOfType<EnemyBase> ();
+        //collectables = FindObjectsOfType<PickUpBase>();
         
         #region EnemiesOnRadar
-        for (int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemies.Count; i++)
 		{
 
             if (enemies[i].gameObject == null)
@@ -101,7 +124,7 @@ public class MakeRadarObject : NetworkBehaviour {
         #endregion
 
         #region PowerUpsOnRadar
-        for (int i = 0; i < collectables.Length; i++)
+        for (int i = 0; i < collectables.Count; i++)
         {
             if (collectables[i].gameObject == null)
             {

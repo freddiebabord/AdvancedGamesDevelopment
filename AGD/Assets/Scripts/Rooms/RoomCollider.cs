@@ -10,18 +10,23 @@ public class RoomCollider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		room = GetComponentInParent<Room>();
+		if (!room)
+			transform.gameObject.SetActive (false);
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
-		if(room)
-			room.OnTriggerEnter(other);
+		room.OnTriggerEnter(other);
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		room.OnTriggerStay (other);
 	}
 
 	void OnTriggerExit(Collider other)
 	{
-		if(room)
-			room.OnTriggerExit(other);
+		room.OnTriggerExit(other);
 	}
 
 }

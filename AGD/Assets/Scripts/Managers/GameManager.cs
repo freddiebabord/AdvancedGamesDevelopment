@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System.Linq;
 using Rewired;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum	EnemyType
 {
@@ -50,7 +51,20 @@ public class GameManager : NetworkBehaviour {
     public Dictionary<int, int> ScoreTable { get { return scoreTable; } }
     public List<NetworkedThirdPersonCharacter> players = new List<NetworkedThirdPersonCharacter>();
     private List<ScorePanel> scorePanels = new List<ScorePanel>();
-    
+    public List<MakeRadarObject> RadarHelper = new List<MakeRadarObject>();
+
+	public void Reset()
+	{
+		currentWave = 0;
+		enemyCount = 0;
+		waveComplete = false;
+		enemiesRemainigText.Clear ();
+		playerOneAssigned = false;
+		firstWave = false;
+		scoreTable.Clear ();
+		scorePanels.Clear ();
+		RadarHelper.Clear ();
+	}
 
     void Awake()
 	{
@@ -61,6 +75,7 @@ public class GameManager : NetworkBehaviour {
         DontDestroyOnLoad(this);
 
 	    ReWiredAwake();
+        SceneManager.sceneLoaded += ResetOnMenuLoad;
 	}
 
 	// Use this for initialization
@@ -78,6 +93,21 @@ public class GameManager : NetworkBehaviour {
 		if(enemyCount <= 0 && !waveComplete && firstWave)
 			StartCoroutine(WaveWaitTimer());
 	}
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= ResetOnMenuLoad;
+    }
+
+    void ResetOnMenuLoad(Scene newScene, LoadSceneMode mode)
+    {
+        if (newScene.name == "Menu")
+        {
+            playerOneAssigned = false;
+            players.Clear();
+            scoreTable.Clear();
+        }
+    }
 
 	public void DestroyEnemy()
 	{
@@ -113,6 +143,7 @@ public class GameManager : NetworkBehaviour {
     public IEnumerator SpawnFirstWaveWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        firstWave = true;
         SpawnEnemies();
     }
 

@@ -9,7 +9,14 @@ using Joystick = Rewired.Joystick;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
-    [RequireComponent(typeof(ThirdPersonCharacter))]
+	enum ReInputPlayerConfigs
+	{
+		Controller0 = 0,
+		Controller1,
+		KeyboardOnly
+	}
+
+    [RequireComponent(typeof(NetworkedThirdPersonCharacter))]
     public class NetworkedThirdPersonUserControl : NetworkBehaviour
     {
         private NetworkedThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
@@ -20,7 +27,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool m_Jump;
             // the world-relative desired move direction, calculated from the camForward and user input.
 
-        private bool m_firing;
+//        private bool m_firing;
         public int multiplyer = 1;
         private bool m_isRunning = false;
 
@@ -35,17 +42,28 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private int playerID = 0; // Rewired playerid
         public Player player; // The Rewired Player
         public GameObject scorboardUI;
+        [HideInInspector]
+        public bool reverseControls = false;
+        [HideInInspector]
+        public bool disableControls = false;
 
         void Awake()
         {
-            // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
-            //if (GameManager.instance.playerOneAssigned)
-            //    playerID++;
-            //player = ReInput.players.GetPlayer(playerID);
-            //player.isPlaying = true;
-            //GameManager.instance.playerOneAssigned = true;
-            if (GameManager.instance.playerOneAssigned)
-                playerID++;
+			if (!isLocalPlayer)
+				return;
+
+
+			if (ReInput.controllers.joystickCount > 1) {
+				if (GameManager.instance.playerOneAssigned)
+					playerID = 2;
+				else
+					playerID = 1;
+			} else {
+				if (!GameManager.instance.playerOneAssigned)
+					playerID = 0;
+				else
+					playerID = 1;
+			}
             player = ReInput.players.GetPlayer(playerID);
             player.isPlaying = true;
             GameManager.instance.playerOneAssigned = true;
@@ -88,17 +106,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Start()
         {
+			Awake ();
             multiplyer = 1;
-            m_Cam = GetComponentInChildren<Camera>().transform;
+            
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<NetworkedThirdPersonCharacter>();
             m_Character.m_MouseLook.player = player;
-
+			m_Cam = transform.FindChild ("Camera").transform;
 
             if (!isLocalPlayer)
             {
                 m_Cam.gameObject.SetActive(false);
-                m_Character.enabled = false;
+                //m_Character.enabled = false;
             }
 
         }
@@ -109,10 +128,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!isLocalPlayer)
                 return;
 
-            if (player.GetButtonDown("Menu"))
-                escapeMenu = !escapeMenu;
-
-            if (!escapeMenu)
+			if (player.GetButtonDown ("Menu")) {
+				escapeMenu = !escapeMenu;
+				m_Character.ShowEscapeMenuRoot (escapeMenu);
+				m_Character.ShowEscapeMenu (escapeMenu);
+			}
+            if (!escapeMenu || disableControls)
             {
                 if (!m_Jump)
                 {
@@ -129,26 +150,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if(player.GetButtonDown("Score"))
                     scorboardUI.SetActive(!scorboardUI.activeInHierarchy);
             }
-
-            if (m_firing)
-            {
-                foreach (Joystick j in player.controllers.Joysticks)
-                {
-                    if (!j.supportsVibration) continue;
-                    j.SetVibration(0.8f, 0.8f);
-                }
-            }
-            else
-            {
-                foreach (Joystick j in player.controllers.Joysticks)
-                {
-                    if (!j.supportsVibration) continue;
-                    j.StopVibration();
-                }
-            }
         }
 
-
+		bool crouch = false;
+		float h, v;
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
@@ -156,12 +161,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 return;
 
            
-            bool crouch = false;
-            if (!escapeMenu)
+            crouch = false;
+            if (!escapeMenu || disableControls)
             {
                 // read inputs
-                float h = player.GetAxis("WalkHorizontal");
-                float v = player.GetAxis("WalkVertical");
+                h = player.GetAxis("WalkHorizontal") * (reverseControls ? -1 : 1);
+                v = player.GetAxis("WalkVertical") * (reverseControls ? -1 : 1);
 
                 // TODO: crouch input
                 crouch = player.GetButton("Crouch");
@@ -182,13 +187,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
             else
             {
-                m_firing = false;
                 m_Move = Vector3.zero;
             }
             // pass all parameters to the character control script
             m_Character.Move(m_Move, crouch, m_Jump, escapeMenu);
             //m_Character.Fire(m_firing);
-            m_firing = false;
             m_Jump = false;
 
         }

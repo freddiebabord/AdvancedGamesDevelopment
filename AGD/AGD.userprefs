@@ -1,11 +1,30 @@
-﻿<Properties StartupItem="AGD.CSharp.Plugins.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PickUps.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Managers/CameraManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Minimap\MakeRadarObject.cs" Line="87" Column="13" />
-      <File FileName="Assets\Scripts\Minimap\Radar.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyBase.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PickUps.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Networking/NetworkedThirdPersonCharacter.cs" Line="361" Column="66" />
+      <File FileName="Assets/Resources/Standard Assets/DeferredDecals/DeferredDecalRenderer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Managers/CameraManager.cs" Line="42" Column="27" />
+      <File FileName="Assets/Scripts/Ghosts/GhostBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/EnemyBase.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Rooms/Room.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Rooms/RoomCollider.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/Frustum.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Networking/NetworkedThirdPersonUserControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/FrustumCollider.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/Abilities/Charge.cs" Line="1" Column="1" />
+      <File FileName="Assets/External/Lobby/Scripts/Lobby/LobbyPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Minimap/MakeRadarObject.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GhostBodyCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Networking/NetManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/EnemyPoolSpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/Abilities/Teleportation.cs" Line="1" Column="1" />
+      <File FileName="Assets/Editor/SpokkticleEditorWindow.cs" Line="1" Column="1" />
+      <File FileName="Assets/Resources/Standard Assets/Characters/FirstPersonCharacter/Scripts/SmoothMouseLook.cs" Line="1" Column="1" />
+      <File FileName="Assets/Resources/Art/Realistic Effects Pack/Scripts/Demo/MyGUI3_1.cs" Line="1" Column="1" />
+      <File FileName="Assets/Resources/Art/Realistic Effects Pack/Scripts/Share/FadeInOutParticles.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Pickups/PickUpBase.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GhostDamageText.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -30,6 +30,7 @@ public class SettingsManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this);
         QualitySettings.SetQualityLevel(0, true);
+
     }
 
     public SplitscreenManager.SplitscreenMode splitscreenMode = SplitscreenManager.SplitscreenMode.Horizontal;
@@ -38,6 +39,7 @@ public class SettingsManager : MonoBehaviour
     public List<PostProcessingProfile> profiles = new List<PostProcessingProfile>();
     public float lookSensitivity = 0.5f;
     public bool invertYAxis = false;
+
 
     public void RegisterPostProfile(PostProcessingProfile profile)
     {
@@ -151,4 +153,14 @@ public class SettingsManager : MonoBehaviour
     {
         QualitySettings.vSyncCount = value;
     }
+
+	public void Setfullscreen(bool fullscreen_)
+	{
+		Screen.fullScreen = fullscreen_;
+	}
+
+	public void SetResolution(int value)
+	{
+		Screen.SetResolution (NetManager.Instance.resolutions [value].width, NetManager.Instance.resolutions [value].height, Screen.fullScreen);
+	}
 }

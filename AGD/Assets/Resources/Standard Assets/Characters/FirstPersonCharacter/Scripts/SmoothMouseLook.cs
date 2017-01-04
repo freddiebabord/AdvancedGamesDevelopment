@@ -36,7 +36,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool lockCursor = true;
 
 
-        private bool m_cursorIsLocked = true;
+//        private bool m_cursorIsLocked = true;
 
         void Update()
         {

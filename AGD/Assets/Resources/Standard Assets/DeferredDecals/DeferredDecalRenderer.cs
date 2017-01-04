@@ -50,7 +50,7 @@ public class DeferredDecalRenderer : MonoBehaviour
 		{
 			if (cam.Key)
 			{
-				cam.Key.RemoveCommandBuffer (CameraEvent.BeforeLighting, cam.Value);
+				cam.Key.RemoveCommandBuffer (CameraEvent.AfterGBuffer, cam.Value);
 			}
 		}
 	}
@@ -82,7 +82,7 @@ public class DeferredDecalRenderer : MonoBehaviour
 
 			// set this command buffer to be executed just before deferred lighting pass
 			// in the camera
-			cam.AddCommandBuffer (CameraEvent.BeforeLighting, buf);
+			cam.AddCommandBuffer (CameraEvent.AfterGBuffer, buf);
 		}
 
 		//@TODO: in a real system should cull decals, and possibly only

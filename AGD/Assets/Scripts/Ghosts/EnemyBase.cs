@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
+[NetworkSettings(channel=1, sendInterval=0.2f)]
 public class EnemyBase : NetworkBehaviour {
 
     public enum EnemyMap { Higher, Lower, Same, Nullus };
@@ -11,31 +12,49 @@ public class EnemyBase : NetworkBehaviour {
 
     public NavMeshAgent agent;
 	[SerializeField] private float walkRadius = 10;
-	[SyncVar][SerializeField] public Vector3 target = Vector3.zero;
-    GhostBodyAdjustments ghostPosition;
+	[SerializeField] public Vector3 target = Vector3.zero;
+    //GhostBodyAdjustments ghostPosition;
+	GhostBehaviour ghostBehaviour;
 
+	void Awake()
+	{
+		agent = GetComponent<NavMeshAgent>();
+		//ghostPosition = GetComponentInChildren<GhostBodyAdjustments>();
+		ghostBehaviour = GetComponent<GhostBehaviour> ();
+	}
 
 	void Start () {
-		agent = GetComponent<NavMeshAgent>();
-        ghostPosition = GetComponentInChildren<GhostBodyAdjustments>();
+		
+        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
+            GameManager.instance.RadarHelper[i].RegisterEnemy(this);
 	}
-	
+
+    void OnDestroy()
+    {
+        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
+            GameManager.instance.RadarHelper[i].DeregisterEnemy(this);
+    }
+
+	Vector3 randomDirection;
+	NavMeshHit hit;
+	float randY;
+
 	// Update is called once per frame on the server
 	void Update () {
 		if(!isServer)
 			return;
 
-
+		if (ghostBehaviour.CurrentHealth <= 0)
+			return;
         //Currently gets a random point on the navmesh
         if (!agent.hasPath)
         {
-            Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
+			randomDirection = Random.insideUnitSphere * walkRadius;
             randomDirection += transform.position;
-            NavMeshHit hit;
+            
             NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
-            Vector3 finalPosition = hit.position;
-            float randY = Random.Range(0, maxFloatHeight);
-            target = new Vector3(finalPosition.x, randY, finalPosition.z);
+            randY = Random.Range(0, maxFloatHeight);
+			target = new Vector3(hit.position.x, randY, hit.position.z);
             RpcSetPosition(target);
         }
         

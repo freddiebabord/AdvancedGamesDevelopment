@@ -21,13 +21,14 @@ public class PickupManager : NetworkBehaviour
     {
         SceneManager.sceneLoaded -= LoadLevelHandle;
     }
-    
+
+    private PickupBaseHandler[] pubh;
     void LoadLevelHandle(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex == 0 || !isServer)
             return;
 
-        PickupBaseHandler[] pubh = FindObjectsOfType<PickupBaseHandler>();
+        pubh = FindObjectsOfType<PickupBaseHandler>();
         for (var i = 0; i < pubh.Length; i++)
         {
             switch (pubh[i].pickupType)

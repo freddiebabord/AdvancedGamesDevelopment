@@ -22,8 +22,16 @@ public class PickUpBase : NetworkBehaviour {
 
     void Start()
     {
-        m_renderer = GetComponent<Renderer>();
+        m_renderer = GetComponentInChildren<Renderer>();
         m_collider = GetComponent<Collider>();
+        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
+            GameManager.instance.RadarHelper[i].RegisterPickup(this);
+    }
+
+    void OnDestroy()
+    {
+        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
+            GameManager.instance.RadarHelper[i].DeregisterPickup(this);
     }
 
     public void Triggered()

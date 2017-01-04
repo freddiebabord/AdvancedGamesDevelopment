@@ -8,7 +8,7 @@ public class Teleportation : MonoBehaviour {
     public float playerPresenceRadius = 1.5f;
 
     float startFleeTimer;
-    float startCooldownTimer;
+    //float startCooldownTimer;
     int playersinRange;
     int maxPlayers;
 
@@ -17,7 +17,7 @@ public class Teleportation : MonoBehaviour {
     {
         maxPlayers = FindObjectOfType<NetManager>().maxPlayers;
         ResetFleeTimer();
-        ResetCooldownTimer();
+        //ResetCooldownTimer();
 	}
 	
 	// Update is called once per frame
@@ -50,10 +50,10 @@ public class Teleportation : MonoBehaviour {
         startFleeTimer = -1;
     }
 
-    void ResetCooldownTimer()
-    {
-        startCooldownTimer = -1;
-    }
+//    void ResetCooldownTimer()
+//    {
+//        startCooldownTimer = -1;
+//    }
 
     int CheckforPlayers()
     {

@@ -12,11 +12,13 @@ public class Room : MonoBehaviour {
 	public int playerCount { get{ return players.Count; } }
 	private List<Collider> doors = new List<Collider>();
     public List<Collider> Doors { get { return doors; } }
+	private List<ReflectionProbe> roomReflectionProbes = new List<ReflectionProbe> ();
 
 	// Use this for initialization
 	void Start () {
 		colliders = GetComponentsInChildren<Collider>().ToList();
 		doors = colliders.FindAll(x => x.gameObject.tag == "Door").ToList();
+		roomReflectionProbes = GetComponentsInChildren<ReflectionProbe> ().ToList ();
 	}	
 
 	public void OnTriggerEnter(Collider other)
@@ -33,6 +35,14 @@ public class Room : MonoBehaviour {
 		}
 	}
 
+	public void OnTriggerStay(Collider other)
+	{
+		if(other.gameObject.CompareTag("Player") && !updatingProbes)
+		{
+			StartCoroutine (UpdatingReflectionProbe ());
+		}
+	}
+
 	public void OnTriggerExit(Collider other)
 	{
 		if(other.GetComponent<EnemyBase>())
@@ -44,5 +54,16 @@ public class Room : MonoBehaviour {
 		{
 			players.Remove(other.GetComponent<NetworkedFirstPersonController>());
 		}
+	}
+
+	private bool updatingProbes = false;
+	private IEnumerator UpdatingReflectionProbe()
+	{
+		updatingProbes = true;
+		yield return null;
+		for (int i = 0; i < roomReflectionProbes.Count; ++i) {
+			roomReflectionProbes [i].RenderProbe ();		
+		}
+		updatingProbes = false;
 	}
 }
