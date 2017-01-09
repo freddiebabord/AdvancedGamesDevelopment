@@ -61,6 +61,8 @@ MonoBehaviour:
     type: 2}
   weaponRechargePickup: {fileID: 1000013566745354, guid: 460ca7e83c8d318489faf59ac2c1582f,
     type: 2}
+  nullifyFearPickup: {fileID: 1000013520910622, guid: ca87014470d28014c80866d8febaa653,
+    type: 2}
 --- !u!114 &114000010852378934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +142,16 @@ MonoBehaviour:
       quantity: 6
     - enemySpawner: 0
       quantity: 3
+  - enemyDef:
+    - enemySpawner: 1
+      quantity: 12
+    - enemySpawner: 0
+      quantity: 12
+  - enemyDef:
+    - enemySpawner: 1
+      quantity: 24
+    - enemySpawner: 0
+      quantity: 24
   currentWave: 0
   waveSleepTimer: 10
   enemyPrefabs:
@@ -155,3 +167,4 @@ MonoBehaviour:
   GameOverPanel: {fileID: 0}
   StatusPanel: {fileID: 0}
   firstWave: 0
+  players: []
