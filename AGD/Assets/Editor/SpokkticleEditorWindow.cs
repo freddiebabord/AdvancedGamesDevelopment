@@ -35,7 +35,7 @@ public class SpokkticleEditorWindow : EditorWindow {
             if (EditorApplication.isPlaying)
             {
                 Debug.Log("Quickstart!");
-                EditorApplication.LoadLevelInPlayMode(@"Assets/Resources/Scenes/Menu.unity");
+                EditorApplication.LoadLevelInPlayMode(@"Assets/Resources/Scenes/NewMenu/Menu.unity");
                 doQuickStart = false;
             }
         }

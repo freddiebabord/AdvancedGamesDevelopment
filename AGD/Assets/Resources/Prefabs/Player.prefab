@@ -3246,7 +3246,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012551107276}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4361,6 +4361,7 @@ MonoBehaviour:
     weapon: {fileID: 4000012410580236}
     disabled: 0
     currentOriginalRoation: {x: 0, y: 0, z: 0, w: 1}
+    lookSensitivity: 0
   playerID: 0
   playerName: 
   playerColour: {r: 0, g: 0, b: 0, a: 0}
@@ -4403,6 +4404,11 @@ MonoBehaviour:
   playerAmbientSounds: []
   virtaulWeaponAudioSource: {fileID: 114000011021601114}
   weaponAudioSource: {fileID: 82000013693014948}
+  escapeMenuRoot: {fileID: 0}
+  escapeMenu: {fileID: 0}
+  settingsMenu: {fileID: 0}
+  quitToDesktopConfirmation: {fileID: 0}
+  returnToMenuConfirmation: {fileID: 0}
 --- !u!114 &114000011993937054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4544,7 +4550,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 9
 --- !u!114 &114000012389598384
 MonoBehaviour:
   m_ObjectHideFlags: 1

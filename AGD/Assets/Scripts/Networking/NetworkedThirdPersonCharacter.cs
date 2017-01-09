@@ -162,7 +162,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
         rootMuzzleParticleSystem.Stop();
         StopParticleSystem();
-        weaponRechargeRenderer = weaponRechargeIndicator.GetComponent<Renderer>().material;
+        //weaponRechargeRenderer = weaponRechargeIndicator.GetComponent<Renderer>().material;
         beamRenderer = lineRenderer.GetComponent<Renderer>().material;
         beamRenderer.SetColor("_Colour", playerColour * 2);
 
@@ -416,7 +416,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         }
 
 		currentOverheatValue = currentWeaponTime / maxWeaponTime;
-		weaponRechargeRenderer.SetFloat("_CurrentOverheatValue", currentOverheatValue);
+		//weaponRechargeRenderer.SetFloat("_CurrentOverheatValue", currentOverheatValue);
 
         
         
