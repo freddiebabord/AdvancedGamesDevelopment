@@ -77,6 +77,9 @@ Material:
         name: _BulgeShape
       second: 5
     - first:
+        name: _DepthBelnd
+      second: 1
+    - first:
         name: _EdgeBlend
       second: 1.69
     - first:
@@ -95,12 +98,15 @@ Material:
         name: _Sharpness
       second: 2.6153843
     - first:
+        name: _SoftColour
+      second: 0.2
+    - first:
         name: _Value
       second: 5
     m_Colors:
     - first:
         name: _Colour
-      second: {r: 0.25, g: 0, b: 0, a: 1}
+      second: {r: 0.896, g: 0, b: 0, a: 1}
     - first:
         name: _GlowColor
       second: {r: 0.1102941, g: 0.41095343, b: 1, a: 1}
