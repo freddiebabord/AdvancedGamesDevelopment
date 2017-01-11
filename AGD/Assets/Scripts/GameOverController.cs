@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 [System.Serializable]
 public struct GOHolder
@@ -10,8 +11,16 @@ public struct GOHolder
     public Transform position;
 }
 
-public class GameOverController : MonoBehaviour
+public class GameOverController : NetworkBehaviour
 {
     public List<GOHolder> dataContainers = new List<GOHolder>();
-    
+
+
+    public void ReturnToMenu()
+    {
+        if (isServer)
+            NetManager.Instance.StopHost();
+        else
+            NetManager.Instance.StopClient();
+    }
 }

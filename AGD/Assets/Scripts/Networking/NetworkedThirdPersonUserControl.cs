@@ -59,7 +59,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				else
 					playerID = 0;
 			} else {
-				if (!GameManager.instance.playerOneAssigned)
+				if (GameManager.instance.playerOneAssigned)
 					playerID = 0;
 				else
 					playerID = 2;
@@ -88,6 +88,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             else
             {
                 m_Character.joysticks = new List<Joystick>(player.controllers.Joysticks);
+                if (player.controllers.Joysticks.Count > 0)
+                {
+                    m_Character.m_MouseLook.XSensitivity *= 2;
+                    m_Character.m_MouseLook.YSensitivity *= 2;
+                }
             }
 
         }

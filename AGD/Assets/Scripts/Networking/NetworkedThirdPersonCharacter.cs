@@ -25,6 +25,15 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	[SerializeField] float m_GroundCheckDistance = 0.1f;
     [SerializeField] public MouseLook m_MouseLook;
 
+    public Transform leftFoot, rightFoot;
+    public float footGroundCheckDistance = 0.25f;
+    [Tooltip("Do not edit")]
+    public VirtualAudioSource virtualFootstepAS;
+    [Tooltip("Do not edit")]
+    public AudioSource footstepAS;
+
+    public AudioClip[] m_FootstepSounds;
+
     Rigidbody m_Rigidbody;
 	Animator m_Animator;
 	bool m_IsGrounded;
@@ -134,11 +143,16 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	Ray crouchRay;
 	float crouchRayLength = 0.0f;
 	float currentOverheatValue = 0.0f;
-
+    private float m_StepCycle;
+    private float m_NextStep;
+    [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
+    [SerializeField]  private float m_StepInterval;
 
     void Start()
 	{
-		m_Animator = GetComponent<Animator>();
+        m_StepCycle = 0f;
+        m_NextStep = m_StepCycle / 2f;
+        m_Animator = GetComponent<Animator>();
 		m_Rigidbody = GetComponent<Rigidbody>();
 		m_Capsule = GetComponent<CapsuleCollider>();
         uc = GetComponent<NetworkedThirdPersonUserControl>();
@@ -243,7 +257,51 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	GhostBehaviour previousGhostBehaviour;
 
 
+    //void FixedUpdate()
+    //{
+    //    Ray ray = new Ray(leftFoot.position, Vector3.down);
+    //    Ray rayRight = new Ray(rightFoot.position, Vector3.down);
+    //    if (Physics.Raycast(ray, footGroundCheckDistance) || Physics.Raycast(rayRight, footGroundCheckDistance))
+    //    {
+    //        if(!virtualFootstepAS.isPlaying)
+    //            virtualFootstepAS.Play();
+    //    }
+    //}
 
+    private void ProgressStepCycle(float speed)
+    {
+        if (m_Rigidbody.velocity.sqrMagnitude > 0 && (m_ForwardAmount != 0 || m_TurnAmount != 0))
+        {
+            m_StepCycle += (m_Rigidbody.velocity.magnitude + (speed * m_ForwardAmount)) *
+                         Time.fixedDeltaTime;
+        }
+
+        if (!(m_StepCycle > m_NextStep))
+        {
+            return;
+        }
+
+        m_NextStep = m_StepCycle + m_StepInterval;
+
+        PlayFootStepAudio();
+    }
+
+
+    private void PlayFootStepAudio()
+    {
+        if (!m_IsGrounded)
+        {
+            return;
+        }
+        // pick & play a random footstep sound from the array,
+        // excluding sound at index 0
+        int n = Random.Range(1, m_FootstepSounds.Length);
+        footstepAS.clip = m_FootstepSounds[n];
+        virtualFootstepAS.Play();
+        // move picked sound to index 0 so it's not picked next time
+        m_FootstepSounds[n] = m_FootstepSounds[0];
+        m_FootstepSounds[0] = footstepAS.clip;
+    }
 
     void Update()
     {
@@ -438,6 +496,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         beamLightCLight.gameObject.SetActive(false);
         rootMuzzleParticleSystem.Stop(true);
         rootParticleSystem.Stop(false);
+        virtaulWeaponAudioSource.Stop();
+        weaponAudioSource.Stop();
         if (GameManager.instance.players.Contains(this))
         {
             GameManager.instance.players.Remove(this);
@@ -478,9 +538,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		// send input and other state parameters to the animator
 		UpdateAnimator(move);
         m_MouseLook.SetCursorLock(!cursorLock);
-	   
+        ProgressStepCycle(move.magnitude);
         //m_MouseLook.UpdateCursorLock();
-        if(!cursorLock)
+        if (!cursorLock)
             RotateView();
 
 	}
