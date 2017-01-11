@@ -57232,6 +57232,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 800908116}
+        m_MethodName: InitAndStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &767922859
@@ -57677,6 +57688,7 @@ GameObject:
   - 114: {fileID: 800908118}
   - 114: {fileID: 800908117}
   - 114: {fileID: 800908115}
+  - 114: {fileID: 800908116}
   m_Layer: 5
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -57820,6 +57832,31 @@ MonoBehaviour:
   serverBrowserPanel: {fileID: 1640864544}
   mainPanel: {fileID: 745796234}
   lobbyPlayerListPanel: {fileID: 675136078}
+--- !u!114 &800908116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 800908113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce87671047d7ee49bcfba5293e902d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BroadcastPort: 47777
+  m_BroadcastKey: 2222
+  m_BroadcastVersion: 1
+  m_BroadcastSubVersion: 1
+  m_BroadcastInterval: 1000
+  m_UseNetworkManager: 1
+  m_BroadcastData: HELLO
+  m_ShowGUI: 0
+  m_OffsetX: 0
+  m_OffsetY: 0
+  ipHolderContectRect: {fileID: 591114587}
+  templateButton: {fileID: 2026563537}
+  networkAddresses: []
+  minWidth: 350
 --- !u!114 &800908117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128258,7 +128295,6 @@ GameObject:
   m_Component:
   - 224: {fileID: 1640864545}
   - 114: {fileID: 1640864546}
-  - 114: {fileID: 1640864547}
   m_Layer: 5
   m_Name: ServerListPanel
   m_TagString: Untagged
@@ -128306,31 +128342,6 @@ MonoBehaviour:
   lobbyPanel: {fileID: 675136079}
   ipInput: {fileID: 1458813743}
   matchNameInput: {fileID: 1563392854}
---- !u!114 &1640864547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1640864544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fce87671047d7ee49bcfba5293e902d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BroadcastPort: 47777
-  m_BroadcastKey: 2222
-  m_BroadcastVersion: 1
-  m_BroadcastSubVersion: 1
-  m_BroadcastInterval: 1000
-  m_UseNetworkManager: 1
-  m_BroadcastData: HELLO
-  m_ShowGUI: 0
-  m_OffsetX: 0
-  m_OffsetY: 0
-  ipHolderContectRect: {fileID: 0}
-  templateButton: {fileID: 0}
-  networkAddresses: []
-  minWidth: 350
 --- !u!1001 &1642245297
 Prefab:
   m_ObjectHideFlags: 0

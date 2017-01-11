@@ -21,9 +21,14 @@ public class NetworkBroadcastList : NetworkDiscovery {
 		if(!templateButton)
 			templateButton = GameObject.Find("IPButtonTemplate").GetComponent<Button>();
         templateButton.gameObject.SetActive(false);
+        
+    }
+
+    public void InitAndStart()
+    {
         Initialize();
         StartAsClient();
-		init = true;
+        init = true;
     }
 
 	public void OnDisable()

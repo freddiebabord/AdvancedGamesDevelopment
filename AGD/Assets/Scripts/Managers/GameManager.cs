@@ -146,9 +146,12 @@ public class GameManager : NetworkBehaviour {
             yield return null;
             //GameOverPanel.SetActive(true);
             //StatusPanel.SetActive(true);
-            GameOver();
-            Cursor.lockState = CursorLockMode.None;
-		    Cursor.visible = true;
+		    if (SceneManager.GetActiveScene().name != "Menu");
+		    {
+		        GameOver();
+		        Cursor.lockState = CursorLockMode.None;
+		        Cursor.visible = true;
+		    }
 		}
 	    waveComplete = false;
 	}
