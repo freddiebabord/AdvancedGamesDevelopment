@@ -120,7 +120,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	ParticleSystem rootParticleSystem;
 	bool firing = false;
 	RaycastHit hit;
-	List<Joystick> joysticks = new List<Joystick>();
+	public List<Joystick> joysticks = new List<Joystick>();
 
 	Vector3 planeProjection = Vector3.zero;
 	Vector3 endPosition = Vector3.zero;
@@ -134,6 +134,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	Ray crouchRay;
 	float crouchRayLength = 0.0f;
 	float currentOverheatValue = 0.0f;
+
 
     void Start()
 	{
@@ -212,6 +213,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         if (!isLocalPlayer)
         {
             m_Camera.gameObject.SetActive(false);
+            if(weaponRechargeIndicator)
             weaponRechargeIndicator.gameObject.SetActive(false);
         }
 
@@ -228,9 +230,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             //    pnc[i].targetCamera = m_Camera;
             //}
             GameManager.instance.enemiesRemainigText.Add(enemiesRemainingText);
-			if (uc.player == null)
-				uc.player = ReInput.players.GetPlayer (0);
-			joysticks = new List<Joystick>(uc.player.controllers.Joysticks);
+            //if (uc.player == null)
+            //    uc.Awake();
+			
         }
 
         //beamMaterial = lineRenderer.material;
