@@ -4551,7 +4551,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012812959416}
-  m_LocalRotation: {x: -0.6754405, y: -0.00026995674, z: 0.73741454, w: -0.0002926702}
+  m_LocalRotation: {x: -0.67544043, y: -0.0002699567, z: 0.7374145, w: -0.00029267019}
   m_LocalPosition: {x: -0.09197723, y: -0.00000006437301, z: 0.023532582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5389,7 +5389,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012309849522}
-  m_LocalRotation: {x: 0.6754405, y: 0.00026791147, z: 0.73741454, w: -0.00029454363}
+  m_LocalRotation: {x: 0.67544043, y: 0.00026791144, z: 0.7374145, w: -0.0002945436}
   m_LocalPosition: {x: -0.09197723, y: 0.000000069141386, z: -0.023532582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6049,7 +6049,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012807060666}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 80349dd0db0baa14ba5aec97bc9e7456, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 1
@@ -8215,7 +8215,7 @@ MonoBehaviour:
   damagePerSecond: 50
   shake: {fileID: 114000011324582410}
   distanceOverTime: 30
-  startupTime: 1
+  startupTime: 0.35
   curresntStartupTime: 0
   currentWeaponTime: 0
   maxWeaponTime: 8
@@ -8233,10 +8233,10 @@ MonoBehaviour:
   wallMAsk:
     serializedVersion: 2
     m_Bits: 512
-  weaponChargeSound: {fileID: 8300000, guid: 236ad637583d9184a967e6eff2ecb075, type: 3}
-  weaponMainSound: {fileID: 8300000, guid: f3bc4a152a7e59a4aad9f99e15c9fc5f, type: 3}
-  weaponEndSound: {fileID: 8300000, guid: a51d988c303b33f4b8cb9e4dfc849575, type: 3}
-  playerStepSound: {fileID: 0}
+  weaponChargeSound: {fileID: 8300000, guid: df93fefcdbfa10e40ae00c3bcb3b359b, type: 3}
+  weaponMainSound: {fileID: 8300000, guid: cd06a0b89e8962f43a407ccc8b46d554, type: 3}
+  weaponEndSound: {fileID: 8300000, guid: 1666e8284863a4c47817729ed9f971d1, type: 3}
+  playerStepSound: {fileID: 8300000, guid: 1666e8284863a4c47817729ed9f971d1, type: 3}
   playerAmbientSounds: []
   virtaulWeaponAudioSource: {fileID: 114000013605176446}
   weaponAudioSource: {fileID: 82000012716151876}

@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.Linq;
+using JetBrains.Annotations;
 using Rewired;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public enum	EnemyType
 {
@@ -107,6 +109,11 @@ public class GameManager : NetworkBehaviour {
             players.Clear();
             scoreTable.Clear();
         }
+        else
+        {
+            controller = FindObjectOfType<GameOverController>();
+            controller.gameObject.SetActive(false);
+        }
     }
 
 	public void DestroyEnemy()
@@ -127,16 +134,21 @@ public class GameManager : NetworkBehaviour {
 	IEnumerator WaveWaitTimer()
 	{
 		waveComplete = true;
-		yield return new WaitForSeconds(waveSleepTimer);
+		
 		currentWave++;
-		if(currentWave < waves.Count)
-			SpawnEnemies();
+	    if (currentWave < waves.Count)
+	    {
+            yield return new WaitForSeconds(waveSleepTimer);
+            SpawnEnemies();
+	    }
 		else
 		{
+            yield return null;
             //GameOverPanel.SetActive(true);
             //StatusPanel.SetActive(true);
-            //Cursor.lockState = CursorLockMode.None;
-		    //Cursor.visible = true;
+            GameOver();
+            Cursor.lockState = CursorLockMode.None;
+		    Cursor.visible = true;
 		}
 	    waveComplete = false;
 	}
@@ -266,5 +278,45 @@ public class GameManager : NetworkBehaviour {
         {
             scorePanels[i].PostScoreToThisBoard(id, scoreTable[id]);
         }
+    }
+
+    private void GameOver()
+    {
+        controller.gameObject.SetActive(true);
+        if (!isServer)
+            return;
+        
+        List<NetworkedThirdPersonCharacter> sortedPlayers = players.OrderBy(x => scoreTable[x.playerID]).ToList();
+        for (int i = 0; i < sortedPlayers.Count; ++i)
+            RpcSetIdvGOControllerData(sortedPlayers[i].playerID, i);
+    }
+
+
+    private GameOverController controller;
+
+    [ClientRpc]
+    private void RpcSetIdvGOControllerData(int playerID, int position)
+    {
+        NetworkedThirdPersonCharacter player = players.Find(x => x.playerID == playerID);
+        player.enabled = false;
+        player.GetComponent<NetworkedThirdPersonUserControl>().enabled = false;
+        player.GetComponent<PickUps>().enabled = false;
+        player.GetComponent<Radar>().enabled = false;
+        player.GetComponent<MakeRadarObject>().enabled = false;
+        player.GetComponent<PlayerIKController>().enabled = false;
+        player.GetComponent<CameraManager>().enabled = false;
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        player.GetComponent<Rigidbody>().constraints  = RigidbodyConstraints.FreezeAll;
+        player.GetComponent<Animator>().SetBool(position == 0 ? "Won" : "Lost", true);
+        Camera[] cams = player.GetComponentsInChildren<Camera>();
+        for (int i = 0; i < cams.Length; ++i)
+            cams[i].enabled = false;
+        player.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+        player.transform.position = position < 3
+            ? controller.dataContainers[position].position.position
+            : new Vector3(0, 250, 0);
+        player.transform.rotation = Quaternion.identity;
+        controller.dataContainers[position].score.text = scoreTable[player.playerID].ToString();
     }
 }

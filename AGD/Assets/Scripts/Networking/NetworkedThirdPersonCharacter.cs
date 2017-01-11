@@ -240,6 +240,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
 	GhostBehaviour previousGhostBehaviour;
 
+
+
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.F3))
@@ -426,6 +429,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
     void OnDisable()
     {
+        firing = false;
+        StopParticleSystem();
+        for (int i = 0; i < beamLightSegments.Count; ++i)
+            beamLightSegments[i].gameObject.SetActive(false);
+        beamLightCLight.gameObject.SetActive(false);
+        rootMuzzleParticleSystem.Stop(true);
+        rootParticleSystem.Stop(false);
         if (GameManager.instance.players.Contains(this))
         {
             GameManager.instance.players.Remove(this);
@@ -518,7 +528,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		// update the animator parameters
 		m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
 		m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-		m_Animator.SetBool("Crouch", m_Crouching);
+		m_Animator.SetBool("Fire",firing);
+		//m_Animator.SetBool("Crouch", m_Crouching);
 		m_Animator.SetBool("OnGround", m_IsGrounded);
 		if (!m_IsGrounded)
 		{
@@ -532,10 +543,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 			Mathf.Repeat(
 				m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
 		float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
-		if (m_IsGrounded)
-		{
-			m_Animator.SetFloat("JumpLeg", jumpLeg);
-		}
+		//if (m_IsGrounded)
+		//{
+		//	m_Animator.SetFloat("JumpLeg", jumpLeg);
+		//}
 
 		// the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
 		// which affects the movement speed because of the root motion.

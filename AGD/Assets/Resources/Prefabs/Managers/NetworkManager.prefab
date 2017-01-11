@@ -10436,6 +10436,10 @@ MonoBehaviour:
   volumeSlider: {fileID: 114000013320105132}
   screenResolutions: {fileID: 114000013497387724}
   fullscreenToggle: {fileID: 114000013797246280}
+  quitConfirmPanel: {fileID: 0}
+  serverBrowserPanel: {fileID: 0}
+  mainPanel: {fileID: 0}
+  lobbyPlayerListPanel: {fileID: 0}
 --- !u!114 &114000013763574266
 MonoBehaviour:
   m_ObjectHideFlags: 1
