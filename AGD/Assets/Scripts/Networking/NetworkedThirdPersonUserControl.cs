@@ -82,8 +82,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!isLocalPlayer)
             {
                 m_Cam.gameObject.SetActive(false);
-                m_Character.joysticks = new List<Joystick>(player.controllers.Joysticks);
+                
                 //m_Character.enabled = false;
+            }
+            else
+            {
+                m_Character.joysticks = new List<Joystick>(player.controllers.Joysticks);
             }
 
         }
