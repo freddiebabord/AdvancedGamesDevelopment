@@ -21,9 +21,14 @@ public class NetworkBroadcastList : NetworkDiscovery {
 		if(!templateButton)
 			templateButton = GameObject.Find("IPButtonTemplate").GetComponent<Button>();
         templateButton.gameObject.SetActive(false);
+        
+    }
+
+    public void InitAndStart()
+    {
         Initialize();
         StartAsClient();
-		init = true;
+        init = true;
     }
 
 	public void OnDisable()
@@ -42,6 +47,7 @@ public class NetworkBroadcastList : NetworkDiscovery {
             newButton.GetComponentInChildren<Text>().text = fromAddress;
             newButton.GetComponent<Button>().onClick.AddListener(() => ConnectToServer(fromAddress));
             newButton.transform.SetParent(ipHolderContectRect);
+            newButton.transform.localScale = Vector3.one;
             newButton.SetActive(true);
             if ((ipHolderContectRect.sizeDelta.x / networkAddresses.Count) < minWidth)
                 ipHolderContectRect.sizeDelta.Set(networkAddresses.Count * minWidth, ipHolderContectRect.sizeDelta.y);
@@ -54,6 +60,7 @@ public class NetworkBroadcastList : NetworkDiscovery {
             StopBroadcast();
         Initialize();
         StartAsServer();
+        init = true;
     }
 
     public void ConnectToServer(string ipAddress)

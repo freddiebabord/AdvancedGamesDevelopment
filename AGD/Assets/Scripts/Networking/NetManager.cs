@@ -13,6 +13,7 @@ public class NetManager : LobbyManager{
 	----------------------------------------------------------------------------------------------------------------*/
 	[Header("UI Settings")]
 	public GameObject settingsPanel;
+    public GameObject creditsPanel;
 	public Dropdown qualityDropdown;
 	public Slider volumeSlider;
 	public Dropdown screenResolutions;
@@ -155,6 +156,10 @@ public class NetManager : LobbyManager{
 
 	}
 
+    public void ShowCredits()
+    {
+        TransitionPanel(creditsPanel);
+    }
 
 	public override void OnLobbyStopHost()
 	{

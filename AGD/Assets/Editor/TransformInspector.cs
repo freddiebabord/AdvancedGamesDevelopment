@@ -52,7 +52,13 @@ public class TransformInspector : Editor {
         }
 
 		GUILayout.BeginVertical();
-		GUILayout.Label("Snap Placement");
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Center Object Global"))
+            targetTransform.position = Vector3.zero;
+        if (GUILayout.Button("Center Object Local"))
+            targetTransform.localPosition = Vector3.zero;
+        GUILayout.EndHorizontal();
+        GUILayout.Label("Snap Placement");
 		GUILayout.BeginHorizontal();
 		var originalColour = GUI.backgroundColor;
 		var originalContentColour = GUI.contentColor;

@@ -47,7 +47,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         [HideInInspector]
         public bool disableControls = false;
 
-        void Awake()
+        public void PreStart()
         {
 			if (!isLocalPlayer)
 				return;
@@ -55,58 +55,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			if (ReInput.controllers.joystickCount > 1) {
 				if (GameManager.instance.playerOneAssigned)
-					playerID = 2;
-				else
 					playerID = 1;
+				else
+					playerID = 0;
 			} else {
-				if (!GameManager.instance.playerOneAssigned)
+				if (GameManager.instance.playerOneAssigned)
 					playerID = 0;
 				else
-					playerID = 1;
+					playerID = 2;
 			}
             player = ReInput.players.GetPlayer(playerID);
             player.isPlaying = true;
             GameManager.instance.playerOneAssigned = true;
-
-            //if (SettingsManager.instance.splitscreenDuelControllerMode)
-            //{
-            //    if (GameManager.instance.playerOneAssigned)
-            //        playerID++;
-            //    player = ReInput.players.GetPlayer(playerID);
-            //    player.isPlaying = true;
-            //    GameManager.instance.playerOneAssigned = true;
-            //}
-            //else
-            //{
-            //    if (!GameManager.instance.playerOneAssigned)
-            //        playerID = 2;
-            //    else
-            //        playerID = 1;
-            //    player = ReInput.players.GetPlayer(playerID);
-            //    if (GameManager.instance.playerOneAssigned)
-            //    {
-            //        foreach (var controller in ReInput.controllers.Controllers)
-            //        {
-            //            if (controller.type == ControllerType.Joystick)
-            //                player.controllers.AddController(controller, true);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        foreach (var controller in ReInput.controllers.Controllers)
-            //        {
-            //            if (controller.type != ControllerType.Joystick)
-            //                player.controllers.AddController(controller, true);
-            //        }
-            //    }
-            //    player.isPlaying = true;
-            //    GameManager.instance.playerOneAssigned = true;
-            //}
         }
 
         private void Start()
         {
-			Awake ();
+            PreStart();
             multiplyer = 1;
             
             // get the third person character ( this should never be null due to require component )
@@ -117,7 +82,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!isLocalPlayer)
             {
                 m_Cam.gameObject.SetActive(false);
+                
                 //m_Character.enabled = false;
+            }
+            else
+            {
+                m_Character.joysticks = new List<Joystick>(player.controllers.Joysticks);
+                if (player.controllers.Joysticks.Count > 0)
+                {
+                    m_Character.m_MouseLook.XSensitivity *= 2;
+                    m_Character.m_MouseLook.YSensitivity *= 2;
+                }
             }
 
         }
