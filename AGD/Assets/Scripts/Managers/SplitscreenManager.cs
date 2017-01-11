@@ -23,10 +23,10 @@ public class SplitscreenManager : MonoBehaviour {
         if (!SettingsManager.instance)
             return;
         mode = SettingsManager.instance.splitscreenMode;
-        Invoke("Setup", 0.1f);
+        //Invoke("Setup", 0.1f);
     }
 
-    public void Setup()
+    public void Update()
     {
         float fraction = 1f / cameras.Count;
         switch (mode)
