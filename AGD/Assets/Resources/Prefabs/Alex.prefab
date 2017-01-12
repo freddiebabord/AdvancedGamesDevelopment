@@ -3080,7 +3080,7 @@ GameObject:
   - 114: {fileID: 114000013423518830}
   m_Layer: 0
   m_Name: Alex
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4599,7 +4599,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012812959416}
-  m_LocalRotation: {x: -0.6754405, y: -0.00026995674, z: 0.73741454, w: -0.0002926702}
+  m_LocalRotation: {x: -0.67544043, y: -0.0002699567, z: 0.7374145, w: -0.00029267019}
   m_LocalPosition: {x: -0.09197723, y: -0.00000006437301, z: 0.023532582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5466,7 +5466,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012309849522}
-  m_LocalRotation: {x: 0.6754405, y: 0.00026791147, z: 0.73741454, w: -0.00029454363}
+  m_LocalRotation: {x: 0.67544043, y: 0.00026791144, z: 0.7374145, w: -0.0002945436}
   m_LocalPosition: {x: -0.09197723, y: 0.000000069141386, z: -0.023532582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7465,6 +7465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radar: {fileID: 1000011261310328}
   map_scale: 2
+  radar_objects: []
 --- !u!114 &114000010779875812
 MonoBehaviour:
   m_ObjectHideFlags: 1

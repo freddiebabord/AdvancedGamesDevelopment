@@ -196,8 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70742c3df74894a9f8169af42df801fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMap: 3
-  firstPass: 0
   maxFloatHeight: 50
   agent: {fileID: 0}
   walkRadius: 10

@@ -27,7 +27,7 @@ public class EnemyPoolSpawner : NetworkBehaviour {
 			var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
 			var enemySpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("enemySpawn")).ToList();
 			var enemySpawn = enemySpawns[Random.Range(0, enemySpawns.Count)].transform;
-			GameObject newEnemy = (GameObject)Instantiate(enemyPrefab, enemySpawn.position, enemySpawn.rotation);
+			GameObject newEnemy = (GameObject)Instantiate(enemyPrefab);
 			spawnedEnemies.Add(newEnemy);
 			NetworkServer.Spawn(newEnemy);
 		}

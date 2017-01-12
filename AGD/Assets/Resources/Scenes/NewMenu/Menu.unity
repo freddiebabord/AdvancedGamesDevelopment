@@ -11888,6 +11888,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
         type: 2}
+      propertyPath: enemyPrefabs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
       propertyPath: waves.Array.data[2].enemyDef.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -11900,6 +11905,11 @@ Prefab:
         type: 2}
       propertyPath: waves.Array.data[1].enemyDef.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: waves.Array.data[0].enemyDef.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000014074950234, guid: 5c50ced49551e244686418b0c6a79e68, type: 2}
       propertyPath: m_LocalPosition.x
@@ -11996,6 +12006,68 @@ Prefab:
     - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
         type: 2}
       propertyPath: waves.Array.data[0].enemyDef.Array.data[0].quantity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1000011758310570, guid: d2f9ad20e63d03d4cac6f91e5a362a4e,
+        type: 2}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1000011714033180, guid: 360c8445f060af1419c1b0a365418cf5,
+        type: 2}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1000012984637492, guid: c30a0e21c75cdbe4a98799421c8f796d,
+        type: 2}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1000014159496386, guid: ea0f34a05224ba542b46f7b4ac5711d9,
+        type: 2}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1000012489844284, guid: 4ab4b8897b8f6b84592ca0b07aa22e5d,
+        type: 2}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1000010145515506, guid: c8bada6ca799935458ed13ddfff9a988,
+        type: 2}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: enemyPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df,
+        type: 2}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: waves.Array.data[0].enemyDef.Array.data[1].enemySpawner
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: waves.Array.data[0].enemyDef.Array.data[1].quantity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: waves.Array.data[0].enemyDef.Array.data[2].enemySpawner
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013206277500, guid: 5c50ced49551e244686418b0c6a79e68,
+        type: 2}
+      propertyPath: waves.Array.data[0].enemyDef.Array.data[2].quantity
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:

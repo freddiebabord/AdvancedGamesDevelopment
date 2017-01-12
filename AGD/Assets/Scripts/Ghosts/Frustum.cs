@@ -31,9 +31,10 @@ public class PlayerPriority
 }
 
 [ExecuteInEditMode]
-public class Frustum : NetworkBehaviour {
-    
-    public enum GhostState {Peaceful = 0, Aggravated};
+public class Frustum : NetworkBehaviour
+{
+
+    public enum GhostState { Peaceful = 0, Aggravated };
 
     #region Frustum Inspector
     public bool ShowView
@@ -69,12 +70,9 @@ public class Frustum : NetworkBehaviour {
     public bool isTriggered;
     public Transform focus;
     public float attentionSpan = 5f;
-    public NetworkInstanceId parentNetID;
 
-    Dictionary<int,PlayerPriority> interactablePlayers = new Dictionary<int,PlayerPriority>();
+    Dictionary<int, PlayerPriority> interactablePlayers = new Dictionary<int, PlayerPriority>();
     float attentionSpanStart;
-    NetworkIdentity otherNetID;
-    NetworkIdentity rootNetID;
     //private GameObject root;
 
     #region Mesh Variables
@@ -84,31 +82,31 @@ public class Frustum : NetworkBehaviour {
     //Mesh //aggroMesh;
     #endregion
 
-	void Awake()
-	{
-		meshFilter = GetComponentInChildren<MeshFilter>();
-		meshCollider = GetComponentInChildren<MeshCollider>();
-		rootNetID = GetComponent<NetworkIdentity>();
-		meshFilter.mesh = new Mesh();
-		charge = GetComponent<Charge> ();
-	}
+    void Awake()
+    {
+        meshFilter = GetComponentInChildren<MeshFilter>();
+        meshCollider = GetComponentInChildren<MeshCollider>();
+        meshFilter.mesh = new Mesh();
+        meshCollider.sharedMesh = meshFilter.mesh;
+        charge = GetComponent<GhostCharge>();
+    }
 
     public void PostStart()
     {
-        if (rootNetID.isServer)
+        if (isServer)
         {
             //transform.parent.GetComponentInParent<EnemyBase>().ghostFrustum = this;
             Rpc_SetMeshes(peaceful);
             Rpc_ChangeFrustum((int)ghostState);
-			//root = transform.gameObject;
+            //root = transform.gameObject;
         }
     }
 
     // Update is called once per frame
-	void Update ()
+    void Update()
     {
-		if (!isServer)
-			return;
+        if (!isServer)
+            return;
         if (drawFrustum != DrawFrustum.None)
         {
             /*if (!Application.isPlaying)
@@ -128,22 +126,26 @@ public class Frustum : NetworkBehaviour {
 
         if (isTriggered)
         {
-            if (charge)
-                charge.Triggered(focus.position);
+            if (GetComponent<GhostCharge>())
+                GetComponent<GhostCharge>().Triggered(focus.position);
             //if (root.GetComponent<Teleportation>())
             //root.GetComponent<Teleportation>().Triggered(target.position);
+            if (GetComponent<GhostSwell>())
+                GetComponent<GhostSwell>().Triggered();
         }
 
     }
 
-	private Charge charge;
-	private Vector3 relativePlayerPos;
-	private int netID;
+    private GhostCharge charge;
+    private Vector3 relativePlayerPos;
+    private int netID;
 
     public void OnTriggerEnter(Collider other)
     {
-		if (!isServer)
-			return;
+
+        if (!isServer)
+            return;
+
         //print("<color=green>" + other.tag + "</color>");
         if (other.tag == "Player")
         {
@@ -153,7 +155,7 @@ public class Frustum : NetworkBehaviour {
 
             if (Physics.Raycast(other.transform.position, relativePlayerPos))
             {
-				netID = other.GetComponent<NetworkedThirdPersonCharacter> ().playerID;// otherNetID.isServer ? otherNetID.connectionToClient.connectionId : otherNetID.connectionToServer.connectionId;
+                netID = other.GetComponent<NetworkedThirdPersonCharacter>().playerID;// otherNetID.isServer ? otherNetID.connectionToClient.connectionId : otherNetID.connectionToServer.connectionId;
                 Rpc_PlayerEnterView(netID, other.gameObject);
                 ChoosePlayer();
             }
@@ -162,8 +164,8 @@ public class Frustum : NetworkBehaviour {
 
     public void OnTriggerExit(Collider other)
     {
-		if (!isServer)
-			return;
+        if (!isServer)
+            return;
         if (other.tag == "Player")
         {
             relativePlayerPos = transform.position - other.transform.position;
@@ -172,7 +174,7 @@ public class Frustum : NetworkBehaviour {
 
             if (Physics.Raycast(other.transform.position, relativePlayerPos))
             {
-				netID = other.GetComponent<NetworkedThirdPersonCharacter> ().playerID; //otherNetID.isServer ? otherNetID.connectionToClient.connectionId : otherNetID.connectionToServer.connectionId;
+                netID = other.GetComponent<NetworkedThirdPersonCharacter>().playerID; //otherNetID.isServer ? otherNetID.connectionToClient.connectionId : otherNetID.connectionToServer.connectionId;
                 Rpc_PlayerLeftView(netID, other.gameObject);
                 ChoosePlayer();
             }
@@ -188,22 +190,22 @@ public class Frustum : NetworkBehaviour {
             else
                 Gizmos.color = Color.cyan;
 
-			Gizmos.DrawWireMesh(meshFilter.mesh, transform.position, transform.rotation);
+            Gizmos.DrawWireMesh(meshFilter.mesh, transform.position, transform.rotation);
         }
-        if (drawFrustum == DrawFrustum.Aggravated || drawFrustum == DrawFrustum.Both)
-        {
-            if (ghostState == GhostState.Aggravated)
-                Gizmos.color = Color.green;
-            else
-                Gizmos.color = Color.red;
+        //if (drawFrustum == DrawFrustum.Aggravated || drawFrustum == DrawFrustum.Both)
+        //{
+        //    if (ghostState == GhostState.Aggravated)
+        //        Gizmos.color = Color.green;
+        //    else
+        //        Gizmos.color = Color.red;
 
-            //Gizmos.DrawWireMesh(//aggroMesh, transform.position, transform.rotation);
-        }
+        //    //Gizmos.DrawWireMesh(//aggroMesh, transform.position, transform.rotation);
+        //}
     }
 
-	int[] triangles = new int[36]
-	{
-		2, 3, 1, 0, 2, 1, // Front
+    int[] triangles = new int[36]
+    {
+        2, 3, 1, 0, 2, 1, // Front
 		6, 2, 0, 4, 6, 0, // Left
 		7, 6, 4, 5, 7, 4, // Back
 		3, 7, 5, 1, 3, 5, // Right
@@ -214,11 +216,11 @@ public class Frustum : NetworkBehaviour {
     [ClientRpc]
     void Rpc_SetMeshes(FrustumFramework peaceful/*, FrustumFramework aggro*/)
     {
-       // print("<color=yellow>SetMeshes Triggered!</color>");
+        // print("<color=yellow>SetMeshes Triggered!</color>");
 
-		if (meshFilter.mesh == null)
-			meshFilter.mesh = new Mesh ();
-		meshFilter.mesh.vertices = new Vector3[8]
+        if (meshFilter.mesh == null)
+            meshFilter.mesh = new Mesh();
+        meshFilter.mesh.vertices = new Vector3[8]
         {
             new Vector3(-(peaceful.near.x / 2), -(peaceful.near.y / 2), 0),
             new Vector3((peaceful.near.x / 2), -(peaceful.near.y / 2), 0),
@@ -229,20 +231,20 @@ public class Frustum : NetworkBehaviour {
             new Vector3(-(peaceful.far.x / 2), (peaceful.far.y / 2), peaceful.distance),
             new Vector3((peaceful.far.x / 2), (peaceful.far.y / 2), peaceful.distance)
         };
-		meshFilter.mesh.triangles = triangles;
-		meshFilter.mesh.RecalculateNormals();
+        meshFilter.mesh.triangles = triangles;
+        meshFilter.mesh.RecalculateNormals();
 
         //aggroMesh.vertices = new Vector3[8]
-       /* {
-            new Vector3(-(aggro.near.x / 2), -(aggro.near.y / 2), 0),
-            new Vector3((aggro.near.x / 2), -(aggro.near.y / 2), 0),
-            new Vector3(-(aggro.near.x / 2), (aggro.near.y / 2), 0),
-            new Vector3((aggro.near.x / 2), (aggro.near.y / 2), 0),
-            new Vector3(-(aggro.far.x / 2), -(aggro.far.y / 2), aggro.distance),
-            new Vector3((aggro.far.x / 2), -(aggro.far.y / 2), aggro.distance),
-            new Vector3(-(aggro.far.x / 2), (aggro.far.y / 2), aggro.distance),
-            new Vector3((aggro.far.x / 2), (aggro.far.y / 2), aggro.distance)
-        };*/
+        /* {
+             new Vector3(-(aggro.near.x / 2), -(aggro.near.y / 2), 0),
+             new Vector3((aggro.near.x / 2), -(aggro.near.y / 2), 0),
+             new Vector3(-(aggro.near.x / 2), (aggro.near.y / 2), 0),
+             new Vector3((aggro.near.x / 2), (aggro.near.y / 2), 0),
+             new Vector3(-(aggro.far.x / 2), -(aggro.far.y / 2), aggro.distance),
+             new Vector3((aggro.far.x / 2), -(aggro.far.y / 2), aggro.distance),
+             new Vector3(-(aggro.far.x / 2), (aggro.far.y / 2), aggro.distance),
+             new Vector3((aggro.far.x / 2), (aggro.far.y / 2), aggro.distance)
+         };*/
         //aggroMesh.triangles = triangles;
         //aggroMesh.RecalculateNormals();
     }
@@ -280,17 +282,17 @@ public class Frustum : NetworkBehaviour {
     public void Rpc_ChangeFrustum(int ghostStateInt)
     {
         GhostState curGhostState = (GhostState)ghostStateInt;
-       // print("Hello");
-//        if (curGhostState == GhostState.Peaceful)
-//        {
-//            meshFilter.mesh = peacefulMesh;
-//            meshCollider.sharedMesh = peacefulMesh;
-//        }
-       /* else if (curGhostState == GhostState.Aggravated)
-        {
-            meshFilter.mesh = //aggroMesh;
-            meshCollider.sharedMesh = //aggroMesh;
-        }*/
+        // print("Hello");
+        //        if (curGhostState == GhostState.Peaceful)
+        //        {
+        //            meshFilter.mesh = peacefulMesh;
+        //            meshCollider.sharedMesh = peacefulMesh;
+        //        }
+        /* else if (curGhostState == GhostState.Aggravated)
+         {
+             meshFilter.mesh = //aggroMesh;
+             meshCollider.sharedMesh = //aggroMesh;
+         }*/
 
         meshCollider.convex = true;
         meshCollider.isTrigger = true;
@@ -300,8 +302,8 @@ public class Frustum : NetworkBehaviour {
     public void Rpc_PlayerEnterView(int networkID, GameObject player)
     {
         if (!interactablePlayers.ContainsKey(networkID))
-            interactablePlayers.Add(networkID, new PlayerPriority());   
-        if (interactablePlayers[networkID].state == PlayerState.None) 
+            interactablePlayers.Add(networkID, new PlayerPriority());
+        if (interactablePlayers[networkID].state == PlayerState.None)
             interactablePlayers[networkID].state = PlayerState.Visible;
         ghostState = GhostState.Aggravated;
 
@@ -320,7 +322,7 @@ public class Frustum : NetworkBehaviour {
             interactablePlayers[networkID].state = PlayerState.None;
         if (player == focus)
             isTriggered = false;
-            focus = null;
+        focus = null;
     }
 
     [ClientRpc]

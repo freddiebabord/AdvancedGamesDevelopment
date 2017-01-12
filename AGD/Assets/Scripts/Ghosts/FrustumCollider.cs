@@ -10,13 +10,13 @@ public class FrustumCollider : MonoBehaviour {
 		frustum = GetComponentInParent<Frustum> ();
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
-		frustum.OnTriggerEnter (other);
-	}
+    void OnTriggerEnter(Collider other)
+    {
+        frustum.OnTriggerEnter(other);
+    }
 
-	void OnTriggerExit(Collider other)
-	{
-		frustum.OnTriggerExit (other);
-	}
+    void OnTriggerExit(Collider other)
+    {
+        frustum.OnTriggerExit(other);
+    }
 }

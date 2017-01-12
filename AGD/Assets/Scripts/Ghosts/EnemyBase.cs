@@ -39,7 +39,7 @@ public class EnemyBase : NetworkBehaviour {
 		if(!isServer)
 			return;
 
-		if (ghostBehaviour.CurrentHealth <= 0)
+		if (!ghostBehaviour)
 			return;
         //Currently gets a random point on the navmesh
         if (!agent.hasPath)

@@ -84,8 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Do NOT Show\GhostCharge.cs" />
-    <Compile Include="Assets\Do NOT Show\Shoot.cs" />
     <Compile Include="Assets\External\Lobby\Scripts\DraggablePanel.cs" />
     <Compile Include="Assets\External\Lobby\Scripts\EventSystemChecker.cs" />
     <Compile Include="Assets\External\Lobby\Scripts\Lobby\LobbyCountdownPanel.cs" />
@@ -327,8 +325,12 @@
     <Compile Include="Assets\Scripts\GhostBodyCollision.cs" />
     <Compile Include="Assets\Scripts\GhostDamageText.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\Charge.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostCharge.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostSwell.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostThrow.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\LocalFrustum.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\Teleportation.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\AnimationEventReciever.cs" />
     <Compile Include="Assets\Scripts\Ghosts\EnemyBase.cs" />
     <Compile Include="Assets\Scripts\Ghosts\EnemyBaseLocal.cs" />
     <Compile Include="Assets\Scripts\Ghosts\EnemyPoolSpawner.cs" />
@@ -337,6 +339,7 @@
     <Compile Include="Assets\Scripts\Ghosts\GhostBehaviour.cs" />
     <Compile Include="Assets\Scripts\Ghosts\GhostBehaviourLocal.cs" />
     <Compile Include="Assets\Scripts\Ghosts\GhostBodyAdjustments.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Glob.cs" />
     <Compile Include="Assets\Scripts\LockRotation.cs" />
     <Compile Include="Assets\Scripts\LookAtHelper.cs" />
     <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
