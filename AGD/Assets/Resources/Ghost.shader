@@ -82,8 +82,7 @@ Shader "Shader Forge/Ghost" {
                 float4 node_475 = _Time + _TimeEditor;
                 float2 node_3323 = (i.uv0+(node_475.g*_PanSpeed)*float2(1,1));
                 float4 _Texture_var = tex2D(_Texture,TRANSFORM_TEX(node_3323, _Texture));
-                float node_7954 = 0.2;
-                float3 emissive = (lerp((_Colour.rgb*_SoftColour),_Colour.rgb,node_7453)*saturate((sceneZ-partZ)/_DepthBelnd)*((_Texture_var.rgb*node_7954)*node_7453));
+                float3 emissive = (lerp((_Colour.rgb*_SoftColour),_Colour.rgb,node_7453)*saturate((sceneZ-partZ)/_DepthBelnd)*((_Texture_var.rgb*0.2)*node_7453));
                 float3 finalColor = emissive;
                 return fixed4(finalColor,1);
             }
@@ -154,8 +153,7 @@ Shader "Shader Forge/Ghost" {
                 float4 node_475 = _Time + _TimeEditor;
                 float2 node_3323 = (i.uv0+(node_475.g*_PanSpeed)*float2(1,1));
                 float4 _Texture_var = tex2D(_Texture,TRANSFORM_TEX(node_3323, _Texture));
-                float node_7954 = 0.2;
-                o.Emission = (lerp((_Colour.rgb*_SoftColour),_Colour.rgb,node_7453)*saturate((sceneZ-partZ)/_DepthBelnd)*((_Texture_var.rgb*node_7954)*node_7453));
+                o.Emission = (lerp((_Colour.rgb*_SoftColour),_Colour.rgb,node_7453)*saturate((sceneZ-partZ)/_DepthBelnd)*((_Texture_var.rgb*0.2)*node_7453));
                 
                 float3 diffColor = float3(0,0,0);
                 o.Albedo = diffColor;

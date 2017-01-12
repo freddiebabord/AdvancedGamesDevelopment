@@ -11,10 +11,10 @@ public class PickUps : NetworkBehaviour {
 
     Color temp;
 
-    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, None };
+    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, NullifyFear, None };
     PowerName pow = PowerName.None;
 
-    public enum ActivePower { Speed, Power, Weapon, None};
+    public enum ActivePower { Speed, Power, Weapon, Nullify, None };
     public ActivePower active = ActivePower.None;
 
     public bool power = false;
@@ -135,6 +135,11 @@ public class PickUps : NetworkBehaviour {
                 the_pickup.GetComponent<WeaponRecharge>().Triggered();
                 active = ActivePower.Weapon;
             }
+            else if (pow == PowerName.NullifyFear && active != ActivePower.Nullify)
+            {
+                the_pickup.GetComponent<NullifyFear>().Triggered();
+                active = ActivePower.Nullify;
+            }
 
             power_obtained.text = power_name;
             power_obtained.color = temp;
@@ -177,6 +182,12 @@ public class PickUps : NetworkBehaviour {
                 {
                     temp = colours[2];
                     pow = PowerName.WeaponRecharge;
+
+                }
+                else if (other.gameObject.GetComponent<NullifyFear>() != null)
+                {
+                    temp = colours[3];
+                    pow = PowerName.NullifyFear;
 
                 }
 

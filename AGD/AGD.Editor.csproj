@@ -485,6 +485,7 @@
     <None Include="Assets\Resources\Art\Shader\RippleAlt.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
     <None Include="Assets\Resources\Art\Shader\Skybox.shader" />
+    <None Include="Assets\Resources\Art\Shader\Slime.shader" />
     <None Include="Assets\Resources\Art\Shader\WeaponOverheatMeter.shader" />
     <None Include="Assets\Resources\Audio\Sources.txt" />
     <None Include="Assets\Resources\Ghost.shader" />
