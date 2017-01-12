@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013832355960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011141282968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_Mid_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012922934886}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_2_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011678524770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_SFin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011896219444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011628809464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_FTent_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,8 @@ GameObject:
   - 114: {fileID: 114000011520179760}
   - 114: {fileID: 114000014055115430}
   - 114: {fileID: 114000010345502844}
-  m_Layer: 0
+  - 114: {fileID: 114000011718851854}
+  m_Layer: 8
   m_Name: Teleport Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +131,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013253221308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_HeadFin_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +146,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013913733656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Index_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +161,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012795249168}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_5_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +176,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011213103556}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +191,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012395184014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_4_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +206,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012425653834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_pinky_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +221,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013057969788}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +236,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010405371822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_Pnky_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +251,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012357889940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_6_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +266,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010699801218}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_4_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +281,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014039771168}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_2_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +296,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013552807010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_6_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +311,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010290798808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_Pnky_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +326,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012173422646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Index_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +341,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011704910622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_3_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +356,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013752901210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_HeadFin_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +371,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011878183882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +386,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014181876072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_5_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +401,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012527650730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_1_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +416,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011215365260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_2_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +431,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012260117726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_pinky_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +446,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014042509142}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Mid_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +461,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013198304178}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_Mouth_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +476,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014238219598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +491,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011271094320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Index_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +506,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014197787934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_In_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +521,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010924986804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Index_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +536,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010454564610}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +551,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012816238862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_6_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +566,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014258068638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_5_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +581,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012120608022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_FTent_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,7 +596,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010874455444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_3_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +611,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013140246844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_5_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +626,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010514257876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_6_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +641,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013612506974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_5_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,7 +656,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011311308272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_2_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +671,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013238694916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_4_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +689,7 @@ GameObject:
   - 33: {fileID: 33000013275311620}
   - 64: {fileID: 64000014227440130}
   - 114: {fileID: 114000011760985484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Frustum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,7 +704,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010314656740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +719,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013044250754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_Mid_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +734,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010574078416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_HeadFin_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +749,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010561701510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_pinky_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +764,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014213383378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_3_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +779,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010046074448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_5_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,7 +794,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011185568230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_1_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +809,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013381413144}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_6_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +824,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010893035808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +839,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011365308224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_4_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -853,7 +854,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010713512582}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_4_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +869,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013178627368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_Mid_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +884,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012094761292}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_3_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -898,7 +899,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012534464780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top_HeadFin_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +914,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013737293448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_4_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +929,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010098983080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top_HeadFin_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,7 +944,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012380452258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,7 +960,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010512039612}
   - 95: {fileID: 95000012957537732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +975,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013437625540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Mid_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +990,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013812829116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_SFin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,7 +1005,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014159914186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_tents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1020,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012909674666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_4_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1034,7 +1035,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011111658724}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1050,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012155836418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_5_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1064,7 +1065,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011231434410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Thumb_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,7 +1080,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013828805982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_In_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1095,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011102583922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_2_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1110,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011535231644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_FTent_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,7 +1125,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013940313842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Mid_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,7 +1140,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011831709922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_Mid_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1154,7 +1155,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011939394950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_6_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1169,7 +1170,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010431728574}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Index_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1184,7 +1185,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011630925672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1199,7 +1200,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013255524128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_Pnky_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,7 +1215,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010546361066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Mid_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1229,7 +1230,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013904822804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_1_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1245,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011694120810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1260,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010949260844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_5_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,7 +1275,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013980738402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_3_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1289,7 +1290,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010678724796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_6_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1304,7 +1305,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013076505162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1319,7 +1320,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010062972542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_5_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,7 +1335,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013004111372}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_5_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,7 +1350,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013530399048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1364,7 +1365,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012558921380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1380,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014131859188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_5_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1394,7 +1395,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012396073060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_Mouth_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1409,7 +1410,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012288779086}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_5_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1425,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010989164844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1439,7 +1440,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010724381306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_Mouth_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1454,7 +1455,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011333705946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1469,7 +1470,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011483597338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_6_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1484,7 +1485,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013590027186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_5_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1500,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011914364686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_5_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1514,7 +1515,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012861790292}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1529,7 +1530,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011426898272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_4_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1544,7 +1545,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013828678612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_1_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1559,7 +1560,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013452071100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_mouth_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1574,7 +1575,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011196274370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_2_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1589,7 +1590,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011404602274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_TFin_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1604,7 +1605,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010682560832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1619,7 +1620,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013218289718}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_FTent_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1634,7 +1635,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010714964188}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_4_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1649,7 +1650,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013257881436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_6_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1664,7 +1665,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014142101726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Thumb_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1679,7 +1680,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012721776656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_3_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1694,7 +1695,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013642261072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1709,7 +1710,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011398219272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Thumb_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1724,7 +1725,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010661909146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_3_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1739,7 +1740,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010676329232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1754,7 +1755,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012063110568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_4_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1769,7 +1770,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013676884950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_mouth_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1784,7 +1785,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013838225502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_4_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1800,7 +1801,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013626044606}
   - 137: {fileID: 137000014238620566}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1815,7 +1816,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011414441044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_2_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1830,7 +1831,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014098208516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_FTent_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1845,7 +1846,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010807134158}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_1_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1860,7 +1861,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010069008336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_4_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1875,7 +1876,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011012531058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_pinky_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1890,7 +1891,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012638123860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_Pnky_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1905,7 +1906,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011052087330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1920,7 +1921,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013477229262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_4_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1935,7 +1936,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010580376512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_6_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1950,7 +1951,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013394521670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_2_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1965,7 +1966,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012649886744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top_HeadFin_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1980,7 +1981,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010800804048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Thumb_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1995,7 +1996,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013329107596}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_4_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2010,7 +2011,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012076654772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2025,7 +2026,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012776772948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_mouth_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2040,7 +2041,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011365199180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_2_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2055,7 +2056,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013788312730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top_HeadFin_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2070,7 +2071,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012079615268}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_2_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,7 +2086,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010676183468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top_HeadFin_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2100,7 +2101,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011831903530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_3_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2115,7 +2116,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012898289702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_Mouth_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2130,7 +2131,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013091074040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_6_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2145,7 +2146,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010672554166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_TFin_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2160,7 +2161,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014184809598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_1_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2175,7 +2176,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010901587682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_TFin_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2190,7 +2191,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011250858052}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_5_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2205,7 +2206,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013627309968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Index_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2220,7 +2221,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011515941750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_HeadFin_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2235,7 +2236,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013237485592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2250,7 +2251,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013229201238}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_Mid_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2265,7 +2266,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010461454070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_5_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2280,7 +2281,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014215846432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_pinky_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2295,7 +2296,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013358227720}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_In_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2310,7 +2311,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012128562156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_3_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2325,7 +2326,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013083933866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_6_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2340,7 +2341,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011893638108}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_L_Thmb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2355,7 +2356,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011798981726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_pinky_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2370,7 +2371,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011483014890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_In_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2385,7 +2386,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011778316378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_mouth_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2400,7 +2401,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014284152738}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2415,7 +2416,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012185928380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2430,7 +2431,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012215871620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2445,7 +2446,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010969269334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2460,7 +2461,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013965822270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_3_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2475,7 +2476,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012546905622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2490,7 +2491,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013226643206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_3_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2505,7 +2506,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011487914768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top_HeadFin_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2520,7 +2521,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013815781682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_4_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2535,7 +2536,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011421819966}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R_Mid_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2550,7 +2551,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014117489224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tentacle_6_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2565,7 +2566,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012074698614}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2580,7 +2581,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013757015482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2595,7 +2596,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013925288510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2610,7 +2611,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010637445028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2625,7 +2626,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012961929102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_Tent_6_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2640,7 +2641,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012615399608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_1_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2655,7 +2656,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010271722618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Face_tentacle_5_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2670,7 +2671,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013738500816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: C_R_Thmb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5240,6 +5241,20 @@ MonoBehaviour:
   agent: {fileID: 0}
   walkRadius: 10
   target: {x: 0, y: 0, z: 0}
+--- !u!114 &114000011718851854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010145515506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba62e101abd9243eaaf75f1cfc02e4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToPool: {fileID: 1000011526883230, guid: 0a8c936e459a2494a903ac0458a701ac,
+    type: 2}
+  poolSize: 10
 --- !u!114 &114000011760985484
 MonoBehaviour:
   m_ObjectHideFlags: 1

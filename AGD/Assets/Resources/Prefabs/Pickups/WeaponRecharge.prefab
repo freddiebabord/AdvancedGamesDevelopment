@@ -11,24 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000013566745354}
   m_IsPrefabParent: 1
---- !u!1 &1000010870664068
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000012854316462}
-  - 33: {fileID: 33000010620739680}
-  - 23: {fileID: 23000011275473986}
-  - 95: {fileID: 95000010725331112}
-  m_Layer: 0
-  m_Name: BabyBottlle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1000013566745354
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,16 +29,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000012854316462
+--- !u!1 &1000013937645802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011354976870}
+  - 33: {fileID: 33000011796477160}
+  - 23: {fileID: 23000010229526760}
+  - 95: {fileID: 95000010995338976}
+  m_Layer: 0
+  m_Name: Zaptap_EnergyDrink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000011354976870
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010870664068}
-  m_LocalRotation: {x: 0.2705981, y: -0.6532815, z: -0.2705981, w: -0.6532815}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.9836988, y: 2.9836993, z: 2.9836993}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1000013937645802}
+  m_LocalRotation: {x: -0.34202015, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: -0.43, z: -0.513}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
+  m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: -45.249}
   m_Children: []
   m_Father: {fileID: 4000013243139346}
   m_RootOrder: 0
@@ -67,19 +67,19 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013566745354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.4021215, y: 0.6700001, z: -0.83020926}
+  m_LocalPosition: {x: 2.786281, y: 0.8809019, z: -6.185024}
   m_LocalScale: {x: 0.33515447, y: 0.33515456, z: 0.33515456}
   m_LocalEulerAnglesHint: {x: 0, y: -68.68, z: 0}
   m_Children:
-  - {fileID: 4000012854316462}
+  - {fileID: 4000011354976870}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &23000011275473986
+--- !u!23 &23000010229526760
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010870664068}
+  m_GameObject: {fileID: 1000013937645802}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f81a2593c47494e0a9161a6048641858, type: 2}
+  - {fileID: 2100000, guid: 7b823a6c8822f6643a9e8f3b9acd3fb7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -103,13 +103,13 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33000010620739680
+--- !u!33 &33000011796477160
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010870664068}
-  m_Mesh: {fileID: 4300000, guid: f72fb46eea0ae40879f769fb7ca52de0, type: 3}
+  m_GameObject: {fileID: 1000013937645802}
+  m_Mesh: {fileID: 4300000, guid: 7795e06e41c424a4f80791abf07b8335, type: 3}
 --- !u!65 &65000013286974068
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -122,15 +122,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &95000010725331112
+--- !u!95 &95000010995338976
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010870664068}
+  m_GameObject: {fileID: 1000013937645802}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f72fb46eea0ae40879f769fb7ca52de0, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 7795e06e41c424a4f80791abf07b8335, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -150,8 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae6af12412ee0f478e17ddd60754c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemMap: 3
-  firstPass: 0
   player: {fileID: 0}
   pickupType: 0
 --- !u!114 &114000012296967324
