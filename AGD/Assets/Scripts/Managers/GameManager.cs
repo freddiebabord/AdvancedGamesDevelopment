@@ -53,7 +53,7 @@ public class GameManager : NetworkBehaviour {
     public Dictionary<int, int> ScoreTable { get { return scoreTable; } }
     public List<NetworkedThirdPersonCharacter> players = new List<NetworkedThirdPersonCharacter>();
     private List<ScorePanel> scorePanels = new List<ScorePanel>();
-    public List<MakeRadarObject> RadarHelper = new List<MakeRadarObject>();
+    private List<MakeRadarObject> RadarHelper = new List<MakeRadarObject>();
 
 	public void Reset()
 	{
@@ -321,5 +321,42 @@ public class GameManager : NetworkBehaviour {
             : new Vector3(0, 250, 0);
         player.transform.rotation = Quaternion.identity;
         controller.dataContainers[position].score.text = scoreTable[player.playerID].ToString();
+    }
+
+    public void RegisterRadarHelper(MakeRadarObject radarHelper)
+    {
+        if(!RadarHelper.Contains(radarHelper))
+            RadarHelper.Add(radarHelper);
+    }
+
+    public void DeRegisterRadarHelper(MakeRadarObject radarHelper)
+    {
+        if (RadarHelper.Contains(radarHelper))
+            RadarHelper.Remove(radarHelper);
+        RadarHelper.TrimExcess();
+    }
+
+    public void RegisterEnemyToRadarHelper(EnemyBase enemy)
+    {
+        for(int i=0; i < RadarHelper.Count; ++i)
+            RadarHelper[i].RegisterEnemy(enemy);
+    }
+
+    public void DeRegisterEnemyToRadarHelper(EnemyBase enemy)
+    {
+        for (int i = 0; i < RadarHelper.Count; ++i)
+            RadarHelper[i].DeregisterEnemy(enemy);
+    }
+
+    public void RegisterPickupToRadarHelper(PickUpBase pickup)
+    {
+        for (int i = 0; i < RadarHelper.Count; ++i)
+            RadarHelper[i].RegisterPickup(pickup);
+    }
+
+    public void DeRegisterPickupToRadarHelper(PickUpBase pickup)
+    {
+        for (int i = 0; i < RadarHelper.Count; ++i)
+            RadarHelper[i].DeregisterPickup(pickup);
     }
 }

@@ -26,7 +26,7 @@ public class SplitscreenManager : MonoBehaviour {
         //Invoke("Setup", 0.1f);
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         float fraction = 1f / cameras.Count;
         switch (mode)

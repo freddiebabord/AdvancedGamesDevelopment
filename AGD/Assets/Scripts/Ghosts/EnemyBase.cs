@@ -5,9 +5,6 @@ using UnityEngine.Networking;
 [NetworkSettings(channel=1, sendInterval=0.2f)]
 public class EnemyBase : NetworkBehaviour {
 
-    public enum EnemyMap { Higher, Lower, Same, Nullus };
-    public EnemyMap enemyMap = EnemyMap.Nullus;
-    public bool firstPass = false;
     public float maxFloatHeight = 50f;
 
     public NavMeshAgent agent;
@@ -25,14 +22,12 @@ public class EnemyBase : NetworkBehaviour {
 
 	void Start () {
 		
-        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
-            GameManager.instance.RadarHelper[i].RegisterEnemy(this);
+        GameManager.instance.RegisterEnemyToRadarHelper(this);
 	}
 
     void OnDestroy()
     {
-        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
-            GameManager.instance.RadarHelper[i].DeregisterEnemy(this);
+        GameManager.instance.DeRegisterEnemyToRadarHelper(this);
     }
 
 	Vector3 randomDirection;

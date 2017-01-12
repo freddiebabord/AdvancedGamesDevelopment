@@ -223,7 +223,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		beamLight.gameObject.SetActive (false);
 		beamLightCLight.m_Color = Color.cyan;
 		GameManager.instance.players.Add(this);
-		GameManager.instance.RadarHelper.Add(GetComponent<MakeRadarObject>());
+		
         if (!isLocalPlayer)
         {
             m_Camera.gameObject.SetActive(false);
@@ -233,9 +233,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
         if (isLocalPlayer)
         {
-            
+            GameManager.instance.RegisterRadarHelper(GetComponent<MakeRadarObject>());
             //spawnedParticleSystem.gameObject.SetActive(false);
-           
+
             FindObjectOfType<SplitscreenManager>().RegisterCamera(m_Camera);
             SettingsManager.instance.RegisterPostProfile(m_Camera.GetComponent<PostProcessingBehaviour>().profile);
             //var pnc = FindObjectsOfType<PlayerNameCanvas>();
@@ -752,8 +752,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
     void StopParticleSystem()
     {
-        rootParticleSystem.Stop(true);
-		streamPartcileSystem.Stop ();
+        if(rootParticleSystem)
+            rootParticleSystem.Stop(true);
+        if(streamPartcileSystem)
+            streamPartcileSystem.Stop ();
     }
 
     void StartParticleSystem()
