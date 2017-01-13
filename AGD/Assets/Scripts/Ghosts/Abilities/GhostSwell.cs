@@ -3,8 +3,8 @@ using System.Collections;
 
 public class GhostSwell : MonoBehaviour {
 
-    public Animator animator;
-    public Frustum ghostFrustum;
+    Animator animator;
+    Frustum ghostFrustum;
     [Tooltip("Time before ghost can swell up again.")]
     public float cooldownTimer = 2f;
     [Tooltip("Time before ghost can return to normal again.")]
@@ -39,12 +39,6 @@ public class GhostSwell : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-       if (!ghostFrustum)
-        {
-            ghostFrustum = transform.GetComponentInChildren<Frustum>();
-            return;
-        }
-
         if (ghostFrustum.isTriggered && !isCooldown && ghostFrustum.focus == null)
             CalmGhost();
         if (!ghostFrustum.isTriggered && isCooldown && Time.time - startCooldownTimer > cooldownTimer)

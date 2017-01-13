@@ -3,7 +3,12 @@ using System.Collections;
 
 public class AnimationEventReciever : MonoBehaviour {
 
-    public GhostThrow ghostThrow;
+    GhostThrow ghostThrow;
+
+	void Start()
+	{
+		ghostThrow = GetComponentInParent<GhostThrow> ();
+	}
 
 	void SpawnGlob()
     {
@@ -14,4 +19,9 @@ public class AnimationEventReciever : MonoBehaviour {
     {
         ghostThrow.ThrowGlob();
     }
+
+	void Reset()
+	{
+		ghostThrow.Reset ();
+	}
 }

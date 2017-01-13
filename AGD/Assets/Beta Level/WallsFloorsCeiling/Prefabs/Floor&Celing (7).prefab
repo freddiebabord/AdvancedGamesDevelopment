@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000012999131992}
   - 23: {fileID: 23000013645247418}
   - 65: {fileID: 65000010597902976}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor&Celing (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -45,8 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Do NOT Show\GhostCharge.cs" />
-     <Compile Include="Assets\Do NOT Show\Shoot.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\DraggablePanel.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\EventSystemChecker.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\Lobby\LobbyCountdownPanel.cs" />
@@ -284,11 +282,15 @@
      <Compile Include="Assets\RippleEffect\RippleEffect.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\Developer\DevShortcuts.cs" />
+     <Compile Include="Assets\Scripts\GameOverController.cs" />
      <Compile Include="Assets\Scripts\GhostBodyCollision.cs" />
      <Compile Include="Assets\Scripts\GhostDamageText.cs" />
-     <Compile Include="Assets\Scripts\Ghosts\Abilities\Charge.cs" />
-     <Compile Include="Assets\Scripts\Ghosts\Abilities\LocalFrustum.cs" />
-     <Compile Include="Assets\Scripts\Ghosts\Abilities\Teleportation.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostCharge.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostReverse.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostSwell.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostTeleport.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostThrow.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\AnimationEventReciever.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyBase.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyBaseLocal.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyPoolSpawner.cs" />
@@ -297,6 +299,7 @@
      <Compile Include="Assets\Scripts\Ghosts\GhostBehaviour.cs" />
      <Compile Include="Assets\Scripts\Ghosts\GhostBehaviourLocal.cs" />
      <Compile Include="Assets\Scripts\Ghosts\GhostBodyAdjustments.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Glob.cs" />
      <Compile Include="Assets\Scripts\LockRotation.cs" />
      <Compile Include="Assets\Scripts\LookAtHelper.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
@@ -527,6 +530,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightVector\SFN_LightVector.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_2.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Bitangent\SFN_Bitangent.shader" />
+     <None Include="Assets\Resources\Art\Shader\Slime.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_HsvToRgb\SFN_HsvToRgb.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullOff.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_OneMinus\SFN_OneMinus.shader" />

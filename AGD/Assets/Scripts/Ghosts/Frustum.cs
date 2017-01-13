@@ -88,7 +88,6 @@ public class Frustum : NetworkBehaviour
         meshCollider = GetComponentInChildren<MeshCollider>();
         meshFilter.mesh = new Mesh();
         meshCollider.sharedMesh = meshFilter.sharedMesh;
-        charge = GetComponent<GhostCharge>();
     }
 
     public void PostStart()
@@ -130,13 +129,14 @@ public class Frustum : NetworkBehaviour
                 GetComponent<GhostCharge>().Triggered(focus.position);
             //if (root.GetComponent<Teleportation>())
             //root.GetComponent<Teleportation>().Triggered(target.position);
-            if (GetComponent<GhostSwell>())
+            else if (GetComponent<GhostSwell>())
                 GetComponent<GhostSwell>().Triggered();
+			else if (GetComponent<GhostThrow>())
+				GetComponent<GhostThrow>().Triggered();
         }
 
     }
 
-    private GhostCharge charge;
     private Vector3 relativePlayerPos;
     private int netID;
 
