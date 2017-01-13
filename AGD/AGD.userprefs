@@ -1,21 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Ghosts/Abilities/GhostThrow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Developer/Editor/LocalFrustumInspector.cs">
     <Files>
       <File FileName="Assets/Scripts/Networking/NetworkedThirdPersonCharacter.cs" Line="1" Column="1" />
       <File FileName="Assets/Resources/Standard Assets/DeferredDecals/DeferredDecalRenderer.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Managers/CameraManager.cs" Line="31" Column="27" />
-      <File FileName="Assets/Scripts/Ghosts/GhostBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Ghosts/EnemyBase.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Rooms/Room.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Rooms/RoomCollider.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Ghosts/Frustum.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/Frustum.cs" Line="55" Column="10" />
       <File FileName="Assets/Scripts/Networking/NetworkedThirdPersonUserControl.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Ghosts/FrustumCollider.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Ghosts/Abilities/Charge.cs" Line="1" Column="1" />
       <File FileName="Assets/External/Lobby/Scripts/Lobby/LobbyPlayer.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UI/Minimap/MakeRadarObject.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GhostBodyCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GhostBodyCollision.cs" Line="14" Column="11" />
       <File FileName="Assets/Scripts/Networking/NetManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Ghosts/EnemyPoolSpawner.cs" Line="1" Column="1" />
       <File FileName="Assets/Editor/SpokkticleEditorWindow.cs" Line="1" Column="1" />
@@ -24,8 +22,13 @@
       <File FileName="Assets/Resources/Art/Realistic Effects Pack/Scripts/Share/FadeInOutParticles.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Pickups/PickUpBase.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GhostDamageText.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Ghosts/Abilities/GhostThrow.cs" Line="9" Column="15" />
-      <File FileName="Assets/Scripts/Ghosts/Glob.cs" Line="27" Column="3" />
+      <File FileName="Assets/Scripts/Ghosts/Abilities/GhostThrow.cs" Line="40" Column="5" />
+      <File FileName="Assets/Scripts/Ghosts/AnimationEventReciever.cs" Line="10" Column="36" />
+      <File FileName="Assets/Scripts/Ghosts/Abilities/GhostSwell.cs" Line="37" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/Glob.cs" Line="41" Column="57" />
+      <File FileName="Assets/Scripts/Ghosts/GhostBehaviour.cs" Line="69" Column="1" />
+      <File FileName="Assets/Scripts/Ghosts/Abilities/GhostReverse.cs" Line="12" Column="2" />
+      <File FileName="Assets/Scripts/Developer/Editor/LocalFrustumInspector.cs" Line="4" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
