@@ -398,6 +398,7 @@
     <None Include="Assets\Resources\Art\Shader\WeaponOverheatMeter.shader" />
     <None Include="Assets\Resources\Audio\Sources.txt" />
     <None Include="Assets\Resources\Ghost.shader" />
+    <None Include="Assets\Resources\Prefabs\ProtonPackLightStrip.shader" />
     <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderDiffuseNormals.shader" />
@@ -551,6 +552,7 @@
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\DeferredCustomLights\CustomLightShader.shader" />
     <None Include="Assets\Standard Assets\DeferredCustomLights\_ReadMe.txt" />
+    <None Include="Assets\Ultimate Game Tools\RopeEditor\1st readme - v1.21.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

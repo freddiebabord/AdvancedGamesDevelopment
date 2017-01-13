@@ -42,7 +42,7 @@ Material:
       second: 1.83
     - first:
         name: _NoiseScale
-      second: 0.1
+      second: 0.4
     - first:
         name: _NoiseTime
       second: 0.763
