@@ -184,6 +184,7 @@
      <None Include="Assets\Resources\Art\Shader\Fire.shader" />
      <None Include="Assets\External\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
+     <None Include="Assets\Resources\Prefabs\ProtonPackLightStrip.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\DepthOfField\Resources\DepthOfField.shader" />
      <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
@@ -244,6 +245,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightVector\SFN_LightVector.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_2.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Bitangent\SFN_Bitangent.shader" />
+     <None Include="Assets\Resources\Art\Shader\Slime.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_HsvToRgb\SFN_HsvToRgb.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullOff.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_OneMinus\SFN_OneMinus.shader" />
@@ -294,6 +296,7 @@
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectPosition\SFN_ObjectPosition.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Hue\SFN_Hue.shader" />
+     <None Include="Assets\Ultimate Game Tools\RopeEditor\1st readme - v1.21.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Reciprocal\SFN_Reciprocal.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AntiAliasing\SMAA\Resources\SMAA.cginc" />

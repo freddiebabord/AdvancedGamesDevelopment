@@ -45,8 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Do NOT Show\GhostCharge.cs" />
-     <Compile Include="Assets\Do NOT Show\Shoot.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\DraggablePanel.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\EventSystemChecker.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\Lobby\LobbyCountdownPanel.cs" />
@@ -284,11 +282,16 @@
      <Compile Include="Assets\RippleEffect\RippleEffect.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\Developer\DevShortcuts.cs" />
+     <Compile Include="Assets\Scripts\GameOverController.cs" />
      <Compile Include="Assets\Scripts\GhostBodyCollision.cs" />
      <Compile Include="Assets\Scripts\GhostDamageText.cs" />
      <Compile Include="Assets\Scripts\Ghosts\Abilities\Charge.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostCharge.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostSwell.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostThrow.cs" />
      <Compile Include="Assets\Scripts\Ghosts\Abilities\LocalFrustum.cs" />
      <Compile Include="Assets\Scripts\Ghosts\Abilities\Teleportation.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\AnimationEventReciever.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyBase.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyBaseLocal.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyPoolSpawner.cs" />
@@ -297,6 +300,7 @@
      <Compile Include="Assets\Scripts\Ghosts\GhostBehaviour.cs" />
      <Compile Include="Assets\Scripts\Ghosts\GhostBehaviourLocal.cs" />
      <Compile Include="Assets\Scripts\Ghosts\GhostBodyAdjustments.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Glob.cs" />
      <Compile Include="Assets\Scripts\LockRotation.cs" />
      <Compile Include="Assets\Scripts\LookAtHelper.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
@@ -341,6 +345,15 @@
      <Compile Include="Assets\SplitScreenAudio\Example\Example Code\ExampleSourceContainer.cs" />
      <Compile Include="Assets\SplitScreenAudio\Example\Example Code\GUIControls.cs" />
      <Compile Include="Assets\SplitScreenAudio\Example\Example Code\SourcePlayerExample.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\DieTimer.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\FPSObjectShooter.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicBreakableRopes.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicGlobal.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicLamp.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicRopeWithCoil.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicSimpleRopes.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Scripts\UltimateRope.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Scripts\UltimateRopeLink.cs" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\IceVert.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightPosition\SFN_LightPosition.shader" />
@@ -467,6 +480,7 @@
      <None Include="Assets\Resources\Art\Shader\Fire.shader" />
      <None Include="Assets\External\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
+     <None Include="Assets\Resources\Prefabs\ProtonPackLightStrip.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\DepthOfField\Resources\DepthOfField.shader" />
      <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
@@ -527,6 +541,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightVector\SFN_LightVector.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_2.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Bitangent\SFN_Bitangent.shader" />
+     <None Include="Assets\Resources\Art\Shader\Slime.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_HsvToRgb\SFN_HsvToRgb.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullOff.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_OneMinus\SFN_OneMinus.shader" />
@@ -577,6 +592,7 @@
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectPosition\SFN_ObjectPosition.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Hue\SFN_Hue.shader" />
+     <None Include="Assets\Ultimate Game Tools\RopeEditor\1st readme - v1.21.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Reciprocal\SFN_Reciprocal.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AntiAliasing\SMAA\Resources\SMAA.cginc" />
