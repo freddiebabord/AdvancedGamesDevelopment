@@ -22,7 +22,7 @@ public class PickUps : NetworkBehaviour {
     string power_name = "";
 
     // GameObject the_text;
-    public Text power_obtained;
+   // public Text power_obtained;
     public Slider timer;
     public Slider stamina;
     
@@ -32,38 +32,6 @@ public class PickUps : NetworkBehaviour {
 
     GameObject the_pickup;
 
-    void Start()
-    {
-        if (!isLocalPlayer)
-            return;
-
-        //the_text = new GameObject("MyText");
-        //the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
-
-       // power_obtained = GameObject.Find("PowerupText").GetComponent<Text>();
-
-      //  power_obtained.transform.position = new Vector3(410, 220, 0);
-
-      //  power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-
-      //  the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
-      //  the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
-
-        //power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
-
-        //Slider[] get_sliders = FindObjectsOfType<Slider>();
-
-        //for(int i = 0; i < get_sliders.Length; i++)
-        //{
-        //    if (get_sliders[i].name == "Stamina")
-        //        stamina = get_sliders[i];
-        //    else if (get_sliders[i].name == "Slider")
-        //        timer = get_sliders[i];
-        //}
-        
-
-
-    }
 
     void Update()
     {
@@ -141,13 +109,15 @@ public class PickUps : NetworkBehaviour {
                 active = ActivePower.Nullify;
             }
 
-            power_obtained.text = power_name;
-            power_obtained.color = temp;
+            //power_obtained.text = power_name;
+            var cb = timer.colors;
+            cb.normalColor = temp;
+            timer.colors = cb;
 
         }
         else
         {
-            power_obtained.text = "No power";
+           // power_obtained.text = "No power";
             active = ActivePower.None; 
         }
 

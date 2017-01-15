@@ -147,7 +147,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     private float m_NextStep;
     [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
     [SerializeField]  private float m_StepInterval;
-    
+
+    //public float fearLevel = 0;
+    //public float maxFearLevel = 50.0f;
+    //public FrostEffect frost;
+    //public int minGhostCountFearLevel = 5;
+    //public float fearRechargeLevel = 5.0f;
+
     void Start()
 	{
         m_StepCycle = 0f;
@@ -305,6 +311,20 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         m_FootstepSounds[n] = m_FootstepSounds[0];
         m_FootstepSounds[0] = footstepAS.clip;
     }
+
+    //private int ghostCount = 0;
+
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.GetComponent<EnemyBase>())
+    //        ghostCount++;
+    //}
+
+    //void OnTriggerExit(Collider other)
+    //{
+    //    if (other.GetComponent<EnemyBase>())
+    //        ghostCount--;
+    //}
 
     void Update()
     {
@@ -484,8 +504,24 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		currentOverheatValue = currentWeaponTime / maxWeaponTime;
 		weaponRechargeRenderer.SetFloat("_Capacity", 1 - currentOverheatValue);
 
-        
-        
+        //if (isLocalPlayer)
+        //{
+        //    if (ghostCount > minGhostCountFearLevel)
+        //    {
+        //        fearLevel += (ghostCount / minGhostCountFearLevel) * Time.deltaTime;
+        //        frost.FrostAmount = fearLevel / maxFearLevel;
+        //    }
+        //    else
+        //    {
+        //        if (fearLevel > 0)
+        //        {
+        //            fearLevel -= fearRechargeLevel * Time.deltaTime;
+        //            frost.FrostAmount = fearLevel / maxFearLevel;
+
+        //        }
+        //    }
+        //}
+
     }
 
 

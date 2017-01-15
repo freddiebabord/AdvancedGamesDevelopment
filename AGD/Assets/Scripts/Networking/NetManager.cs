@@ -14,6 +14,7 @@ public class NetManager : LobbyManager{
 	[Header("UI Settings")]
 	public GameObject settingsPanel;
     public GameObject creditsPanel;
+    public GameObject controlsPanel;
 	public Dropdown qualityDropdown;
 	public Slider volumeSlider;
 	public Dropdown screenResolutions;
@@ -79,6 +80,11 @@ public class NetManager : LobbyManager{
 	{
 		settingsPanel.SetActive(show);
 	}
+
+    public void ShowControls()
+    {
+        TransitionPanel(controlsPanel);
+    }
 
 	public void ApplyQualitySettings()
 	{

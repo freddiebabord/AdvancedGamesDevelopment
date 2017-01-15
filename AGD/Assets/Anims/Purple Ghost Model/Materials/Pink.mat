@@ -93,7 +93,7 @@ Material:
       second: 0
     - first:
         name: _EdgeBlend
-      second: 2.46
+      second: 1.13
     - first:
         name: _GlossMapScale
       second: 1
@@ -126,7 +126,7 @@ Material:
       second: 0
     - first:
         name: _SoftColour
-      second: 3.91
+      second: 3.6
     - first:
         name: _SpecularHighlights
       second: 1
