@@ -7,12 +7,13 @@ public class GhostThrow : NetworkBehaviour {
 	Animator animator;
     public GameObject globPrefab;
     public GameObject handParent;
-	public float fearImpact = 10f;
+	public int fearImpact = 100;
 	public float sizeOffset = 0.1f;
 	public float growSpeed = 1f;
 	public float shrinkSpeed = 1f;
 	public float throwForce = 10f;
 
+    GhostBehaviour ghostBehaviour;
     GameObject m_networkGlob;
 	Rigidbody globRigidbody;
 	
@@ -43,7 +44,8 @@ public class GhostThrow : NetworkBehaviour {
     public void ThrowGlob()
     {
 		m_networkGlob.transform.parent = null;
-		globRigidbody.AddRelativeForce(transform.forward * throwForce, ForceMode.Impulse);
+        Vector3 testHeading = ghostBehaviour.ghostTarget.GetComponent<CapsuleCollider>().bounds.center - transform.position;
+		globRigidbody.AddRelativeForce(testHeading.normalized * throwForce, ForceMode.Impulse);
 		m_networkGlob.GetComponent<Glob> ().ThrowGlob (shrinkSpeed);
     }
 

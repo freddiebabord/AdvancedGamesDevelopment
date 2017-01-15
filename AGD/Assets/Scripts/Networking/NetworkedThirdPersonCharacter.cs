@@ -383,7 +383,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                             if (gb)
                             {
                                 if (isLocalPlayer)
-                                    gb.TakeDamage(playerID, damagePerSecond * Time.deltaTime);
+                                    gb.TakeDamage(gameObject, damagePerSecond * Time.deltaTime);
 								if (!spawnedCaptureSphere.activeInHierarchy)
 									spawnedCaptureSphere.SetActive (true);
 								previousGhostBehaviour = gb;

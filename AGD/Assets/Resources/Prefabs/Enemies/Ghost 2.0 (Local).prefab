@@ -265,14 +265,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  waitTime: {x: 3, y: 5}
   movementSpeed: 5
+  rotationSpeed: 10
+  acceleration: 0.1
   fearPresence: 10
+  targetOffset: 0.1
   score: 500
   ghostTarget: {fileID: 0}
+  goalPosition: {x: 0, y: 0, z: 0}
   frustumPrefab: {fileID: 0}
   ghostTrigger: 0
   isPeaceful: 0
   damageTextPool: {fileID: 0}
+  pauseMovement: 0
 --- !u!135 &135000014130653904
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -6,7 +6,7 @@ using System.Linq;
 public class Room : MonoBehaviour {
 
 	private List<Collider> colliders = new List<Collider>();
-	private List<EnemyBase> enemies = new List<EnemyBase>();
+	private List<GhostBehaviour> enemies = new List<GhostBehaviour>();
 	private List<NetworkedFirstPersonController> players = new List<NetworkedFirstPersonController>();
 	public int enemyCount { get{ return enemies.Count; } }
 	public int playerCount { get{ return players.Count; } }
@@ -23,10 +23,10 @@ public class Room : MonoBehaviour {
 
 	public void OnTriggerEnter(Collider other)
 	{
-		if(other.GetComponent<EnemyBase>())
+		if(other.GetComponent<GhostBehaviour>())
 		{
-			if(!enemies.Contains(other.GetComponent<EnemyBase>()))
-				enemies.Add(other.GetComponent<EnemyBase>());
+			if(!enemies.Contains(other.GetComponent<GhostBehaviour>()))
+				enemies.Add(other.GetComponent<GhostBehaviour>());
 		}
 		else if(other.GetComponent<NetworkedFirstPersonController>())
 		{
@@ -45,9 +45,9 @@ public class Room : MonoBehaviour {
 
 	public void OnTriggerExit(Collider other)
 	{
-		if(other.GetComponent<EnemyBase>())
+		if(other.GetComponent<GhostBehaviour>())
 		{
-			enemies.Remove(other.GetComponent<EnemyBase>());
+			enemies.Remove(other.GetComponent<GhostBehaviour>());
 			enemies.TrimExcess();
 		}
 		else if(other.GetComponent<NetworkedFirstPersonController>())

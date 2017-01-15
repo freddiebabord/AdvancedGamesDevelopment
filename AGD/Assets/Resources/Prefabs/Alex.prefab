@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011392548606}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - 224: {fileID: 224000010720662930}
   - 222: {fileID: 222000012339495582}
   - 114: {fileID: 114000012138474790}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000010095114670}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - 4: {fileID: 4000014217314494}
   - 198: {fileID: 198000014050051810}
   - 199: {fileID: 199000013507136308}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: FlareSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000011012863326}
   - 114: {fileID: 114000011355274126}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Slider
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - 222: {fileID: 222000012259683872}
   - 114: {fileID: 114000010091225394}
   - 114: {fileID: 114000013993821886}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ReturnToMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011536957116}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WeaponGrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011585493978}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - 224: {fileID: 224000012636269156}
   - 222: {fileID: 222000011550293654}
   - 114: {fileID: 114000011977777542}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Reflection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - 223: {fileID: 223000011844719244}
   - 114: {fileID: 114000011986566602}
   - 114: {fileID: 114000012522949950}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - 224: {fileID: 224000012967782318}
   - 222: {fileID: 222000010981201972}
   - 114: {fileID: 114000012922168936}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - 224: {fileID: 224000011361474504}
   - 222: {fileID: 222000012338873078}
   - 114: {fileID: 114000010032396670}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000010913591084}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - 114: {fileID: 114000012474444954}
   - 222: {fileID: 222000010936618176}
   - 114: {fileID: 114000010815560464}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - 114: {fileID: 114000012049010664}
   - 114: {fileID: 114000010136258462}
   - 114: {fileID: 114000011085135560}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000013661794202}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - 224: {fileID: 224000013705195984}
   - 222: {fileID: 222000010609727322}
   - 114: {fileID: 114000010833784654}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - 224: {fileID: 224000011625065056}
   - 222: {fileID: 222000012423642608}
   - 114: {fileID: 114000013066865780}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   - 224: {fileID: 224000014070408246}
   - 222: {fileID: 222000012024921776}
   - 114: {fileID: 114000012858617666}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000010334532788}
   - 114: {fileID: 114000010222245768}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: BloomSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - 222: {fileID: 222000010793706030}
   - 114: {fileID: 114000013709779306}
   - 114: {fileID: 114000013618815296}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PowerupText
   m_TagString: Text
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   - 224: {fileID: 224000011552551650}
   - 222: {fileID: 222000010818135528}
   - 114: {fileID: 114000012066459850}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - 114: {fileID: 114000011125505342}
   - 114: {fileID: 114000013888668754}
   - 114: {fileID: 114000011766393234}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SplitscreenDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - 224: {fileID: 224000011164240426}
   - 222: {fileID: 222000010175611144}
   - 114: {fileID: 114000013539209240}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   - 224: {fileID: 224000013441573864}
   - 222: {fileID: 222000010008756592}
   - 114: {fileID: 114000012964591056}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - 114: {fileID: 114000010316548718}
   - 222: {fileID: 222000012090876560}
   - 114: {fileID: 114000013646060504}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   - 224: {fileID: 224000013131534420}
   - 222: {fileID: 222000013777790536}
   - 114: {fileID: 114000012943277096}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ScreenResolution
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,7 +655,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011542287300}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ GameObject:
   - 224: {fileID: 224000012942432318}
   - 222: {fileID: 222000010609256648}
   - 114: {fileID: 114000011815104298}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +688,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000012322023252}
   - 114: {fileID: 114000013792267812}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,7 +704,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013668243416}
   - 114: {fileID: 114000011676569826}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: BeamLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - 222: {fileID: 222000014048829868}
   - 114: {fileID: 114000010968501742}
   - 114: {fileID: 114000013389014674}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000011119656066}
   - 114: {fileID: 114000013531304554}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +755,7 @@ GameObject:
   - 224: {fileID: 224000010231327240}
   - 222: {fileID: 222000010534690668}
   - 114: {fileID: 114000011773117248}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +787,7 @@ GameObject:
   - 224: {fileID: 224000012039984490}
   - 222: {fileID: 222000014283529568}
   - 114: {fileID: 114000012481336692}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: QuitConfirmPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -804,7 +804,7 @@ GameObject:
   - 224: {fileID: 224000013389555044}
   - 222: {fileID: 222000013036750318}
   - 114: {fileID: 114000012967646632}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   - 224: {fileID: 224000010235919948}
   - 222: {fileID: 222000012537109626}
   - 114: {fileID: 114000010427395146}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -853,7 +853,7 @@ GameObject:
   - 224: {fileID: 224000012075421724}
   - 222: {fileID: 222000013671805620}
   - 114: {fileID: 114000013135514850}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   - 114: {fileID: 114000010848529368}
   - 114: {fileID: 114000014245528674}
   - 114: {fileID: 114000012477243406}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: QualityDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010397560374}
   - 114: {fileID: 114000013605176446}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: VirtualWeaponAudiosource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,7 +921,7 @@ GameObject:
   - 114: {fileID: 114000010664199776}
   - 222: {fileID: 222000014081393170}
   - 114: {fileID: 114000010731994780}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +951,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000013340188924}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +968,7 @@ GameObject:
   - 224: {fileID: 224000013370075866}
   - 222: {fileID: 222000012006604054}
   - 114: {fileID: 114000013366209452}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1017,7 @@ GameObject:
   - 114: {fileID: 114000010533552886}
   - 114: {fileID: 114000011884470146}
   - 114: {fileID: 114000010296423848}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PlayerScorePanelTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   - 222: {fileID: 222000011035529672}
   - 114: {fileID: 114000013232911896}
   - 114: {fileID: 114000014003978270}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1052,7 +1052,7 @@ GameObject:
   - 224: {fileID: 224000012990761614}
   - 222: {fileID: 222000013189906370}
   - 114: {fileID: 114000010927355548}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EnemiesRemaining
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1069,7 +1069,7 @@ GameObject:
   - 224: {fileID: 224000013960372248}
   - 222: {fileID: 222000010000633102}
   - 114: {fileID: 114000013118003852}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1086,7 @@ GameObject:
   - 224: {fileID: 224000011580723802}
   - 222: {fileID: 222000011765499316}
   - 114: {fileID: 114000012423062066}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,7 +1104,7 @@ GameObject:
   - 222: {fileID: 222000011364264572}
   - 114: {fileID: 114000011822914354}
   - 114: {fileID: 114000010761958876}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   - 224: {fileID: 224000013746902468}
   - 222: {fileID: 222000011507382040}
   - 114: {fileID: 114000010583282416}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000012741428732}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1166,7 +1166,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011913666362}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1181,7 +1181,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013159652254}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1198,7 +1198,7 @@ GameObject:
   - 224: {fileID: 224000012323698398}
   - 222: {fileID: 222000012649025486}
   - 114: {fileID: 114000013454262426}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1215,7 +1215,7 @@ GameObject:
   - 224: {fileID: 224000010140417070}
   - 222: {fileID: 222000013574058666}
   - 114: {fileID: 114000014240851890}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1232,7 @@ GameObject:
   - 224: {fileID: 224000013740935660}
   - 222: {fileID: 222000012680883152}
   - 114: {fileID: 114000013612362570}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1252,7 +1252,7 @@ GameObject:
   - 23: {fileID: 23000012021047346}
   - 114: {fileID: 114000010722816318}
   - 114: {fileID: 114000010823912462}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: DefferedLightRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1267,7 +1267,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000012083914140}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,7 +1285,7 @@ GameObject:
   - 222: {fileID: 222000011802121482}
   - 114: {fileID: 114000012225938578}
   - 114: {fileID: 114000012991240472}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1304,7 +1304,7 @@ GameObject:
   - 114: {fileID: 114000013565152832}
   - 114: {fileID: 114000011369677330}
   - 114: {fileID: 114000010423988332}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: VSyncDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1320,7 +1320,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000013862382748}
   - 114: {fileID: 114000013387789400}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: VolumeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1337,7 +1337,7 @@ GameObject:
   - 224: {fileID: 224000011465979060}
   - 222: {fileID: 222000011898967632}
   - 114: {fileID: 114000012843247650}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MasterVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1353,7 +1353,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010659634914}
   - 114: {fileID: 114000012222541442}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: AudioListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1370,7 +1370,7 @@ GameObject:
   - 224: {fileID: 224000014220184272}
   - 222: {fileID: 222000012802068820}
   - 114: {fileID: 114000011541407238}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1400,7 +1400,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011197513930}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,7 +1417,7 @@ GameObject:
   - 224: {fileID: 224000013895287030}
   - 222: {fileID: 222000011962708316}
   - 114: {fileID: 114000013324039142}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1432,7 +1432,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011067043440}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1450,7 +1450,7 @@ GameObject:
   - 222: {fileID: 222000010494281754}
   - 114: {fileID: 114000010686165128}
   - 114: {fileID: 114000011513644838}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Radar
   m_TagString: Radar
   m_Icon: {fileID: 0}
@@ -1467,7 +1467,7 @@ GameObject:
   - 224: {fileID: 224000011098534038}
   - 222: {fileID: 222000013038273964}
   - 114: {fileID: 114000012353644358}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1484,7 +1484,7 @@ GameObject:
   - 224: {fileID: 224000013767789506}
   - 222: {fileID: 222000012847394644}
   - 114: {fileID: 114000010632453550}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1501,7 +1501,7 @@ GameObject:
   - 224: {fileID: 224000010860616944}
   - 222: {fileID: 222000012749889726}
   - 114: {fileID: 114000012197184174}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1518,7 +1518,7 @@ GameObject:
   - 224: {fileID: 224000013767224528}
   - 222: {fileID: 222000010043939178}
   - 114: {fileID: 114000014191626370}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1536,7 +1536,7 @@ GameObject:
   - 222: {fileID: 222000010377780312}
   - 114: {fileID: 114000010492829446}
   - 114: {fileID: 114000014129019662}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ GameObject:
   - 224: {fileID: 224000010655422552}
   - 222: {fileID: 222000010057340040}
   - 114: {fileID: 114000010692278614}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ReturnToMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1570,7 +1570,7 @@ GameObject:
   - 224: {fileID: 224000010958633130}
   - 222: {fileID: 222000013887733866}
   - 114: {fileID: 114000011634625384}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1588,7 +1588,7 @@ GameObject:
   - 222: {fileID: 222000010993781686}
   - 114: {fileID: 114000010974971464}
   - 114: {fileID: 114000014023098136}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1605,7 +1605,7 @@ GameObject:
   - 224: {fileID: 224000012373746512}
   - 222: {fileID: 222000011518586248}
   - 114: {fileID: 114000010154420646}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,7 +1622,7 @@ GameObject:
   - 224: {fileID: 224000014145876256}
   - 222: {fileID: 222000010911061644}
   - 114: {fileID: 114000014034044516}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1639,7 +1639,7 @@ GameObject:
   - 224: {fileID: 224000012374653844}
   - 222: {fileID: 222000011550645052}
   - 114: {fileID: 114000012105887664}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1671,7 +1671,7 @@ GameObject:
   - 224: {fileID: 224000010120222870}
   - 222: {fileID: 222000011411566350}
   - 114: {fileID: 114000012498639558}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SettingsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1689,7 +1689,7 @@ GameObject:
   - 222: {fileID: 222000012231838458}
   - 114: {fileID: 114000011306268670}
   - 114: {fileID: 114000011936857880}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1704,7 +1704,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000010695384028}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1723,7 +1723,7 @@ GameObject:
   - 114: {fileID: 114000011247352194}
   - 114: {fileID: 114000012218454288}
   - 114: {fileID: 114000013371793240}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1738,7 +1738,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000012783051324}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1753,7 +1753,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000012230206822}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1768,7 +1768,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011788346242}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,7 +1787,7 @@ GameObject:
   - 114: {fileID: 114000011893011984}
   - 114: {fileID: 114000013067418302}
   - 114: {fileID: 114000011253313818}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1804,7 +1804,7 @@ GameObject:
   - 224: {fileID: 224000011476160094}
   - 222: {fileID: 222000011076843288}
   - 114: {fileID: 114000011052482238}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1851,7 +1851,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012130500808}
   - 120: {fileID: 120000010884673826}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WeaponSapwnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1883,7 +1883,7 @@ GameObject:
   - 224: {fileID: 224000013786414366}
   - 222: {fileID: 222000014131422800}
   - 114: {fileID: 114000011460154888}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1917,7 +1917,7 @@ GameObject:
   - 114: {fileID: 114000011540950710}
   - 114: {fileID: 114000013625852078}
   - 114: {fileID: 114000011278173454}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: AADropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,7 +1934,7 @@ GameObject:
   - 224: {fileID: 224000011604088342}
   - 222: {fileID: 222000012373863650}
   - 114: {fileID: 114000011161299992}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1950,7 +1950,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000012861683538}
   - 114: {fileID: 114000011444850264}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Invert Y Axis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1968,7 +1968,7 @@ GameObject:
   - 222: {fileID: 222000013276566102}
   - 114: {fileID: 114000013135267668}
   - 114: {fileID: 114000012983644226}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1987,7 +1987,7 @@ GameObject:
   - 114: {fileID: 114000011476642934}
   - 114: {fileID: 114000013258363542}
   - 114: {fileID: 114000013641219678}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ScreenResolutionDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2004,7 +2004,7 @@ GameObject:
   - 224: {fileID: 224000011072096250}
   - 222: {fileID: 222000012107398918}
   - 114: {fileID: 114000012598767616}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2022,7 +2022,7 @@ GameObject:
   - 222: {fileID: 222000010196975896}
   - 114: {fileID: 114000013889192226}
   - 114: {fileID: 114000011283665446}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2055,7 +2055,7 @@ GameObject:
   - 222: {fileID: 222000010610098138}
   - 114: {fileID: 114000010037380128}
   - 114: {fileID: 114000013076038778}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2087,7 +2087,7 @@ GameObject:
   - 224: {fileID: 224000012418734430}
   - 222: {fileID: 222000012686380248}
   - 114: {fileID: 114000012541714556}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2103,7 +2103,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000010835908698}
   - 114: {fileID: 114000012511731806}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2135,7 +2135,7 @@ GameObject:
   - 224: {fileID: 224000011671258896}
   - 222: {fileID: 222000012603075950}
   - 114: {fileID: 114000013458648890}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2152,7 +2152,7 @@ GameObject:
   - 224: {fileID: 224000010002146778}
   - 222: {fileID: 222000010590918192}
   - 114: {fileID: 114000010117716828}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2169,7 +2169,7 @@ GameObject:
   - 224: {fileID: 224000013124589556}
   - 222: {fileID: 222000011071267956}
   - 114: {fileID: 114000012149009356}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2186,7 +2186,7 @@ GameObject:
   - 224: {fileID: 224000013352461156}
   - 222: {fileID: 222000010250221850}
   - 114: {fileID: 114000012076539566}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: VSyncMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,7 +2233,7 @@ GameObject:
   - 224: {fileID: 224000013271255114}
   - 222: {fileID: 222000010092712176}
   - 114: {fileID: 114000012100195484}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2265,7 +2265,7 @@ GameObject:
   - 224: {fileID: 224000011450986274}
   - 222: {fileID: 222000014022253992}
   - 114: {fileID: 114000011004021138}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2281,7 +2281,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000012303629708}
   - 114: {fileID: 114000010273444622}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2298,7 +2298,7 @@ GameObject:
   - 4: {fileID: 4000011551845466}
   - 198: {fileID: 198000014261754892}
   - 199: {fileID: 199000013261632634}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2331,7 +2331,7 @@ GameObject:
   - 114: {fileID: 114000013459948112}
   - 222: {fileID: 222000013558251498}
   - 114: {fileID: 114000012255271052}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2346,7 +2346,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011298141804}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2378,7 +2378,7 @@ GameObject:
   - 224: {fileID: 224000013418069286}
   - 222: {fileID: 222000010445756522}
   - 114: {fileID: 114000010005172074}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: LeftPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2395,7 +2395,7 @@ GameObject:
   - 224: {fileID: 224000010922139694}
   - 222: {fileID: 222000010464747524}
   - 114: {fileID: 114000010494468344}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2412,7 +2412,7 @@ GameObject:
   - 224: {fileID: 224000012120839214}
   - 222: {fileID: 222000011382775664}
   - 114: {fileID: 114000010449455240}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2444,7 +2444,7 @@ GameObject:
   - 224: {fileID: 224000013517800078}
   - 222: {fileID: 222000012971063620}
   - 114: {fileID: 114000010364626506}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2459,7 +2459,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011924882076}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2477,7 +2477,7 @@ GameObject:
   - 222: {fileID: 222000011067587646}
   - 114: {fileID: 114000010896172386}
   - 114: {fileID: 114000013093078236}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2492,7 +2492,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000011064108276}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2524,7 +2524,7 @@ GameObject:
   - 224: {fileID: 224000012052103150}
   - 222: {fileID: 222000010739443580}
   - 114: {fileID: 114000012238488122}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2541,7 +2541,7 @@ GameObject:
   - 224: {fileID: 224000010477646596}
   - 222: {fileID: 222000012545970894}
   - 114: {fileID: 114000011772384080}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MasterVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2573,7 +2573,7 @@ GameObject:
   - 224: {fileID: 224000010978064884}
   - 222: {fileID: 222000013097878224}
   - 114: {fileID: 114000011377529560}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2591,7 +2591,7 @@ GameObject:
   - 222: {fileID: 222000011838307956}
   - 114: {fileID: 114000012290383116}
   - 114: {fileID: 114000013050903084}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Quit To Desktop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2607,7 +2607,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012569052036}
   - 82: {fileID: 82000012716151876}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: FootAS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2656,7 +2656,7 @@ GameObject:
   - 224: {fileID: 224000010190154208}
   - 222: {fileID: 222000012371995248}
   - 114: {fileID: 114000010198350094}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2689,7 +2689,7 @@ GameObject:
   - 222: {fileID: 222000012694362930}
   - 114: {fileID: 114000012374189302}
   - 114: {fileID: 114000012507245460}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2706,7 +2706,7 @@ GameObject:
   - 224: {fileID: 224000010569246462}
   - 222: {fileID: 222000012460885034}
   - 114: {fileID: 114000012548503018}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2723,7 +2723,7 @@ GameObject:
   - 224: {fileID: 224000010952789226}
   - 222: {fileID: 222000010571344118}
   - 114: {fileID: 114000012764564888}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2740,7 +2740,7 @@ GameObject:
   - 224: {fileID: 224000011459107606}
   - 222: {fileID: 222000010345453922}
   - 114: {fileID: 114000010162774492}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: LeftPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2757,7 +2757,7 @@ GameObject:
   - 224: {fileID: 224000011014452600}
   - 222: {fileID: 222000010227616050}
   - 114: {fileID: 114000010609780458}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2772,7 +2772,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000010484295172}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2789,7 +2789,7 @@ GameObject:
   - 224: {fileID: 224000013015098516}
   - 222: {fileID: 222000011220347246}
   - 114: {fileID: 114000011152596170}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2810,7 +2810,7 @@ GameObject:
   - 114: {fileID: 114000012110631230}
   - 114: {fileID: 114000012943298424}
   - 114: {fileID: 114000011324582410}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2826,7 +2826,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000012501018346}
   - 114: {fileID: 114000012745069804}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2843,7 +2843,7 @@ GameObject:
   - 224: {fileID: 224000011575181466}
   - 222: {fileID: 222000010882562808}
   - 114: {fileID: 114000011389084248}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2860,7 +2860,7 @@ GameObject:
   - 224: {fileID: 224000013877029728}
   - 222: {fileID: 222000013895861274}
   - 114: {fileID: 114000013047026756}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2878,7 +2878,7 @@ GameObject:
   - 222: {fileID: 222000013550973074}
   - 114: {fileID: 114000010871839696}
   - 114: {fileID: 114000011155040580}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2894,7 +2894,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000014279996562}
   - 114: {fileID: 114000014290291692}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fullscreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2911,7 +2911,7 @@ GameObject:
   - 224: {fileID: 224000010630943144}
   - 222: {fileID: 222000013684463358}
   - 114: {fileID: 114000012948133162}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2929,7 +2929,7 @@ GameObject:
   - 222: {fileID: 222000010824280160}
   - 114: {fileID: 114000011791540718}
   - 114: {fileID: 114000011832977494}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2947,7 +2947,7 @@ GameObject:
   - 222: {fileID: 222000010519390740}
   - 114: {fileID: 114000010400368042}
   - 114: {fileID: 114000013466165954}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2964,7 +2964,7 @@ GameObject:
   - 4: {fileID: 4000014074940924}
   - 20: {fileID: 20000010594907214}
   - 114: {fileID: 114000012954416208}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UICamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2981,7 +2981,7 @@ GameObject:
   - 224: {fileID: 224000013815621218}
   - 222: {fileID: 222000012644496624}
   - 114: {fileID: 114000013203763970}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2998,7 +2998,7 @@ GameObject:
   - 224: {fileID: 224000012031361346}
   - 222: {fileID: 222000011571251540}
   - 114: {fileID: 114000011428026204}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3016,7 +3016,7 @@ GameObject:
   - 222: {fileID: 222000012778789098}
   - 114: {fileID: 114000013691761708}
   - 114: {fileID: 114000011477380212}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3095,7 +3095,7 @@ GameObject:
   - 224: {fileID: 224000012243355738}
   - 222: {fileID: 222000011901472716}
   - 114: {fileID: 114000013667601100}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3127,7 +3127,7 @@ GameObject:
   - 224: {fileID: 224000012916154236}
   - 222: {fileID: 222000013012943090}
   - 114: {fileID: 114000010574803190}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3145,7 +3145,7 @@ GameObject:
   - 222: {fileID: 222000013755528334}
   - 114: {fileID: 114000010525692982}
   - 114: {fileID: 114000011504422186}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3177,7 +3177,7 @@ GameObject:
   - 224: {fileID: 224000011043102796}
   - 222: {fileID: 222000013246306812}
   - 114: {fileID: 114000013430959454}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3227,7 +3227,7 @@ GameObject:
   - 114: {fileID: 114000013434827668}
   - 114: {fileID: 114000012012097692}
   - 114: {fileID: 114000012283516664}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PlayerScorePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3245,7 +3245,7 @@ GameObject:
   - 222: {fileID: 222000011840801392}
   - 114: {fileID: 114000011301821310}
   - 114: {fileID: 114000010570279560}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Apply
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3294,7 +3294,7 @@ GameObject:
   - 114: {fileID: 114000013741935086}
   - 114: {fileID: 114000010047162418}
   - 114: {fileID: 114000011946199470}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ReflectionDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3328,7 +3328,7 @@ GameObject:
   - 224: {fileID: 224000013104038890}
   - 222: {fileID: 222000012655174544}
   - 114: {fileID: 114000013061937608}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Bloom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3345,7 +3345,7 @@ GameObject:
   - 224: {fileID: 224000012834944452}
   - 222: {fileID: 222000013380190882}
   - 114: {fileID: 114000012784549728}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3362,7 +3362,7 @@ GameObject:
   - 224: {fileID: 224000010023163058}
   - 222: {fileID: 222000011841811050}
   - 114: {fileID: 114000012363766054}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3409,7 +3409,7 @@ GameObject:
   - 224: {fileID: 224000013338441072}
   - 222: {fileID: 222000013169262082}
   - 114: {fileID: 114000012958337010}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3427,7 +3427,7 @@ GameObject:
   - 222: {fileID: 222000012156521262}
   - 114: {fileID: 114000011208681914}
   - 114: {fileID: 114000010299642254}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: RightPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3444,7 +3444,7 @@ GameObject:
   - 224: {fileID: 224000014167606148}
   - 222: {fileID: 222000013102111854}
   - 114: {fileID: 114000013764835358}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Antialiasing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3462,7 +3462,7 @@ GameObject:
   - 222: {fileID: 222000013526019446}
   - 114: {fileID: 114000013427110992}
   - 114: {fileID: 114000013364860556}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3495,7 +3495,7 @@ GameObject:
   - 222: {fileID: 222000014218364354}
   - 114: {fileID: 114000012802740068}
   - 114: {fileID: 114000012761160968}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3511,7 +3511,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000013463812030}
   - 222: {fileID: 222000010467117404}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EscapeMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3530,7 +3530,7 @@ GameObject:
   - 199: {fileID: 199000013409651386}
   - 114: {fileID: 114000012816876890}
   - 114: {fileID: 114000011772627362}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Steam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3592,7 +3592,7 @@ GameObject:
   - 224: {fileID: 224000012449558602}
   - 222: {fileID: 222000010270807740}
   - 114: {fileID: 114000012509867476}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EscapeMainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3625,7 +3625,7 @@ GameObject:
   - 222: {fileID: 222000010854965740}
   - 114: {fileID: 114000012987379370}
   - 114: {fileID: 114000012331189620}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3641,7 +3641,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000012080900062}
   - 114: {fileID: 114000011187285588}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SensitivitySlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3658,7 +3658,7 @@ GameObject:
   - 4: {fileID: 4000010987340964}
   - 198: {fileID: 198000010313741122}
   - 199: {fileID: 199000011332103522}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3676,7 +3676,7 @@ GameObject:
   - 222: {fileID: 222000012895340234}
   - 114: {fileID: 114000011964427914}
   - 114: {fileID: 114000013177349330}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3693,7 +3693,7 @@ GameObject:
   - 224: {fileID: 224000012303385504}
   - 222: {fileID: 222000012594943858}
   - 114: {fileID: 114000014080425728}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3709,7 +3709,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000013562432524}
   - 114: {fileID: 114000011290527938}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3741,7 +3741,7 @@ GameObject:
   - 224: {fileID: 224000012751003742}
   - 222: {fileID: 222000010771033734}
   - 114: {fileID: 114000011402080380}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3758,7 +3758,7 @@ GameObject:
   - 224: {fileID: 224000010057618640}
   - 222: {fileID: 222000013680256412}
   - 114: {fileID: 114000011291612600}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3775,7 +3775,7 @@ GameObject:
   - 224: {fileID: 224000012971221432}
   - 222: {fileID: 222000012330943414}
   - 114: {fileID: 114000010713916810}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Overall Quality
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3792,7 +3792,7 @@ GameObject:
   - 224: {fileID: 224000011405822952}
   - 222: {fileID: 222000013934325836}
   - 114: {fileID: 114000014043967504}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3824,7 +3824,7 @@ GameObject:
   - 224: {fileID: 224000013169010766}
   - 222: {fileID: 222000011317585730}
   - 114: {fileID: 114000011437606364}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: LookSensitivity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3841,7 +3841,7 @@ GameObject:
   - 224: {fileID: 224000012537672532}
   - 222: {fileID: 222000013985127912}
   - 114: {fileID: 114000010122805386}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3874,7 +3874,7 @@ GameObject:
   - 224: {fileID: 224000013687841508}
   - 222: {fileID: 222000011724869074}
   - 114: {fileID: 114000013383089380}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3906,7 +3906,7 @@ GameObject:
   - 224: {fileID: 224000011084019088}
   - 222: {fileID: 222000012702867398}
   - 114: {fileID: 114000013262994608}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3923,7 +3923,7 @@ GameObject:
   - 224: {fileID: 224000011799062730}
   - 222: {fileID: 222000013680706112}
   - 114: {fileID: 114000013580379484}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3955,7 +3955,7 @@ GameObject:
   - 224: {fileID: 224000014045068450}
   - 222: {fileID: 222000012332374208}
   - 114: {fileID: 114000013358767584}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3974,7 +3974,7 @@ GameObject:
   - 114: {fileID: 114000012720179288}
   - 114: {fileID: 114000013048999546}
   - 114: {fileID: 114000013368775006}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ScanTex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3989,7 +3989,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000012874240150}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4007,7 +4007,7 @@ GameObject:
   - 114: {fileID: 114000013995511484}
   - 222: {fileID: 222000013896079682}
   - 114: {fileID: 114000011948278546}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4054,7 +4054,7 @@ GameObject:
   - 224: {fileID: 224000013992579278}
   - 222: {fileID: 222000011283933264}
   - 114: {fileID: 114000011076413668}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4072,7 +4072,7 @@ GameObject:
   - 222: {fileID: 222000012731960626}
   - 114: {fileID: 114000010511435792}
   - 114: {fileID: 114000011494424122}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Returb To Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4089,7 +4089,7 @@ GameObject:
   - 224: {fileID: 224000012461432756}
   - 222: {fileID: 222000010169426468}
   - 114: {fileID: 114000011553419156}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4121,7 +4121,7 @@ GameObject:
   - 224: {fileID: 224000011113994936}
   - 222: {fileID: 222000010497741416}
   - 114: {fileID: 114000011964204414}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4138,7 +4138,7 @@ GameObject:
   - 224: {fileID: 224000011219285960}
   - 222: {fileID: 222000012134565150}
   - 114: {fileID: 114000013551039938}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4157,7 +4157,7 @@ GameObject:
   - 23: {fileID: 23000014292452196}
   - 114: {fileID: 114000012386113098}
   - 114: {fileID: 114000011679479892}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4206,7 +4206,7 @@ GameObject:
   - 222: {fileID: 222000012476965796}
   - 114: {fileID: 114000012372533624}
   - 114: {fileID: 114000012567649856}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4224,7 +4224,7 @@ GameObject:
   - 222: {fileID: 222000013428987710}
   - 114: {fileID: 114000011390953550}
   - 114: {fileID: 114000012093462316}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4257,7 +4257,7 @@ GameObject:
   - 114: {fileID: 114000013908448952}
   - 222: {fileID: 222000011239720198}
   - 114: {fileID: 114000011125057408}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4290,7 +4290,7 @@ GameObject:
   - 222: {fileID: 222000012367369416}
   - 114: {fileID: 114000012974451546}
   - 114: {fileID: 114000011407403086}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4307,7 +4307,7 @@ GameObject:
   - 224: {fileID: 224000011789399586}
   - 222: {fileID: 222000012669520534}
   - 114: {fileID: 114000010779875812}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4324,7 +4324,7 @@ GameObject:
   - 224: {fileID: 224000012347812196}
   - 222: {fileID: 222000013513904250}
   - 114: {fileID: 114000011157183872}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4342,7 +4342,7 @@ GameObject:
   - 222: {fileID: 222000011728614806}
   - 114: {fileID: 114000013323052676}
   - 114: {fileID: 114000014243749922}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4359,7 +4359,7 @@ GameObject:
   - 224: {fileID: 224000011338988768}
   - 222: {fileID: 222000010685466346}
   - 114: {fileID: 114000013304932026}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4376,7 +4376,7 @@ GameObject:
   - 224: {fileID: 224000011896067026}
   - 222: {fileID: 222000014224563786}
   - 114: {fileID: 114000010908975538}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4392,7 +4392,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014080417456}
   - 82: {fileID: 82000013144533252}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: WeaponAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4409,7 +4409,7 @@ GameObject:
   - 224: {fileID: 224000010270455150}
   - 222: {fileID: 222000013578571058}
   - 114: {fileID: 114000012803305358}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4443,7 +4443,7 @@ GameObject:
   - 222: {fileID: 222000014157767064}
   - 114: {fileID: 114000010721469498}
   - 114: {fileID: 114000011206007188}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4460,7 +4460,7 @@ GameObject:
   - 224: {fileID: 224000011395028514}
   - 222: {fileID: 222000011094959406}
   - 114: {fileID: 114000011418316394}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4492,7 +4492,7 @@ GameObject:
   - 224: {fileID: 224000010806885510}
   - 222: {fileID: 222000010719716030}
   - 114: {fileID: 114000012790370608}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4509,7 +4509,7 @@ GameObject:
   - 224: {fileID: 224000013814825108}
   - 222: {fileID: 222000011785907740}
   - 114: {fileID: 114000010086841506}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SplitscreenMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4526,7 +4526,7 @@ GameObject:
   - 224: {fileID: 224000010599989012}
   - 222: {fileID: 222000011664296856}
   - 114: {fileID: 114000012364416688}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4543,7 +4543,7 @@ GameObject:
   - 224: {fileID: 224000013885568406}
   - 222: {fileID: 222000012458114612}
   - 114: {fileID: 114000012732762852}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4559,7 +4559,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000013049411300}
   - 114: {fileID: 114000011154632238}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4599,7 +4599,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012812959416}
-  m_LocalRotation: {x: -0.67544043, y: -0.0002699567, z: 0.7374145, w: -0.00029267019}
+  m_LocalRotation: {x: -0.6754405, y: -0.00026995674, z: 0.73741454, w: -0.0002926702}
   m_LocalPosition: {x: -0.09197723, y: -0.00000006437301, z: 0.023532582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5466,7 +5466,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012309849522}
-  m_LocalRotation: {x: 0.67544043, y: 0.00026791144, z: 0.7374145, w: -0.0002945436}
+  m_LocalRotation: {x: 0.6754405, y: 0.00026791147, z: 0.73741454, w: -0.00029454363}
   m_LocalPosition: {x: -0.09197723, y: 0.000000069141386, z: -0.023532582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

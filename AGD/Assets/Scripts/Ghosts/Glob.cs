@@ -8,7 +8,7 @@ public class Glob : NetworkBehaviour {
     public NetworkInstanceId parentNetID;
 
     NetworkIdentity rootNetID;
-    float fearEffect;
+    int fearEffect;
 	float smoothSpeed;
 	float targetOffset;
 	Vector3 targetScale;
@@ -23,7 +23,7 @@ public class Glob : NetworkBehaviour {
     }
 
 
-	public void PostStart(float fear, float grow, float offset)
+	public void PostStart(int fear, float grow, float offset)
     {
 		fearEffect = fear;
 		smoothSpeed = grow;
@@ -56,7 +56,13 @@ public class Glob : NetworkBehaviour {
 		if (other.transform.tag == "Player")
 		{
 			//other.transform.GetComponent<NetworkedThirdPersonCharacter> ().playerID;
-			print ("Player Hit!!!");
+            Cmd_DamagePlayer(other.gameObject);
 		}
 	}
+
+    [Command]
+    void Cmd_DamagePlayer(GameObject player)
+    {
+        GameManager.instance.PostScoreToScoreTable(player.GetComponent<NetworkedThirdPersonCharacter>().playerID, -fearEffect);
+    }
 }

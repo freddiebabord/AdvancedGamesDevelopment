@@ -18,6 +18,7 @@ public class GhostSwell : MonoBehaviour {
     [HideInInspector]
     public bool isCooldown;
 
+    GhostBehaviour ghostBehaviour;
     float startCooldownTimer;
     float startSwellTimer;
     Vector3 velocity = Vector3.zero;
@@ -34,21 +35,25 @@ public class GhostSwell : MonoBehaviour {
         endScale = startScale * ghostScale;
         targetScale = startScale;
         animator = GetComponentInChildren<Animator>();
+        ghostBehaviour = GetComponent<GhostBehaviour>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (ghostFrustum.isTriggered && !isCooldown && ghostFrustum.focus == null)
+        if (ghostFrustum.isTriggered && !isCooldown && ghostBehaviour.ghostTarget == null)
             CalmGhost();
         if (!ghostFrustum.isTriggered && isCooldown && Time.time - startCooldownTimer > cooldownTimer)
             isCooldown = false;
 
         transform.localScale = Vector3.SmoothDamp(transform.localScale, targetScale, ref velocity, scaleTime);
-
+    }
+    void LateUpdate()
+    {
         if (Vector3.Distance(transform.localScale, targetScale) < targetOffset)
         {
             animator.SetBool("Growing", false);
+            ghostBehaviour.pauseMovement = false;
             if ((Time.time - startSwellTimer > swellTimer))
                 targetScale = startScale;
         }
@@ -76,7 +81,7 @@ public class GhostSwell : MonoBehaviour {
         isAngry = false;
         targetScale = startScale;
         ghostFrustum.isTriggered = false;
-        ghostFrustum.focus = null;
+        ghostBehaviour.ghostTarget = null;
         startCooldownTimer = Time.time;
     }
 }

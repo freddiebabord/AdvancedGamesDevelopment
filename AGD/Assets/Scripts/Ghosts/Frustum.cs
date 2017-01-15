@@ -16,20 +16,6 @@ public struct FrustumFramework
     public float distance;
 }
 
-public class PlayerPriority
-{
-    public int CalculatePriority()
-    {
-        priority = (int)state + distanceADJ;
-        return priority;
-    }
-
-    public PlayerState state = PlayerState.None;
-    public int distanceADJ = 0;
-    public int priority = 0;
-    public int firstIndex = 0;
-}
-
 [ExecuteInEditMode]
 public class Frustum : NetworkBehaviour
 {
@@ -70,9 +56,9 @@ public class Frustum : NetworkBehaviour
     public bool isTriggered;
     public Transform focus;
     public float attentionSpan = 5f;
+    GhostBehaviour ghostBehaviour;
 
-    Dictionary<int, PlayerPriority> interactablePlayers = new Dictionary<int, PlayerPriority>();
-    float attentionSpanStart;
+    //float attentionSpanStart;
     //private GameObject root;
 
     #region Mesh Variables
@@ -92,6 +78,7 @@ public class Frustum : NetworkBehaviour
 
     public void PostStart()
     {
+        ghostBehaviour = GetComponent<GhostBehaviour>();
         if (isServer)
         {
             //transform.parent.GetComponentInParent<EnemyBase>().ghostFrustum = this;
@@ -117,18 +104,16 @@ public class Frustum : NetworkBehaviour
         }
         else
         {
-            if ((Time.time - attentionSpanStart > attentionSpan || focus == null) && isLocalPlayer)
-            {
-                ChoosePlayer();
-            }
+           // if ((Time.time - attentionSpanStart > attentionSpan || focus == null) && isLocalPlayer)
+           // {
+            //    ChoosePlayer();
+            //}
         }
 
         if (isTriggered)
         {
-            if (GetComponent<GhostCharge>() && focus)
-                GetComponent<GhostCharge>().Triggered(focus.position);
-            //if (root.GetComponent<Teleportation>())
-            //root.GetComponent<Teleportation>().Triggered(target.position);
+            if (GetComponent<GhostCharge>() && ghostBehaviour.ghostTarget)
+                GetComponent<GhostCharge>().Triggered(ghostBehaviour.ghostTarget.GetComponent<CapsuleCollider>().bounds.center);
             else if (GetComponent<GhostSwell>())
                 GetComponent<GhostSwell>().Triggered();
 			else if (GetComponent<GhostThrow>())
@@ -156,27 +141,8 @@ public class Frustum : NetworkBehaviour
             if (Physics.Raycast(other.transform.position, relativePlayerPos))
             {
                 netID = other.GetComponent<NetworkedThirdPersonCharacter>().playerID;// otherNetID.isServer ? otherNetID.connectionToClient.connectionId : otherNetID.connectionToServer.connectionId;
-                Rpc_PlayerEnterView(netID, other.gameObject);
-                ChoosePlayer();
-            }
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (!isServer)
-            return;
-        if (other.tag == "Player")
-        {
-            relativePlayerPos = transform.position - other.transform.position;
-            //otherNetID = other.GetComponent<NetworkIdentity>();
-            Debug.DrawRay(other.transform.position, relativePlayerPos, Color.red);
-
-            if (Physics.Raycast(other.transform.position, relativePlayerPos))
-            {
-                netID = other.GetComponent<NetworkedThirdPersonCharacter>().playerID; //otherNetID.isServer ? otherNetID.connectionToClient.connectionId : otherNetID.connectionToServer.connectionId;
-                Rpc_PlayerLeftView(netID, other.gameObject);
-                ChoosePlayer();
+                Rpc_PlayerEnterView(other.gameObject);
+                //ChoosePlayer();
             }
         }
     }
@@ -249,35 +215,6 @@ public class Frustum : NetworkBehaviour
         //aggroMesh.RecalculateNormals();
     }
 
-    public void ChoosePlayer()
-    {
-        int rangeMax = 0;
-        // Sort the list based on the result of CalculatePriority
-        //List<PlayerPriority> playerList = interactablePlayers.Values.OrderBy(x=>x.CalculatePriority()).ToList();
-        //print(playerList);
-        for (int i = 0; i < interactablePlayers.Count; i++)
-        {
-            rangeMax += interactablePlayers[i].priority;
-            interactablePlayers[i].firstIndex = i > 0 ? interactablePlayers[i - 1].firstIndex + (interactablePlayers[i - 1].priority - 1) : 0;
-        }
-        int chosenPlayer = UnityEngine.Random.Range(0, rangeMax - 1);
-        for (int i = 0; i < interactablePlayers.Count; i++)
-        {
-            if (i < interactablePlayers.Count - 1)
-            {
-                if (chosenPlayer >= interactablePlayers[i].firstIndex &&
-                    chosenPlayer < interactablePlayers[i + 1].firstIndex)
-                {
-                    Rpc_ChoosePlayer(interactablePlayers[i]);
-                }
-            }
-            else if (i == interactablePlayers.Count - 1)
-            {
-                Rpc_ChoosePlayer(interactablePlayers[i]);
-            }
-        }
-    }
-
     [ClientRpc]
     public void Rpc_ChangeFrustum(int ghostStateInt)
     {
@@ -299,34 +236,17 @@ public class Frustum : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void Rpc_PlayerEnterView(int networkID, GameObject player)
+    public void Rpc_PlayerEnterView(GameObject player)
     {
-        if (!interactablePlayers.ContainsKey(networkID))
-            interactablePlayers.Add(networkID, new PlayerPriority());
-        if (interactablePlayers[networkID].state == PlayerState.None)
-            interactablePlayers[networkID].state = PlayerState.Visible;
-        ghostState = GhostState.Aggravated;
-
-        if (focus == null)
+        if (ghostBehaviour.ghostTarget == null)
         {
-            focus = player.transform;
+            ghostBehaviour.ghostTarget = player.transform;
             isTriggered = true;
-            attentionSpanStart = Time.time;
         }
     }
 
     [ClientRpc]
-    public void Rpc_PlayerLeftView(int networkID, GameObject player)
-    {
-        if (interactablePlayers[networkID].state == PlayerState.Visible)
-            interactablePlayers[networkID].state = PlayerState.None;
-        if (player == focus)
-            isTriggered = false;
-        focus = null;
-    }
-
-    [ClientRpc]
-    public void Rpc_ChoosePlayer(PlayerPriority player)
+    public void Rpc_ChoosePlayer(PlayerData player)
     {
         //focus = 
     }

@@ -42,14 +42,14 @@ public class MakeRadarObject : MonoBehaviour {
         radar = gameObject.GetComponent<Radar>();
     }
 
-    public void RegisterEnemy(EnemyBase newEnemy)
+    public void RegisterEnemy(GhostBehaviour newEnemy)
     {
         PickupGameObject newPickupGameObject = new PickupGameObject();
         newPickupGameObject.targetTransform = newEnemy.transform;
         enemies.Add(newPickupGameObject);
     }
 
-    public void DeregisterEnemy(EnemyBase enemyToDestroy)
+    public void DeregisterEnemy(GhostBehaviour enemyToDestroy)
     {
         var enemy = enemies.Find(x => x.targetTransform == enemyToDestroy.transform);
         enemies.Remove(enemy);
