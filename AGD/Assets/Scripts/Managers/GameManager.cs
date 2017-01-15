@@ -290,6 +290,7 @@ public class GameManager : NetworkBehaviour {
             return;
         
         List<NetworkedThirdPersonCharacter> sortedPlayers = players.OrderBy(x => scoreTable[x.playerID]).ToList();
+		sortedPlayers.Reverse ();
         for (int i = 0; i < sortedPlayers.Count; ++i)
             RpcSetIdvGOControllerData(sortedPlayers[i].playerID, i);
     }
@@ -300,28 +301,43 @@ public class GameManager : NetworkBehaviour {
     [ClientRpc]
     private void RpcSetIdvGOControllerData(int playerID, int position)
     {
-        NetworkedThirdPersonCharacter player = players.Find(x => x.playerID == playerID);
-        player.enabled = false;
-        player.GetComponent<NetworkedThirdPersonUserControl>().enabled = false;
-        player.GetComponent<PickUps>().enabled = false;
-        player.GetComponent<Radar>().enabled = false;
-        player.GetComponent<MakeRadarObject>().enabled = false;
-        player.GetComponent<PlayerIKController>().enabled = false;
-        player.GetComponent<CameraManager>().enabled = false;
-        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        player.GetComponent<Rigidbody>().constraints  = RigidbodyConstraints.FreezeAll;
-        player.GetComponent<Animator>().SetBool(position == 0 ? "Won" : "Lost", true);
-        Camera[] cams = player.GetComponentsInChildren<Camera>();
-        for (int i = 0; i < cams.Length; ++i)
-            cams[i].enabled = false;
-        player.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
-        player.transform.position = position < 3
-            ? controller.dataContainers[position].position.position
-            : new Vector3(0, 250, 0);
-        player.transform.rotation = Quaternion.identity;
-        controller.dataContainers[position].score.text = scoreTable[player.playerID].ToString();
+		if (position < 3)
+			StartCoroutine (SetIDVAnimData (playerID, position));
+		else {
+			NetworkedThirdPersonCharacter player = players.Find(x => x.playerID == playerID);
+			player.gameObject.SetActive (false);
+		}
     }
+
+	IEnumerator SetIDVAnimData(int playerID, int position)
+	{
+		NetworkedThirdPersonCharacter player = players.Find(x => x.playerID == playerID);
+		player.GetComponent<Animator>().SetBool(position == 0 ? "Won" : "Lost", true);
+		player.enabled = false;
+		player.GetComponent<NetworkedThirdPersonUserControl>().enabled = false;
+		player.GetComponent<PickUps>().enabled = false;
+		player.GetComponent<Radar>().enabled = false;
+		player.GetComponent<MakeRadarObject>().enabled = false;
+		player.GetComponent<PlayerIKController>().enabled = false;
+		player.GetComponent<CameraManager>().enabled = false;
+		player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+		player.GetComponent<Rigidbody>().constraints  = RigidbodyConstraints.FreezeAll;
+		player.m_MouseLook.weapon.localPosition = new Vector3 (-0.097f, 0.012f, 0.0928f);
+		player.m_MouseLook.weapon.localRotation = Quaternion.Euler (new Vector3 (358.417f, 258.623f, 261.856f));
+		player.weaponSpawnPoint.parent.gameObject.SetActive (false);
+		Camera[] cams = player.GetComponentsInChildren<Camera>();
+		for (int i = 0; i < cams.Length; ++i)
+			cams[i].enabled = false;
+		player.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+		player.transform.position = position < 3
+			? controller.dataContainers[position].position.position
+			: new Vector3(0, 250, 0);
+		player.transform.rotation = Quaternion.identity;
+		controller.dataContainers[position].score.text = scoreTable[player.playerID].ToString();
+		yield return null;
+		player.GetComponent<Animator>().SetBool(position == 0 ? "Won" : "Lost", false);
+	}
 
     public void RegisterRadarHelper(MakeRadarObject radarHelper)
     {

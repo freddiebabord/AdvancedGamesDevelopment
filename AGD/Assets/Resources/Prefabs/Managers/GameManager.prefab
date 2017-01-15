@@ -22,7 +22,6 @@ GameObject:
   - 114: {fileID: 114000011212881432}
   - 114: {fileID: 114000013206277500}
   - 114: {fileID: 114000010346843748}
-  - 114: {fileID: 114000012462407044}
   - 114: {fileID: 114000010852378934}
   m_Layer: 0
   m_Name: GameManager
@@ -61,6 +60,8 @@ MonoBehaviour:
     type: 2}
   weaponRechargePickup: {fileID: 1000013566745354, guid: 460ca7e83c8d318489faf59ac2c1582f,
     type: 2}
+  fearResetPickup: {fileID: 1000012944378174, guid: 6908d287d71813641946d707d21e65ca,
+    type: 2}
 --- !u!114 &114000010852378934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,6 +77,8 @@ MonoBehaviour:
   overallVolumeLevel: 100
   splitscreenDuelControllerMode: 1
   profiles: []
+  lookSensitivity: 0.5
+  invertYAxis: 0
 --- !u!114 &114000011212881432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,18 +111,6 @@ MonoBehaviour:
     i15: 104
   m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
---- !u!114 &114000012462407044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011608605714}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78d1bdf608e224cd8836348794578a1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadedClips: []
 --- !u!114 &114000013206277500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,25 +124,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemyDef:
-    - enemySpawner: 1
-      quantity: 5
-  - enemyDef:
-    - enemySpawner: 1
-      quantity: 6
     - enemySpawner: 0
-      quantity: 3
+      quantity: 1
   currentWave: 0
   waveSleepTimer: 10
   enemyPrefabs:
-  - {fileID: 1000010856007744, guid: 54163254686d1824c8b3108028ed84ce, type: 2}
-  - {fileID: 1000010856007744, guid: 0a24dbede6fa01a409e88eb2f997ab07, type: 2}
-  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
-  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
-  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
-  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
-  - {fileID: 1000013039519536, guid: ce582f56a5b90724cb23f34c91cd04df, type: 2}
+  - {fileID: 1000011758310570, guid: d2f9ad20e63d03d4cac6f91e5a362a4e, type: 2}
+  - {fileID: 1000011714033180, guid: 360c8445f060af1419c1b0a365418cf5, type: 2}
+  - {fileID: 1000012984637492, guid: c30a0e21c75cdbe4a98799421c8f796d, type: 2}
+  - {fileID: 1000014159496386, guid: ea0f34a05224ba542b46f7b4ac5711d9, type: 2}
+  - {fileID: 1000012489844284, guid: 4ab4b8897b8f6b84592ca0b07aa22e5d, type: 2}
+  - {fileID: 1000010145515506, guid: c8bada6ca799935458ed13ddfff9a988, type: 2}
   enemiesRemainigText: []
   playerOneAssigned: 0
   GameOverPanel: {fileID: 0}
   StatusPanel: {fileID: 0}
   firstWave: 0
+  players: []

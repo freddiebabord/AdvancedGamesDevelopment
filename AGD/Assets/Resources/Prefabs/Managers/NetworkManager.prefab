@@ -6390,7 +6390,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Version 28122016.0.1.23
+  m_Text: Version 16012017.1.0.0f1
 --- !u!114 &114000010946924322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12804,7 +12804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NO - BACK TO MENU
+  m_Text: No
 --- !u!114 &114000013717176482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12917,12 +12917,18 @@ MonoBehaviour:
   m_OfflineScene: Menu
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1000011643388204, guid: 3c2d86cc109e94e99b456b3a1d1c9e50, type: 2}
+  - {fileID: 0}
   - {fileID: 1000012936964408, guid: a43699a4ae7112f43a97ae446ac6fb56, type: 2}
   - {fileID: 1000011784412228, guid: 322a1350ff47f5f4b83c1d35b75b31a4, type: 2}
   - {fileID: 1000013566745354, guid: 460ca7e83c8d318489faf59ac2c1582f, type: 2}
-  - {fileID: 1000010856007744, guid: 54163254686d1824c8b3108028ed84ce, type: 2}
-  - {fileID: 1000010856007744, guid: 0a24dbede6fa01a409e88eb2f997ab07, type: 2}
+  - {fileID: 1000012944378174, guid: 6908d287d71813641946d707d21e65ca, type: 2}
+  - {fileID: 1000011758310570, guid: d2f9ad20e63d03d4cac6f91e5a362a4e, type: 2}
+  - {fileID: 1000011714033180, guid: 360c8445f060af1419c1b0a365418cf5, type: 2}
+  - {fileID: 1000010145515506, guid: c8bada6ca799935458ed13ddfff9a988, type: 2}
+  - {fileID: 1000013859378904, guid: 2edbc97d80bb32140be74c2f107d0c40, type: 2}
+  - {fileID: 1000012489844284, guid: 4ab4b8897b8f6b84592ca0b07aa22e5d, type: 2}
+  - {fileID: 1000012984637492, guid: c30a0e21c75cdbe4a98799421c8f796d, type: 2}
+  - {fileID: 1000014159496386, guid: ea0f34a05224ba542b46f7b4ac5711d9, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:

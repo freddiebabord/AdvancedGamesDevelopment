@@ -109,8 +109,8 @@ public class Radar : MonoBehaviour {
             bY = bY * -map_scale; // scales down the y-coordinate by half so that the plot stays within our radar
 
             RectTransform rt = radar_objects[i].icon.GetComponent<RectTransform>();
-
-            rt.localPosition = new Vector3(bX + halfRadarDims.x, bY + halfRadarDims.y, -1);// + radar.transform.position;
+			//- halfRadarDims.x/2
+            rt.localPosition = new Vector3(bX , bY, -1);// + radar.transform.position;
             rt.localScale = new Vector3(1, 1, 1);
         }
         
