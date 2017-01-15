@@ -4,14 +4,14 @@ using System.Collections;
 public class GhostBodyCollision : MonoBehaviour {
 
     GameObject root;
-    LocalFrustum childFrustum;
+    //LocalFrustum childFrustum;
     GhostCharge charge;
     GhostTeleport teleport;
 
     void Start()
     {
         root = transform.parent.parent.gameObject;
-        childFrustum = GetComponentInChildren<LocalFrustum>();
+        //childFrustum = GetComponentInChildren<LocalFrustum>();
         charge = root.GetComponent<GhostCharge>();
         teleport = root.GetComponent<GhostTeleport>();
     }

@@ -352,13 +352,13 @@ public class GameManager : NetworkBehaviour {
         RadarHelper.TrimExcess();
     }
 
-    public void RegisterEnemyToRadarHelper(EnemyBase enemy)
+    public void RegisterEnemyToRadarHelper(GhostBehaviour enemy)
     {
         for(int i=0; i < RadarHelper.Count; ++i)
             RadarHelper[i].RegisterEnemy(enemy);
     }
 
-    public void DeRegisterEnemyToRadarHelper(EnemyBase enemy)
+    public void DeRegisterEnemyToRadarHelper(GhostBehaviour enemy)
     {
         for (int i = 0; i < RadarHelper.Count; ++i)
             RadarHelper[i].DeregisterEnemy(enemy);

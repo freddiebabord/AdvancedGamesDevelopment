@@ -3,7 +3,14 @@ using System.Collections;
 
 public class AnimationEventReciever : MonoBehaviour {
 
-    public GhostThrow ghostThrow;
+    GhostThrow ghostThrow;
+    GhostTeleport ghostTeleport;
+
+	void Start()
+	{
+		ghostThrow = GetComponentInParent<GhostThrow> ();
+        ghostTeleport = GetComponentInParent<GhostTeleport>();
+	}
 
 	void SpawnGlob()
     {
@@ -13,5 +20,15 @@ public class AnimationEventReciever : MonoBehaviour {
     void ThrowGlob()
     {
         ghostThrow.ThrowGlob();
+    }
+
+	void Reset()
+	{
+		ghostThrow.Reset();
+	}
+
+    void Teleport()
+    {
+        ghostTeleport.StartTeleport();
     }
 }

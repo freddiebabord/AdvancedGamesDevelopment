@@ -14,9 +14,4 @@ public class FrustumCollider : MonoBehaviour {
     {
         frustum.OnTriggerEnter(other);
     }
-
-    void OnTriggerExit(Collider other)
-    {
-        frustum.OnTriggerExit(other);
-    }
 }

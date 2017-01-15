@@ -22,12 +22,12 @@ public class EnemyBase : NetworkBehaviour {
 
 	void Start () {
 		
-        GameManager.instance.RegisterEnemyToRadarHelper(this);
+        //GameManager.instance.RegisterEnemyToRadarHelper(this);
 	}
 
     void OnDestroy()
     {
-        GameManager.instance.DeRegisterEnemyToRadarHelper(this);
+        //GameManager.instance.DeRegisterEnemyToRadarHelper(this);
     }
 
 	Vector3 randomDirection;
@@ -45,7 +45,7 @@ public class EnemyBase : NetworkBehaviour {
         if (!agent.hasPath)
         {
 			randomDirection = Random.insideUnitSphere * walkRadius;
-            randomDirection += transform.position;
+            randomDirection += transform.position; 
             
             NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
             randY = Random.Range(0, maxFloatHeight);

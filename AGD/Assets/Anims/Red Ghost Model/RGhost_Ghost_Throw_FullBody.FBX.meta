@@ -223,7 +223,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -239,6 +239,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.773224
         functionName: ThrowGlob
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.99025977
+        functionName: Reset
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -64,7 +64,6 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp01\SFN_Clamp01.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_SPD_ANG.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Screen.shader" />
-     <None Include="Assets\Resources\Art\Shader\Frost.shader" />
      <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderDiffuseOnly.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_RemapRangeAdvanced\SFN_RemapRangeAdvanced.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
@@ -75,6 +74,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\Common\ExtractChannel.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetParticleMultiplicative.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_3.shader" />
+     <None Include="Assets\Resources\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp\SFN_Clamp.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Negate\SFN_Negate.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fmod\SFN_Fmod.shader" />
@@ -172,7 +172,6 @@
      <None Include="Assets\Resources\Art\Shader\Fire.shader" />
      <None Include="Assets\External\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
-     <None Include="Assets\Resources\Prefabs\ProtonPackLightStrip.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\DepthOfField\Resources\DepthOfField.shader" />
      <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
@@ -233,7 +232,6 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightVector\SFN_LightVector.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_2.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Bitangent\SFN_Bitangent.shader" />
-     <None Include="Assets\Frost\HowToUse.txt" />
      <None Include="Assets\Resources\Art\Shader\Slime.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_HsvToRgb\SFN_HsvToRgb.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullOff.shader" />
@@ -285,7 +283,6 @@
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectPosition\SFN_ObjectPosition.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Hue\SFN_Hue.shader" />
-     <None Include="Assets\Ultimate Game Tools\RopeEditor\1st readme - v1.21.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Reciprocal\SFN_Reciprocal.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AntiAliasing\SMAA\Resources\SMAA.cginc" />
@@ -303,7 +300,6 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_DDY\SFN_DDY.shader" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\MultiplyDouble.shader" />
-     <None Include="Assets\Frost\ImageBlendEffect.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_4.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Round\SFN_Round.shader" />
@@ -362,6 +358,7 @@
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Depth\SFN_Depth.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_2.shader" />
+     <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_PIV.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader" />
@@ -384,6 +381,7 @@
      <None Include="Assets\Resources\Art\Shader\WeaponOverheatMeter.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
+     <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Resources\Standard Assets\Effects\Bloom\Resources\Bloom.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
@@ -410,6 +408,7 @@
      <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_NRM.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_4.shader" />
+     <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_3.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

@@ -832,12 +832,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010866406500}
-  - 195: {fileID: 195000011637214458}
   - 114: {fileID: 114000010642817314}
   - 114: {fileID: 114000013808582874}
-  - 114: {fileID: 114000014209428374}
   - 114: {fileID: 114000010577241892}
   - 114: {fileID: 114000012710257870}
+  - 114: {fileID: 114000010501267416}
   m_Layer: 8
   m_Name: Throwing Ghost
   m_TagString: Untagged
@@ -929,6 +928,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011195272226}
   - 95: {fileID: 95000013976760516}
+  - 114: {fileID: 114000012038484670}
   m_Layer: 8
   m_Name: Ghost
   m_TagString: Untagged
@@ -1618,7 +1618,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012489844284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 2, z: -5}
+  m_LocalPosition: {x: 18.9911, y: -2.7823188, z: 6.9312325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1673,7 +1673,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012868376324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.393, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2689,6 +2689,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185b729f63dd644adab6b0050ea4a51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000010501267416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012489844284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a19d1e19472d614485a94767f7e1426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globPrefab: {fileID: 1000010632412132, guid: fe74c37bdfd8e4603ac5b61a8cb053ff, type: 2}
+  handParent: {fileID: 1000011462404678}
+  fearImpact: 100
+  sizeOffset: 0.1
+  growSpeed: 0.25
+  shrinkSpeed: 1
+  throwForce: 100
 --- !u!114 &114000010577241892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2744,6 +2762,17 @@ MonoBehaviour:
     i15: 93
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114000012038484670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012868376324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d2f40eaaf29244f9cb1ad6872e3b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012710257870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2769,31 +2798,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b9c9fd2194a13498788b1d23f62cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  movementSpeed: 1
+  maxHealth: 100
+  waitTime: {x: 3, y: 5}
+  movementSpeed: 2
+  rotationSpeed: 10
+  acceleration: 0.1
   fearPresence: 10
+  targetOffset: 0.1
   score: 100
   ghostTarget: {fileID: 0}
+  goalPosition: {x: 0, y: 0, z: 0}
   frustumPrefab: {fileID: 1000010079989698, guid: e268d018186052e4dade4dff5a1849c6,
     type: 2}
   ghostTrigger: 0
   isPeaceful: 0
   damageTextPool: {fileID: 0}
---- !u!114 &114000014209428374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012489844284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70742c3df74894a9f8169af42df801fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxFloatHeight: 5
-  agent: {fileID: 0}
-  walkRadius: 10
-  target: {x: 0, y: 0, z: 0}
+  pauseMovement: 0
 --- !u!137 &137000010576368816
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2881,23 +2901,3 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.09346227, y: 0.017906055, z: -0.0020058453}
     m_Extent: {x: 0.47392958, y: 0.46953964, z: 0.327562}
   m_DirtyAABB: 0
---- !u!195 &195000011637214458
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012489844284}
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4

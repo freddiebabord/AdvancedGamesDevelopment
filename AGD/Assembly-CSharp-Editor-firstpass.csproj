@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;UNITY_64;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -64,7 +64,6 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp01\SFN_Clamp01.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_SPD_ANG.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Screen.shader" />
-     <None Include="Assets\Resources\Art\Shader\Frost.shader" />
      <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderDiffuseOnly.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_RemapRangeAdvanced\SFN_RemapRangeAdvanced.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
@@ -75,6 +74,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\Common\ExtractChannel.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetParticleMultiplicative.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_3.shader" />
+     <None Include="Assets\Resources\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp\SFN_Clamp.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Negate\SFN_Negate.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fmod\SFN_Fmod.shader" />
@@ -172,7 +172,6 @@
      <None Include="Assets\Resources\Art\Shader\Fire.shader" />
      <None Include="Assets\External\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
-     <None Include="Assets\Resources\Prefabs\ProtonPackLightStrip.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\DepthOfField\Resources\DepthOfField.shader" />
      <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
@@ -233,7 +232,6 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightVector\SFN_LightVector.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_2.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Bitangent\SFN_Bitangent.shader" />
-     <None Include="Assets\Frost\HowToUse.txt" />
      <None Include="Assets\Resources\Art\Shader\Slime.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_HsvToRgb\SFN_HsvToRgb.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullOff.shader" />
@@ -285,7 +283,6 @@
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectPosition\SFN_ObjectPosition.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Hue\SFN_Hue.shader" />
-     <None Include="Assets\Ultimate Game Tools\RopeEditor\1st readme - v1.21.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Reciprocal\SFN_Reciprocal.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AntiAliasing\SMAA\Resources\SMAA.cginc" />
@@ -303,7 +300,6 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_DDY\SFN_DDY.shader" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\MultiplyDouble.shader" />
-     <None Include="Assets\Frost\ImageBlendEffect.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_4.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Round\SFN_Round.shader" />
@@ -362,6 +358,7 @@
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Depth\SFN_Depth.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_2.shader" />
+     <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_PIV.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader" />
@@ -384,6 +381,7 @@
      <None Include="Assets\Resources\Art\Shader\WeaponOverheatMeter.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
+     <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Resources\Standard Assets\Effects\Bloom\Resources\Bloom.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
@@ -410,6 +408,7 @@
      <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_NRM.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_4.shader" />
+     <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_3.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
@@ -450,61 +449,76 @@
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetSky.shader" />
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.EditorTestsRunner">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Networking">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.TreeEditor">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="ShaderForge">
- <HintPath>/Users/fredericbabord/Documents/Git/AdvancedGamesDevelopment/AGD/Assets/External/ShaderForge/Editor/ShaderForge.dll</HintPath>
+ <HintPath>C:/Users/Sam/Documents/University/Year 3/AdvancedGamesDevelopment/AGD/Assets/External/ShaderForge/Editor/ShaderForge.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_Editor">
- <HintPath>/Users/fredericbabord/Documents/Git/AdvancedGamesDevelopment/AGD/Assets/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
+ <HintPath>C:/Users/Sam/Documents/University/Year 3/AdvancedGamesDevelopment/AGD/Assets/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_Core">
- <HintPath>/Users/fredericbabord/Documents/Git/AdvancedGamesDevelopment/AGD/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+ <HintPath>C:/Users/Sam/Documents/University/Year 3/AdvancedGamesDevelopment/AGD/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
  </Reference>
- <Reference Include="Rewired_OSX_Lib">
- <HintPath>/Users/fredericbabord/Documents/Git/AdvancedGamesDevelopment/AGD/Assets/Rewired/Internal/Libraries/Runtime/Rewired_OSX_Lib.dll</HintPath>
+ <Reference Include="Rewired_Windows_Lib">
+ <HintPath>C:/Users/Sam/Documents/University/Year 3/AdvancedGamesDevelopment/AGD/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
  </Reference>
  <Reference Include="Editor.ReorderableList">
- <HintPath>/Users/fredericbabord/Documents/Git/AdvancedGamesDevelopment/AGD/Assets/Rotorz/Reorderable List Field/Editor/Editor.ReorderableList.dll</HintPath>
+ <HintPath>C:/Users/Sam/Documents/University/Year 3/AdvancedGamesDevelopment/AGD/Assets/Rotorz/Reorderable List Field/Editor/Editor.ReorderableList.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/Managed/UnityEditor.Graphs.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Android.Extensions">
- <HintPath>/Applications/Unity 5.4.1p4/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.AppleTV.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AppleTVSupport/UnityEditor.AppleTV.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Metro.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.Metro.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Tizen.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/TizenPlayer/UnityEditor.Tizen.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.SamsungTV.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/STVPlayer/UnityEditor.SamsungTV.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WebGL.Extensions">
- <HintPath>/Applications/Unity 5.4.1p4/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.LinuxStandalone.Extensions">
- <HintPath>/Applications/Unity 5.4.1p4/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
- <HintPath>/Applications/Unity 5.4.1p4/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
- <HintPath>/Applications/Unity 5.4.1p4/Unity 5.4.1p4.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

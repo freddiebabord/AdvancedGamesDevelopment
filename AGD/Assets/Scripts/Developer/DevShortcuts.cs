@@ -34,10 +34,10 @@ public class DevShortcuts : NetworkBehaviour {
             print("Hello");
             foreach (GhostBehaviour ghost in ghosts)
             {
-                if (isServer)
-                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId, 5f);
-                else
-                    ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId, 5f);
+               // if (isServer)
+                   // ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToClient.connectionId, 5f);
+                //else
+                    //ghost.TakeDamage(GetComponent<NetworkIdentity>().connectionToServer.connectionId, 5f);
             }
 	}
 }

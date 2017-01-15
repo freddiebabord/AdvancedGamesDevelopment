@@ -21,38 +21,31 @@ public class GhostCharge : MonoBehaviour
     [Tooltip("Fear to be applied to player on collision with ghost.")]
     public float fearAdjustment = 5f;
     [Tooltip("Points stolen from player on collision with ghost.")]
-    public float pointsToSteal = 300f;
+    public int pointsToSteal = 300;
     [HideInInspector]
     public bool isCooldown;
 
-    NavMeshAgent testAgent;
+    GhostBehaviour ghostBehaviour;
     //EnemyBase agent;
-    float startCooldownTimer;
-    float scoreStolen;
+    public float startCooldownTimer;
+    public int scoreStolen;
     float startSpeed;
     float startChargeTime;
     float startAccel;
+    public bool isCharging;
     
 	// Use this for initialization
 	void Start ()
     {
         ghostFrustum = transform.GetComponentInChildren<Frustum>();
-        testAgent = GetComponent<NavMeshAgent>();
-        startSpeed = testAgent.speed;
-        startAccel = testAgent.acceleration;
+        ghostBehaviour = GetComponent<GhostBehaviour>();
+        startSpeed = ghostBehaviour.movementSpeed;
+        startAccel = ghostBehaviour.acceleration;
 	}
 
     void Update()
     {
-        //if (ghostFrustum.isTriggered && Time.time - startCoolDownTimer > coolDownTimer)
-        //ghostFrustum.isTriggered = false;
-        if (!ghostFrustum)
-        {
-            ghostFrustum = transform.GetComponentInChildren<Frustum>();
-            return;
-        }
-
-        if (ghostFrustum.isTriggered && !isCooldown && ghostFrustum.focus == null)
+        if (ghostFrustum.isTriggered && !isCooldown && ghostBehaviour.ghostTarget == null)
             CalmGhost();
         if (!ghostFrustum.isTriggered && isCooldown && Time.time - startCooldownTimer > cooldownTimer)
             isCooldown = false;
@@ -65,20 +58,23 @@ public class GhostCharge : MonoBehaviour
             ghostFrustum.isTriggered = false;
             return;
         }
+        if (isCharging)
+            return;
+
         //Vector3 heading = transform.position - ghostFrustum.target.position;
         //float distance = heading.magnitude;
         //Vector3 direction = heading / distance;
         //agent.SetDestination(ghostFrustum.target.position + direction * chargeOverstep);
         Vector3 testHeading = targetPos - transform.position;
 //        print(targetPos + (testHeading.normalized * chargeOverstep));
-        testAgent.SetDestination(targetPos + (testHeading.normalized * chargeOverstep));
-        testAgent.acceleration = chargeAccel;
-        testAgent.speed = chargeSpeed;
+        ghostBehaviour.Cmd_SetTarget(targetPos + (testHeading.normalized * chargeOverstep));
+        ghostBehaviour.acceleration = chargeAccel;
+        ghostBehaviour.movementSpeed = chargeSpeed;
+        isCharging = true;
     }
 
     public void StealPoints()
     {
-        print("STOLEN POINTS!");
         scoreStolen += pointsToSteal;
         if (ghostFrustum.isTriggered)
         {
@@ -86,13 +82,14 @@ public class GhostCharge : MonoBehaviour
         }
     }
 
-    void CalmGhost()
+   public void CalmGhost()
     {
+        isCharging = false;
         isCooldown = true;
         ghostFrustum.isTriggered = false;
-        testAgent.speed = startSpeed;
-        testAgent.acceleration = startAccel;
-        ghostFrustum.focus = null;
+        ghostBehaviour.movementSpeed = startSpeed;
+        ghostBehaviour.acceleration = startAccel;
+        ghostBehaviour.ghostTarget = null;
         startCooldownTimer = Time.time;
     }
 }
