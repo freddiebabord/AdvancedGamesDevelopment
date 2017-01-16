@@ -72,7 +72,7 @@ public class Frustum : NetworkBehaviour
     {
         meshFilter = GetComponentInChildren<MeshFilter>();
         meshCollider = GetComponentInChildren<MeshCollider>();
-        meshFilter.mesh = new Mesh();
+        meshFilter.sharedMesh = new Mesh();
         meshCollider.sharedMesh = meshFilter.sharedMesh;
     }
 
@@ -93,22 +93,22 @@ public class Frustum : NetworkBehaviour
     {
         if (!isServer)
             return;
-        if (drawFrustum != DrawFrustum.None)
-        {
-            /*if (!Application.isPlaying)
-            {
-                meshFilter = GetComponent<MeshFilter>();
-                meshCollider = GetComponent<MeshCollider>();
-            }*/
-            Rpc_SetMeshes(peaceful);
-        }
-        else
-        {
-           // if ((Time.time - attentionSpanStart > attentionSpan || focus == null) && isLocalPlayer)
-           // {
-            //    ChoosePlayer();
-            //}
-        }
+        //if (drawFrustum != DrawFrustum.None)
+        //{
+        //    /*if (!Application.isPlaying)
+        //    {
+        //        meshFilter = GetComponent<MeshFilter>();
+        //        meshCollider = GetComponent<MeshCollider>();
+        //    }*/
+        //    Rpc_SetMeshes(peaceful);
+        //}
+        //else
+        //{
+        //   // if ((Time.time - attentionSpanStart > attentionSpan || focus == null) && isLocalPlayer)
+        //   // {
+        //    //    ChoosePlayer();
+        //    //}
+        //}
 
         if (isTriggered)
         {
@@ -130,7 +130,7 @@ public class Frustum : NetworkBehaviour
 
         if (!isServer)
             return;
-
+        
         //print("<color=green>" + other.tag + "</color>");
         if (other.tag == "Player")
         {
@@ -156,7 +156,7 @@ public class Frustum : NetworkBehaviour
             else
                 Gizmos.color = Color.cyan;
 
-            Gizmos.DrawWireMesh(meshFilter.mesh, transform.position, transform.rotation);
+            Gizmos.DrawWireMesh(meshFilter.sharedMesh, transform.position, transform.rotation);
         }
         //if (drawFrustum == DrawFrustum.Aggravated || drawFrustum == DrawFrustum.Both)
         //{
@@ -184,9 +184,9 @@ public class Frustum : NetworkBehaviour
     {
         // print("<color=yellow>SetMeshes Triggered!</color>");
 
-        if (meshFilter.mesh == null)
-            meshFilter.mesh = new Mesh();
-        meshFilter.mesh.vertices = new Vector3[8]
+        if (meshFilter.sharedMesh == null)
+            meshFilter.sharedMesh = new Mesh();
+        meshFilter.sharedMesh.vertices = new Vector3[8]
         {
             new Vector3(-(peaceful.near.x / 2), -(peaceful.near.y / 2), 0),
             new Vector3((peaceful.near.x / 2), -(peaceful.near.y / 2), 0),
@@ -197,8 +197,8 @@ public class Frustum : NetworkBehaviour
             new Vector3(-(peaceful.far.x / 2), (peaceful.far.y / 2), peaceful.distance),
             new Vector3((peaceful.far.x / 2), (peaceful.far.y / 2), peaceful.distance)
         };
-        meshFilter.mesh.triangles = triangles;
-        meshFilter.mesh.RecalculateNormals();
+        meshFilter.sharedMesh.triangles = triangles;
+        meshFilter.sharedMesh.RecalculateNormals();
 
         //aggroMesh.vertices = new Vector3[8]
         /* {

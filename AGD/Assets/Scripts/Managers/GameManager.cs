@@ -16,8 +16,7 @@ public enum	EnemyType
 	Type3,
 	Type4,
 	Type5,
-	Type6,
-	Type7
+	Type6
 }
 
 [System.Serializable]
@@ -103,16 +102,17 @@ public class GameManager : NetworkBehaviour {
 
     void ResetOnMenuLoad(Scene newScene, LoadSceneMode mode)
     {
-        if (newScene.name == "Menu")
+        if (newScene.buildIndex == 0)
         {
             playerOneAssigned = false;
             players.Clear();
             scoreTable.Clear();
         }
-        else
+        else if (newScene.buildIndex == 1)
         {
             controller = FindObjectOfType<GameOverController>();
-            controller.gameObject.SetActive(false);
+            if(controller)
+                controller.gameObject.SetActive(false);
         }
     }
 
@@ -179,6 +179,10 @@ public class GameManager : NetworkBehaviour {
         scorePanels = FindObjectsOfType<ScorePanel>().ToList();
         var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
         var enemySpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("enemySpawn")).ToList();
+
+        for (int i = 0; i < players.Count; ++i)
+            players[i].waveText.text = "WAVE " + (currentWave+1);
+
         for (int i = 0; i < waves[currentWave].enemyDef.Count; ++i)
         {
             EnemyType etype = waves[currentWave].enemyDef[i].enemySpawner;
@@ -297,6 +301,13 @@ public class GameManager : NetworkBehaviour {
 
 
     private GameOverController controller;
+
+    public void RegisterGameOVerController(GameOverController goc)
+    {
+        controller = goc;
+        if (controller)
+            controller.gameObject.SetActive(false);
+    }
 
     [ClientRpc]
     private void RpcSetIdvGOControllerData(int playerID, int position)

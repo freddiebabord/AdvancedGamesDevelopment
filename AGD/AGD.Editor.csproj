@@ -236,7 +236,6 @@
     <Compile Include="Assets\Rewired\Internal\Scripts\Editor\CustomInspectors\UserDataStore_PlayerPrefsInspector.cs" />
     <Compile Include="Assets\Rewired\Internal\Scripts\Editor\UnityEditorBridge.cs" />
     <Compile Include="Assets\Scripts\Developer\Editor\FrustumInspector.cs" />
-    <Compile Include="Assets\Scripts\Developer\Editor\LocalFrustumInspector.cs" />
     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Editor\UltimateRopeEditor.cs" />
   </ItemGroup>
   <ItemGroup>

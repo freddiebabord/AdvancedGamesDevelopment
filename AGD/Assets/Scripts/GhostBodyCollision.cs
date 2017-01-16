@@ -23,7 +23,8 @@ public class GhostBodyCollision : MonoBehaviour {
         {
             if (charge)
             {
-                root.GetComponent<GhostCharge>().StealPoints();
+                if(!charge.isCooldown)
+                    root.GetComponent<GhostCharge>().StealPoints();
             }
         }
     }

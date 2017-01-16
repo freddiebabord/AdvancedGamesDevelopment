@@ -47,8 +47,8 @@ public class GhostCharge : MonoBehaviour
     {
         if (ghostFrustum.isTriggered && !isCooldown && ghostBehaviour.ghostTarget == null)
             CalmGhost();
-        if (!ghostFrustum.isTriggered && isCooldown && Time.time - startCooldownTimer > cooldownTimer)
-            isCooldown = false;
+        //if (!ghostFrustum.isTriggered && isCooldown && Time.time - startCooldownTimer > cooldownTimer)
+        //    isCooldown = false;
     }
 
     public void Triggered(Vector3 targetPos)
@@ -90,6 +90,13 @@ public class GhostCharge : MonoBehaviour
         ghostBehaviour.movementSpeed = startSpeed;
         ghostBehaviour.acceleration = startAccel;
         ghostBehaviour.ghostTarget = null;
-        startCooldownTimer = Time.time;
+        StartCoroutine(CooldownWait());
+    }
+
+    IEnumerator CooldownWait()
+    {
+        isCooldown = true;
+        yield return new WaitForSeconds(cooldownTimer);
+        isCooldown = false;
     }
 }

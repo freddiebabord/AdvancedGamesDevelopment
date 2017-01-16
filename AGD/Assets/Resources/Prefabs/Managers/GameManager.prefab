@@ -125,16 +125,109 @@ MonoBehaviour:
   waves:
   - enemyDef:
     - enemySpawner: 0
-      quantity: 1
+      quantity: 10
+    - enemySpawner: 1
+      quantity: 10
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 10
+    - enemySpawner: 1
+      quantity: 10
+    - enemySpawner: 2
+      quantity: 10
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 15
+    - enemySpawner: 1
+      quantity: 15
+    - enemySpawner: 2
+      quantity: 15
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 15
+    - enemySpawner: 1
+      quantity: 15
+    - enemySpawner: 2
+      quantity: 15
+    - enemySpawner: 3
+      quantity: 15
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 20
+    - enemySpawner: 1
+      quantity: 20
+    - enemySpawner: 2
+      quantity: 20
+    - enemySpawner: 3
+      quantity: 20
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 20
+    - enemySpawner: 1
+      quantity: 20
+    - enemySpawner: 2
+      quantity: 20
+    - enemySpawner: 3
+      quantity: 20
+    - enemySpawner: 4
+      quantity: 20
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 25
+    - enemySpawner: 1
+      quantity: 25
+    - enemySpawner: 2
+      quantity: 25
+    - enemySpawner: 3
+      quantity: 25
+    - enemySpawner: 4
+      quantity: 25
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 25
+    - enemySpawner: 1
+      quantity: 25
+    - enemySpawner: 2
+      quantity: 25
+    - enemySpawner: 3
+      quantity: 25
+    - enemySpawner: 4
+      quantity: 25
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 30
+    - enemySpawner: 1
+      quantity: 30
+    - enemySpawner: 2
+      quantity: 30
+    - enemySpawner: 3
+      quantity: 30
+    - enemySpawner: 4
+      quantity: 30
+    - enemySpawner: 5
+      quantity: 30
+  - enemyDef:
+    - enemySpawner: 0
+      quantity: 30
+    - enemySpawner: 1
+      quantity: 30
+    - enemySpawner: 2
+      quantity: 30
+    - enemySpawner: 3
+      quantity: 30
+    - enemySpawner: 4
+      quantity: 30
+    - enemySpawner: 5
+      quantity: 30
   currentWave: 0
   waveSleepTimer: 10
   enemyPrefabs:
-  - {fileID: 1000011758310570, guid: d2f9ad20e63d03d4cac6f91e5a362a4e, type: 2}
-  - {fileID: 1000011714033180, guid: 360c8445f060af1419c1b0a365418cf5, type: 2}
-  - {fileID: 1000012984637492, guid: c30a0e21c75cdbe4a98799421c8f796d, type: 2}
-  - {fileID: 1000014159496386, guid: ea0f34a05224ba542b46f7b4ac5711d9, type: 2}
+  - {fileID: 1000010215651434, guid: d2f9ad20e63d03d4cac6f91e5a362a4e, type: 2}
   - {fileID: 1000012489844284, guid: 4ab4b8897b8f6b84592ca0b07aa22e5d, type: 2}
-  - {fileID: 1000010145515506, guid: c8bada6ca799935458ed13ddfff9a988, type: 2}
+  - {fileID: 1000013592515086, guid: c30a0e21c75cdbe4a98799421c8f796d, type: 2}
+  - {fileID: 1000014019433522, guid: c8bada6ca799935458ed13ddfff9a988, type: 2}
+  - {fileID: 1000013080413824, guid: ea0f34a05224ba542b46f7b4ac5711d9, type: 2}
+  - {fileID: 1000011714033180, guid: 360c8445f060af1419c1b0a365418cf5, type: 2}
   enemiesRemainigText: []
   playerOneAssigned: 0
   GameOverPanel: {fileID: 0}

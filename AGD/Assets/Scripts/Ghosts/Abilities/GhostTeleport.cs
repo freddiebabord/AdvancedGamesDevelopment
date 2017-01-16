@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
+using UnityEngine.Networking;
 
-public class GhostTeleport : MonoBehaviour {
+public class GhostTeleport : NetworkBehaviour {
 
     public float fleeTimer = 10f;
     public float cooldownTimer = 3f;
@@ -23,7 +25,7 @@ public class GhostTeleport : MonoBehaviour {
     {
         maxPlayers = FindObjectOfType<NetManager>().maxPlayers;
         ghostBehaviour = GetComponent<GhostBehaviour>();
-        roomCollection = roomCollection = FindObjectOfType<RoomCollection>() as RoomCollection;
+        roomCollection = roomCollection = FindObjectOfType<RoomCollection>();
         animator = GetComponentInChildren<Animator>();
         ResetFleeTimer();
         ResetCooldownTimer();
@@ -32,22 +34,27 @@ public class GhostTeleport : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update()
-    {
-        playersinRange = CheckforPlayers();
+	{
+	    if (!isServer)
+	        return;
         
-        if (playersinRange > 0 && startFleeTimer == -1)
+        if (playersinRange > 0 && startFleeTimer <= -0.5)
         {
             startFleeTimer = Time.time;
         }
 	}
 
+    private float teleportTime = 0;
+    public float maxTeleportTime = 1.0f;
+
     void FixedUpdate()
     {
         if (isTeleporting)
         {
-            ghostBehaviour.pauseMovement = true;
-            transform.localScale = Vector3.SmoothDamp(transform.localScale, Vector3.zero, ref velocity, 0.01f);
-            if (Vector3.Distance(transform.localScale, Vector3.zero) < 0.1f)
+            teleportTime += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(scale, Vector3.zero, teleportTime / maxTeleportTime);
+           // transform.localScale = Vector3.SmoothDamp(transform.localScale, Vector3.zero, ref velocity, 0.01f);
+            if (transform.localScale.magnitude <= 0.001f)
             {
                 Teleport();
             }
@@ -62,11 +69,16 @@ public class GhostTeleport : MonoBehaviour {
                 animator.SetBool("Player In Range", false);
             }
         }
+
+        //if(isServer)
+        //    playersinRange = CheckforPlayers();
     }
 
     public void StartTeleport()
     {
         isTeleporting = true;
+        ghostBehaviour.pauseMovement = true;
+        teleportTime = 0.0f;
     }
 
     void Teleport()
@@ -74,6 +86,7 @@ public class GhostTeleport : MonoBehaviour {
         transform.position = roomCollection.GetRandomPositionInRoom();
         transform.localScale = scale;
         isTeleporting = false;
+        ghostBehaviour.pauseMovement = false;
         animator.SetBool("Scared", false);
     }
 
@@ -91,11 +104,27 @@ public class GhostTeleport : MonoBehaviour {
     {
         int players = 0;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, playerPresenceRadius);
-        foreach (Collider collider in hitColliders)
-        {
-            //print(collider);
-            players = (collider.gameObject.tag == "Player") ? (players += 1) : players;
-        }
+        players = hitColliders.Count(x => x.gameObject.CompareTag("Player"));
+        //foreach (Collider collider in hitColliders)
+        //{
+        //    //print(collider);
+        //    players = (collider.gameObject.tag == "Player") ? (players += 1) : players;
+        //}
         return players;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Players in range: " +  playersinRange);
+            playersinRange++;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            playersinRange--;
     }
 }

@@ -24,8 +24,8 @@ public class ScorePanel : MonoBehaviour
     {
         for (int i = 0; i < GameManager.instance.players.Count; ++i)
         {
-            if (!scoreItems[i])
-                continue;
+            if (i >= scoreItems.Count) continue;
+            if (scoreItems[i] == null) continue;
             if(GameManager.instance.ScoreTable.ContainsKey(i))
                 scoreItems[i].SetScore(GameManager.instance.ScoreTable[i]);
             else if(ready)

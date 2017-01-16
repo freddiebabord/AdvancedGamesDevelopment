@@ -1618,7 +1618,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012489844284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.9911, y: -2.7823188, z: 6.9312325}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2704,9 +2704,9 @@ MonoBehaviour:
   handParent: {fileID: 1000011462404678}
   fearImpact: 100
   sizeOffset: 0.1
-  growSpeed: 0.25
+  growSpeed: 1
   shrinkSpeed: 1
-  throwForce: 100
+  throwForce: 10
 --- !u!114 &114000010577241892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2803,7 +2803,7 @@ MonoBehaviour:
   movementSpeed: 2
   rotationSpeed: 10
   acceleration: 0.1
-  fearPresence: 10
+  fearPresence: 100
   targetOffset: 0.1
   score: 100
   ghostTarget: {fileID: 0}
@@ -2814,6 +2814,7 @@ MonoBehaviour:
   isPeaceful: 0
   damageTextPool: {fileID: 0}
   pauseMovement: 0
+  animator: {fileID: 0}
 --- !u!137 &137000010576368816
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

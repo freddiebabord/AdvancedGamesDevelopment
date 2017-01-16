@@ -45,7 +45,7 @@ public class GhostBehaviour : NetworkBehaviour
 
     [SyncVar]
     float currentHealth;
-    Animator animator;
+    public Animator animator;
     float waitTimeStart;
     float chosenWaitTime;
     bool waiting;
@@ -62,7 +62,8 @@ public class GhostBehaviour : NetworkBehaviour
     {
         roomCollection = FindObjectOfType<RoomCollection>() as RoomCollection;
         GameManager.instance.RegisterEnemyToRadarHelper(this);
-        animator = GetComponentInChildren<Animator>();
+        if(!animator)
+            animator = GetComponentInChildren<Animator>();
         currentHealth = maxHealth;
         Frustum frustum = GetComponent<Frustum>();
         //m_networkFrustum = frustum.gameObject;
@@ -76,9 +77,8 @@ public class GhostBehaviour : NetworkBehaviour
         //}
         damageTextPool = GetComponent<ObjectPool>();
         charge = GetComponent<GhostCharge>();
-        if (!isServer)
-            return;
-        Rpc_SetTarget(roomCollection.GetRandomPositionInRoom());
+        if (isServer)
+            Rpc_SetTarget(roomCollection.GetRandomPositionInRoom());
     }
 
     void OnDestroy()
@@ -88,14 +88,20 @@ public class GhostBehaviour : NetworkBehaviour
 
     void Update()
     {
-        pauseMovement = false;
+        //pauseMovement = false;
+
         if (waiting && Time.time - waitTimeStart > chosenWaitTime)
         {
             waiting = false;
-            Cmd_SetTarget(roomCollection.GetRandomPositionInRoom());
+            if (isServer)
+                Cmd_SetTarget(roomCollection.GetRandomPositionInRoom());
         }
-        Quaternion targetRotation = Quaternion.LookRotation(interestVector - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        if ((interestVector - transform.position).magnitude > 0.01f ||
+            (interestVector - transform.position).magnitude < -0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(interestVector - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
 
         if (ghostTarget != null)
         {
@@ -111,7 +117,7 @@ public class GhostBehaviour : NetworkBehaviour
 
     void LateUpdate()
     {
-        animator.SetFloat("Damage", damage);
+        
         if (!pauseMovement)
         {
             transform.position = Vector3.SmoothDamp(transform.position, goalPosition, ref velocity, acceleration, movementSpeed);
@@ -158,33 +164,33 @@ public class GhostBehaviour : NetworkBehaviour
         currentHealth = 0;
     }
 
-    public void TakeDamage(GameObject player, float dmg)
+    public void TakeDamage(int player, float dmg)
     {
         //Debug.Log(id + " " + dmg);
         Cmd_TakeDamage(player, dmg);
     }
 
     [Command]
-    public void Cmd_TakeDamage(GameObject player, float dmg)
+    public void Cmd_TakeDamage(int player, float dmg)
     {
-        while (damageFromPlayers.Count - 1 <= player.GetComponent<NetworkedThirdPersonCharacter>().playerID)
+        while (damageFromPlayers.Count - 1 <= player)
             damageFromPlayers.Add(0.0f);
         currentHealth -= dmg;
+        animator.SetFloat("Damage", damage);
         if (currentHealth > 0.0f)
             Rpc_TakeDamage(player, dmg);
         else {
             for (int i = 0; i < damageFromPlayers.Count; ++i)
                 GameManager.instance.PostScoreToScoreTable(i, Mathf.RoundToInt((damageFromPlayers[i] / maxHealth) * score));
             //Cmd_RemoveRadarObj();
-            Cmd_DestroyGhost(player.GetComponent<NetworkedThirdPersonCharacter>().playerID);
+            Cmd_DestroyGhost(player);
         }
     }
 
     [Command]
     public void Cmd_SetTarget(Vector3 newTarget)
     {
-        if (!isServer)
-            return;
+       
         Rpc_SetTarget(newTarget);
     }
 
@@ -196,21 +202,21 @@ public class GhostBehaviour : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void Rpc_TakeDamage(GameObject player, float dmg)
+    public void Rpc_TakeDamage(int player, float dmg)
     {
         if (!charge)
         {
             pauseMovement = true;
         }
-        while (damageFromPlayers.Count - 1 <= player.GetComponent<NetworkedThirdPersonCharacter>().playerID)
+        while (damageFromPlayers.Count - 1 <= player)
             damageFromPlayers.Add(0.0f);
-        damageFromPlayers[player.GetComponent<NetworkedThirdPersonCharacter>().playerID] += dmg;
-
+        damageFromPlayers[player] += dmg;
+        animator.SetFloat("Damage", damage);
         //print("PlayerID: " + id + "\nCurrent Damage: " + damageFromPlayers[id]);
         if (!displayingText)
             StartCoroutine(TextDisplay(dmg));
         else
-            damage += damage;
+            damage += dmg;
     }
 
     private bool displayingText = false;
@@ -255,7 +261,7 @@ public class GhostBehaviour : NetworkBehaviour
     //            
     //    }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (!isServer)
             return;
@@ -272,8 +278,8 @@ public class GhostBehaviour : NetworkBehaviour
         int pointsTaken;
         if (charge)
         {
-            charge.StealPoints();
-
+            if(!charge.isCooldown)
+                charge.StealPoints();
         }
 
         pointsTaken = charge ? charge.pointsToSteal + fearPresence : fearPresence;

@@ -12,7 +12,6 @@ using Prototype.NetworkLobby;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(NavMeshAgent))]
 public class NetworkedThirdPersonCharacter : NetworkBehaviour
 { 
 	[SerializeField] float m_MovingTurnSpeed = 360;
@@ -70,6 +69,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         set {
             controllsReversed = value;
             uc.reverseControls = controllsReversed;
+            if (controllsReversed && !resettingControls)
+            {
+                StartCoroutine(ResetControls());
+            }
         }
     }
     [HideInInspector] public bool disableControls = false;
@@ -81,7 +84,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             m_MouseLook.disabled = value;
         }
     }
-    private NavMeshAgent navMeshAgent;
+
+   
+
+    //private NavMeshAgent navMeshAgent;
 
     [Space(10)]
     [Header("Weapon Variables")]
@@ -147,6 +153,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     private float m_NextStep;
     [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
     [SerializeField]  private float m_StepInterval;
+    public Text waveText;
+    public Texture2D[] diffuseTextures, maskDiffuseTextures;
+    public Renderer alexRenderer, maskRenderer;
 
     //public float fearLevel = 0;
     //public float maxFearLevel = 50.0f;
@@ -165,8 +174,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         m_CapsuleHeight = m_Capsule.height;
 		m_CapsuleCenter = m_Capsule.center;
         m_Camera = GetComponentInChildren<Camera>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-
+        //navMeshAgent = GetComponent<NavMeshAgent>();
+	    
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		lineRenderer = GetComponentInChildren<LineRenderer>();
@@ -232,7 +241,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		beamLight.gameObject.SetActive (false);
 		beamLightCLight.m_Color = Color.cyan;
 		GameManager.instance.players.Add(this);
-		
+        alexRenderer.material.mainTexture = diffuseTextures[playerID];
+	    maskRenderer.material.mainTexture = maskDiffuseTextures[playerID];
         if (!isLocalPlayer)
         {
             m_Camera.gameObject.SetActive(false);
@@ -332,21 +342,21 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         {
             RevokePlayerControlAndSetPlayerAIToTarget(positionOnSpawn);
         }
-        if (navMeshAgent.enabled)
-        {
-			planeProjection = Vector3.ProjectOnPlane(navMeshAgent.velocity, m_GroundNormal);
-			planeProjection = transform.TransformDirection(planeProjection);
-			m_TurnAmount = planeProjection.x;
-			m_ForwardAmount = planeProjection.z;
+   //     if (navMeshAgent.enabled)
+   //     {
+			//planeProjection = Vector3.ProjectOnPlane(navMeshAgent.velocity, m_GroundNormal);
+			//planeProjection = transform.TransformDirection(planeProjection);
+			//m_TurnAmount = planeProjection.x;
+			//m_ForwardAmount = planeProjection.z;
 
-            UpdateAnimator(transform.InverseTransformDirection(navMeshAgent.velocity));
-            if (Vector3.Distance(transform.position, navMeshAgent.destination) < 2.5f &&  navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-            {
-                navMeshAgent.enabled = false;
-                DisableControls = false;
-            }
-        }
-        else
+   //         UpdateAnimator(transform.InverseTransformDirection(navMeshAgent.velocity));
+   //         if (Vector3.Distance(transform.position, navMeshAgent.destination) < 2.5f &&  navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+   //         {
+   //             navMeshAgent.enabled = false;
+   //             DisableControls = false;
+   //         }
+   //     }
+   //     else
         {
             if (firing)
             {
@@ -533,8 +543,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         for (int i = 0; i < beamLightSegments.Count; ++i)
             beamLightSegments[i].gameObject.SetActive(false);
         beamLightCLight.gameObject.SetActive(false);
-        rootMuzzleParticleSystem.Stop(true);
-        rootParticleSystem.Stop(false);
+        if(rootMuzzleParticleSystem)
+            rootMuzzleParticleSystem.Stop(true);
+        if(rootParticleSystem)
+            rootParticleSystem.Stop(false);
         virtaulWeaponAudioSource.Stop();
         weaponAudioSource.Stop();
         if (GameManager.instance.players.Contains(this))
@@ -632,10 +644,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		m_Animator.SetBool("Fire",firing);
 		//m_Animator.SetBool("Crouch", m_Crouching);
 		m_Animator.SetBool("OnGround", m_IsGrounded);
-		if (!m_IsGrounded)
-		{
-			m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
-		}
+		//if (!m_IsGrounded)
+		//{
+		//	m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+		//}
 
 		// calculate which leg is behind, so as to leave that leg trailing in the jump animation
 		// (This code is reliant on the specific run cycle offset in our animations,
@@ -675,7 +687,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	void HandleGroundedMovement(bool crouch, bool jump)
 	{
 		// check whether conditions are right to allow a jump:
-		if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+		if (jump && !crouch && m_IsGrounded)
 		{
 			// jump!
 			m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
@@ -811,8 +823,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     public void RevokePlayerControlAndSetPlayerAIToTarget(Vector3 targetPosition)
     {
         DisableControls = true;
-        navMeshAgent.enabled = true;
-        navMeshAgent.SetDestination(targetPosition);
+        //navMeshAgent.enabled = true;
+        //navMeshAgent.SetDestination(targetPosition);
     }
 
 	float sphereRechargeSpeed = 0.5f;
@@ -910,5 +922,14 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	{
 		Application.Quit ();
 	}
+
+    private bool resettingControls = false;
+    IEnumerator ResetControls()
+    {
+        resettingControls = true;
+        yield return new WaitForSeconds(5.0f);
+        ReversedControls = false;
+        resettingControls = false;
+    }
 }
 

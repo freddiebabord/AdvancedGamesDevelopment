@@ -15,72 +15,43 @@ public class EnemyBase : NetworkBehaviour {
 
 	void Awake()
 	{
-		agent = GetComponent<NavMeshAgent>();
+		//agent = GetComponent<NavMeshAgent>();
 		//ghostPosition = GetComponentInChildren<GhostBodyAdjustments>();
 		ghostBehaviour = GetComponent<GhostBehaviour> ();
 	}
-
-	void Start () {
-		
-        //GameManager.instance.RegisterEnemyToRadarHelper(this);
-	}
-
-    void OnDestroy()
-    {
-        //GameManager.instance.DeRegisterEnemyToRadarHelper(this);
-    }
 
 	Vector3 randomDirection;
 	NavMeshHit hit;
 	float randY;
 
-	// Update is called once per frame on the server
-	void Update () {
-		if(!isServer)
-			return;
 
-		if (!ghostBehaviour)
-			return;
-        //Currently gets a random point on the navmesh
-        if (!agent.hasPath)
-        {
-			randomDirection = Random.insideUnitSphere * walkRadius;
-            randomDirection += transform.position; 
-            
-            NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
-            randY = Random.Range(0, maxFloatHeight);
-			target = new Vector3(hit.position.x, randY, hit.position.z);
-            RpcSetPosition(target);
-        }
-        
-	}
 
 	//Set the target of the ai agent across the network
 	[ClientRpc]
 	public void RpcSetPosition(Vector3 position)
 	{
 		target = position;
-        if(agent.isOnNavMesh)
-       // Vector3.Slerp(transform.position, position, );
-		    agent.SetDestination(target);
-        else
-            GetComponent<GhostBehaviour>().Kill();
+      //  if(agent.isOnNavMesh)
+      // // Vector3.Slerp(transform.position, position, );
+		    //agent.SetDestination(target);
+      //  else
+      //      GetComponent<GhostBehaviour>().Kill();
 	}
 
 	//Draw the agents path towards the target
 	void OnDrawGizmos()
 	{
-        if (Application.isPlaying)
-        {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(target, 0.5f);
-            if (!agent.hasPath)
-                return;
-            Gizmos.DrawLine(transform.position, agent.path.corners[0]);
-            for (int i = 0; i < agent.path.corners.Length - 1; i++)
-            {
-                Gizmos.DrawLine(agent.path.corners[i], agent.path.corners[i + 1]);
-            }
-        }
+        //if (Application.isPlaying)
+        //{
+        //    Gizmos.color = Color.cyan;
+        //    Gizmos.DrawWireSphere(target, 0.5f);
+        //    if (!agent.hasPath)
+        //        return;
+        //    Gizmos.DrawLine(transform.position, agent.path.corners[0]);
+        //    for (int i = 0; i < agent.path.corners.Length - 1; i++)
+        //    {
+        //        Gizmos.DrawLine(agent.path.corners[i], agent.path.corners[i + 1]);
+        //    }
+        //}
 	}
 }

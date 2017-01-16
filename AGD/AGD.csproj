@@ -322,12 +322,11 @@
     <Compile Include="Assets\Scripts\GameOverController.cs" />
     <Compile Include="Assets\Scripts\GhostBodyCollision.cs" />
     <Compile Include="Assets\Scripts\GhostDamageText.cs" />
-    <Compile Include="Assets\Scripts\Ghosts\Abilities\Charge.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostCharge.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostReverse.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostSwell.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostTeleport.cs" />
     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostThrow.cs" />
-    <Compile Include="Assets\Scripts\Ghosts\Abilities\LocalFrustum.cs" />
-    <Compile Include="Assets\Scripts\Ghosts\Abilities\Teleportation.cs" />
     <Compile Include="Assets\Scripts\Ghosts\AnimationEventReciever.cs" />
     <Compile Include="Assets\Scripts\Ghosts\EnemyBase.cs" />
     <Compile Include="Assets\Scripts\Ghosts\EnemyBaseLocal.cs" />
@@ -365,6 +364,7 @@
     <Compile Include="Assets\Scripts\PlayerNameCanvas.cs" />
     <Compile Include="Assets\Scripts\RandomFloat.cs" />
     <Compile Include="Assets\Scripts\RegisterPostBehaviourToSettingsManager.cs" />
+    <Compile Include="Assets\Scripts\RoomCollection.cs" />
     <Compile Include="Assets\Scripts\Rooms\Room.cs" />
     <Compile Include="Assets\Scripts\Rooms\RoomCollider.cs" />
     <Compile Include="Assets\Scripts\RotateAroundObject.cs" />

@@ -44,7 +44,7 @@ public class GhostThrow : NetworkBehaviour {
     public void ThrowGlob()
     {
 		m_networkGlob.transform.parent = null;
-        Vector3 testHeading = ghostBehaviour.ghostTarget.GetComponent<CapsuleCollider>().bounds.center - transform.position;
+        Vector3 testHeading = ghostBehaviour.ghostTarget.GetComponentInChildren<Collider>().bounds.center - transform.position;
 		globRigidbody.AddRelativeForce(testHeading.normalized * throwForce, ForceMode.Impulse);
 		m_networkGlob.GetComponent<Glob> ().ThrowGlob (shrinkSpeed);
     }
