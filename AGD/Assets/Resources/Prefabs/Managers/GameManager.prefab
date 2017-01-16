@@ -125,100 +125,100 @@ MonoBehaviour:
   waves:
   - enemyDef:
     - enemySpawner: 0
-      quantity: 10
+      quantity: 8
     - enemySpawner: 1
-      quantity: 10
+      quantity: 2
   - enemyDef:
     - enemySpawner: 0
-      quantity: 10
+      quantity: 4
     - enemySpawner: 1
-      quantity: 10
+      quantity: 2
     - enemySpawner: 2
-      quantity: 10
+      quantity: 4
   - enemyDef:
     - enemySpawner: 0
-      quantity: 15
+      quantity: 7
     - enemySpawner: 1
-      quantity: 15
+      quantity: 3
     - enemySpawner: 2
-      quantity: 15
+      quantity: 5
   - enemyDef:
     - enemySpawner: 0
-      quantity: 15
+      quantity: 6
     - enemySpawner: 1
-      quantity: 15
+      quantity: 1
     - enemySpawner: 2
-      quantity: 15
+      quantity: 6
     - enemySpawner: 3
-      quantity: 15
+      quantity: 2
   - enemyDef:
     - enemySpawner: 0
-      quantity: 20
+      quantity: 8
     - enemySpawner: 1
-      quantity: 20
+      quantity: 2
     - enemySpawner: 2
-      quantity: 20
+      quantity: 8
     - enemySpawner: 3
-      quantity: 20
+      quantity: 2
   - enemyDef:
     - enemySpawner: 0
-      quantity: 20
+      quantity: 6
     - enemySpawner: 1
-      quantity: 20
+      quantity: 2
     - enemySpawner: 2
-      quantity: 20
+      quantity: 6
     - enemySpawner: 3
-      quantity: 20
+      quantity: 2
     - enemySpawner: 4
-      quantity: 20
+      quantity: 4
   - enemyDef:
     - enemySpawner: 0
-      quantity: 25
+      quantity: 7
     - enemySpawner: 1
-      quantity: 25
+      quantity: 7
     - enemySpawner: 2
-      quantity: 25
+      quantity: 3
     - enemySpawner: 3
-      quantity: 25
+      quantity: 3
     - enemySpawner: 4
-      quantity: 25
+      quantity: 5
   - enemyDef:
     - enemySpawner: 0
-      quantity: 25
+      quantity: 5
     - enemySpawner: 1
-      quantity: 25
+      quantity: 5
     - enemySpawner: 2
-      quantity: 25
+      quantity: 3
     - enemySpawner: 3
-      quantity: 25
+      quantity: 4
     - enemySpawner: 4
-      quantity: 25
+      quantity: 6
   - enemyDef:
     - enemySpawner: 0
-      quantity: 30
+      quantity: 10
     - enemySpawner: 1
-      quantity: 30
+      quantity: 1
     - enemySpawner: 2
-      quantity: 30
+      quantity: 5
     - enemySpawner: 3
-      quantity: 30
+      quantity: 5
     - enemySpawner: 4
-      quantity: 30
+      quantity: 2
     - enemySpawner: 5
-      quantity: 30
+      quantity: 2
   - enemyDef:
     - enemySpawner: 0
-      quantity: 30
+      quantity: 8
     - enemySpawner: 1
-      quantity: 30
+      quantity: 1
     - enemySpawner: 2
-      quantity: 30
+      quantity: 8
     - enemySpawner: 3
-      quantity: 30
+      quantity: 4
     - enemySpawner: 4
-      quantity: 30
+      quantity: 4
     - enemySpawner: 5
-      quantity: 30
+      quantity: 5
   currentWave: 0
   waveSleepTimer: 10
   enemyPrefabs:

@@ -29,6 +29,7 @@ public class PickUps : NetworkBehaviour {
 
     public float cooldown = 5.0f;
     public bool cooloff = false;
+	public float powerupDuration = 5;
 
     GameObject the_pickup;
 
@@ -85,7 +86,7 @@ public class PickUps : NetworkBehaviour {
             {
                 power = false;
             }
-            timer.value -= 1;
+			timer.value -= 1 * Time.deltaTime;
 
 
             if (pow == PowerName.UnlimitedStamina && active != ActivePower.Speed)
@@ -96,11 +97,14 @@ public class PickUps : NetworkBehaviour {
             else if(pow == PowerName.PowerBoost && active != ActivePower.Power)
             {
                 the_pickup.GetComponent<PowerBoost>().Triggered();
-                active = ActivePower.Power;
+				if(!weaponOutputDoubled)
+					StartCoroutine(DoubleWeaponOutput(gameObject.GetComponent<NetworkedThirdPersonCharacter>()));
+				active = ActivePower.Power;
             }
             else if (pow == PowerName.WeaponRecharge && active != ActivePower.Weapon)
             {
                 the_pickup.GetComponent<WeaponRecharge>().Triggered();
+				gameObject.GetComponent<NetworkedThirdPersonCharacter> ().currentWeaponTime = 0.0f;
                 active = ActivePower.Weapon;
             }
             else if (pow == PowerName.NullifyFear && active != ActivePower.Nullify)
@@ -122,6 +126,15 @@ public class PickUps : NetworkBehaviour {
         }
 
     }
+	bool weaponOutputDoubled = false;
+	IEnumerator DoubleWeaponOutput(NetworkedThirdPersonCharacter player)
+	{
+		weaponOutputDoubled = true;
+		player.damagePerSecond *= 2;
+		yield return new WaitForSeconds (powerupDuration);
+		player.damagePerSecond /= 2;
+		weaponOutputDoubled = false;
+	}
 
 	void OnTriggerEnter(Collider other)
     {
