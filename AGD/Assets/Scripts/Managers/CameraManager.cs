@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraManager : MonoBehaviour
 {
     public Camera targetCamera;
-    public Transform characterHead;
+    public Transform characterHead, headOffsetTargetTransform;
     private Vector3 startLocalPosition;
     public LayerMask targetMask;
     private float maxDistance;
@@ -58,7 +58,7 @@ public class CameraManager : MonoBehaviour
 
     void LerpToHead()
     {
-        targetCamera.transform.localPosition = Vector3.Lerp(targetCamera.transform.localPosition, targetCamera.transform.InverseTransformPoint(characterHead.transform.position), Mathf.Clamp01(currentLerpTime / lerpDuration));
+		targetCamera.transform.localPosition = Vector3.Lerp(targetCamera.transform.localPosition, targetCamera.transform.InverseTransformPoint(headOffsetTargetTransform.transform.position), Mathf.Clamp01(currentLerpTime / lerpDuration));
         currentLerpTime+=Time.deltaTime;
     }
 

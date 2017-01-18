@@ -1,18 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1822101463, guid: 09c9b883b79ef864a99683bb36c5776d, type: 3}
-  m_Name: EditorSettings
-  m_EditorClassIdentifier: 
-  programVersion1: 1
-  programVersion2: 0
-  programVersion3: 0
-  programVersion4: 105
-  dataVersion: 1
+version https://git-lfs.github.com/spec/v1
+oid sha256:ea6c3f99bee8c1fabe93212d979a41a6d867dc49e727eb0eca41ddcb3dee1a65
+size 491

@@ -116,7 +116,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 }
                 if(player.GetButtonDown("Fire"))
                 {
-                    m_Character.Cmd_BeginFire();
+                    if(!m_isRunning)
+                        m_Character.Cmd_BeginFire();
+                    else
+                        m_Character.Cmd_EndFire();
                 }
                 else if(player.GetButtonUp("Fire"))
                 {

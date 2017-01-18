@@ -146,11 +146,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  score: 500
+  waitTime: {x: 3, y: 5}
   movementSpeed: 5
+  rotationSpeed: 10
+  acceleration: 0.1
   fearPresence: 10
+  targetOffset: 0.1
+  score: 500
   ghostTarget: {fileID: 0}
+  goalPosition: {x: 0, y: 0, z: 0}
   frustumPrefab: {fileID: 0}
+  ghostTrigger: 0
+  isPeaceful: 0
+  damageTextPool: {fileID: 0}
+  pauseMovement: 0
 --- !u!114 &114000011782983114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,22 +174,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 1
   m_AssetId:
-    i0: 250
-    i1: 29
-    i2: 244
-    i3: 42
+    i0: 155
+    i1: 247
+    i2: 81
+    i3: 18
     i4: 8
-    i5: 131
-    i6: 56
-    i7: 148
-    i8: 9
-    i9: 224
-    i10: 90
-    i11: 167
-    i12: 202
-    i13: 144
-    i14: 71
-    i15: 146
+    i5: 188
+    i6: 215
+    i7: 36
+    i8: 11
+    i9: 14
+    i10: 240
+    i11: 28
+    i12: 254
+    i13: 112
+    i14: 219
+    i15: 56
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &114000011844737996
@@ -198,10 +207,6 @@ MonoBehaviour:
   isPeaceful: 0
   isAggravated: 0
   peaceful:
-    near: {x: 0, y: 0}
-    far: {x: 0, y: 0}
-    distance: 0
-  aggro:
     near: {x: 0, y: 0}
     far: {x: 0, y: 0}
     distance: 0
@@ -241,8 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70742c3df74894a9f8169af42df801fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMap: 3
-  firstPass: 0
+  maxFloatHeight: 50
+  agent: {fileID: 0}
   walkRadius: 10
   target: {x: 0, y: 0, z: 0}
 --- !u!135 &135000011546019274

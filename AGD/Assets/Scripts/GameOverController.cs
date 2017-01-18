@@ -15,6 +15,10 @@ public class GameOverController : NetworkBehaviour
 {
     public List<GOHolder> dataContainers = new List<GOHolder>();
 
+    void Start()
+    {
+        GameManager.instance.RegisterGameOVerController(this);
+    }
 
     public void ReturnToMenu()
     {

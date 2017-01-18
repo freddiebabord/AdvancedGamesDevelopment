@@ -17,7 +17,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         
         private bool m_cursorIsLocked = true;
-        public Transform weaponRotationPoint;
         public Transform weapon;
         public Player player;
 
@@ -51,7 +50,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             Vector3 eRot = camera.transform.rotation.eulerAngles;
             eRot.y = 0;
             eRot.z = 0;
-            weapon.transform.localRotation = Quaternion.Euler(eRot);
+			weapon.transform.rotation = camera.transform.rotation;// Quaternion.Euler(eRot);
 
         }
 

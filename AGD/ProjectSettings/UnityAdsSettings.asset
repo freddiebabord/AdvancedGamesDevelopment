@@ -1,11 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!292 &1
-UnityAdsSettings:
-  m_ObjectHideFlags: 0
-  m_Enabled: 0
-  m_InitializeOnStartup: 1
-  m_TestMode: 0
-  m_EnabledPlatforms: 4294967295
-  m_IosGameId: 
-  m_AndroidGameId: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:5870013b5de03f3c4d2f28d2ad3ab4dc85c8273f0daf6666e70ac816481ae192
+size 234

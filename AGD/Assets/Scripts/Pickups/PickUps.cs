@@ -11,10 +11,10 @@ public class PickUps : NetworkBehaviour {
 
     Color temp;
 
-    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, None };
+    enum PowerName { UnlimitedStamina, WeaponRecharge, PowerBoost, NullifyFear, None };
     PowerName pow = PowerName.None;
 
-    public enum ActivePower { Speed, Power, Weapon, None};
+    public enum ActivePower { Speed, Power, Weapon, Nullify, None };
     public ActivePower active = ActivePower.None;
 
     public bool power = false;
@@ -22,48 +22,17 @@ public class PickUps : NetworkBehaviour {
     string power_name = "";
 
     // GameObject the_text;
-    public Text power_obtained;
+   // public Text power_obtained;
     public Slider timer;
     public Slider stamina;
     
 
     public float cooldown = 5.0f;
     public bool cooloff = false;
+	public float powerupDuration = 5;
 
     GameObject the_pickup;
 
-    void Start()
-    {
-        if (!isLocalPlayer)
-            return;
-
-        //the_text = new GameObject("MyText");
-        //the_text.transform.SetParent(GameObject.FindObjectOfType<CanvasGroup>().transform);
-
-       // power_obtained = GameObject.Find("PowerupText").GetComponent<Text>();
-
-      //  power_obtained.transform.position = new Vector3(410, 220, 0);
-
-      //  power_obtained.font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-
-      //  the_text.GetComponent<RectTransform>().anchorMin = new Vector2(1, 1);
-      //  the_text.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
-
-        //power_obtained.horizontalOverflow = HorizontalWrapMode.Overflow;
-
-        //Slider[] get_sliders = FindObjectsOfType<Slider>();
-
-        //for(int i = 0; i < get_sliders.Length; i++)
-        //{
-        //    if (get_sliders[i].name == "Stamina")
-        //        stamina = get_sliders[i];
-        //    else if (get_sliders[i].name == "Slider")
-        //        timer = get_sliders[i];
-        //}
-        
-
-
-    }
 
     void Update()
     {
@@ -117,7 +86,7 @@ public class PickUps : NetworkBehaviour {
             {
                 power = false;
             }
-            timer.value -= 1;
+			timer.value -= 1 * Time.deltaTime;
 
 
             if (pow == PowerName.UnlimitedStamina && active != ActivePower.Speed)
@@ -128,25 +97,44 @@ public class PickUps : NetworkBehaviour {
             else if(pow == PowerName.PowerBoost && active != ActivePower.Power)
             {
                 the_pickup.GetComponent<PowerBoost>().Triggered();
-                active = ActivePower.Power;
+				if(!weaponOutputDoubled)
+					StartCoroutine(DoubleWeaponOutput(gameObject.GetComponent<NetworkedThirdPersonCharacter>()));
+				active = ActivePower.Power;
             }
             else if (pow == PowerName.WeaponRecharge && active != ActivePower.Weapon)
             {
                 the_pickup.GetComponent<WeaponRecharge>().Triggered();
+				gameObject.GetComponent<NetworkedThirdPersonCharacter> ().currentWeaponTime = 0.0f;
                 active = ActivePower.Weapon;
             }
+            else if (pow == PowerName.NullifyFear && active != ActivePower.Nullify)
+            {
+                the_pickup.GetComponent<NullifyFear>().Triggered();
+                active = ActivePower.Nullify;
+            }
 
-            power_obtained.text = power_name;
-            power_obtained.color = temp;
+            //power_obtained.text = power_name;
+            var cb = timer.colors;
+            cb.normalColor = temp;
+            timer.colors = cb;
 
         }
         else
         {
-            power_obtained.text = "No power";
+           // power_obtained.text = "No power";
             active = ActivePower.None; 
         }
 
     }
+	bool weaponOutputDoubled = false;
+	IEnumerator DoubleWeaponOutput(NetworkedThirdPersonCharacter player)
+	{
+		weaponOutputDoubled = true;
+		player.damagePerSecond *= 2;
+		yield return new WaitForSeconds (powerupDuration);
+		player.damagePerSecond /= 2;
+		weaponOutputDoubled = false;
+	}
 
 	void OnTriggerEnter(Collider other)
     {
@@ -177,6 +165,12 @@ public class PickUps : NetworkBehaviour {
                 {
                     temp = colours[2];
                     pow = PowerName.WeaponRecharge;
+
+                }
+                else if (other.gameObject.GetComponent<NullifyFear>() != null)
+                {
+                    temp = colours[3];
+                    pow = PowerName.NullifyFear;
 
                 }
 

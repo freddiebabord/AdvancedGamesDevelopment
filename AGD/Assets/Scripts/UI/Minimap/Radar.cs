@@ -3,9 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Xsl;
-using UnityEngine.Networking;
 
+[System.Serializable]
 //General struct for the objects that will be shown in the radar.
 public class RadarObject
 {
@@ -13,13 +12,14 @@ public class RadarObject
     public GameObject owner { get; set; }
 }
 
-public class Radar : NetworkBehaviour {
+public class Radar : MonoBehaviour {
 
 	public GameObject radar;
 
 	//Play with this map_scale to bring the objects either closer together or further away in the radar.
 	public float map_scale = 0.1f;
 
+    [SerializeField]
 	public List<RadarObject> radar_objects = new List<RadarObject>();
     private Vector2 radarDims, halfRadarDims;
 
@@ -109,8 +109,8 @@ public class Radar : NetworkBehaviour {
             bY = bY * -map_scale; // scales down the y-coordinate by half so that the plot stays within our radar
 
             RectTransform rt = radar_objects[i].icon.GetComponent<RectTransform>();
-
-            rt.localPosition = new Vector3(bX + halfRadarDims.x, bY + halfRadarDims.y, -1);// + radar.transform.position;
+			//- halfRadarDims.x/2
+            rt.localPosition = new Vector3(bX , bY, -1);// + radar.transform.position;
             rt.localScale = new Vector3(1, 1, 1);
         }
         
@@ -119,8 +119,7 @@ public class Radar : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(isLocalPlayer)
-        	DrawRadar();
+        DrawRadar();
 	}
 
 }

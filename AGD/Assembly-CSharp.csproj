@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;UNITY_64;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;UNITY_64;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;CROSS_PLATFORM_INPUT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -45,8 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Do NOT Show\GhostCharge.cs" />
-     <Compile Include="Assets\Do NOT Show\Shoot.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\DraggablePanel.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\EventSystemChecker.cs" />
      <Compile Include="Assets\External\Lobby\Scripts\Lobby\LobbyCountdownPanel.cs" />
@@ -62,6 +60,7 @@
      <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
      <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
+     <Compile Include="Assets\Frost\FrostEffect.cs" />
      <Compile Include="Assets\Resources\Art\Realistic Effects Pack\Materials\Objects\FireJetPack\FlyDemo.cs" />
      <Compile Include="Assets\Resources\Art\Realistic Effects Pack\Scripts\Demo\MyGUI3_1.cs" />
      <Compile Include="Assets\Resources\Art\Realistic Effects Pack\Scripts\Prefabs\Balls\AddMaterialOnHit.cs" />
@@ -102,9 +101,6 @@
      <Compile Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs" />
      <Compile Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\Scripts\SmoothMouseLook.cs" />
-     <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs" />
-     <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs" />
-     <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" />
      <Compile Include="Assets\Resources\Standard Assets\DeferredDecals\Decal.cs" />
      <Compile Include="Assets\Resources\Standard Assets\DeferredDecals\DeferredDecalRenderer.cs" />
      <Compile Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\AmbientOcclusion.cs" />
@@ -284,11 +280,15 @@
      <Compile Include="Assets\RippleEffect\RippleEffect.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\Developer\DevShortcuts.cs" />
+     <Compile Include="Assets\Scripts\GameOverController.cs" />
      <Compile Include="Assets\Scripts\GhostBodyCollision.cs" />
      <Compile Include="Assets\Scripts\GhostDamageText.cs" />
-     <Compile Include="Assets\Scripts\Ghosts\Abilities\Charge.cs" />
-     <Compile Include="Assets\Scripts\Ghosts\Abilities\LocalFrustum.cs" />
-     <Compile Include="Assets\Scripts\Ghosts\Abilities\Teleportation.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostCharge.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostReverse.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostSwell.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostTeleport.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostThrow.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\AnimationEventReciever.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyBase.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyBaseLocal.cs" />
      <Compile Include="Assets\Scripts\Ghosts\EnemyPoolSpawner.cs" />
@@ -297,6 +297,7 @@
      <Compile Include="Assets\Scripts\Ghosts\GhostBehaviour.cs" />
      <Compile Include="Assets\Scripts\Ghosts\GhostBehaviourLocal.cs" />
      <Compile Include="Assets\Scripts\Ghosts\GhostBodyAdjustments.cs" />
+     <Compile Include="Assets\Scripts\Ghosts\Glob.cs" />
      <Compile Include="Assets\Scripts\LockRotation.cs" />
      <Compile Include="Assets\Scripts\LookAtHelper.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
@@ -323,10 +324,13 @@
      <Compile Include="Assets\Scripts\PlayerIKController.cs" />
      <Compile Include="Assets\Scripts\PlayerNameCanvas.cs" />
      <Compile Include="Assets\Scripts\RandomFloat.cs" />
+     <Compile Include="Assets\Scripts\RegisterPostBehaviourToSettingsManager.cs" />
+     <Compile Include="Assets\Scripts\RoomCollection.cs" />
      <Compile Include="Assets\Scripts\Rooms\Room.cs" />
      <Compile Include="Assets\Scripts\Rooms\RoomCollider.cs" />
      <Compile Include="Assets\Scripts\RotateAroundObject.cs" />
      <Compile Include="Assets\Scripts\UI\FPSDisplay.cs" />
+     <Compile Include="Assets\Scripts\UI\Minimap\ForceNoRotation.cs" />
      <Compile Include="Assets\Scripts\UI\Minimap\MakeRadarObject.cs" />
      <Compile Include="Assets\Scripts\UI\Minimap\Radar.cs" />
      <Compile Include="Assets\Scripts\UI\Score\PlayerScoreItem.cs" />
@@ -341,6 +345,15 @@
      <Compile Include="Assets\SplitScreenAudio\Example\Example Code\ExampleSourceContainer.cs" />
      <Compile Include="Assets\SplitScreenAudio\Example\Example Code\GUIControls.cs" />
      <Compile Include="Assets\SplitScreenAudio\Example\Example Code\SourcePlayerExample.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\DieTimer.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\FPSObjectShooter.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicBreakableRopes.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicGlobal.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicLamp.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicRopeWithCoil.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicSimpleRopes.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Scripts\UltimateRope.cs" />
+     <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Scripts\UltimateRopeLink.cs" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\IceVert.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightPosition\SFN_LightPosition.shader" />
@@ -359,6 +372,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp01\SFN_Clamp01.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_SPD_ANG.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Screen.shader" />
+     <None Include="Assets\Resources\Art\Shader\Frost.shader" />
      <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderDiffuseOnly.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_RemapRangeAdvanced\SFN_RemapRangeAdvanced.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
@@ -369,7 +383,6 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\Common\ExtractChannel.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\Shader Presets\PresetParticleMultiplicative.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_3.shader" />
-     <None Include="Assets\Resources\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp\SFN_Clamp.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Negate\SFN_Negate.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fmod\SFN_Fmod.shader" />
@@ -467,6 +480,7 @@
      <None Include="Assets\Resources\Art\Shader\Fire.shader" />
      <None Include="Assets\External\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
+     <None Include="Assets\Resources\Prefabs\ProtonPackLightStrip.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\DepthOfField\Resources\DepthOfField.shader" />
      <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
@@ -527,6 +541,8 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightVector\SFN_LightVector.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Max\SFN_Max_2.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Bitangent\SFN_Bitangent.shader" />
+     <None Include="Assets\Frost\HowToUse.txt" />
+     <None Include="Assets\Resources\Art\Shader\Slime.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_HsvToRgb\SFN_HsvToRgb.shader" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullOff.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_OneMinus\SFN_OneMinus.shader" />
@@ -577,6 +593,7 @@
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectPosition\SFN_ObjectPosition.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Hue\SFN_Hue.shader" />
+     <None Include="Assets\Ultimate Game Tools\RopeEditor\1st readme - v1.21.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Reciprocal\SFN_Reciprocal.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\AntiAliasing\SMAA\Resources\SMAA.cginc" />
@@ -594,6 +611,7 @@
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_DDY\SFN_DDY.shader" />
      <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
      <None Include="Assets\Resources\Art\Realistic Effects Pack\Shaders\MultiplyDouble.shader" />
+     <None Include="Assets\Frost\ImageBlendEffect.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_4.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Round\SFN_Round.shader" />
@@ -652,7 +670,6 @@
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Depth\SFN_Depth.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_2.shader" />
-     <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_PIV.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader" />
@@ -675,7 +692,6 @@
      <None Include="Assets\Resources\Art\Shader\WeaponOverheatMeter.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
-     <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Resources\Standard Assets\Effects\Bloom\Resources\Bloom.cginc" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
@@ -702,7 +718,6 @@
      <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_NRM.shader" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_4.shader" />
-     <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\External\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_3.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\Resources\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

@@ -1794,7 +1794,7 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1000011133342020, guid: 438455bf2db294483ab8233581e373dc, type: 2}
-  - {fileID: 1000014230611392, guid: 0ddd68e23b0b8634e91d9684037d6a44, type: 2}
+  - {fileID: 0}
   m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -1861,8 +1861,15 @@ MonoBehaviour:
   _playerNumber: 0
   _isMatchmaking: 0
   settingsPanel: {fileID: 1000010127892392}
+  creditsPanel: {fileID: 0}
   qualityDropdown: {fileID: 114000013871046070}
   volumeSlider: {fileID: 114000012089358004}
+  screenResolutions: {fileID: 0}
+  fullscreenToggle: {fileID: 0}
+  quitConfirmPanel: {fileID: 0}
+  serverBrowserPanel: {fileID: 0}
+  mainPanel: {fileID: 0}
+  lobbyPlayerListPanel: {fileID: 0}
 --- !u!114 &114000010059642198
 MonoBehaviour:
   m_ObjectHideFlags: 1

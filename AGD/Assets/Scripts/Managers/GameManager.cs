@@ -16,8 +16,7 @@ public enum	EnemyType
 	Type3,
 	Type4,
 	Type5,
-	Type6,
-	Type7
+	Type6
 }
 
 [System.Serializable]
@@ -53,7 +52,7 @@ public class GameManager : NetworkBehaviour {
     public Dictionary<int, int> ScoreTable { get { return scoreTable; } }
     public List<NetworkedThirdPersonCharacter> players = new List<NetworkedThirdPersonCharacter>();
     private List<ScorePanel> scorePanels = new List<ScorePanel>();
-    public List<MakeRadarObject> RadarHelper = new List<MakeRadarObject>();
+    private List<MakeRadarObject> RadarHelper = new List<MakeRadarObject>();
 
 	public void Reset()
 	{
@@ -85,7 +84,8 @@ public class GameManager : NetworkBehaviour {
 		enabled = false;
 
     }
-	
+
+    private bool forcedWaveSpawning = false;
 	// Update is called once per frame
 	void Update () 
 	{
@@ -94,7 +94,57 @@ public class GameManager : NetworkBehaviour {
 		
 		if(enemyCount <= 0 && !waveComplete && firstWave)
 			StartCoroutine(WaveWaitTimer());
+
+	    if (SceneManager.GetActiveScene().buildIndex == 2)
+	    {
+	        if(Input.GetKeyUp("1"))
+                ForceSpawnWave(0);
+            else if (Input.GetKeyUp("2"))
+                ForceSpawnWave(1);
+            else if (Input.GetKeyUp("3"))
+                ForceSpawnWave(2);
+            else if (Input.GetKeyUp("4"))
+                ForceSpawnWave(3);
+            else if (Input.GetKeyUp("5"))
+                ForceSpawnWave(4);
+            else if (Input.GetKeyUp("6"))
+                ForceSpawnWave(5);
+            else if (Input.GetKeyUp("7"))
+                ForceSpawnWave(6);
+            else if (Input.GetKeyUp("8"))
+                ForceSpawnWave(7);
+            else if (Input.GetKeyUp("9"))
+                ForceSpawnWave(8);
+            else if (Input.GetKeyUp("0"))
+                ForceSpawnWave(9);
+	        if (Input.GetKeyUp(KeyCode.F9))
+	        {
+                for (int i = 0; i < players.Count; ++i)
+                    PostScoreToScoreTable(i, i * Random.Range(10, 36));
+            }
+            if (Input.GetKeyUp(KeyCode.F10))
+	        {
+                for(int i = 0; i < players.Count; ++i)
+                    players[i].gameObject.SetActive(false);
+                GameObject gp = GameObject.Find("LevelPreview");
+                gp.SetActive(true);
+	            gp.GetComponent<Animation>().Play();
+            }
+            if (Input.GetKeyUp(KeyCode.F11))
+            {
+                currentWave = waves.Count-1;
+                var enemies = FindObjectsOfType<GhostBehaviour>();
+                for (int i = 0; i < enemies.Length; ++i)
+                    enemies[i].Kill();
+                currentWave = waves.Count;
+                
+            }
+        }
+
+        
 	}
+
+    private AnimationClip levelPreviewClip;
 
     void OnDestroy()
     {
@@ -103,16 +153,17 @@ public class GameManager : NetworkBehaviour {
 
     void ResetOnMenuLoad(Scene newScene, LoadSceneMode mode)
     {
-        if (newScene.name == "Menu")
+        if (newScene.buildIndex == 0)
         {
             playerOneAssigned = false;
             players.Clear();
             scoreTable.Clear();
         }
-        else
+        else if (newScene.buildIndex == 2)
         {
             controller = FindObjectOfType<GameOverController>();
-            controller.gameObject.SetActive(false);
+            if(controller)
+                controller.gameObject.SetActive(false);
         }
     }
 
@@ -139,7 +190,8 @@ public class GameManager : NetworkBehaviour {
 	    if (currentWave < waves.Count)
 	    {
             yield return new WaitForSeconds(waveSleepTimer);
-            SpawnEnemies();
+            if(!forcedWaveSpawning)
+                SpawnEnemies();
 	    }
 		else
 		{
@@ -173,12 +225,30 @@ public class GameManager : NetworkBehaviour {
 
     }
 
+
+    void ForceSpawnWave(int waveID)
+    {
+        var enemies = FindObjectsOfType<GhostBehaviour>();
+        for (int i = 0; i < enemies.Length; ++i)
+        {
+            enemies[i].Kill();
+        }
+        currentWave = waveID;
+        forcedWaveSpawning = true;
+        StartCoroutine(Spawn());
+    }
+
+
     IEnumerator Spawn()
     {
         scorePanels.Clear();
         scorePanels = FindObjectsOfType<ScorePanel>().ToList();
         var spawnLocations = GameObject.FindObjectsOfType<NetworkStartPosition>().ToList();
         var enemySpawns = spawnLocations.FindAll(x => x.gameObject.CompareTag("enemySpawn")).ToList();
+
+        for (int i = 0; i < players.Count; ++i)
+            players[i].waveText.text = "WAVE " + (currentWave+1);
+
         for (int i = 0; i < waves[currentWave].enemyDef.Count; ++i)
         {
             EnemyType etype = waves[currentWave].enemyDef[i].enemySpawner;
@@ -204,8 +274,9 @@ public class GameManager : NetworkBehaviour {
                 yield return new WaitForSeconds(0.5f);
             }
         }
+        forcedWaveSpawning = false;
 
-        
+
     }
 
 
@@ -290,6 +361,7 @@ public class GameManager : NetworkBehaviour {
             return;
         
         List<NetworkedThirdPersonCharacter> sortedPlayers = players.OrderBy(x => scoreTable[x.playerID]).ToList();
+		sortedPlayers.Reverse ();
         for (int i = 0; i < sortedPlayers.Count; ++i)
             RpcSetIdvGOControllerData(sortedPlayers[i].playerID, i);
     }
@@ -297,29 +369,88 @@ public class GameManager : NetworkBehaviour {
 
     private GameOverController controller;
 
+    public void RegisterGameOVerController(GameOverController goc)
+    {
+        controller = goc;
+        if (controller)
+            controller.gameObject.SetActive(false);
+    }
+
     [ClientRpc]
     private void RpcSetIdvGOControllerData(int playerID, int position)
     {
-        NetworkedThirdPersonCharacter player = players.Find(x => x.playerID == playerID);
-        player.enabled = false;
-        player.GetComponent<NetworkedThirdPersonUserControl>().enabled = false;
-        player.GetComponent<PickUps>().enabled = false;
-        player.GetComponent<Radar>().enabled = false;
-        player.GetComponent<MakeRadarObject>().enabled = false;
-        player.GetComponent<PlayerIKController>().enabled = false;
-        player.GetComponent<CameraManager>().enabled = false;
-        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        player.GetComponent<Rigidbody>().constraints  = RigidbodyConstraints.FreezeAll;
-        player.GetComponent<Animator>().SetBool(position == 0 ? "Won" : "Lost", true);
-        Camera[] cams = player.GetComponentsInChildren<Camera>();
-        for (int i = 0; i < cams.Length; ++i)
-            cams[i].enabled = false;
-        player.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
-        player.transform.position = position < 3
-            ? controller.dataContainers[position].position.position
-            : new Vector3(0, 250, 0);
-        player.transform.rotation = Quaternion.identity;
-        controller.dataContainers[position].score.text = scoreTable[player.playerID].ToString();
+		if (position < 3)
+			StartCoroutine (SetIDVAnimData (playerID, position));
+		else {
+			NetworkedThirdPersonCharacter player = players.Find(x => x.playerID == playerID);
+			player.gameObject.SetActive (false);
+		}
+    }
+
+	IEnumerator SetIDVAnimData(int playerID, int position)
+	{
+		NetworkedThirdPersonCharacter player = players.Find(x => x.playerID == playerID);
+		player.GetComponent<Animator>().SetBool(position == 0 ? "Won" : "Lost", true);
+		player.enabled = false;
+		player.GetComponent<NetworkedThirdPersonUserControl>().enabled = false;
+		player.GetComponent<PickUps>().enabled = false;
+		player.GetComponent<Radar>().enabled = false;
+		player.GetComponent<MakeRadarObject>().enabled = false;
+		player.GetComponent<PlayerIKController>().enabled = false;
+		player.GetComponent<CameraManager>().enabled = false;
+		player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+		player.GetComponent<Rigidbody>().constraints  = RigidbodyConstraints.FreezeAll;
+		player.m_MouseLook.weapon.localPosition = new Vector3 (-0.097f, 0.012f, 0.0928f);
+		player.m_MouseLook.weapon.localRotation = Quaternion.Euler (new Vector3 (358.417f, 258.623f, 261.856f));
+		player.weaponSpawnPoint.parent.gameObject.SetActive (false);
+		Camera[] cams = player.GetComponentsInChildren<Camera>();
+		for (int i = 0; i < cams.Length; ++i)
+			cams[i].enabled = false;
+		player.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+		player.transform.position = position < 3
+			? controller.dataContainers[position].position.position
+			: new Vector3(0, 250, 0);
+		player.transform.rotation = Quaternion.identity;
+		controller.dataContainers[position].score.text = scoreTable[player.playerID].ToString();
+		yield return null;
+		player.GetComponent<Animator>().SetBool(position == 0 ? "Won" : "Lost", false);
+	}
+
+    public void RegisterRadarHelper(MakeRadarObject radarHelper)
+    {
+        if(!RadarHelper.Contains(radarHelper))
+            RadarHelper.Add(radarHelper);
+    }
+
+    public void DeRegisterRadarHelper(MakeRadarObject radarHelper)
+    {
+        if (RadarHelper.Contains(radarHelper))
+            RadarHelper.Remove(radarHelper);
+        RadarHelper.TrimExcess();
+    }
+
+    public void RegisterEnemyToRadarHelper(GhostBehaviour enemy)
+    {
+        for(int i=0; i < RadarHelper.Count; ++i)
+            RadarHelper[i].RegisterEnemy(enemy);
+    }
+
+    public void DeRegisterEnemyToRadarHelper(GhostBehaviour enemy)
+    {
+        for (int i = 0; i < RadarHelper.Count; ++i)
+            RadarHelper[i].DeregisterEnemy(enemy);
+    }
+
+    public void RegisterPickupToRadarHelper(PickUpBase pickup)
+    {
+        for (int i = 0; i < RadarHelper.Count; ++i)
+            RadarHelper[i].RegisterPickup(pickup);
+    }
+
+    public void DeRegisterPickupToRadarHelper(PickUpBase pickup)
+    {
+        for (int i = 0; i < RadarHelper.Count; ++i)
+            RadarHelper[i].DeregisterPickup(pickup);
     }
 }

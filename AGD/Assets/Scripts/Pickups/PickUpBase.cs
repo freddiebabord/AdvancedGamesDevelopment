@@ -2,13 +2,12 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public enum ItemMap { Higher, Lower, Same, Nullus };
+
 
 public class PickUpBase : NetworkBehaviour {
 
     
-    public ItemMap itemMap = ItemMap.Nullus;
-    public bool firstPass = false;
+    
 
     public GameObject player;
 
@@ -24,14 +23,17 @@ public class PickUpBase : NetworkBehaviour {
     {
         m_renderer = GetComponentInChildren<Renderer>();
         m_collider = GetComponent<Collider>();
-        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
-            GameManager.instance.RadarHelper[i].RegisterPickup(this);
+        GameManager.instance.RegisterPickupToRadarHelper(this);
+    }
+
+    void FixedUpdate()
+    {
+        GameManager.instance.RegisterPickupToRadarHelper(this);
     }
 
     void OnDestroy()
     {
-        for(int i = 0; i < GameManager.instance.RadarHelper.Count; ++i)
-            GameManager.instance.RadarHelper[i].DeregisterPickup(this);
+        GameManager.instance.DeRegisterPickupToRadarHelper(this);
     }
 
     public void Triggered()
@@ -69,11 +71,16 @@ public class PickUpBase : NetworkBehaviour {
         respawning = true;
         m_renderer.enabled = false;
         m_collider.enabled = false;
+        var ps = GetComponentsInChildren<ParticleSystem>();
+        for (int i = 0; i < ps.Length; ++i)
+            ps[i].Stop(true);
         yield return new WaitForSeconds(20);
         m_renderer.enabled = true;
         m_collider.enabled = true;
         respawning = false;
         alreadyDestroyed = false;
+        for (int i = 0; i < ps.Length; ++i)
+            ps[i].Play(true);
     }
 
     [Command]
@@ -85,12 +92,7 @@ public class PickUpBase : NetworkBehaviour {
     [ClientRpc]
     void Rpc_RemoveRadarObjFromClients()
     {
-        Radar[] players = FindObjectsOfType<Radar>();
-
-        for (int i = 0; i < players.Length; i++)
-        {
-            players[i].RemoveRadarObject(gameObject);
-        }
+        GameManager.instance.DeRegisterPickupToRadarHelper(this);
     }
 
     

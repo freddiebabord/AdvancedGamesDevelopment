@@ -346,7 +346,8 @@
     <None Include="Assets\External\ShaderForge\Example Assets\Shaders\VertexAnimation.shader" />
     <None Include="Assets\External\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
     <None Include="Assets\External\ShaderForge\Readme.txt" />
-    <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
+    <None Include="Assets\Frost\HowToUse.txt" />
+    <None Include="Assets\Frost\ImageBlendEffect.shader" />
     <None Include="Assets\Resources\Art\Assets\Barrel\BarrelShader.shader" />
     <None Include="Assets\Resources\Art\Assets\Book\Book02\Project.xml" />
     <None Include="Assets\Resources\Art\Assets\Book\Book02\previewer\Camera1.xml" />
@@ -389,16 +390,17 @@
     <None Include="Assets\Resources\Art\Shader\CaptureSphere.shader" />
     <None Include="Assets\Resources\Art\Shader\Dust.shader" />
     <None Include="Assets\Resources\Art\Shader\Fire.shader" />
+    <None Include="Assets\Resources\Art\Shader\Frost.shader" />
     <None Include="Assets\Resources\Art\Shader\GhostDemo.shader" />
     <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleAlt.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
     <None Include="Assets\Resources\Art\Shader\Skybox.shader" />
+    <None Include="Assets\Resources\Art\Shader\Slime.shader" />
     <None Include="Assets\Resources\Art\Shader\WeaponOverheatMeter.shader" />
     <None Include="Assets\Resources\Audio\Sources.txt" />
     <None Include="Assets\Resources\Ghost.shader" />
-    <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
-    <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Resources\Prefabs\ProtonPackLightStrip.shader" />
     <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderDiffuseNormals.shader" />
     <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderDiffuseOnly.shader" />
     <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderNormalsOnly.shader" />
@@ -538,7 +540,6 @@
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\TAA.shader" />
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Uber.shader" />
-    <None Include="Assets\Resources\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
     <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
     <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
     <None Include="Assets\Rewired\Documentation\licences.txt" />
@@ -550,6 +551,7 @@
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\DeferredCustomLights\CustomLightShader.shader" />
     <None Include="Assets\Standard Assets\DeferredCustomLights\_ReadMe.txt" />
+    <None Include="Assets\Ultimate Game Tools\RopeEditor\1st readme - v1.21.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

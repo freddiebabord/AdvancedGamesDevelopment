@@ -12,7 +12,6 @@ using Prototype.NetworkLobby;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(NavMeshAgent))]
 public class NetworkedThirdPersonCharacter : NetworkBehaviour
 { 
 	[SerializeField] float m_MovingTurnSpeed = 360;
@@ -33,7 +32,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     public AudioSource footstepAS;
 
     public AudioClip[] m_FootstepSounds;
-
+    public GameObject[] playerColourIndicators;
     Rigidbody m_Rigidbody;
 	Animator m_Animator;
 	bool m_IsGrounded;
@@ -70,6 +69,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         set {
             controllsReversed = value;
             uc.reverseControls = controllsReversed;
+            if (controllsReversed && !resettingControls)
+            {
+                StartCoroutine(ResetControls());
+            }
         }
     }
     [HideInInspector] public bool disableControls = false;
@@ -81,7 +84,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             m_MouseLook.disabled = value;
         }
     }
-    private NavMeshAgent navMeshAgent;
+
+   
+
+    //private NavMeshAgent navMeshAgent;
 
     [Space(10)]
     [Header("Weapon Variables")]
@@ -147,6 +153,15 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     private float m_NextStep;
     [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
     [SerializeField]  private float m_StepInterval;
+    public Text waveText;
+    public Texture2D[] diffuseTextures, maskDiffuseTextures;
+    public Renderer alexRenderer, maskRenderer;
+
+    //public float fearLevel = 0;
+    //public float maxFearLevel = 50.0f;
+    //public FrostEffect frost;
+    //public int minGhostCountFearLevel = 5;
+    //public float fearRechargeLevel = 5.0f;
 
     void Start()
 	{
@@ -159,14 +174,14 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         m_CapsuleHeight = m_Capsule.height;
 		m_CapsuleCenter = m_Capsule.center;
         m_Camera = GetComponentInChildren<Camera>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-
+        //navMeshAgent = GetComponent<NavMeshAgent>();
+	    
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		lineRenderer = GetComponentInChildren<LineRenderer>();
         m_MouseLook.Init(transform, m_Camera.transform);
 
-        GetComponentInChildren<Renderer>().material.color = playerColour;
+        //GetComponentInChildren<Renderer>().material.color = playerColour;
 
         playerScore = 0;
 		gameObject.name = playerName;
@@ -177,10 +192,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		rootMuzzleParticleSystem = muzzleParticleSystem.GetComponent<ParticleSystem>();
         rootMuzzleParticleSystem.Stop();
         StopParticleSystem();
-        //weaponRechargeRenderer = weaponRechargeIndicator.GetComponent<Renderer>().material;
+        weaponRechargeRenderer = weaponRechargeIndicator.GetComponent<Renderer>().material;
         beamRenderer = lineRenderer.GetComponent<Renderer>().material;
         beamRenderer.SetColor("_Colour", playerColour * 2);
-
+	    for (i = 0; i < playerColourIndicators.Length; ++i)
+	    {
+	        playerColourIndicators[i].GetComponent<Renderer>().material.SetColor("_EmissionColor", playerColour * 1.5f);
+	    }
         rootMuzzleParticleSystem.startColor = playerColour;
         var cbs = rootMuzzleParticleSystem.colorBySpeed;
         var grad = new ParticleSystem.MinMaxGradient();
@@ -223,19 +241,20 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		beamLight.gameObject.SetActive (false);
 		beamLightCLight.m_Color = Color.cyan;
 		GameManager.instance.players.Add(this);
-		GameManager.instance.RadarHelper.Add(GetComponent<MakeRadarObject>());
+        alexRenderer.material.mainTexture = diffuseTextures[playerID];
+	    maskRenderer.material.mainTexture = maskDiffuseTextures[playerID];
         if (!isLocalPlayer)
         {
             m_Camera.gameObject.SetActive(false);
-            if(weaponRechargeIndicator)
-            weaponRechargeIndicator.gameObject.SetActive(false);
+            //if(weaponRechargeIndicator)
+            //weaponRechargeIndicator.gameObject.SetActive(false);
         }
 
         if (isLocalPlayer)
         {
-            
+            GameManager.instance.RegisterRadarHelper(GetComponent<MakeRadarObject>());
             //spawnedParticleSystem.gameObject.SetActive(false);
-           
+
             FindObjectOfType<SplitscreenManager>().RegisterCamera(m_Camera);
             SettingsManager.instance.RegisterPostProfile(m_Camera.GetComponent<PostProcessingBehaviour>().profile);
             //var pnc = FindObjectsOfType<PlayerNameCanvas>();
@@ -303,27 +322,41 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         m_FootstepSounds[0] = footstepAS.clip;
     }
 
+    //private int ghostCount = 0;
+
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.GetComponent<EnemyBase>())
+    //        ghostCount++;
+    //}
+
+    //void OnTriggerExit(Collider other)
+    //{
+    //    if (other.GetComponent<EnemyBase>())
+    //        ghostCount--;
+    //}
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.F3))
         {
             RevokePlayerControlAndSetPlayerAIToTarget(positionOnSpawn);
         }
-        if (navMeshAgent.enabled)
-        {
-			planeProjection = Vector3.ProjectOnPlane(navMeshAgent.velocity, m_GroundNormal);
-			planeProjection = transform.TransformDirection(planeProjection);
-			m_TurnAmount = planeProjection.x;
-			m_ForwardAmount = planeProjection.z;
+   //     if (navMeshAgent.enabled)
+   //     {
+			//planeProjection = Vector3.ProjectOnPlane(navMeshAgent.velocity, m_GroundNormal);
+			//planeProjection = transform.TransformDirection(planeProjection);
+			//m_TurnAmount = planeProjection.x;
+			//m_ForwardAmount = planeProjection.z;
 
-            UpdateAnimator(transform.InverseTransformDirection(navMeshAgent.velocity));
-            if (Vector3.Distance(transform.position, navMeshAgent.destination) < 2.5f &&  navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-            {
-                navMeshAgent.enabled = false;
-                DisableControls = false;
-            }
-        }
-        else
+   //         UpdateAnimator(transform.InverseTransformDirection(navMeshAgent.velocity));
+   //         if (Vector3.Distance(transform.position, navMeshAgent.destination) < 2.5f &&  navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+   //         {
+   //             navMeshAgent.enabled = false;
+   //             DisableControls = false;
+   //         }
+   //     }
+   //     else
         {
             if (firing)
             {
@@ -384,15 +417,15 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                             {
                                 if (isLocalPlayer)
                                     gb.TakeDamage(playerID, damagePerSecond * Time.deltaTime);
-								if (!spawnedCaptureSphere.activeInHierarchy)
-									spawnedCaptureSphere.SetActive (true);
+								//if (!spawnedCaptureSphere.activeInHierarchy)
+									//spawnedCaptureSphere.SetActive (true);
 								previousGhostBehaviour = gb;
-								spawnedCaptureSphere.transform.position = hit.transform.gameObject.transform.position + Vector3.up;
-								spawnedCaptureSphere.GetComponent<Renderer> ()
-                                .material.SetFloat ("_PercentageComplete",
-									1 -
-									(gb.CurrentHealth /
-									gb.maxHealth));
+								//spawnedCaptureSphere.transform.position = hit.transform.gameObject.transform.position + Vector3.up;
+								//spawnedCaptureSphere.GetComponent<Renderer> ()
+                                //.material.SetFloat ("_PercentageComplete",
+									//1 -
+									//(gb.CurrentHealth /
+									//gb.maxHealth));
 								
                             }
 							else
@@ -401,8 +434,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                                 Vector3 norm = weaponSpawnPoint.position - hit.point;
                                 norm.Normalize();
                                 spawnedParticleSystem.position = hit.point + norm * 0.1f;
-								if (spawnedCaptureSphere.activeInHierarchy && !disablingCaptureSphere && previousGhostBehaviour)
-									StartCoroutine (DisableSpawnSphere (previousGhostBehaviour));
+								//if (spawnedCaptureSphere.activeInHierarchy && !disablingCaptureSphere && previousGhostBehaviour)
+								//	StartCoroutine (DisableSpawnSphere (previousGhostBehaviour));
 								//if(!spawningHitDecal)
 								//	StartCoroutine(SpawnHitDecal(hit.point, Quaternion.Euler(hit.normal)));
                                 //spawnedCaptureSphere.SetActive(false);
@@ -411,8 +444,8 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
                         else
                         {
                             StopParticleSystem();
-							if(spawnedCaptureSphere.activeInHierarchy)
-							spawnedCaptureSphere.SetActive(false);
+							//if(spawnedCaptureSphere.activeInHierarchy)
+							//spawnedCaptureSphere.SetActive(false);
                             //spawnedCaptureSphere.SetActive(false);
                             distance += distanceOverTime * Time.deltaTime;
                         }
@@ -466,9 +499,9 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
             }
         }
 
-		if (previousGhostBehaviour) {
-			spawnedCaptureSphere.transform.position = previousGhostBehaviour.transform.position;
-		}
+		//if (previousGhostBehaviour) {
+			//spawnedCaptureSphere.transform.position = previousGhostBehaviour.transform.position;
+		//}
 
         if (!firing)
         {
@@ -479,10 +512,26 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         }
 
 		currentOverheatValue = currentWeaponTime / maxWeaponTime;
-		//weaponRechargeRenderer.SetFloat("_CurrentOverheatValue", currentOverheatValue);
+		weaponRechargeRenderer.SetFloat("_Capacity", 1 - currentOverheatValue);
 
-        
-        
+        //if (isLocalPlayer)
+        //{
+        //    if (ghostCount > minGhostCountFearLevel)
+        //    {
+        //        fearLevel += (ghostCount / minGhostCountFearLevel) * Time.deltaTime;
+        //        frost.FrostAmount = fearLevel / maxFearLevel;
+        //    }
+        //    else
+        //    {
+        //        if (fearLevel > 0)
+        //        {
+        //            fearLevel -= fearRechargeLevel * Time.deltaTime;
+        //            frost.FrostAmount = fearLevel / maxFearLevel;
+
+        //        }
+        //    }
+        //}
+
     }
 
 
@@ -494,8 +543,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
         for (int i = 0; i < beamLightSegments.Count; ++i)
             beamLightSegments[i].gameObject.SetActive(false);
         beamLightCLight.gameObject.SetActive(false);
-        rootMuzzleParticleSystem.Stop(true);
-        rootParticleSystem.Stop(false);
+        if(rootMuzzleParticleSystem)
+            rootMuzzleParticleSystem.Stop(true);
+        if(rootParticleSystem)
+            rootParticleSystem.Stop(false);
         virtaulWeaponAudioSource.Stop();
         weaponAudioSource.Stop();
         if (GameManager.instance.players.Contains(this))
@@ -593,10 +644,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 		m_Animator.SetBool("Fire",firing);
 		//m_Animator.SetBool("Crouch", m_Crouching);
 		m_Animator.SetBool("OnGround", m_IsGrounded);
-		if (!m_IsGrounded)
-		{
-			m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
-		}
+		//if (!m_IsGrounded)
+		//{
+		//	m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+		//}
 
 		// calculate which leg is behind, so as to leave that leg trailing in the jump animation
 		// (This code is reliant on the specific run cycle offset in our animations,
@@ -636,7 +687,7 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	void HandleGroundedMovement(bool crouch, bool jump)
 	{
 		// check whether conditions are right to allow a jump:
-		if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+		if (jump && !crouch && m_IsGrounded)
 		{
 			// jump!
 			m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
@@ -752,8 +803,10 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 
     void StopParticleSystem()
     {
-        rootParticleSystem.Stop(true);
-		streamPartcileSystem.Stop ();
+        if(rootParticleSystem)
+            rootParticleSystem.Stop(true);
+        if(streamPartcileSystem)
+            streamPartcileSystem.Stop ();
     }
 
     void StartParticleSystem()
@@ -770,23 +823,23 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
     public void RevokePlayerControlAndSetPlayerAIToTarget(Vector3 targetPosition)
     {
         DisableControls = true;
-        navMeshAgent.enabled = true;
-        navMeshAgent.SetDestination(targetPosition);
+        //navMeshAgent.enabled = true;
+        //navMeshAgent.SetDestination(targetPosition);
     }
 
 	float sphereRechargeSpeed = 0.5f;
 	bool enablingCaptureSphere = false, disablingCaptureSphere = false;
 	IEnumerator EnableSpawnSphere(GhostBehaviour targetGhost)
 	{
-		if (!spawnedCaptureSphere.activeInHierarchy)
-			spawnedCaptureSphere.SetActive (true);
-		spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
-		Renderer rend = spawnedCaptureSphere.GetComponent<Renderer> ();
+		//if (!spawnedCaptureSphere.activeInHierarchy)
+			//spawnedCaptureSphere.SetActive (true);
+		//spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
+		//Renderer rend = spawnedCaptureSphere.GetComponent<Renderer> ();
 		float currentspherePercentage = 0.0f;
 		while (currentspherePercentage < 1 - (targetGhost.CurrentHealth / targetGhost.maxHealth)) {
-			spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
+			//spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
 			currentspherePercentage += sphereRechargeSpeed * Time.deltaTime;
-			rend.material.SetFloat ("_PercentageComplete", 1 - currentspherePercentage);
+			//rend.material.SetFloat ("_PercentageComplete", 1 - currentspherePercentage);
 			yield return null;
 		}
 	}
@@ -794,13 +847,13 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	IEnumerator DisableSpawnSphere(GhostBehaviour targetGhost)
 	{
 		disablingCaptureSphere = true;
-		spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
+		//spawnedCaptureSphere.transform.position = targetGhost.transform.position + Vector3.up;
 		float currentSpherePercentage = 1 - (targetGhost.CurrentHealth / targetGhost.maxHealth);
-		Renderer rend = spawnedCaptureSphere.GetComponent<Renderer> ();
+		//Renderer rend = spawnedCaptureSphere.GetComponent<Renderer> ();
 		while (currentSpherePercentage > 0) {
-			spawnedCaptureSphere.transform.position = targetGhost.transform.position;
+			//spawnedCaptureSphere.transform.position = targetGhost.transform.position;
 			currentSpherePercentage -= sphereRechargeSpeed * Time.deltaTime;
-			rend.material.SetFloat ("_PercentageComplete", 1 - currentSpherePercentage);
+			//rend.material.SetFloat ("_PercentageComplete", 1 - currentSpherePercentage);
 			yield return null;
 		}
 		previousGhostBehaviour = null;
@@ -869,5 +922,14 @@ public class NetworkedThirdPersonCharacter : NetworkBehaviour
 	{
 		Application.Quit ();
 	}
+
+    private bool resettingControls = false;
+    IEnumerator ResetControls()
+    {
+        resettingControls = true;
+        yield return new WaitForSeconds(5.0f);
+        ReversedControls = false;
+        resettingControls = false;
+    }
 }
 

@@ -84,8 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Do NOT Show\GhostCharge.cs" />
-    <Compile Include="Assets\Do NOT Show\Shoot.cs" />
     <Compile Include="Assets\External\Lobby\Scripts\DraggablePanel.cs" />
     <Compile Include="Assets\External\Lobby\Scripts\EventSystemChecker.cs" />
     <Compile Include="Assets\External\Lobby\Scripts\Lobby\LobbyCountdownPanel.cs" />
@@ -101,6 +99,7 @@
     <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
     <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
     <Compile Include="Assets\External\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
+    <Compile Include="Assets\Frost\FrostEffect.cs" />
     <Compile Include="Assets\Resources\Art\Realistic Effects Pack\Materials\Objects\FireJetPack\FlyDemo.cs" />
     <Compile Include="Assets\Resources\Art\Realistic Effects Pack\Scripts\Demo\MyGUI3_1.cs" />
     <Compile Include="Assets\Resources\Art\Realistic Effects Pack\Scripts\Prefabs\Balls\AddMaterialOnHit.cs" />
@@ -141,9 +140,6 @@
     <Compile Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\Scripts\SmoothMouseLook.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs" />
-    <Compile Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" />
     <Compile Include="Assets\Resources\Standard Assets\DeferredDecals\Decal.cs" />
     <Compile Include="Assets\Resources\Standard Assets\DeferredDecals\DeferredDecalRenderer.cs" />
     <Compile Include="Assets\Resources\Standard Assets\Effects\AmbientOcclusion\AmbientOcclusion.cs" />
@@ -326,9 +322,12 @@
     <Compile Include="Assets\Scripts\GameOverController.cs" />
     <Compile Include="Assets\Scripts\GhostBodyCollision.cs" />
     <Compile Include="Assets\Scripts\GhostDamageText.cs" />
-    <Compile Include="Assets\Scripts\Ghosts\Abilities\Charge.cs" />
-    <Compile Include="Assets\Scripts\Ghosts\Abilities\LocalFrustum.cs" />
-    <Compile Include="Assets\Scripts\Ghosts\Abilities\Teleportation.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostCharge.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostReverse.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostSwell.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostTeleport.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Abilities\GhostThrow.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\AnimationEventReciever.cs" />
     <Compile Include="Assets\Scripts\Ghosts\EnemyBase.cs" />
     <Compile Include="Assets\Scripts\Ghosts\EnemyBaseLocal.cs" />
     <Compile Include="Assets\Scripts\Ghosts\EnemyPoolSpawner.cs" />
@@ -337,6 +336,7 @@
     <Compile Include="Assets\Scripts\Ghosts\GhostBehaviour.cs" />
     <Compile Include="Assets\Scripts\Ghosts\GhostBehaviourLocal.cs" />
     <Compile Include="Assets\Scripts\Ghosts\GhostBodyAdjustments.cs" />
+    <Compile Include="Assets\Scripts\Ghosts\Glob.cs" />
     <Compile Include="Assets\Scripts\LockRotation.cs" />
     <Compile Include="Assets\Scripts\LookAtHelper.cs" />
     <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
@@ -363,10 +363,13 @@
     <Compile Include="Assets\Scripts\PlayerIKController.cs" />
     <Compile Include="Assets\Scripts\PlayerNameCanvas.cs" />
     <Compile Include="Assets\Scripts\RandomFloat.cs" />
+    <Compile Include="Assets\Scripts\RegisterPostBehaviourToSettingsManager.cs" />
+    <Compile Include="Assets\Scripts\RoomCollection.cs" />
     <Compile Include="Assets\Scripts\Rooms\Room.cs" />
     <Compile Include="Assets\Scripts\Rooms\RoomCollider.cs" />
     <Compile Include="Assets\Scripts\RotateAroundObject.cs" />
     <Compile Include="Assets\Scripts\UI\FPSDisplay.cs" />
+    <Compile Include="Assets\Scripts\UI\Minimap\ForceNoRotation.cs" />
     <Compile Include="Assets\Scripts\UI\Minimap\MakeRadarObject.cs" />
     <Compile Include="Assets\Scripts\UI\Minimap\Radar.cs" />
     <Compile Include="Assets\Scripts\UI\Score\PlayerScoreItem.cs" />
@@ -381,6 +384,15 @@
     <Compile Include="Assets\SplitScreenAudio\Example\Example Code\ExampleSourceContainer.cs" />
     <Compile Include="Assets\SplitScreenAudio\Example\Example Code\GUIControls.cs" />
     <Compile Include="Assets\SplitScreenAudio\Example\Example Code\SourcePlayerExample.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\DieTimer.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\FPSObjectShooter.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicBreakableRopes.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicGlobal.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicLamp.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicRopeWithCoil.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Sample Scenes\Sample Scripts\LogicSimpleRopes.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Scripts\UltimateRope.cs" />
+    <Compile Include="Assets\Ultimate Game Tools\RopeEditor\Scripts\UltimateRopeLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DependencyPro\AssetUsageFinderGuidelines.txt" />
@@ -581,7 +593,8 @@
     <None Include="Assets\External\ShaderForge\Example Assets\Shaders\VertexAnimation.shader" />
     <None Include="Assets\External\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
     <None Include="Assets\External\ShaderForge\Readme.txt" />
-    <None Include="Assets\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
+    <None Include="Assets\Frost\HowToUse.txt" />
+    <None Include="Assets\Frost\ImageBlendEffect.shader" />
     <None Include="Assets\Resources\Art\Assets\Barrel\BarrelShader.shader" />
     <None Include="Assets\Resources\Art\Assets\Book\Book02\Project.xml" />
     <None Include="Assets\Resources\Art\Assets\Book\Book02\previewer\Camera1.xml" />
@@ -624,16 +637,17 @@
     <None Include="Assets\Resources\Art\Shader\CaptureSphere.shader" />
     <None Include="Assets\Resources\Art\Shader\Dust.shader" />
     <None Include="Assets\Resources\Art\Shader\Fire.shader" />
+    <None Include="Assets\Resources\Art\Shader\Frost.shader" />
     <None Include="Assets\Resources\Art\Shader\GhostDemo.shader" />
     <None Include="Assets\Resources\Art\Shader\PowerupParticle.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleAlt.shader" />
     <None Include="Assets\Resources\Art\Shader\RippleShader.shader" />
     <None Include="Assets\Resources\Art\Shader\Skybox.shader" />
+    <None Include="Assets\Resources\Art\Shader\Slime.shader" />
     <None Include="Assets\Resources\Art\Shader\WeaponOverheatMeter.shader" />
     <None Include="Assets\Resources\Audio\Sources.txt" />
     <None Include="Assets\Resources\Ghost.shader" />
-    <None Include="Assets\Resources\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
-    <None Include="Assets\Resources\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Resources\Prefabs\ProtonPackLightStrip.shader" />
     <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderDiffuseNormals.shader" />
     <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderDiffuseOnly.shader" />
     <None Include="Assets\Resources\Standard Assets\DeferredDecals\DecalShaderNormalsOnly.shader" />
@@ -773,7 +787,6 @@
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\TAA.shader" />
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\Resources\Standard Assets\PostProcessing\Resources\Shaders\Uber.shader" />
-    <None Include="Assets\Resources\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
     <None Include="Assets\Rewired\Documentation\ReadMe.txt" />
     <None Include="Assets\Rewired\Documentation\ReleaseNotes.txt" />
     <None Include="Assets\Rewired\Documentation\licences.txt" />
@@ -785,6 +798,7 @@
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\DeferredCustomLights\CustomLightShader.shader" />
     <None Include="Assets\Standard Assets\DeferredCustomLights\_ReadMe.txt" />
+    <None Include="Assets\Ultimate Game Tools\RopeEditor\1st readme - v1.21.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

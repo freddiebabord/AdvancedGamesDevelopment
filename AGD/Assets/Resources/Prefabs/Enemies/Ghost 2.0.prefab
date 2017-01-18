@@ -124,15 +124,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  waitTime: {x: 3, y: 5}
   movementSpeed: 5
-  fearPresence: 10
+  rotationSpeed: 10
+  acceleration: 0.1
+  fearPresence: 100
+  targetOffset: 0.1
   score: 500
   ghostTarget: {fileID: 0}
+  goalPosition: {x: 0, y: 0, z: 0}
   frustumPrefab: {fileID: 1000010079989698, guid: e268d018186052e4dade4dff5a1849c6,
     type: 2}
   ghostTrigger: 0
   isPeaceful: 0
   damageTextPool: {fileID: 0}
+  pauseMovement: 0
 --- !u!114 &114000011782983114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70742c3df74894a9f8169af42df801fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMap: 3
-  firstPass: 0
   maxFloatHeight: 50
   agent: {fileID: 0}
   walkRadius: 10
