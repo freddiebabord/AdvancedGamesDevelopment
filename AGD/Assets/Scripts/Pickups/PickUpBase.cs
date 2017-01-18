@@ -71,11 +71,16 @@ public class PickUpBase : NetworkBehaviour {
         respawning = true;
         m_renderer.enabled = false;
         m_collider.enabled = false;
+        var ps = GetComponentsInChildren<ParticleSystem>();
+        for (int i = 0; i < ps.Length; ++i)
+            ps[i].Stop(true);
         yield return new WaitForSeconds(20);
         m_renderer.enabled = true;
         m_collider.enabled = true;
         respawning = false;
         alreadyDestroyed = false;
+        for (int i = 0; i < ps.Length; ++i)
+            ps[i].Play(true);
     }
 
     [Command]

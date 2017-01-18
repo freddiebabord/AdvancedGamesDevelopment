@@ -7111,7 +7111,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5c47d522560ca2245929f3e8e1372819, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 88f8fb5707e74ff47a032e4099cb74aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8159,9 +8159,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Baby Bottle
+  m_Text: 'Candy Bar
 
-    Increased Damage'
+    Unlimited Stamina (5s)'
 --- !u!114 &114000011259120358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10407,7 +10407,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Energy Drink
 
-    Unlimited Stamina'
+    Increased Damage (5s)'
 --- !u!114 &114000012137623542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14589,7 +14589,7 @@ MonoBehaviour:
   m_GamePlayerPrefab: {fileID: 1000012835949806, guid: f5842c670a1977044868be340405e647,
     type: 2}
   m_LobbyScene: Menu
-  m_PlayScene: TestScene
+  m_PlayScene: MainGame
   lobbySlots: []
   prematchCountdown: 15
   topPanel: {fileID: 114000012387779916}

@@ -84,7 +84,8 @@ public class GameManager : NetworkBehaviour {
 		enabled = false;
 
     }
-	
+
+    private bool forcedWaveSpawning = false;
 	// Update is called once per frame
 	void Update () 
 	{
@@ -93,7 +94,57 @@ public class GameManager : NetworkBehaviour {
 		
 		if(enemyCount <= 0 && !waveComplete && firstWave)
 			StartCoroutine(WaveWaitTimer());
+
+	    if (SceneManager.GetActiveScene().buildIndex == 2)
+	    {
+	        if(Input.GetKeyUp("1"))
+                ForceSpawnWave(0);
+            else if (Input.GetKeyUp("2"))
+                ForceSpawnWave(1);
+            else if (Input.GetKeyUp("3"))
+                ForceSpawnWave(2);
+            else if (Input.GetKeyUp("4"))
+                ForceSpawnWave(3);
+            else if (Input.GetKeyUp("5"))
+                ForceSpawnWave(4);
+            else if (Input.GetKeyUp("6"))
+                ForceSpawnWave(5);
+            else if (Input.GetKeyUp("7"))
+                ForceSpawnWave(6);
+            else if (Input.GetKeyUp("8"))
+                ForceSpawnWave(7);
+            else if (Input.GetKeyUp("9"))
+                ForceSpawnWave(8);
+            else if (Input.GetKeyUp("0"))
+                ForceSpawnWave(9);
+	        if (Input.GetKeyUp(KeyCode.F9))
+	        {
+                for (int i = 0; i < players.Count; ++i)
+                    PostScoreToScoreTable(i, i * Random.Range(10, 36));
+            }
+            if (Input.GetKeyUp(KeyCode.F10))
+	        {
+                for(int i = 0; i < players.Count; ++i)
+                    players[i].gameObject.SetActive(false);
+                GameObject gp = GameObject.Find("LevelPreview");
+                gp.SetActive(true);
+	            gp.GetComponent<Animation>().Play();
+            }
+            if (Input.GetKeyUp(KeyCode.F11))
+            {
+                currentWave = waves.Count-1;
+                var enemies = FindObjectsOfType<GhostBehaviour>();
+                for (int i = 0; i < enemies.Length; ++i)
+                    enemies[i].Kill();
+                currentWave = waves.Count;
+                
+            }
+        }
+
+        
 	}
+
+    private AnimationClip levelPreviewClip;
 
     void OnDestroy()
     {
@@ -108,7 +159,7 @@ public class GameManager : NetworkBehaviour {
             players.Clear();
             scoreTable.Clear();
         }
-        else if (newScene.buildIndex == 1)
+        else if (newScene.buildIndex == 2)
         {
             controller = FindObjectOfType<GameOverController>();
             if(controller)
@@ -139,7 +190,8 @@ public class GameManager : NetworkBehaviour {
 	    if (currentWave < waves.Count)
 	    {
             yield return new WaitForSeconds(waveSleepTimer);
-            SpawnEnemies();
+            if(!forcedWaveSpawning)
+                SpawnEnemies();
 	    }
 		else
 		{
@@ -172,6 +224,20 @@ public class GameManager : NetworkBehaviour {
         StartCoroutine(Spawn());
 
     }
+
+
+    void ForceSpawnWave(int waveID)
+    {
+        var enemies = FindObjectsOfType<GhostBehaviour>();
+        for (int i = 0; i < enemies.Length; ++i)
+        {
+            enemies[i].Kill();
+        }
+        currentWave = waveID;
+        forcedWaveSpawning = true;
+        StartCoroutine(Spawn());
+    }
+
 
     IEnumerator Spawn()
     {
@@ -208,8 +274,9 @@ public class GameManager : NetworkBehaviour {
                 yield return new WaitForSeconds(0.5f);
             }
         }
+        forcedWaveSpawning = false;
 
-        
+
     }
 
 

@@ -63,30 +63,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1000013401048676
+--- !u!1 &1000012955242898
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000012566455892}
-  - 33: {fileID: 33000012630003808}
-  - 23: {fileID: 23000013310800072}
+  - 4: {fileID: 4000011877368896}
+  - 33: {fileID: 33000013909887556}
+  - 23: {fileID: 23000012421922410}
+  - 95: {fileID: 95000012486831152}
   m_Layer: 0
-  m_Name: Rocket pop
+  m_Name: Zaptap_CandyBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000012566455892
+--- !u!4 &4000011877368896
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013401048676}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_GameObject: {fileID: 1000012955242898}
+  m_LocalRotation: {x: 0.3826835, y: -0, z: -0, w: -0.9238795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.9836988, y: 2.9836993, z: 2.9836993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,8 +100,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011973762988}
-  m_LocalRotation: {x: 0.000000029802319, y: -0.5028623, z: 0.00000008940696, w: 0.86436653}
-  m_LocalPosition: {x: -34.93808, y: 4.425906, z: -35.86639}
+  m_LocalRotation: {x: -3.5527137e-15, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9945655, y: 0.99456614, z: 0.9945656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -127,20 +128,20 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011784412228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.528, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 0.33515447, y: 0.33515456, z: 0.33515456}
   m_LocalEulerAnglesHint: {x: 0, y: -68.68, z: 0}
   m_Children:
-  - {fileID: 4000012566455892}
+  - {fileID: 4000011877368896}
   - {fileID: 4000012578866090}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &23000013310800072
+--- !u!23 &23000012421922410
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013401048676}
+  m_GameObject: {fileID: 1000012955242898}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -148,7 +149,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1298b886e5c4e428fbe4d9cc746f7e95, type: 2}
+  - {fileID: 2100000, guid: cd2bb7fc6f7f2044f8f23601d2606c59, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -164,13 +165,13 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33000012630003808
+--- !u!33 &33000013909887556
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013401048676}
-  m_Mesh: {fileID: 4300000, guid: 1a5c92bc156a8424384249a4111f78bc, type: 3}
+  m_GameObject: {fileID: 1000012955242898}
+  m_Mesh: {fileID: 4300000, guid: 1ab2be91c61dfa64eacac58ef965cd77, type: 3}
 --- !u!65 &65000014176462540
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -183,6 +184,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95000012486831152
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012955242898}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 1ab2be91c61dfa64eacac58ef965cd77, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000011367136814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,7 +296,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 874414795
+  randomSeed: -5310673
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -2047,7 +2065,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 1665763204
+  randomSeed: -2087972787
   InitialModule:
     serializedVersion: 2
     enabled: 1
